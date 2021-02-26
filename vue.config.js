@@ -17,7 +17,7 @@ module.exports = {
                 return args
             });
     },
-    outputDir: "../wwwroot",
+    outputDir: "dist",
     devServer: {
         host: "literature.local",
         port: 21535
