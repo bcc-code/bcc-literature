@@ -6,16 +6,7 @@ module.exports = {
         config.resolve.alias.set("router", path.resolve(__dirname, "src/router")),
         config.resolve.alias.set("keys", path.resolve(__dirname, "src/keys.js")),
         config.resolve.alias.set("store", path.resolve(__dirname, "src/store/index.js")),
-        config.resolve.alias.set("utils", path.resolve(__dirname, "src/utils"));
-        config
-            .plugin('define')
-            .tap(args => {
-                args[0]['process.env'] = {
-                    ...args[0]['process.env'],
-                    KEYS_ENV: JSON.stringify(process.env.KEYS_ENV),
-                }
-                return args
-            });
+        config.resolve.alias.set("utils", path.resolve(__dirname, "src/utils"))
     },
     outputDir: "dist",
     devServer: {

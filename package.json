@@ -3,14 +3,14 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "serve": "cross-env KEYS_ENV=local NODE_ENV=local vue-cli-service serve",
-    "builddev": "cross-env KEYS_ENV=development NODE_ENV=production vue-cli-service build",
-    "build": "cross-env KEYS_ENV=production NODE_ENV=production vue-cli-service build",
+    "serve": "cross-env NODE_ENV=local vue-cli-service serve",
+    "builddev": "cross-env NODE_ENV=production vue-cli-service build",
+    "build": "cross-env NODE_ENV=production vue-cli-service build",
     "lint": "vue-cli-service lint",
     "crowdin-update": "crowdin-helper up -c src/localization/crowdin-helper.json -b Literature-frontend",
     "crowdin-download": "crowdin-helper down --force -c src/localization/crowdin-helper.json -b Literature-frontend",
-    "test": "cross-env KEYS_ENV=local NODE_ENV=local ./node_modules/.bin/cucumber-js --require-module esm tests/features",
-    "devTest": "cross-env KEYS_ENV=development NODE_ENV=development ./node_modules/.bin/cucumber-js --require-module esm tests/features"
+    "test": "cross-env NODE_ENV=local ./node_modules/.bin/cucumber-js --require-module esm tests/features",
+    "devTest": "cross-env NODE_ENV=development ./node_modules/.bin/cucumber-js --require-module esm tests/features"
   },
   "dependencies": {
     "@babel/polyfill": "^7.4.3",
