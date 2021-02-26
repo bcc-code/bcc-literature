@@ -1,0 +1,107 @@
+{
+    "language": "German",
+    "app": {
+        "select-language": "Sprache wählen",
+        "error": "Es ist ein Fehler aufgetreten. Bitte wenden auf it@bcc.no"
+    },
+    "articles": {
+        "articles-all": "Alle Artikel"
+    },
+    "authors": {
+        "authors": "Autoren",
+        "authors-all": "Alle Autoren",
+        "authors-popular": "Beliebte Autoren",
+        "author-index": "Autoren Inhaltsverzeichnis"
+    },
+    "books": {
+        "books": "Bücher",
+        "books-all": "Alle Bücher",
+        "welcome-message": "<h1>BCCs digitale Bibliothek</h1><p>Lies inhaltsreiche Artikel und Bücher vom Stiftelsen Skjulte Skatters Verlag.</p>"
+    },
+    "book-index": {
+        "book-index": "Inhaltsverzeichnis",
+        "written-by": "von",
+        "get-ebook": "E-Book runterladen",
+        "read-now": "Jetzt lesen",
+        "chapters": "Kapitel",
+        "publication-issues-from": "Artikel von",
+        "show": "Lade",
+        "since": "Seit",
+        "publications": "Ausgaben",
+        "choose-year": "Jahr wählen",
+        "open-in-safari": "Bitte benutze deinen Browser, um dieses E-Book zu downloaden",
+        "read-random-chapters": "Lies zufällige kapitel"
+    },
+    "not-found": {
+        "title": "Die gesuchte ressource ist in dieser sprache nicht verfügbar.",
+        "suggestions": "Es ist in den folgenden sprachen verfügbar:"
+    },
+    "search": {
+        "search": "Suche",
+        "search-results": "Ergebnisse",
+        "search-box": "In BCC Literatur suchen",
+        "year-filter": "Jahr",
+        "exact-match": "Exact match",
+        "authors-filter": "Nach Verfasser filtern",
+        "authors-filter-default": "Alle Verfasser",
+        "books-filter": "Nach Buch filtern",
+        "books-filter-default": "Alle Bücher",
+        "load-more": "Mehr laden",
+        "no-results": "Keine Resultate"
+    },
+    "reader": {
+        "chapter": "Kapitel",
+        "subscription-required": "Du bist nicht für die gewählte Publikation abonniert."
+    },
+    "subscription": {
+        "subscriptions": "Abonnements",
+        "your-subscriptions": "Abonniert",
+        "latest-issue": "Letzte Ausgabe",
+        "see-all": "Alle sehen",
+        "learn-more": "Lies mehr",
+        "subscribe-to": "Sich Abonnieren auf",
+        "subtitle": "Hol dir die neuesten Artikel von {publicationName} und eine physische Kopie vor deine Haustür.",
+        "subscribe-button": "Abonnieren",
+        "price-per-year": "{price} pro Jahr",
+        "form": {
+            "title": "Füll das Formular aus, um dich anzumelden",
+            "freeOption": "Ich möchte {publicationName} kostenlos erhalten.",
+            "giftOption": "An eine andere Adresse senden",
+            "name": "Name",
+            "email": "Email",
+            "address": "Adresse",
+            "city": "Ort",
+            "postalCode": "Postleitzahl",
+            "state": "Staat/Provinz",
+            "country": "Land",
+            "price": "Preis",
+            "free": "Kostenlos"
+        },
+        "subscribe-success": {
+            "title": "Abonnement eingereicht",
+            "body": "Check bitte deine E-Mail für weitere Informationen zu deinem Abonnement."
+        },
+        "subscribe-failed": {
+            "title": "Dein Abonnement konnte nicht eingereicht werden",
+            "body": "Bitte versuch es erneut. Wenn das Problem weiterhin besteht, wenden dich an <a href='mailto:it@bcc.no'>Support</a>."
+        },
+        "subscribed": "Du bist abonniert bei ",
+        "unsubscribe": {
+            "button": "Abmelden",
+            "confirmation-header": "Bist du sicher, dass du dich abmelden möchtest?",
+            "confirmation-body": "Du wirst {publicationName} nicht mehr per E-Mail erhalten und kannst auch nicht mehr die neuesten Ausgaben online lesen. Die Abmeldung kann bis zu 4 Tage dauern.",
+            "cancel": "Abbrechen"
+        },
+        "unsubscribe-failed": {
+            "title": "Ein Fehler ist aufgetreten",
+            "body": "Bitte versuch es erneut. Wenn das Problem weiterhin besteht, wenden dich an <a href='mailto:it@bcc.no'>Support</a>."
+        },
+        "unsubscribed": "Dein Abonnement endet in Kürze"
+    },
+    "share": {
+        "share-link": "Link teilen",
+        "copy-button": "Kopieren",
+        "copy-success": "Kopiert",
+        "message": "\"{chapterName}\" auf BCC Literatur lesen:"
+    }
+}

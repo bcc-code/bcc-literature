@@ -1,0 +1,108 @@
+{
+    "language": "English",
+    "app": {
+        "select-language": "Select language",
+        "error": "An error occurred. Please contact it@bcc.no"
+    },
+    "articles": {
+        "articles-all": "All articles"
+    },
+    "authors": {
+        "authors": "Authors",
+        "authors-all": "All Authors",
+        "authors-popular": "Popular Authors",
+        "author-index": "Author Index"
+    },
+    "books": {
+        "books": "Books",
+        "books-all": "All books",
+        "welcome-message": "<h1>BCC's digital library</h1><p>Read content-rich articles and books from the Stiftelsen Skjulte Skatters Forlag.</p>"
+    },
+    "book-index": {
+        "book-index": "Book index",
+        "written-by": "by",
+        "get-ebook": "Get e-Book",
+        "read-now": "Read now",
+        "chapters": "Chapters",
+        "publication-issues-from": "Showing issues from",
+        "show": "Show",
+        "since": "Since",
+        "publications": "Publications",
+        "choose-year": "Choose year",
+        "open-in-safari": "Please use your browser to download this ebook",
+        "read-random-chapters": "Read a random chapter"
+    },
+    "not-found": {
+        "title": "The resource you are looking for is not available in this language.",
+        "suggestions": "It is available in the following languages:"
+    },
+    "search": {
+        "filter": "Filter",
+        "search": "Search",
+        "search-results": "Results",
+        "search-box": "Search in BCC literature",
+        "year-filter": "Year",
+        "exact-match": "Exact match",
+        "authors-filter": "Authors",
+        "authors-filter-placeholder": "Search for authors",
+        "books-filter": "Books",
+        "books-filter-placeholder": "Search for books",
+        "load-more": "Load more",
+        "no-results": "No results"
+    },
+    "reader": {
+        "chapter": "Chapter",
+        "subscription-required": "You are not subscribed to the selected publication."
+    },
+    "subscription": {
+        "subscriptions": "Subscriptions",
+        "your-subscriptions": "Subscribed",
+        "latest-issue": "Last issue",
+        "see-all": "See all",
+        "learn-more": "Read more",
+        "subscribe-to": "Subscribe to",
+        "subtitle": "Get the most recent articles from {publicationName} and a physical copy at your door step.",
+        "subscribe-button": "Subscribe",
+        "price-per-year": "{price} per year",
+        "form": {
+            "title": "Fill out the form to subscribe",
+            "freeOption": "I want to receive {publicationName} for free.",
+            "giftOption": "Send to another address",
+            "name": "Name",
+            "email": "Email",
+            "address": "Address",
+            "city": "City",
+            "postalCode": "Postal Code/ Zip Code",
+            "state": "State/Province",
+            "country": "Country",
+            "price": "Price",
+            "free": "Free"
+        },
+        "subscribe-success": {
+            "title": "Subscription submitted",
+            "body": "Check you email with further information about you subscription."
+        },
+        "subscribe-failed": {
+            "title": "Your subscription could not be submitted",
+            "body": "Please try again. If the problem persists, contact <a href='mailto:it@bcc.no'>support</a>."
+        },
+        "subscribed": "You are subscribed to ",
+        "unsubscribe": {
+            "button": "Unsubscribe",
+            "confirmation-header": "Are you sure you want to unsubscribe?",
+            "confirmation-body": "You will no longer receive {publicationName} by mail, nor be able to read the most recent issues online. Unsubscribing can take up to 4 days.",
+            "cancel": "Cancel"
+        },
+        "unsubscribe-failed": {
+            "title": "An error occurred",
+            "body": "Please try again. If the problem persists, contact <a href='mailto:it@bcc.no'>support</a>."
+        },
+        "unsubscribed": "Your subscription will end soon"
+    },
+    "share": {
+        "share-link": "Share Link",
+        "copy-button": "Copy",
+        "copy-success": "Copied",
+        "message": "Read \"{chapterName}\" on BCC Literature:"
+    }
+}

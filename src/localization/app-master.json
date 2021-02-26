@@ -1,0 +1,107 @@
+{
+    "language": "Norwegian",
+    "app": {
+        "select-language": "Velg språk",
+        "error": "En feil oppstod. Ta kontakt med it@bcc.no"
+    },
+    "articles": {
+        "articles-all": "Alle artikler"
+    },
+    "authors":{
+        "authors": "Forfattere",
+        "authors-all":"Alle forfattere",
+        "authors-popular":"Populære forfattere",
+        "author-index":"Forfatterindeks"
+    },
+    "books": {
+        "books": "Bøker",
+        "books-all": "Alle bøker",
+        "welcome-message": "<h1>BCCs digitale bibliotek</h1><p>Les innholdsrike artikler og bøker fra Stiftelsen Skjulte Skatters Forlag.</p>"
+    },
+    "book-index": {
+        "book-index": "Bokindeks",
+        "written-by": "av",
+        "get-ebook": "Få e-bok",
+        "read-now": "Les nå",
+        "chapters": "Kapitler",
+        "publication-issues-from": "Viser utgivelser fra",
+        "show": "Vis",
+        "since": "Siden",
+        "publications": "Utgivelser",
+        "choose-year": "Velg år",
+        "open-in-safari": "Vennligst bruk nettleseren din for å laste ned denne eBok",
+        "read-random-chapters": "Les tilfeldig bref"
+    },
+    "not-found": {
+        "title": "Ressursen du leter etter finnes ikke på dette språket.",
+        "suggestions": "Den er tilgjengelig på følgende språk:"
+    },
+    "search": {
+        "search": "Søk",
+        "search-results": "Resultater",
+        "search-box": "Søk i BCC litteratur",
+        "year-filter": "År",
+        "exact-match": "Exact match",
+        "authors-filter": "Filtrerer forfattere",
+        "authors-filter-default": "Alle forfattere",
+        "books-filter": "Filtrerer bøker",
+        "books-filter-default": "Alle bøker",
+        "load-more": "Last inn mer",
+        "no-results": "Ingen resultater"
+    },
+    "reader": {
+        "chapter": "Kapittel",
+        "subscription-required": "Du abonnerer ikke på den valgte utgivelsen."
+    },
+    "subscription": {
+        "subscriptions": "Abonnementer",
+        "your-subscriptions": "Ditt abonnement",
+        "latest-issue": "Siste utgave",
+        "see-all": "Se alt",
+        "learn-more": "Les mer",
+        "subscribe-to": "Abonner på",
+        "subtitle": "Få de nyeste artiklene fra {publicationName} og en fysisk kopi på dørsteget ditt.",
+        "subscribe-button": "Abonnere",
+        "price-per-year": "{price} per år",
+        "form": {
+            "title": "Fyll ut skjemaet for å abonnere",
+            "freeOption": "Jeg ønsker å få {publicationName} gratis.",
+            "giftOption": "Send til en annen adresse",
+            "name": "Navn",
+            "email": "Epost",
+            "address": "Adresse",
+            "city": "By",
+            "postalCode": "Postnummer",
+            "state": "Stat/Provins",
+            "country": "Land",
+            "price": "Pris",
+            "free": "Gratis"
+        },
+        "subscribe-success": {
+            "title": "Abonnement sendt",
+            "body": "Sjekk din e-post for mer informasjon om abonnementet ditt."
+        },
+        "subscribe-failed": {
+            "title": "Abonnementet ditt kunne ikke sendes inn",
+            "body": "Vennligst prøv på nytt. Hvis problemet vedvarer, ta kontakt med <a href='mailto:it@bcc.no'>support</a>."
+        },
+        "subscribed":"Du abonnerer på ",
+        "unsubscribe": {
+            "button":"Avslutte",
+            "confirmation-header":"Er du sikker på at du vil avslutte abonnementet?",
+            "confirmation-body": "Du vil ikke lenger motta {publicationName} via post, eller kunne lese de siste utgivelser på nettet. Prossessen kan ta opp til 4 dager.",
+            "cancel": "Avbryt"
+        },
+        "unsubscribe-failed": {
+            "title": "En feil oppstod",
+            "body": "Vennligst prøv på nytt. Hvis problemet vedvarer, ta kontakt med <a href='mailto:it@bcc.no'>support</a>."
+        },
+        "unsubscribed": "Abonnementet ditt avsluttes snart"
+    },
+    "share": {
+        "share-link": "Dele lenke",
+        "copy-button": "Kopiere",
+        "copy-success": "Kopiert",
+        "message": "Les \"{chapterName}\" på BCC Litteratur:"
+    }
+}

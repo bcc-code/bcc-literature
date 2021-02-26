@@ -1,0 +1,8 @@
+{
+    "projectIdentifier": "bcc-open-portal",
+    "projectKey": "b45032f79ec334e3e430aeb2ffbf5512",
+    "source": "**/app-master.json",
+    "translation": "/src/localization/%two_letters_code%/Literature/app.json",
+    "disableAutoTranslation": true,
+    "languageToCheck": "en"
+}

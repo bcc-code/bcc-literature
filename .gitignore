@@ -1,0 +1,13 @@
+node_modules/
+dist/
+
+# Test reports
+tests/e2e/videos/
+tests/e2e/screenshots/
+
+# Log files
+npm-debug.log*
+
+# Editor directories and files
+.idea
+.vscode
