@@ -1,8 +1,7 @@
 <template>
     <div :id="'documentview-'+article.chapterId">
         <div class="documentview-container" :id="'documentview-container-'+article.chapterId" >
-            <p>Bladene er midlertidig ikke tilgjengelig online.</p>
-            <iframe style="display: none;" width="440px" height="330px" :src="article.documentUrl" frameborder="0" allowfullscreen="true" referrerpolicy="origin-when-cross-origin" allowtransparency="true"></iframe>
+            <iframe width="440px" height="330px" :src="article.documentUrl" frameborder="0" allowfullscreen="true" referrerpolicy="origin-when-cross-origin" allowtransparency="true"></iframe>
         </div>
     </div> 
 </template>
