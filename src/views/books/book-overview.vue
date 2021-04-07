@@ -1,8 +1,7 @@
 <template>
     <section>
     <app-header :showBackButton="false" :pageName="$t('books.books')" />
-    <section v-if="showIntro" id="literature-intro" class="container intro">
-        <a class="minimize-button button-circular small secondary" @click="showIntro=false"></a>
+    <section id="literature-intro" class="container intro">
         <section class="center x-small" v-html="$t('books.welcome-message')"></section>
     </section>
     <section class="container">
@@ -40,7 +39,6 @@ export default {
     },
     data: function() {
         return {
-            showIntro: true,
         };
     },
     mixins: [GridMixin],
