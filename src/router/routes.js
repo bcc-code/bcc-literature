@@ -12,7 +12,7 @@ export const routes = [
     {name: 'callback', path: '/callback', component: CallBack, meta: {unprotected: true}},
     {name: 'silent-renew', path: '/silent-renew', component: SilentRenew, meta: {unprotected: true}},
     {name: 'signout', path: '/signout', component: Signout, meta: {unprotected: true}},
-    {name: 'search', path: '/search/q=:query', component: Search},
+    {name: 'search', path: '/search/q=:query?', component: Search},
     {name: 'books', path: '/', component: BookOverview},
     {name: 'book-index', path: '/books/:bookId', component: BookIndex},
     {name: 'read', path: '/books/:bookId/:chapterId', component: BookReader, meta: { scrollToTop: true, ignoreRouteUpdate: true }},

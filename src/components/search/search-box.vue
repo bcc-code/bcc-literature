@@ -11,8 +11,6 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
-
 export default {   
     data: function(){
         return {
@@ -20,8 +18,10 @@ export default {
         }
     },
     methods: {
-        search:function(){            
-            this.$router.push({ name: 'search', params: { query: this.searchQuery } })         
+        search:function(){        
+            if (this.searchQuery == null || this.searchQuery == '')
+                this.$router.push('/search/q=');    
+            else this.$router.push({ name: 'search', path: '/search', params: { query: this.searchQuery || '' } })         
         }
     }
 };
