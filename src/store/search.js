@@ -97,12 +97,15 @@ export default {
                 }).catch(() => commit("updateAuthorResults", []));
             } 
             await articleApi.search(query, top, skip, authorFullNameFacet, bookNameFacet, years, exactMatch).then((res)=>{                 
-                commit("updateSearchResults", res.data) 
+                if (res.data.results == null) 
+                    return commit("toggleLoader")
+                commit("updateSearchResults", res.data || []) 
                 if (newFacets)
                     commit("updateFacetsOptions", res.data.results.facets)
                 commit("toggleLoader")                         
-            }).catch(() => {
-                commit("updateSearchResults", { results: { resuls: [], count: 0}});
+            }).catch((err) => {
+                console.log(err)
+                commit("updateSearchResults", { results: { results: [], count: 0}});
                 commit("updateFacetsOptions", {
                     "AuthorFullName": [],     
                     "BookName":[]              
