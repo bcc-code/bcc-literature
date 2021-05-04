@@ -1,5 +1,5 @@
 # Literature
-This is an application coded for BCC Members to access all the literature provided by SSF.
+This is an application coded for BCC Members to access all the literature provided by SSSF.
 
 # Getting Started
 
@@ -43,3 +43,4 @@ npm run devTest
 - Edward Tombre
 - Søren Clausen
 - Eunice Benjamin
+- Simon Costea
