@@ -60,7 +60,6 @@ import SearchResultBook from 'components/search/search-result-book.vue';
 import SearchResultAuthor from 'components/search/search-result-author.vue';
 import SearchFacet from 'components/search/search-facet'
 import YearFilter from 'components/search/year-filter'
-import articleApi from 'utils/api/articleApi.js';
 import { mapActions, mapState, mapGetters } from 'vuex';
 import { EventBus, Events } from '@/utils/eventBus';
 
@@ -105,13 +104,15 @@ export default {
         },
         handleScroll() {
             let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-            let filterElement = document.querySelector('#filters');
-            let filterElementRect = filterElement.getBoundingClientRect();
-            if (scrollTop > (filterElementRect.top + this.isStandalone ? 128 : 30)) {
-                filterElement.classList.add("pinned");
-            } else {
-                filterElement.classList.remove("pinned"); 
-            };
+            let filterElement = document.querySelector('#filters'); 
+            if (filterElement != null) {
+                let filterElementRect = filterElement.getBoundingClientRect();
+                if (scrollTop > (filterElementRect.top + this.isStandalone ? 128 : 30)) {
+                    filterElement.classList.add("pinned");
+                } else {
+                    filterElement.classList.remove("pinned"); 
+                };
+            }
         }
     },
     created: function() {     
