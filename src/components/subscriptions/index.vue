@@ -1,20 +1,17 @@
 <template>
-    <section class="container" v-if="isPaidSubscription && subscriptionLoaded">
+    <section class="container" v-if="isPaidSubscription && subscriptionLoaded && !isSubscribed">
 		<section class="center small">
-            <Subscribed v-if="isSubscribed" :book="book"/>
-            <SubscriptionForm v-else :book="book" :price="price" :hasMultiModes="hasMultiModes"/>
+            <SubscriptionForm :book="book" :price="price" :hasMultiModes="hasMultiModes"/>
 		</section>
 	</section>
 </template>
 <script>
 import SubscriptionForm from './not-subscribed/subscribe.vue';
-import Subscribed from './subscribed/subscribed';
 import { mapState, mapActions } from 'vuex';
 
 export default {
     components: {
         SubscriptionForm,
-        Subscribed
     },
     props: {
         book: {
