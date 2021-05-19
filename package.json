@@ -39,7 +39,7 @@
     "vuex": "^3.6.2"
   },
   "devDependencies": {
-    "@bcc-it/css-literature": "^2.2.0",
+    "@bcc-it/css-literature": "^2.2.1",
     "@vue/cli-plugin-babel": "^3.12.1",
     "@vue/cli-plugin-eslint": "^3.12.1",
     "@vue/cli-plugin-pwa": "^3.12.1",
