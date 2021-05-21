@@ -56,7 +56,7 @@ export default {
                 { code: 'no', name: 'Norsk' },
                 { code: 'pl', name: 'Polski'},
                 { code: 'pt', name: 'Português'},
-                { code: 'ro', name: 'Româneste'},
+                { code: 'ro', name: 'Română'},
                 { code: 'ru', name: 'Russian'},
                 { code: 'fi', name: 'Suomi'},
                 { code: 'tr', name: 'Türkçe'},
