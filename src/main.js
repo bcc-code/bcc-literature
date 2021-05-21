@@ -1,20 +1,20 @@
-import Vue from "vue";
-import App from "./app.vue";
-import router from "./router/index";
-import store from "./store/index";
+import Vue from 'vue';
+import App from './app.vue';
+import router from './router/index';
+import store from './store/index';
 import keys from 'keys';
-import "./registerServiceWorker";
+import './registerServiceWorker';
 import vClickOutside from 'v-click-outside'
 import VueI18n from 'vue-i18n'
 import VueAppInsights from 'vue-application-insights'
-import english from './localization/en/Literature/app.json'
-import norwegian from './localization/no/Literature/app.json'
-import dutch from './localization/nl/Literature/app.json'
-import german from './localization/de/Literature/app.json'
-import french from './localization/fr/Literature/app.json'
-import finish from './localization/fi/Literature/app.json'
-import "@babel/polyfill";
-import "@bcc-it/css-literature";
+import english from './localization/en.json'
+import norwegian from './localization/no.json'
+import dutch from './localization/nl.json'
+import german from './localization/de.json'
+import french from './localization/fr.json'
+import finnish from './localization/fi.json'
+import '@babel/polyfill';
+import '@bcc-it/css-literature';
 import VueModal from 'vue-js-modal';
 import VueClipboard from 'vue-clipboard2';
 
@@ -38,13 +38,13 @@ Vue.config.errorHandler = (err) => {
 };
 
 const messages ={
-    en:english,
-    no:norwegian,
+    en: english,
+    no: norwegian,
     dk: norwegian,
-    nl:dutch,
-    de:german,
-    fr:french,
-    fi:finish
+    nl: dutch,
+    de: german,
+    fr: french,
+    fi: finnish
 }
 
 const i18n = new VueI18n({
