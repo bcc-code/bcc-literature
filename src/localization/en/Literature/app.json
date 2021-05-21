@@ -37,16 +37,15 @@
         "suggestions": "It is available in the following languages:"
     },
     "search": {
-        "filter": "Filter",
         "search": "Search",
         "search-results": "Results",
         "search-box": "Search in BCC literature",
         "year-filter": "Year",
         "exact-match": "Exact match",
         "authors-filter": "Authors",
-        "authors-filter-placeholder": "Search for authors",
+        "authors-filter-default": "Alle forfattere",
         "books-filter": "Books",
-        "books-filter-placeholder": "Search for books",
+        "books-filter-default": "Alle bøker",
         "load-more": "Load more",
         "no-results": "No results"
     },
