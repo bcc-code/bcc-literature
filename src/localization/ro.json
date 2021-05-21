@@ -1,7 +1,7 @@
 {
     "language": "Norwegian",
     "app": {
-        "select-language": "Velg språk",
+        "select-language": "Alege limba",
         "error": "En feil oppstod. Ta kontakt med it@bcc.no"
     },
     "articles": {
