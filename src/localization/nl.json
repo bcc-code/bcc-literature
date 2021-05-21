@@ -1,0 +1,107 @@
+{
+    "language": "Noors",
+    "app": {
+        "select-language": "Kies taal",
+        "error": "Er is een fout opgetreden. Neem contact op met it@bcc.no"
+    },
+    "articles": {
+        "articles-all": "Alle artikelen"
+    },
+    "authors": {
+        "authors": "Auteurs",
+        "authors-all": "Alle auteurs",
+        "authors-popular": "Populaire auteurs",
+        "author-index": "Auteur index"
+    },
+    "books": {
+        "books": "Boeken",
+        "books-all": "Alle boeken",
+        "welcome-message": "<h1>BCC's digitale bibliotheek</h1><p>Lees inhoudsrijke artikelen en boeken van Stichting Skjulte Skatters Forlag.</p>"
+    },
+    "book-index": {
+        "book-index": "Inhoudsopgave",
+        "written-by": "van",
+        "get-ebook": "Ontvang eBook",
+        "read-now": "Lees nu",
+        "chapters": "Hoofdstukken",
+        "publication-issues-from": "Toont uitgaven van",
+        "show": "Toon",
+        "since": "Sinds",
+        "publications": "Publicaties",
+        "choose-year": "Kies jaargang",
+        "open-in-safari": "Gebruik uw browser om dit ebook te downloaden",
+        "read-random-chapters": "Een willekeurig hoofdstuk lezen"
+    },
+    "not-found": {
+        "title": "De gezochte bron is niet beschikbaar in deze taal.",
+        "suggestions": "Hij is beschikbaar in de volgende talen:"
+    },
+    "search": {
+        "search": "Zoek",
+        "search-results": "Resultaten",
+        "search-box": "Zoek in BCC literatuur",
+        "year-filter": "Year",
+        "exact-match": "Exact match",
+        "authors-filter": "Filter auteurs",
+        "authors-filter-default": "Alle auteurs",
+        "books-filter": "Filter boeken",
+        "books-filter-default": "Alle boeken",
+        "load-more": "Meer laden",
+        "no-results": "Geen resultaten"
+    },
+    "reader": {
+        "chapter": "Hoofdstuk",
+        "subscription-required": "Je bent niet geabonneerd op de geselecteerde publicatie."
+    },
+    "subscription": {
+        "subscriptions": "Abonnementen",
+        "your-subscriptions": "Geabonneerd",
+        "latest-issue": "Laatste uitgave",
+        "see-all": "Zie alle",
+        "learn-more": "Meer lezen",
+        "subscribe-to": "Abonneren op",
+        "subtitle": "Ontvang de nieuwste artikelen van {publicationName} en een fysieke kopie bij u thuis.",
+        "subscribe-button": "Abonneer",
+        "price-per-year": "{price} per jaar",
+        "form": {
+            "title": "Vul het formulier in om u te abonneren",
+            "freeOption": "Ik wil {publicationName} gratis ontvangen.",
+            "giftOption": "Stuur naar een ander adres",
+            "name": "Naam",
+            "email": "E-mail",
+            "address": "Adres",
+            "city": "Woonplaats",
+            "postalCode": "Postcode",
+            "state": "Staat/Provincie",
+            "country": "Land",
+            "price": "Prijs",
+            "free": "Gratis"
+        },
+        "subscribe-success": {
+            "title": "Abonnement verzonden",
+            "body": "Controleer uw e-mail voor meer informatie over uw abonnement."
+        },
+        "subscribe-failed": {
+            "title": "Uw abonnement kon niet worden ingediend",
+            "body": "Probeer het opnieuw. Neem contact op met <a href='mailto:it@bcc.no'>support</a> als het probleem aanhoudt."
+        },
+        "subscribed": "U bent geabonneerd op ",
+        "unsubscribe": {
+            "button": "Beëindigen",
+            "confirmation-header": "Weet u het zeker dat u zich wilt afmelden?",
+            "confirmation-body": "Je ontvangt niet langer {publicationName} per post en je kunt de nieuwste publicaties niet online lezen. Het proces kan tot 4 dagen duren.",
+            "cancel": "Annuleren"
+        },
+        "unsubscribe-failed": {
+            "title": "Er is een fout opgetreden",
+            "body": "Probeer het opnieuw. Neem contact op met <a href='mailto:it@bcc.no'>support</a> als het probleem aanhoudt."
+        },
+        "unsubscribed": "Je abonnement wordt binnenkort beëindigd"
+    },
+    "share": {
+        "share-link": "Link delen",
+        "copy-button": "Kopiëren",
+        "copy-success": "Gekopieerd",
+        "message": "Lees \"{chapterName}\" op BCC Literatuur:"
+    }
+}
