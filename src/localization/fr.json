@@ -1,5 +1,5 @@
 {
-    "language": "Norvégien",
+    "language": "Français",
     "app": {
         "select-language": "Choisir la langue",
         "error": "Une erreur s'est produite. Veuillez contacter it@bcc.no"
@@ -11,7 +11,7 @@
         "authors": "Auteurs",
         "authors-all": "Tous les auteurs",
         "authors-popular": "Auteurs populaires",
-        "author-index": "Profil de l'auteur"
+        "author-index": "Index des auteurs"
     },
     "books": {
         "books": "Livres",

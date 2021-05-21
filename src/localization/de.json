@@ -1,5 +1,5 @@
 {
-    "language": "German",
+    "language": "Deutsch",
     "app": {
         "select-language": "Sprache wählen",
         "error": "Es ist ein Fehler aufgetreten. Bitte wenden auf it@bcc.no"
@@ -9,7 +9,7 @@
     },
     "authors": {
         "authors": "Autoren",
-        "authors-all": "Alle Autoren",
+        "authors-all": "Alle Verfasser",
         "authors-popular": "Beliebte Autoren",
         "author-index": "Autoren Inhaltsverzeichnis"
     },
@@ -59,7 +59,7 @@
         "latest-issue": "Letzte Ausgabe",
         "see-all": "Alle sehen",
         "learn-more": "Lies mehr",
-        "subscribe-to": "Sich Abonnieren auf",
+        "subscribe-to": "Abonnieren Sie",
         "subtitle": "Hol dir die neuesten Artikel von {publicationName} und eine physische Kopie vor deine Haustür.",
         "subscribe-button": "Abonnieren",
         "price-per-year": "{price} pro Jahr",

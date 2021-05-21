@@ -1,7 +1,7 @@
 {
-    "language": "norja",
+    "language": "Español",
     "app": {
-        "select-language": "Valitse kieli",
+        "select-language": "Velg språk",
         "error": "En feil oppstod. Ta kontakt med it@bcc.no"
     },
     "articles": {
@@ -14,21 +14,21 @@
         "author-index": "Forfatterindeks"
     },
     "books": {
-        "books": "Kirjat",
-        "books-all": "Kaikki kirjat",
-        "welcome-message": "<h1>BCC:n digitaalinen kirjasto</h1><p>Lue sisältörikkaita artikkeleita ja kirjoja Skjulte Skatters Forlag -kustantamolta.</p>"
+        "books": "Bøker",
+        "books-all": "Alle bøker",
+        "welcome-message": "<h1>BCCs digitale bibliotek</h1><p>Les innholdsrike artikler og bøker fra Stiftelsen Skjulte Skatters Forlag.</p>"
     },
     "book-index": {
-        "book-index": "Hakemisto",
-        "written-by": "henkilöltä",
-        "get-ebook": "Lataa e-kirja",
-        "read-now": "Lue nyt",
-        "chapters": "Luvut",
-        "publication-issues-from": "Näytä julkaisut alkaen",
-        "show": "Näytä",
-        "since": "Alkaen",
-        "publications": "Julkaisut",
-        "choose-year": "Valitse vuosi",
+        "book-index": "Bokindeks",
+        "written-by": "av",
+        "get-ebook": "Få e-bok",
+        "read-now": "Les nå",
+        "chapters": "Kapitler",
+        "publication-issues-from": "Viser utgivelser fra",
+        "show": "Vis",
+        "since": "Siden",
+        "publications": "Utgivelser",
+        "choose-year": "Velg år",
         "open-in-safari": "Vennligst bruk nettleseren din for å laste ned denne eBok",
         "read-random-chapters": "Les tilfeldig bref"
     },
@@ -37,21 +37,21 @@
         "suggestions": "Den er tilgjengelig på følgende språk:"
     },
     "search": {
-        "search": "Hae",
-        "search-results": "Tulokset",
-        "search-box": "Etsi BCC:n kirjallisuutta",
-        "year-filter": "Year",
+        "search": "Søk",
+        "search-results": "Resultater",
+        "search-box": "Søk i BCC litteratur",
+        "year-filter": "År",
         "exact-match": "Exact match",
-        "authors-filter": "Kirjailijahaku",
-        "authors-filter-default": "Kaikki kirjailijat",
-        "books-filter": "Kirjahaku",
-        "books-filter-default": "Kaikki kirjat",
-        "load-more": "Lataa lisää",
+        "authors-filter": "Filtrerer forfattere",
+        "authors-filter-default": "Alle forfattere",
+        "books-filter": "Filtrerer bøker",
+        "books-filter-default": "Alle bøker",
+        "load-more": "Last inn mer",
         "no-results": "Ingen resultater"
     },
     "reader": {
-        "chapter": "Luku",
-        "subscription-required": "You are not subscribed to the selected publication."
+        "chapter": "Kapittel",
+        "subscription-required": "Du abonnerer ikke på den valgte utgivelsen."
     },
     "subscription": {
         "subscriptions": "Abonnementer",

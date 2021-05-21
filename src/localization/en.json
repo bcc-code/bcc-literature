@@ -9,7 +9,7 @@
     },
     "authors": {
         "authors": "Authors",
-        "authors-all": "All Authors",
+        "authors-all": "All authors",
         "authors-popular": "Popular Authors",
         "author-index": "Author Index"
     },
@@ -19,7 +19,7 @@
         "welcome-message": "<h1>BCC's digital library</h1><p>Read content-rich articles and books from the Stiftelsen Skjulte Skatters Forlag.</p>"
     },
     "book-index": {
-        "book-index": "Book index",
+        "book-index": "Book Index",
         "written-by": "by",
         "get-ebook": "Get e-Book",
         "read-now": "Read now",
@@ -29,7 +29,7 @@
         "since": "Since",
         "publications": "Publications",
         "choose-year": "Choose year",
-        "open-in-safari": "Please use your browser to download this ebook",
+        "open-in-safari": "Please use your browser to download this e-book",
         "read-random-chapters": "Read a random chapter"
     },
     "not-found": {
@@ -37,16 +37,15 @@
         "suggestions": "It is available in the following languages:"
     },
     "search": {
-        "filter": "Filter",
         "search": "Search",
         "search-results": "Results",
-        "search-box": "Search in BCC literature",
+        "search-box": "Search in BCC Literature",
         "year-filter": "Year",
         "exact-match": "Exact match",
-        "authors-filter": "Authors",
-        "authors-filter-placeholder": "Search for authors",
-        "books-filter": "Books",
-        "books-filter-placeholder": "Search for books",
+        "authors-filter": "Filter by authors",
+        "authors-filter-default": "All authors",
+        "books-filter": "Filter by book",
+        "books-filter-default": "All books",
         "load-more": "Load more",
         "no-results": "No results"
     },
@@ -61,7 +60,7 @@
         "see-all": "See all",
         "learn-more": "Read more",
         "subscribe-to": "Subscribe to",
-        "subtitle": "Get the most recent articles from {publicationName} and a physical copy at your door step.",
+        "subtitle": "Get the most recent articles from {publicationName} and a physical copy to your door step.",
         "subscribe-button": "Subscribe",
         "price-per-year": "{price} per year",
         "form": {
@@ -80,7 +79,7 @@
         },
         "subscribe-success": {
             "title": "Subscription submitted",
-            "body": "Check you email with further information about you subscription."
+            "body": "Check your email for further information about your subscription."
         },
         "subscribe-failed": {
             "title": "Your subscription could not be submitted",
