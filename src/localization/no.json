@@ -42,9 +42,9 @@
         "search-box": "Søk i BCC litteratur",
         "year-filter": "År",
         "exact-match": "Eksakt tekst",
-        "authors-filter": "Filtrerer forfattere",
+        "authors-filter": "Forfattere",
         "authors-filter-default": "Alle forfattere",
-        "books-filter": "Filtrerer bøker",
+        "books-filter": "Bøker",
         "books-filter-default": "Alle bøker",
         "load-more": "Last inn mer",
         "no-results": "Ingen resultater"
