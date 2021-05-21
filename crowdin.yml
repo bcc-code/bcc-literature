@@ -1,0 +1,3 @@
+files:
+  - source: /app-master.json
+    translation: /%two_letters_code%/Literature/app.%file_extension%
