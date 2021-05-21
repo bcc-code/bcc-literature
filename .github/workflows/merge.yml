@@ -1,0 +1,18 @@
+name: Merge feature/translations into develop automatically
+on:
+  push:
+    branches:
+      - "feature/translations"
+jobs:
+  merge-branch:
+    if: ${{ github.event.pusher.name == 'bcc-bot' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+
+      - name: Merge feature/translations -> develop
+        uses: devmasx/merge-branch@v1.3.1
+        with:
+          type: now
+          target_branch: develop
+          github_token: ${{ github.token }}
