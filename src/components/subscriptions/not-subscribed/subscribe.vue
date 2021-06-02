@@ -1,5 +1,5 @@
 <template>
-    <section v-bind:class="['subscription-signup',{'open': showForm}, {'confirmed': showConfirmation}]">
+    <section v-bind:class="['subscription-signup', {'open': showForm}, {'confirmed': showConfirmation}]">
         <h4>{{$t("subscription.subscribe-to")}} {{book.title}}</h4>
         <p class="small">{{$t("subscription.subtitle", {publicationName: book.title})}}</p>
         <BookCover :cover-id="book.coverId"></BookCover>
@@ -7,7 +7,7 @@
         <SubscriptionForm v-if="showForm" :formData="subscriptionInfo" @subscribe="subscribe"/>
         <Confirmation v-if="showConfirmation" :success="success"/>
         <div class="signup-cta" v-if="!showForm && !showConfirmation">
-            <a class="button-main small" v-on:click="showForm = true; mode='normal'">{{$t('subscription.subscribe-button')}}</a>
+            <a class="button-main small" v-on:click="showFormOrGoToPublication">{{$t('subscription.subscribe-button')}}</a>
         </div>
     </section>
 </template>
@@ -38,7 +38,7 @@ export default {
             required: true
         }
     },
-    data: function(){
+    data: function() {
         return {
             showForm: false,
             showConfirmation: false,
@@ -47,18 +47,35 @@ export default {
         }
     },
     methods: {
-        subscribe(payload){
+        subscribe(payload) {
             this.showForm = false;
             this.showConfirmation = true;
             this.success = payload;
+        },
+        showFormOrGoToPublication() {
+            if (this.book.id == 312) { // BAND publication
+                window.open(
+                    'https://band.dcg-deutschland.de/',
+                    '_blank'
+                );
+            }
+            else {
+                this.showForm = true;
+                this.mode = 'normal';
+            }
         }
     },
     computed: {
         ...mapState('session', {
             userInfo: 'userInfo'
         }),
-        subscriptionInfo(){
-            return { "hasMultiModes" : this.hasMultiModes, "bookId": this.book.id, "bookName": this.book.title, "bookPrice" : this.price };
+        subscriptionInfo() {
+            return { 
+                "hasMultiModes": this.hasMultiModes,
+                "bookId": this.book.id,
+                "bookName": this.book.title,
+                "bookPrice": this.price
+            };
         }
     }
 }
