@@ -17,6 +17,7 @@ import SubscriptionForm from './form';
 import Confirmation from './subscribe-confirmation';
 import BookCover from 'components/grid/tiles/card-cover';
 import { mapState } from 'vuex';
+import keys from 'keys';
 
 export default {
     components: {
@@ -53,9 +54,9 @@ export default {
             this.success = payload;
         },
         showFormOrGoToPublication() {
-            if (this.book.id == 312) { // BAND publication
+            if (this.book.id in keys.SUBSCRIPTION_FORM_URLS) {
                 window.open(
-                    'https://band.dcg-deutschland.de/',
+                    keys.SUBSCRIPTION_FORM_URLS[this.book.id],
                     '_blank'
                 );
             }
