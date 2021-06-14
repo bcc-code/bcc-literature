@@ -46,6 +46,7 @@
         "authors-filter-default": "Alle forfattere",
         "books-filter": "Bøker",
         "books-filter-default": "Alle bøker",
+        "filter": "Filtre",
         "load-more": "Last inn mer",
         "no-results": "Ingen resultater"
     },
