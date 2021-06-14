@@ -80,11 +80,13 @@ export default {
     color:#b7bac3;
 }
 .range-values {
-    margin-top: 25px;
+    top: 20px;
     font-size: 14px;
     width: 100%;
     display: flex;
     justify-content: space-between;
+    position: relative;
+    margin-left: 3px;
 }
 .range-slider {
     position: relative;

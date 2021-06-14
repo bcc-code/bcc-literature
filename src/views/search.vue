@@ -14,7 +14,7 @@
                 <section class="filter" @click="showFilters = true" v-click-outside="() => showFilters = false">
                     <div class="header">
                         <h3 v-if="isMobile">{{$t('search.filter')}}</h3>
-                        <a v-if="showFilters" class="minimize-button" @click="showFilters = false"></a>
+                        <a v-if="showFilters" class="minimize-button" @click="() => showFilters = false"></a>
                     </div>
                     <form v-if="!isMobile || showFilters">
                         <search-facet facetName="BookName"
@@ -29,7 +29,7 @@
                             <h5>{{$t('search.year-filter')}}</h5>
                             <year-filter />
                         </section>
-                        <section>
+                        <section class="exact-match">
                             <h5>{{$t('search.exact-match')}}</h5>
                             <input v-model="exactMatch" type="checkbox">
                         </section>
@@ -166,6 +166,7 @@ export default {
 <style>
 body[view="advanced-search"] .content .center aside.temp {
     float: right;
+    margin-left: 20px;
 }
 
 @media screen and (max-width: 500px) {
@@ -197,6 +198,10 @@ body[view="advanced-search"] .content .center aside.temp {
     body[view="advanced-search"] .content .center.medium section.list {
         width: 100%;
         margin: 0;
+    }
+
+    body[view="advanced-search"] .content .center.medium section.list h3 {
+        padding: 0 16px 20px;
     }
 
     .minimize-button {
