@@ -19,11 +19,11 @@
                     <form v-if="!isMobile || showFilters">
                         <search-facet facetName="BookName"
                             :facetTitle="$t('search.books-filter')"
-                            :facetPlaceholder="$t('search.books-filter-placeholder')"
+                            :facetPlaceholder="$t('search.books-filter-default')"
                             facetKey="title"/>
                         <search-facet facetName="AuthorFullName"
                             :facetTitle="$t('search.authors-filter')"
-                            :facetPlaceholder="$t('search.authors-filter-placeholder')"
+                            :facetPlaceholder="$t('search.authors-filter-default')"
                             facetKey="fullName"/>
                         <section>
                             <h5>{{$t('search.year-filter')}}</h5>
