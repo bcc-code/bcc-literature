@@ -46,6 +46,7 @@
         "authors-filter-default": "Tous les auteurs",
         "books-filter": "Filtrer par livre",
         "books-filter-default": "Tous les livres",
+        "filter": "Filtre",
         "load-more": "Charger plus",
         "no-results": "Aucun résultat"
     },
