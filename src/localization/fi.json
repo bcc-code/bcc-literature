@@ -46,6 +46,7 @@
         "authors-filter-default": "Kaikki kirjailijat",
         "books-filter": "Kirjahaku",
         "books-filter-default": "Kaikki kirjat",
+        "filter": "Filtre",
         "load-more": "Lataa lisää",
         "no-results": "Ingen resultater"
     },
