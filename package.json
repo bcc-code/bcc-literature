@@ -18,7 +18,7 @@
     "base64-img": "^1.0.4",
     "core-js": "^2.6.12",
     "cross-env": "^5.2.1",
-    "crowdin-helper": "^1.0.4",
+    "crowdin-helper": "^1.0.5",
     "cucumber": "^6.0.5",
     "esm": "^3.2.25",
     "fontfaceobserver": "^2.1.0",
@@ -28,7 +28,7 @@
     "serve": "^10.1.2",
     "testcafe": "^1.14.2",
     "v-click-outside": "^2.1.5",
-    "vue": "^2.6.12",
+    "vue": "^2.6.14",
     "vue-application-insights": "^1.0.7",
     "vue-clipboard2": "^0.3.1",
     "vue-i18n": "^8.24.4",
@@ -39,7 +39,7 @@
     "vuex": "^3.6.2"
   },
   "devDependencies": {
-    "@bcc-it/css-literature": "^2.2.1",
+    "@bcc-it/css-literature": "^2.2.2",
     "@vue/cli-plugin-babel": "^3.12.1",
     "@vue/cli-plugin-eslint": "^3.12.1",
     "@vue/cli-plugin-pwa": "^3.12.1",
@@ -50,6 +50,6 @@
     "eslint-config-prettier": "^4.1.0",
     "eslint-plugin-promise": "^4.3.1",
     "eslint-plugin-vue": "^5.0.0",
-    "vue-template-compiler": "^2.6.12"
+    "vue-template-compiler": "^2.6.14"
   }
 }
