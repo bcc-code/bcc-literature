@@ -2,14 +2,14 @@
     "language": "Română",
     "app": {
         "select-language": "Alege limba",
-        "error": "En feil oppstod. Ta kontakt med it@bcc.no"
+        "error": "A apărut o eroare. Contactează it@bcc.no"
     },
     "articles": {
-        "articles-all": "Alle artikler"
+        "articles-all": "Toate articolele"
     },
     "authors": {
-        "authors": "Forfattere",
-        "authors-all": "Alle forfattere",
+        "authors": "Autori",
+        "authors-all": "Toți autorii",
         "authors-popular": "Populære forfattere",
         "author-index": "Forfatterindeks"
     },
@@ -43,7 +43,7 @@
         "year-filter": "År",
         "exact-match": "Exact match",
         "authors-filter": "Filtrerer forfattere",
-        "authors-filter-default": "Alle forfattere",
+        "authors-filter-default": "Toți autorii",
         "books-filter": "Filtrerer bøker",
         "books-filter-default": "Alle bøker",
         "filter": "Filtre",
