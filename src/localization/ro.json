@@ -10,62 +10,62 @@
     "authors": {
         "authors": "Autori",
         "authors-all": "Toți autorii",
-        "authors-popular": "Populære forfattere",
-        "author-index": "Forfatterindeks"
+        "authors-popular": "Autori cunoscuți",
+        "author-index": "Index autori"
     },
     "books": {
-        "books": "Bøker",
-        "books-all": "Alle bøker",
-        "welcome-message": "<h1>BCCs digitale bibliotek</h1><p>Les innholdsrike artikler og bøker fra Stiftelsen Skjulte Skatters Forlag.</p>"
+        "books": "Cărți",
+        "books-all": "Toate cărțile",
+        "welcome-message": "<h1> Biblioteca digitală a BCC </h1> <p> Citește cărți și articole bogate în conținut din Stiftelsen Skjulte Skatters Forlag. </p>"
     },
     "book-index": {
-        "book-index": "Bokindeks",
-        "written-by": "av",
-        "get-ebook": "Få e-bok",
-        "read-now": "Les nå",
-        "chapters": "Kapitler",
-        "publication-issues-from": "Viser utgivelser fra",
-        "show": "Vis",
-        "since": "Siden",
-        "publications": "Utgivelser",
-        "choose-year": "Velg år",
-        "open-in-safari": "Vennligst bruk nettleseren din for å laste ned denne eBok",
-        "read-random-chapters": "Les tilfeldig bref"
+        "book-index": "Indexul cărții",
+        "written-by": "de",
+        "get-ebook": "Obține e-book",
+        "read-now": "Citește acum",
+        "chapters": "Capitole",
+        "publication-issues-from": "Afișează apariții ale lui",
+        "show": "Arată",
+        "since": "De când",
+        "publications": "Publicații",
+        "choose-year": "Alege anul",
+        "open-in-safari": "Te rugăm folosește browser-ul tău pentru a descărca această carte",
+        "read-random-chapters": "Citește o scrisoare aleatorie"
     },
     "not-found": {
-        "title": "Ressursen du leter etter finnes ikke på dette språket.",
-        "suggestions": "Den er tilgjengelig på følgende språk:"
+        "title": "Resursa pe care o căutați nu este disponibilă în această limbă.",
+        "suggestions": "Este disponibil în următoarele limbi:"
     },
     "search": {
-        "search": "Søk",
-        "search-results": "Resultater",
-        "search-box": "Søk i BCC litteratur",
-        "year-filter": "År",
-        "exact-match": "Exact match",
-        "authors-filter": "Filtrerer forfattere",
+        "search": "Căutare",
+        "search-results": "Rezultat",
+        "search-box": "Caută în literatura BCC",
+        "year-filter": "An",
+        "exact-match": "Potrivire exactă",
+        "authors-filter": "Filtrează după autori",
         "authors-filter-default": "Toți autorii",
-        "books-filter": "Filtrerer bøker",
-        "books-filter-default": "Alle bøker",
+        "books-filter": "Filtrează cărțile",
+        "books-filter-default": "Toate cărțile",
         "filter": "Filtre",
-        "load-more": "Last inn mer",
-        "no-results": "Ingen resultater"
+        "load-more": "Încarcă mai mult",
+        "no-results": "Fără rezultate"
     },
     "reader": {
-        "chapter": "Kapittel",
-        "subscription-required": "Du abonnerer ikke på den valgte utgivelsen."
+        "chapter": "Capitol",
+        "subscription-required": "Nu ești abonat la publicația selectată."
     },
     "subscription": {
-        "subscriptions": "Abonnementer",
-        "your-subscriptions": "Ditt abonnement",
-        "latest-issue": "Siste utgave",
-        "see-all": "Se alt",
-        "learn-more": "Les mer",
-        "subscribe-to": "Abonner på",
-        "subtitle": "Få de nyeste artiklene fra {publicationName} og en fysisk kopi på dørsteget ditt.",
-        "subscribe-button": "Abonnere",
-        "price-per-year": "{price} per år",
+        "subscriptions": "Abonamente",
+        "your-subscriptions": "Abonamentul tău",
+        "latest-issue": "Ultimul număr",
+        "see-all": "Vezi totul",
+        "learn-more": "Citește mai mult",
+        "subscribe-to": "Abonează-te la",
+        "subtitle": "Obține cele mai recente articole de la {publicationName} și o copie fizică la ușa ta.",
+        "subscribe-button": "Abonare",
+        "price-per-year": "{price} pe an",
         "form": {
-            "title": "Fyll ut skjemaet for å abonnere",
+            "title": "Completezi formularul pentru abonare",
             "freeOption": "Jeg ønsker å få {publicationName} gratis.",
             "giftOption": "Send til en annen adresse",
             "name": "Navn",
