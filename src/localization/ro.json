@@ -66,36 +66,36 @@
         "price-per-year": "{price} pe an",
         "form": {
             "title": "Completezi formularul pentru abonare",
-            "freeOption": "Jeg ønsker å få {publicationName} gratis.",
-            "giftOption": "Send til en annen adresse",
-            "name": "Navn",
-            "email": "Epost",
-            "address": "Adresse",
-            "city": "By",
-            "postalCode": "Postnummer",
-            "state": "Stat/Provins",
-            "country": "Land",
-            "price": "Pris",
+            "freeOption": "Doresc să primesc gratuit {publicationName}.",
+            "giftOption": "Trimis la altă adresă",
+            "name": "Nume",
+            "email": "E-mail",
+            "address": "Adresă",
+            "city": "Oraș",
+            "postalCode": "Cod poștal",
+            "state": "Țară/Județ",
+            "country": "Țara",
+            "price": "Preț",
             "free": "Gratis"
         },
         "subscribe-success": {
-            "title": "Abonnement sendt",
-            "body": "Sjekk din e-post for mer informasjon om abonnementet ditt."
+            "title": "Abonament plasat",
+            "body": "Verifică adresa de e-mail pentru mai multe informații despre abonament."
         },
         "subscribe-failed": {
-            "title": "Abonnementet ditt kunne ikke sendes inn",
-            "body": "Vennligst prøv på nytt. Hvis problemet vedvarer, ta kontakt med <a href='mailto:it@bcc.no'>support</a>."
+            "title": "Abonamentul tău nu a putut fi plasat",
+            "body": "Te rugăm să încerci din nou. Dacă problema persistă, contactează <a href='mailto:it@bcc.no'>support</a>."
         },
-        "subscribed": "Du abonnerer på ",
+        "subscribed": "Te abonezi la ",
         "unsubscribe": {
-            "button": "Avslutte",
-            "confirmation-header": "Er du sikker på at du vil avslutte abonnementet?",
+            "button": "Dezabonare",
+            "confirmation-header": "Ești sigur că dorești să închei abonamentul?",
             "confirmation-body": "Du vil ikke lenger motta {publicationName} via post, eller kunne lese de siste utgivelser på nettet. Prossessen kan ta opp til 4 dager.",
             "cancel": "Avbryt"
         },
         "unsubscribe-failed": {
             "title": "En feil oppstod",
-            "body": "Vennligst prøv på nytt. Hvis problemet vedvarer, ta kontakt med <a href='mailto:it@bcc.no'>support</a>."
+            "body": "Te rugăm să încerci din nou. Dacă problema persistă, contactează <a href='mailto:it@bcc.no'>support</a>."
         },
         "unsubscribed": "Abonnementet ditt avsluttes snart"
     },
