@@ -90,19 +90,19 @@
         "unsubscribe": {
             "button": "Dezabonare",
             "confirmation-header": "Ești sigur că dorești să închei abonamentul?",
-            "confirmation-body": "Du vil ikke lenger motta {publicationName} via post, eller kunne lese de siste utgivelser på nettet. Prossessen kan ta opp til 4 dager.",
-            "cancel": "Avbryt"
+            "confirmation-body": "Nu vei mai primi {publicationName} prin poștă, nici nu vei putea citi cele mai recente numere online. Procesul poate dura până la 4 zile.",
+            "cancel": "Anulare"
         },
         "unsubscribe-failed": {
-            "title": "En feil oppstod",
+            "title": "A apărut o eroare",
             "body": "Te rugăm să încerci din nou. Dacă problema persistă, contactează <a href='mailto:it@bcc.no'>support</a>."
         },
-        "unsubscribed": "Abonnementet ditt avsluttes snart"
+        "unsubscribed": "Abonamentul tău se va încheia în curând"
     },
     "share": {
-        "share-link": "Dele lenke",
-        "copy-button": "Kopiere",
-        "copy-success": "Kopiert",
-        "message": "Les \"{chapterName}\" på BCC Litteratur:"
+        "share-link": "Distribuie link-ul",
+        "copy-button": "Copiază",
+        "copy-success": "Copiat",
+        "message": "Citește „{chapterName}” din literatura BCC:"
     }
 }
