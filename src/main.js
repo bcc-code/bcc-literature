@@ -13,6 +13,7 @@ import dutch from './localization/nl.json'
 import german from './localization/de.json'
 import french from './localization/fr.json'
 import finnish from './localization/fi.json'
+import romanian from './localization/ro.json'
 import '@babel/polyfill';
 import '@bcc-it/css-literature';
 import VueModal from 'vue-js-modal';
@@ -44,7 +45,8 @@ const messages ={
     nl: dutch,
     de: german,
     fr: french,
-    fi: finnish
+    fi: finnish,
+    ro: romanian
 }
 
 const i18n = new VueI18n({
