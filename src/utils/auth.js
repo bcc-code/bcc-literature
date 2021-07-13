@@ -77,7 +77,7 @@ class SecurityService {
             Authenticator.getUser().then(function(user) {
                 if (user == null) {
                     self.signIn();
-                    return resolve(null);
+                    return reject(null);
                 } else {
                     return resolve(user);
                 }
@@ -118,7 +118,7 @@ class SecurityService {
             Authenticator.getUser().then(function(user) {
                 if (user == null) {
                     self.signIn();
-                    return resolve(null);
+                    return reject(null);
                 } else {
                     return resolve(user.id_token);
                 }
@@ -139,7 +139,7 @@ class SecurityService {
             Authenticator.getUser().then(function(user) {
                 if (user == null) {
                     self.signIn();
-                    return resolve(null);
+                    return reject(null);
                 } 
                 else if (user.expired){
                     self.renewToken().then((renewedUser) => {
