@@ -2,7 +2,8 @@
     "language": "English",
     "app": {
         "select-language": "Select language",
-        "error": "An error occurred. Please contact it@bcc.no"
+        "error": "An error occurred. Please contact it@bcc.no",
+        "song-treasures-notice": "<a href=\"https://christianbookshop.org/nb/pages/music\" target=\"_blank\">Watch this film</a> for information regarding songbooks with notes.\nLog in at <a href=\"https://www.songtreasures.org\" target=\"_blank\">songtreasures.org</a> and create an account. Here you can read more about the concept SongTreasures, and subscribe to have access to 5 of SSSF’s songbooks."
     },
     "articles": {
         "articles-all": "All articles"
@@ -46,7 +47,7 @@
         "authors-filter-default": "All authors",
         "books-filter": "Filter by book",
         "books-filter-default": "All books",
-        "filter": "Filtre",
+        "filter": "Filter",
         "load-more": "Load more",
         "no-results": "No results"
     },
