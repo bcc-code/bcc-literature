@@ -8,6 +8,7 @@
         <section class="center x-small">
             <search-box />
         </section>
+        <song-treasures-notice />
     </section>
     <loader>
         <grid :list="publications" :title="$t('subscription.subscriptions')" :layout="GridLayout.TILES" :type="GridType.PUBLICATION"/>
@@ -27,12 +28,14 @@ import GridMixin from '@/mixins/grid.js';
 import { BookType } from '@/model/bookType.js';
 import AppHeader from 'components/layout/app-header';
 import SearchBox from 'components/search/search-box';
+import SongTreasuresNotice from 'components/song-treasures-notice';
 import Loader from 'components/la-loader';
 
 export default {
     components: {
         Grid,
         SearchBox,
+        SongTreasuresNotice,
         Loader,
         AppHeader,
         SearchableGrids
