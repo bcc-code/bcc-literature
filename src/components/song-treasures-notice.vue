@@ -1,36 +1,39 @@
 <template>
     <section class="center song-treasures-notice">
-        <i class="notice-icon"></i>
+        <a href="https://songtreasures.org" class="song-treasures-logo" target="_blank"><img src="/img/song-treasures-logo-dark.svg" alt="SongTreasures"></a>
         <p v-html="$t('app.song-treasures-notice')"></p>
     </section>
 </template>
 
 <style scoped>
 .song-treasures-notice {
-    padding: 16px;
-    background: #E6E9F2;
+    padding: 20px;
     border-radius: 8px;
     margin-top: 20px;
+    border: 2px solid #e6e9f2;
     display: flex;
 }
-.notice-icon:before {
-    content: "!";
+.song-treasures-logo {
+    display: flex;
+    flex: 0 0 160px;
+    padding-right: 20px;
+    border-right: 1px solid #e6e9f2;
+    margin-right: 20px;
 }
-.notice-icon {
-    width: 40px;
-    height: 40px;
-    line-height: 40px;
-    flex: 0 0 40px;
-    font-style: normal;
-    font-size: 24px;
-    color: #fff;
-    background: linear-gradient(to right, #666CF6 0%, #5EAFE2 100%);
-    border-radius: 50px;
-    text-align: center;
-    margin-right: 15px;
-    font-weight: bold;
+.song-treasures-logo img {
+    max-width: 100%;
 }
-.song-treasures-notice p {
-    white-space: pre-wrap;
+
+@media only screen and (max-width: 648px) {
+    .song-treasures-notice {
+        flex-direction: column;
+    }
+    .song-treasures-logo {
+        flex: 0 0 auto;
+        width: 140px;
+        border: none;
+        padding: 0;
+        margin: 0 0 15px;
+    }
 }
 </style>
