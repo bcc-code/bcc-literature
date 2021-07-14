@@ -2,7 +2,8 @@
     "language": "Español",
     "app": {
         "select-language": "Velg språk",
-        "error": "En feil oppstod. Ta kontakt med it@bcc.no"
+        "error": "En feil oppstod. Ta kontakt med it@bcc.no",
+        "song-treasures-notice": "Vedrørende sangbøker med tilhørende noter, <a href=\"https://christianbookshop.org/nb/pages/music\" target=\"_blank\">se denne filmen</a>.\nLogg deg inn på <a href=\"https://www.songtreasures.org\" target=\"_blank\">songtreasures.org</a> og lag en konto. Der kan du lese mer om konseptet SongTreasures, og abonnere på tilgang til 5 av SSSF sine sangbøker."
     },
     "articles": {
         "articles-all": "Alle artikler"
