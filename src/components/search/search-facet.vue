@@ -1,24 +1,26 @@
 <template>
     <section>
-        <h5>{{facetTitle}}</h5>
         <div>
             <form>
                 <input type="text" autocomplete="off" name="Search" class="search-filter" v-model="searchQuery" :placeholder="facetPlaceholder">
             </form>
-            <section class="custom-select" :class="{ 'show': options.length > 0 }">
+            <section class="search-selection">
+                <ul>
+                    <li v-for="selection in selections" :key="selection" @click="toggleSelection(selection)">
+                        <input type="checkbox" :name="selection" checked="checked">
+                        <span>{{selection}}</span>
+                    </li>
+                </ul>
+            </section>
+            <section class="custom-select" :class="options.length > 0 ? 'show' : 'hide'">
                 <ul>
                     <li v-for="option in options" :key="`author-${option.id}`" @click="toggleSelection(option[facetKey])">
-                        {{option[facetKey]}}
+                        <input type="checkbox" :name="option.id">
+                        <span>{{option[facetKey]}}</span>
                     </li>
                 </ul>
             </section>
         </div>
-        <ul>
-            <li v-for="selection in selections" :key="selection">
-                <p>{{selection}}</p>
-                <button class="button-remove" @click="toggleSelection(selection)"></button>
-            </li>
-        </ul>   
     </section>
 </template>
 
@@ -46,7 +48,7 @@ export default {
         ...mapActions('search', {
             newFilterSelection:'newFilterSelection',            
         }),
-        toggleSelection:function(value){
+        toggleSelection: function(value) {
             this.newFilterSelection({facetName: this.facetName, value: value});
             this.searchQuery = "";
             this.options = [];
@@ -69,5 +71,8 @@ export default {
 .custom-select {
     -ms-overflow-style: none;
     scrollbar-width: none;
+}
+.custom-select.hide {
+    display: none;
 }
 </style>

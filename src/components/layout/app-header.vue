@@ -132,24 +132,9 @@ export default {
 }
 </script>
 <style scoped>
-@media screen and (max-width: 500px){
+@media screen and (max-width: 768px){
     header .dropdown, header .filter-search {
         margin: 8px 5px;
-    }
-    nav, header h4 {
-        -webkit-transform: none;
-        transform: none;
-        float: right;
-        position: relative;
-        width: 50%;
-        left: auto;
-    }
-}
-
-@media screen and (min-width: 501px) and (max-width: 648px){
-    header h4 {
-        width: 50%;
-        left: 25%;
     }
 }
 </style>

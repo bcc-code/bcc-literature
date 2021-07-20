@@ -35,7 +35,7 @@ export default {
     display: block;
     text-decoration: none;
     line-height: 20px;
-    padding: 8px 8px 4px 8px;
+    padding: 8px;
     margin: 0px;
     border-radius: 4px;
     -webkit-transition: background 0.2s;
@@ -47,8 +47,8 @@ export default {
 article.search-result a.result-book-only figure {
     position: relative;
     display: block;
-    width: 70px;
-    height: 100px;
+    width: 75px;
+    height: 106px;
     padding: 0px;
     background: #838CA8;
     background-size: cover;
