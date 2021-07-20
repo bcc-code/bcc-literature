@@ -1,7 +1,9 @@
 <template>
     <section class="range-slider">
-        <input v-model="value1" :min="minYear" :max="maxYear" step="1" type="range">
-        <input v-model="value2" :min="minYear" :max="maxYear" step="1" type="range">
+        <div class="range-wrap" :style="`--a: ${value1}; --b: ${value2}; --min: ${minYear}; --max: ${maxYear}`">
+            <input v-model="value1" :min="minYear" :max="maxYear" step="1" type="range">
+            <input v-model="value2" :min="minYear" :max="maxYear" step="1" type="range">
+        </div>
         <p class="range-values">
             <span>{{minYearValue || '-' }}</span>
             <span v-if="minYearValue != minYear || maxYearValue != maxYear" @click="clear" class="range-clear">Clear</span>
@@ -9,6 +11,104 @@
         </p>
     </section>
 </template>
+
+<style>
+.range-wrap {
+    --dif: calc(var(--max) - var(--min));
+    display: grid;
+    grid-template: repeat(2, -webkit-max-content) 4em/1fr 1fr;
+    grid-template: repeat(2, max-content) 4em/1fr 1fr;
+    overflow: hidden;
+    position: relative;
+    height: 16px;
+}
+.range-wrap::before, .range-wrap::after {
+    grid-column: 1/span 2;
+    grid-row: 3;
+    background: #6291eb;
+    content: "";
+}
+.range-wrap::before {
+    margin-left: calc(1em + (var(--a) - var(--min))/var(--dif) * calc(100% - 14px));
+    width: calc((var(--b) - var(--a))/var(--dif) * calc(100% - 14px));
+    height: 10px;
+    margin-top: 3px;
+}
+.range-wrap::after {
+    margin-left: calc(1em + (var(--b) - var(--min))/var(--dif) * calc(100% - 14px));
+    width: calc((var(--a) - var(--b))/var(--dif) * calc(100% - 14px));
+    height: 10px;
+    margin-top: 3px;
+}
+
+input[type=range] {
+	grid-column: 1/ span 2;
+	grid-row: 3;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    margin: 0;
+    background: none;
+    /* get rid of white Chrome background */
+    --col: #000;
+    pointer-events: none;
+}
+input[type=range]::-webkit-slider-runnable-track, input[type=range]::-webkit-slider-thumb, input[type=range] {
+    -webkit-appearance: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 100%;
+    background: none;
+}
+input[type=range]::-moz-range-track {
+    width: 100%;
+    height: 100%;
+    background: none;
+}
+input[type=range]::-webkit-slider-thumb {
+    border: none;
+    /* get rid of Firefox thumb border */
+    width: 16px;
+    height: 16px;
+    border-radius: 0;
+    /* get rid of Firefox corner rounding */
+    background: #6291EB;
+    pointer-events: auto;
+    border-radius: 50%;
+    cursor: pointer;
+}
+input[type=range]::-moz-range-thumb {
+    border: none;
+    /* get rid of Firefox thumb border */
+    width: 16px;
+    height: 16px;
+    border-radius: 0;
+    /* get rid of Firefox corner rounding */
+    background: #6291EB;
+    pointer-events: auto;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.range-clear {
+    cursor: pointer;
+    color: #b7bac3;
+}
+.range-values {
+    font-size: 14px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    margin-left: 3px;
+}
+.range-slider {
+    position: relative;
+    height: 55px;
+}
+</style>
+
 <script>
 import { mapActions } from 'vuex';
 export default {
@@ -57,7 +157,6 @@ export default {
         updateYearWithDelay() {
             clearTimeout(this.delay);
             this.delay = setTimeout(() => {
-                console.log('updateyears')
                 this.newYearsFilter([this.minYearValue, this.maxYearValue]);
             }, 2000);
         }
@@ -74,65 +173,3 @@ export default {
     }
 }
 </script>
-<style>
-.range-clear {
-    cursor: pointer;
-    color:#b7bac3;
-}
-.range-values {
-    top: 20px;
-    font-size: 14px;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    position: relative;
-    margin-left: 3px;
-}
-.range-slider {
-    position: relative;
-    height: 55px;
-}
-
-.range-slider input[type="range"] {
-    pointer-events: none;
-    position: absolute;
-    overflow: hidden;
-    width: 100%;
-    left: 0;
-    top: 0;
-    outline: none;
-    height: 18px;
-}
-
-.range-slider input:last-of-type::-moz-range-track {
-    -moz-appearance: none;
-    background: none transparent;
-    border: 0;
-}
-
-.range-slider input::-webkit-slider-thumb {
-    pointer-events: all;
-    position: relative;
-    z-index: 1;
-    outline: 0;
-}
-
-.range-slider input::-moz-range-thumb {
-    pointer-events: all;
-    position: relative;
-    z-index: 10;
-    -moz-appearance: none;
-    width: 9px;
-}
-
-.range-slider input::-moz-range-track {
-    position: relative;
-    z-index: -1;
-    background-color: rgba(0, 0, 0, 1);
-    border: 0;
-}
-
-.range-slider input[type=range]::-moz-focus-outer {
-  border: 0;
-}
-</style>

@@ -11,8 +11,8 @@
         <section class="center medium">
             <aside class="temp" id="filters" :style="{ top: isMobile ? isStandalone  ? '48px': '95px' : 'unset' }">
                 <h3 v-if="!isMobile">{{$t('search.filter')}}</h3>
-                <section class="filter" @click="showFilters = true" v-click-outside="() => showFilters = false">
-                    <div class="header">
+                <section class="filter" :class="showFilters ? 'open' : 'closed'" v-click-outside="() => showFilters = false">
+                    <div class="header" @click="showFilters = !showFilters">
                         <h3 v-if="isMobile">{{$t('search.filter')}}</h3>
                         <a v-if="showFilters" class="minimize-button" @click="() => showFilters = false"></a>
                     </div>
@@ -26,12 +26,11 @@
                             :facetPlaceholder="$t('search.authors-filter-default')"
                             facetKey="fullName"/>
                         <section>
-                            <h5>{{$t('search.year-filter')}}</h5>
                             <year-filter />
                         </section>
                         <section class="exact-match">
-                            <h5>{{$t('search.exact-match')}}</h5>
-                            <input v-model="exactMatch" type="checkbox">
+                            <input v-model="exactMatch" type="checkbox" name="search-exact-text">
+                            <h5 @click="exactMatch = !exactMatch">{{$t('search.exact-match')}}</h5>
                         </section>
                     </form>
                 </section>
@@ -39,7 +38,7 @@
             <section class="list">
                 <loading-spinner v-if="showSpinner"/>
                 <template v-else>
-                    <h3 :style="{ color: isMobile && showFilters ? '#000': '#fff' }">{{noOfResults == 0 ? $t('search.no-results') : noOfResults + " " + $t('search.search-results')}}</h3>
+                    <h3>{{noOfResults == 0 ? $t('search.no-results') : noOfResults + " " + $t('search.search-results')}}</h3>
                     <search-result-author v-for="result in authorResults" :key="result.Id" :result="result" />
                     <search-result-book v-for="result in bookResults" :key="result.Id" :result="result" />
                     <search-result v-for="(result, index) in results" :key="result.articleId" :result="result" :rank="index+1" />        
@@ -141,7 +140,7 @@ export default {
     },
     computed:{
         isMobile() {
-            return this.width <= 500;
+            return this.width <= 768;
         },
         isStandalone() {
             return window.matchMedia('(display-mode: standalone)').matches
@@ -164,14 +163,93 @@ export default {
 };
 </script>
 <style>
-body[view="advanced-search"] .content .center aside.temp {
-    float: right;
-    margin-left: 20px;
+section.filter {
+    display: inline-block;
+    padding: 12px;
+    margin: 0px 0px 24px 0px;
+    width: 100%;
+    border-radius: 8px;
+    -webkit-box-shadow: inset 0px 0px 0px 2px rgb(0 46 148 / 10%);
+    box-shadow: inset 0px 0px 0px 2px rgb(0 46 148 / 10%);
+    -webkit-transition: all 0.1s;
+    transition: all 0.1s;
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+    background: #fff;
 }
 
-@media screen and (max-width: 500px) {
+.filter .header {
+    padding: 0px 4px;
+}
+.filter.open .header {
+    padding-bottom: 12px;
+}
+
+.filter input[type="text"] {
+    margin-bottom: 10px;
+}
+
+.filter .custom-select,
+.filter .search-selection {
+    font-size: 1.8em;
+    line-height: 1.4em;
+}
+.filter .custom-select ul,
+.filter .search-selection ul {
+    padding-left: 0;
+    margin-top: 0;
+}
+.filter .custom-select li,
+.filter .search-selection li {
+    padding-left: 5px;
+}
+.filter .custom-select li:hover,
+.filter .search-selection li:hover {
+    color: #6291EB;
+    cursor: pointer;
+}
+.filter .custom-select li,
+.filter .search-selection li {
+    display: flex;
+    margin-bottom: 5px;
+}
+.filter .custom-select li,
+.filter .search-selection li {
+    list-style: none;
+}
+.filter .custom-select li::marker,
+.filter .search-selection li::marker {
+    display: none;
+}
+
+.exact-match {
+    display: flex;
+}
+.exact-match input[type='checkbox'] {
+    margin-right: 5px;
+    cursor: pointer;
+}
+.exact-match h5 {
+    cursor: pointer;
+}
+
+@media screen and (min-width: 768px) {
+    #filters {
+        width: 300px;
+    }
+
+    body[view="advanced-search"] .content .center aside.temp {
+        float: right;
+        margin-left: 20px;
+    }
+    
+    #filters + .list h3, #filters > h3 {
+        margin-bottom: 20px;
+    }
+}
+
+@media screen and (max-width: 768px) {
     body[view="advanced-search"] .content .center aside section.filter div.header {
-        padding: 12px;
         color: #000;
     }
     body[view="advanced-search"] .content .center aside section.filter div.header h3 {
@@ -188,7 +266,7 @@ body[view="advanced-search"] .content .center aside.temp {
         position: sticky;
         width: 100vw;
         top: 95px;
-        margin-right: -16px;
+        margin-left: -16px;
     }
 
     body[view="advanced-search"] .content .center aside.temp.pinned section.filter {
