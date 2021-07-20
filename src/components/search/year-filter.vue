@@ -33,12 +33,14 @@
     width: calc((var(--b) - var(--a))/var(--dif) * calc(100% - 14px));
     height: 10px;
     margin-top: 3px;
+    z-index: 1;
 }
 .range-wrap::after {
     margin-left: calc(1em + (var(--b) - var(--min))/var(--dif) * calc(100% - 14px));
     width: calc((var(--a) - var(--b))/var(--dif) * calc(100% - 14px));
     height: 10px;
     margin-top: 3px;
+    z-index: 1;
 }
 
 input[type=range] {
@@ -48,8 +50,7 @@ input[type=range] {
     top: 0;
     left: 0;
     margin: 0;
-    background: none;
-    /* get rid of white Chrome background */
+    background: none; /* get rid of white Chrome background */
     --col: #000;
     pointer-events: none;
 }
@@ -67,24 +68,20 @@ input[type=range]::-moz-range-track {
     background: none;
 }
 input[type=range]::-webkit-slider-thumb {
-    border: none;
-    /* get rid of Firefox thumb border */
+    border: none; /* get rid of Firefox thumb border */
     width: 16px;
     height: 16px;
-    border-radius: 0;
-    /* get rid of Firefox corner rounding */
+    border-radius: 0; /* get rid of Firefox corner rounding */
     background: #6291EB;
     pointer-events: auto;
     border-radius: 50%;
     cursor: pointer;
 }
 input[type=range]::-moz-range-thumb {
-    border: none;
-    /* get rid of Firefox thumb border */
+    border: none; /* get rid of Firefox thumb border */
     width: 16px;
     height: 16px;
-    border-radius: 0;
-    /* get rid of Firefox corner rounding */
+    border-radius: 0; /* get rid of Firefox corner rounding */
     background: #6291EB;
     pointer-events: auto;
     border-radius: 50%;
@@ -106,6 +103,17 @@ input[type=range]::-moz-range-thumb {
 .range-slider {
     position: relative;
     height: 55px;
+}
+.range-slider:after {
+    background-color: #F5F5F5;
+    content: "";
+    height: 10px;
+    position: absolute;
+    top: 3px;
+    border-radius: 8px;
+    left: 2px;
+    right: 2px;
+    pointer-events: none;
 }
 </style>
 
