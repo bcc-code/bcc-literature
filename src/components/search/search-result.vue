@@ -16,39 +16,43 @@
 import BookCardCover from 'components/grid/tiles/card-cover';
 import { BookType } from '@/model/bookType.js';
 import { mapState } from 'vuex';
+import { logCustomEvent } from '@/utils/appInsights';
+
 export default {
-    props:{
-        result:{
-            type:Object,
-            required:true
+    props: {
+        result: {
+            type: Object,
+            required: true
         },
         rank: {
             type: Number,
             required: true
         }
     },
-    components:{
+    components: {
         BookCardCover
     },
     computed: {
         ...mapState('session', {
             locale: 'appLanguage'
         }),
-
         ...mapState('search', {
             searchId: 'id',
         }),
-
-        highlight(){
+        highlight() {
             if (this.result.highlights == null)
                 return null;
+
             var highlight = this.result.highlights.BodyPlain[0];
             const maxLength = 400;
+
             if (highlight.length > maxLength) {
                 var beginning = highlight.slice(0, highlight.indexOf('<span>')).lastIndexOf(".");
                 var end = highlight.slice(beginning + maxLength).indexOf(".");
+
                 return highlight.slice(beginning + 1, beginning + maxLength + end + 1);
             }
+
             return highlight;
         },
         // Gets all the words found by Azure to highlight them in the reader
@@ -94,14 +98,14 @@ export default {
             }
         },
         
-        format(publishingDate){
+        format(publishingDate) {
             var date = new Date(publishingDate);
             if (date.getFullYear() == 1) return '';
-            return date.toLocaleDateString((this.locale == 'no' ? 'nb' : this.locale), { month: 'long', year: 'numeric'});
+            return date.toLocaleDateString((this.locale == 'no' ? 'nb' : this.locale), { month: 'long', year: 'numeric' });
         },
 
-        logClickToAI(){
-            this.$appInsights.trackEvent("Click", {
+        logClickToAI() {
+            logCustomEvent("ClickSearchResult", {
                 SearchServiceName: "searchopenportal",
                 SearchId: this.searchId,
                 ClickedDocId: this.result.document.articleId,

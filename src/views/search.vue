@@ -83,54 +83,49 @@ export default {
     },
     methods: {      
         ...mapActions('search', {
-            newSearch:'newSearch',
-            loadMore:'loadMore',
-            newExactMatch:'newExactMatch'
+            newSearch: 'newSearch',
+            loadMore: 'loadMore',
+            newExactMatch: 'newExactMatch'
         }),
         newSearchWithQuery() {
             this.newSearch({ query: this.computedQuery, newFacets: true });
-            this.$appInsights.trackEvent("Search", {
-                SearchServiceName: "searchopenportal",
-                SearchId: this.searchId,
-                IndexName: "ssf-content-index",
-                QueryTerms: this.searchParams.query,
-                ResultCount: this.noOfResults,
-                ScoringProfile: "DefaultProfile",
-            });; 
         },
         handleResize() {
             this.width = window.innerWidth;
         },
         handleScroll() {
             let scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-            let filterElement = document.querySelector('#filters'); 
+            let filterElement = document.querySelector('#filters');
+
             if (filterElement != null) {
                 let filterElementRect = filterElement.getBoundingClientRect();
                 if (scrollTop > (filterElementRect.top + this.isStandalone ? 128 : 30)) {
                     filterElement.classList.add("pinned");
                 } else {
                     filterElement.classList.remove("pinned"); 
-                };
+                }
             }
         }
     },
     created: function() {     
-        this.initialized = false
+        this.initialized = false;
         window.addEventListener('resize', this.handleResize);
         window.addEventListener('scroll', this.handleScroll);
         this.handleResize();  
         this.exactMatch = this.$store.state.search.searchParams.exactMatch;
         setTimeout(() => this.initialized = true, 200)
-        if(this.computedQuery != this.searchParams.query)
-            this.newSearchWithQuery(); 
+        
+        if (this.computedQuery != this.searchParams.query)
+            this.newSearchWithQuery();
+
         EventBus.$on(Events.CONTENT_LANGUAGE_CHANGED, () => this.newSearchWithQuery());
     },
     destroyed: function() {
         EventBus.$off(Events.CONTENT_LANGUAGE_CHANGED, () => this.newSearchWithQuery());
         window.removeEventListener('resize', this.handleResize);
     },
-    watch:{
-        computedQuery: function(){
+    watch: {
+        computedQuery: function() {
             this.newSearchWithQuery();                   
         },
         exactMatch: function(val) {
@@ -138,14 +133,14 @@ export default {
                 this.newExactMatch(val)
         }
     },
-    computed:{
+    computed: {
         isMobile() {
             return this.width <= 768;
         },
         isStandalone() {
             return window.matchMedia('(display-mode: standalone)').matches
         },
-        computedQuery:function () {
+        computedQuery: function() {
             return this.$route.params.query;                        
         },     
         ...mapState('search', {
@@ -158,7 +153,7 @@ export default {
         }),
         ...mapGetters('search', {
             noOfResults: 'getNumberOfResults',
-        })
+        }),
     }
 };
 </script>

@@ -7,14 +7,13 @@
             v-on:keyup.enter="search"                 
             v-model="searchQuery" 
             v-bind:placeholder="$t('search.search-box')" />
-        <span v-show="searchQuery" @click="clearInput" class="clear-search-input">
-        </span>
+        <span v-show="searchQuery" @click="clearInput" class="clear-search-input"></span>
     </form>
 </template>
 
 <script>
 export default {   
-    data: function(){
+    data: function() {
         return {
             searchQuery: this.$store.state.search.searchParams.query
         }

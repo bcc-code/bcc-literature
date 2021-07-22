@@ -1,38 +1,48 @@
 import articleApi from 'utils/api/articleApi.js';
 import bookApi from 'utils/api/bookApi.js';
 import authorApi from 'utils/api/authorApi.js';
+import { logCustomEvent } from 'utils/appInsights';
 
 export default {
     namespaced: true,
     state: {
         BATCHSIZE: 10,
         searchParams: {
-            query:'',
-            facets:{
-                AuthorFullName:[],
-                BookName:[],
+            query: '',
+            facets: {
+                AuthorFullName: [],
+                BookName: [],
                 Years: []
             },
             exactMatch: false,
-            skip:0,
-            top:10
+            skip: 0,
+            top: 10
         },
         id: '',
-        noOfResults:0,         
-        results:[],
+        noOfResults: 0,         
+        results: [],
         bookResults: [],
         authorResults: [],
-        facetsOptions:{
+        facetsOptions: {
             "AuthorFullName": [],     
-            "BookName":[]              
+            "BookName": []              
         },                 
-        showSpinner:false
+        showSpinner: false
     },
     mutations: {
         updateSearchResults: (state, value) => {
             state.results = state.results.concat(value.results.results);
             state.noOfResults = value.results.count;
             state.id = value.searchId;
+
+            logCustomEvent("Search", {
+                SearchServiceName: "searchopenportal",
+                SearchId: state.id,
+                IndexName: "ssf-content-index",
+                QueryTerms: state.searchParams.query,
+                ResultCount: state.noOfResults,
+                ScoringProfile: "DefaultProfile"
+            });
         },
         updateBookResults: (state, value) => {
             state.bookResults = value;
@@ -47,36 +57,34 @@ export default {
         updateSearchQuery: (state, value) => {
             state.searchParams.query = value;
         },
-        toggleLoader:(state)=>{
+        toggleLoader: (state) => {
             state.showSpinner = !state.showSpinner;
         },
-        resetPaging: (state)=>{
+        resetPaging: (state) => {
             state.searchParams.skip = 0;
         },
-        resetResults: (state)=>{
+        resetResults: (state) => {
             state.bookResults = [];
             state.results = [];
             state.noOfResults = 0;      
         },
-        resetFacets: (state)=>{
+        resetFacets: (state) => {
             state.searchParams.facets.AuthorFullName = [];
             state.searchParams.facets.BookName = [];
         },
-        updateLoadMore: (state)=>{            
+        updateLoadMore: (state) => {            
             state.searchParams.skip += state.BATCHSIZE;                              
         },
     },
     actions: {
         addSearchResults: ({commit}, query) => {
             commit('addSearchResults', query);
-           
         },
-        newSearch:async function({commit, dispatch}, query){
+        newSearch: async function({commit, dispatch}, query) {
             commit('updateSearchQuery', query.query);
             commit('resetPaging');
             commit('resetResults');
-            if (query.newFacets)
-                commit('resetFacets');
+            if (query.newFacets) commit('resetFacets');
             dispatch("search", query.newFacets)            
         },
         search: async function({commit, state, getters}, newFacets = true) {           
@@ -85,9 +93,10 @@ export default {
             var bookNameFacet = state.searchParams.facets.BookName;
             var top = state.searchParams.top;
             var skip = state.searchParams.skip;
-            var years = state.searchParams.facets.Years
-            var exactMatch = state.searchParams.exactMatch
-            commit("toggleLoader")
+            var years = state.searchParams.facets.Years;
+            var exactMatch = state.searchParams.exactMatch;
+            commit("toggleLoader");
+
             if (getters.getSelectedFacetsLength == 0) {
                 await bookApi.search(query).then((res)=>{
                     commit("updateBookResults", res.data);
@@ -96,21 +105,24 @@ export default {
                     commit("updateAuthorResults", res.data);
                 }).catch(() => commit("updateAuthorResults", []));
             } 
-            await articleApi.search(query, top, skip, authorFullNameFacet, bookNameFacet, years, exactMatch).then((res)=>{                 
+            await articleApi.search(query, top, skip, authorFullNameFacet, bookNameFacet, years, exactMatch).then((res) => {                 
                 if (res.data.results == null) 
-                    return commit("toggleLoader")
-                commit("updateSearchResults", res.data || []) 
+                    return commit("toggleLoader");
+
+                commit("updateSearchResults", res.data || []);
+
                 if (newFacets)
-                    commit("updateFacetsOptions", res.data.results.facets)
-                commit("toggleLoader")                         
+                    commit("updateFacetsOptions", res.data.results.facets);
+
+                commit("toggleLoader");
             }).catch((err) => {
                 console.log(err)
                 commit("updateSearchResults", { results: { results: [], count: 0}});
                 commit("updateFacetsOptions", {
                     "AuthorFullName": [],     
-                    "BookName":[]              
-                })
-                commit("toggleLoader")
+                    "BookName": []              
+                });
+                commit("toggleLoader");
             });   
         },
         newFilterSelection: function({dispatch, state}, newElement){

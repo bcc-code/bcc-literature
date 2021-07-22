@@ -23,6 +23,7 @@
     "esm": "^3.2.25",
     "fontfaceobserver": "^2.1.0",
     "loadjs": "^3.6.1",
+    "md5": "^2.3.0",
     "oidc-client": "^1.11.5",
     "register-service-worker": "^1.7.2",
     "serve": "^10.1.2",

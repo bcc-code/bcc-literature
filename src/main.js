@@ -1,23 +1,23 @@
 import Vue from 'vue';
 import App from './app.vue';
 import router from './router/index';
-import store from './store/index';
 import keys from 'keys';
+import store from './store/index';
 import './registerServiceWorker';
-import vClickOutside from 'v-click-outside'
-import VueI18n from 'vue-i18n'
-import VueAppInsights from 'vue-application-insights'
-import english from './localization/en.json'
-import norwegian from './localization/no.json'
-import dutch from './localization/nl.json'
-import german from './localization/de.json'
-import french from './localization/fr.json'
-import finnish from './localization/fi.json'
-import romanian from './localization/ro.json'
+import vClickOutside from 'v-click-outside';
+import VueI18n from 'vue-i18n';
+import english from './localization/en.json';
+import norwegian from './localization/no.json';
+import dutch from './localization/nl.json';
+import german from './localization/de.json';
+import french from './localization/fr.json';
+import finnish from './localization/fi.json';
+import romanian from './localization/ro.json';
 import '@babel/polyfill';
 import '@bcc-it/css-literature';
 import VueModal from 'vue-js-modal';
 import VueClipboard from 'vue-clipboard2';
+import VueAppInsights from 'vue-application-insights';
 
 Vue.config.productionTip = false;
 Vue.use(vClickOutside)
@@ -38,7 +38,7 @@ Vue.config.errorHandler = (err) => {
     store.dispatch('error/setError', err.stack);
 };
 
-const messages ={
+const messages = {
     en: english,
     no: norwegian,
     dk: norwegian,
