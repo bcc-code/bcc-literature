@@ -18,10 +18,10 @@
                 </h5>
 
                 <section class="actions">
-                    <a v-if="book.ebookId != null" @click="getEbook" alt="Small Main Button" 
-                    v-bind:class="[book.ebookOnly ? 'button-main' : 'button-secondary', isIOSpwa ? 'disabled' : '', 'small']">{{$t('book-index.get-ebook')}}</a>
-                    <router-link v-if="!book.ebookOnly" to="1" append alt="Small Main Button" class="button-main small">{{$t('book-index.read-now')}}</router-link>
-                    <router-link v-if="bookId == 39" :to="randomChapter" append alt="Small Main Button" class="button-main small">{{$t('book-index.read-random-chapters')}}</router-link>
+                    <a v-if="book.ebookId != null" @click="getEbook"
+                        v-bind:class="[book.ebookOnly ? 'button-main' : 'button-secondary', isIOSpwa ? 'disabled' : '', 'small']">{{$t('book-index.get-ebook')}}</a>
+                    <a v-if="!book.ebookOnly" class="button-main small" @click="startReadingFirstChapter">{{$t('book-index.read-now')}}</a>
+                    <a v-if="bookId == 39" class="button-main small" @click="startReadingRandomChapter">{{$t('book-index.read-random-chapters')}}</a>
                     <p class="ios-error" v-if="book.ebookId != null && isIOSpwa">{{$t('book-index.open-in-safari')}}</p>
                 </section>
             </section>
@@ -47,6 +47,7 @@ import BookCardCover from 'components/grid/tiles/card-cover';
 import LoadingSpinner from 'components/loading-spinner';
 import BaseApi from 'utils/api/baseApi';
 import BookMixins from '@/mixins/book';
+import { logCustomEvent } from '@/utils/appInsights';
 
 export default {
     components: {        
@@ -57,6 +58,7 @@ export default {
     data() {
         return {
             loadingChapters: false,
+            randomChapterId: null
         }
     },
     mixins: [BookMixins],
@@ -69,15 +71,11 @@ export default {
             }
             const isInStandaloneMode = () => ('standalone' in window.navigator) && (window.navigator.standalone);
             return isIos() && isInStandaloneMode();
-        },
-        randomChapter() {
-            var min = 3, max = 284;
-            var randomNum = Math.floor(Math.random() * (max - min) + min);
-            return randomNum+"";
         }
     },
     created() {
-        if(!this.book.ebookOnly) {
+        this.setRandomChapterId();
+        if (!this.book.ebookOnly) {
             this.loadingChapters = true;
             this.loadChapters(this.bookId).then(() => {
                 this.loadingChapters = false;
@@ -85,13 +83,47 @@ export default {
         }
     },
     methods: {
-        getEbook: async function(){
+        setRandomChapterId() {
+            var min = 3, max = 284;
+            var randomNum = Math.floor(Math.random() * (max - min) + min);
+            this.randomChapterId = randomNum + "";
+        },
+        getEbook: async function() {
             if (this.isIOSpwa)
                 return;
+
+            logCustomEvent("DownloadEbook", {
+                EbookId: this.book.ebookId,
+                Language: this.book.language,
+                BookTitle: this.book.title
+            });
+
             await BaseApi.getDownloadEbookLink("blobs/ebook/" + [this.book.ebookId, this.book.language, this.book.title].join('_'))
                 .then((downloadLink) => {
                     window.open(downloadLink, "_blank");
                 });
+        },
+        startReadingFirstChapter: function() {
+            logCustomEvent("StartFirstChapter", {
+                ChapterId: '1',
+                Language: this.book.language,
+                BookTitle: this.book.title
+            });
+            this.$router.push({
+                name: 'read',
+                params: { chapterId: 1 }
+            });
+        },
+        startReadingRandomChapter: function() {
+            logCustomEvent("ReadRandomChapter", {
+                ChapterId: this.randomChapterId,
+                Language: this.book.language,
+                BookTitle: this.book.title
+            });
+            this.$router.push({
+                name: 'read',
+                params: { chapterId: this.randomChapterId }
+            });
         },
         ...mapActions('books', {
             loadChapters: 'loadChapters'

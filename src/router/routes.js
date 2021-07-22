@@ -22,5 +22,3 @@ export const routes = [
     {name: 'Mandelblomsten', path: '/books/11', component: BookIndex, alias: ['/mandelblomsten', '/mb']},
     {name: 'SkjulteSkatter',  path: '/books/1',component: BookIndex, alias: ['/skjulteskatter', '/ss']},
 ];
-
-
