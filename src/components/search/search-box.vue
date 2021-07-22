@@ -7,7 +7,7 @@
             v-on:keyup.enter="search"                 
             v-model="searchQuery" 
             v-bind:placeholder="$t('search.search-box')" />
-        <span @click="clearInput" class="clear-search-input"></span>
+        <span v-show="searchQuery" @click="clearInput" class="clear-search-input"></span>
     </form>
 </template>
 
