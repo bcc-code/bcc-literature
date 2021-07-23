@@ -116,24 +116,3 @@ export default {
     }
 };
 </script>
-
-<style>
-@media only screen and (max-width: 648px) {
-    .book-header .info.tall {
-        padding-bottom: 86px;
-    }
-    .book-header .actions .long {
-        width: calc(75% - 12px);
-        margin: 8px 8px 0 0;
-    }
-}
-
-.actions a.disabled{
-    background: linear-gradient(to right, #c3c4c5 0%, #cad5db 100%);
-    color: #777;
-    cursor: default;
-}
-.actions a.disabled:hover {
-    box-shadow: none;
-}
-</style>
