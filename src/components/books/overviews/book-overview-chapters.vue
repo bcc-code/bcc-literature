@@ -19,10 +19,9 @@
 
                 <section class="actions">
                     <a v-if="book.ebookId != null" @click="getEbook"
-                        v-bind:class="[book.ebookOnly ? 'button-main' : 'button-secondary', isIOSpwa ? 'disabled' : '', 'small']">{{$t('book-index.get-ebook')}}</a>
+                        v-bind:class="[book.ebookOnly ? 'button-main' : 'button-secondary', 'small']">{{$t('book-index.get-ebook')}}</a>
                     <a v-if="!book.ebookOnly" class="button-main small" @click="startReadingFirstChapter">{{$t('book-index.read-now')}}</a>
                     <a v-if="bookId == 39" class="button-main small" @click="startReadingRandomChapter">{{$t('book-index.read-random-chapters')}}</a>
-                    <p class="ios-error" v-if="book.ebookId != null && isIOSpwa">{{$t('book-index.open-in-safari')}}</p>
                 </section>
             </section>
         </section>
@@ -62,17 +61,6 @@ export default {
         }
     },
     mixins: [BookMixins],
-    computed: {
-        isIOSpwa() {
-            // Taken from https://stackoverflow.com/questions/50543163/can-i-detect-if-my-pwa-is-launched-as-an-app-or-visited-as-a-website
-            const isIos = () => {
-                const userAgent = window.navigator.userAgent.toLowerCase();
-                return /iphone|ipad|ipod/.test( userAgent );
-            }
-            const isInStandaloneMode = () => ('standalone' in window.navigator) && (window.navigator.standalone);
-            return isIos() && isInStandaloneMode();
-        }
-    },
     created() {
         this.setRandomChapterId();
         if (!this.book.ebookOnly) {
@@ -89,9 +77,6 @@ export default {
             this.randomChapterId = randomNum + "";
         },
         getEbook: async function() {
-            if (this.isIOSpwa)
-                return;
-
             logCustomEvent("DownloadEbook", {
                 EbookId: this.book.ebookId,
                 Language: this.book.language,
@@ -150,10 +135,5 @@ export default {
 }
 .actions a.disabled:hover {
     box-shadow: none;
-}
-.ios-error{
-    font-size:13px;
-    text-align:center;
-    color:#FF403A;
 }
 </style>
