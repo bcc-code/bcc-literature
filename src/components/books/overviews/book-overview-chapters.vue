@@ -1,9 +1,9 @@
 <template>
   <div v-if="book != null">
     <section v-bind:class="{'ebook-only' : book.ebookOnly}" class="book-header container">
-        <section class="center small">
+        <section class="flex sm-flex-col center small">
             <book-card-cover :cover-id="book.coverId"></book-card-cover>
-            <section class="info" :class="{ 'tall': bookId == 39 }">
+            <section class="flex flex-col justify-center info" :class="{ 'tall': bookId == 39 }">
                 <h2>{{book.title}}</h2>
                 <h5>
                     <template v-if="book.author">

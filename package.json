@@ -32,7 +32,7 @@
     "vue": "^2.6.14",
     "vue-application-insights": "^1.0.7",
     "vue-clipboard2": "^0.3.1",
-    "vue-i18n": "^8.24.5",
+    "vue-i18n": "^8.25.0",
     "vue-js-modal": "^1.3.35",
     "vue-observe-visibility": "^0.4.6",
     "vue-router": "^3.5.2",
@@ -40,7 +40,7 @@
     "vuex": "^3.6.2"
   },
   "devDependencies": {
-    "@bcc-it/css-literature": "^2.2.2",
+    "@bcc-it/css-literature": "^2.4.3",
     "@vue/cli-plugin-babel": "^3.12.1",
     "@vue/cli-plugin-eslint": "^3.12.1",
     "@vue/cli-plugin-pwa": "^3.12.1",
