@@ -141,7 +141,7 @@ class SecurityService {
                     self.signIn();
                     return reject(null);
                 } 
-                else if (user.expired){
+                else if (user.expired) {
                     self.renewToken().then((renewedUser) => {
                         return resolve(renewedUser.access_token);
                     }).catch((err) => {
@@ -166,13 +166,13 @@ class SecurityService {
     /**
      * Handle error related to authentication
      */
-    async handleError(){
+    async handleError() {
         const self = this;
         await this.renewToken().then(async () => {
             window.location.reload();
         }).catch((error) => {
             console.log(error);
-        })
+        });
     }
 }
 

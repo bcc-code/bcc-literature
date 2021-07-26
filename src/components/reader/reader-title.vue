@@ -43,13 +43,13 @@ export default {
         }
     },
     computed: {
-        BookType(){
+        BookType() {
             return BookType;
         },
         monthString() {
             return moment().month(this.month-1).format("MM");
         },
-        bookTitle(){
+        bookTitle() {
             // Show title if manually set on article in case of a PDF issue
             return this.title.indexOf(this.book.title + ' - ') > -1 ? this.title : `${this.book.title} - ${this.year}/${this.monthString}`
         }

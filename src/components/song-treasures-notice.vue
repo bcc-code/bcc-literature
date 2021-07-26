@@ -29,6 +29,7 @@
         display: block;
     }
     .song-treasures-logo {
+        display: block;
         width: 140px;
         border: none;
         padding: 0;

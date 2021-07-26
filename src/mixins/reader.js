@@ -63,7 +63,7 @@ export default {
                     });
             }
         },
-        setCurrentChapter (chapterId) {
+        setCurrentChapter(chapterId) {
             if (this.isPublication)
                 this.$router.replace({ 
                     name: 'read-publication',

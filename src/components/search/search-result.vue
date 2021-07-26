@@ -56,7 +56,7 @@ export default {
             return highlight;
         },
         // Gets all the words found by Azure to highlight them in the reader
-        wordsToHighlight(){
+        wordsToHighlight() {
             var words = this.$parent.computedQuery.split(' ').filter((w) => w.length > 0);
             // Adding potential new words highlighted by azure with fuzzy search
             if (this.highlight != null) {
@@ -113,7 +113,5 @@ export default {
             });
         }
     },
-    
 };
 </script>
-

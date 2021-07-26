@@ -8,7 +8,7 @@
             </section>
         </section>
         <!-- Subscription -->
-        <Subscription :book="book"/>
+        <Subscription :book="book" />
         <!-- Publication issues -->
         <section class="container">
             <section class="center small">
@@ -16,10 +16,10 @@
                 <div class="section-header publication">
                     <h5>{{$t('book-index.publication-issues-from')}}</h5>                    
                     <la-dropdown
-                    @click="setYear"
-                    :options="dropdownOptions"
-                    :button-text="yearsText"
-                    :inner-text="$t('book-index.choose-year')"/>
+                        @click="setYear"
+                        :options="dropdownOptions"
+                        :button-text="yearsText"
+                        :inner-text="$t('book-index.choose-year')" />
                 </div>
                 <!-- Year details -->
                 <section class="list">
