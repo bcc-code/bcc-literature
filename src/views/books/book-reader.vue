@@ -3,7 +3,7 @@
     <not-found v-if="notFound" />
     <template v-show="!notFound">
         <section class="container reading-view">
-            <app-header :backButtonRoute="getBackButtonRoute" :pageName="book ? book.title : ''" :showLanguagePicker="false" />
+            <app-header :backButtonRoute="getBackButtonRoute" :pageName="book ? book.title : ''" />
             <loader ref="loader">
                 <article class="center small">  
                     <template v-if="!articles || (book != null && showingFirstChapter)">
@@ -126,6 +126,7 @@ export default {
                             this.articles = this.allArticles;
                         });
                     })
+
                 var font = new FontFaceObserver('Merriweather');
                 await font.load();
             }).catch((error) => {
