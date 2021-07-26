@@ -26,10 +26,9 @@
 
 @media only screen and (max-width: 648px) {
     .song-treasures-notice {
-        flex-direction: column;
+        display: block;
     }
     .song-treasures-logo {
-        flex: 0 0 auto;
         width: 140px;
         border: none;
         padding: 0;
