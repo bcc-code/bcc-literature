@@ -10,13 +10,13 @@
 <script>
 import CardCover from 'components/grid/tiles/card-cover';
 export default {
-    props:{
-        result:{
-            type:Object,
-            required:true
+    props: {
+        result: {
+            type: Object,
+            required: true
         },
     },
-    components:{
+    components: {
         CardCover
     },
 };
@@ -24,7 +24,7 @@ export default {
 
 <style scoped>
 .result-author-only {
-    display: block;
+    display: flex;
     text-decoration: none;
     line-height: 20px;
     padding: 8px;
@@ -44,7 +44,7 @@ article.search-result a.result-author-only figure {
     padding: 0px;
     background: #838CA8;
     background-size: cover;
-    margin: 0px 8px 0px 0px;
+    margin: 0px 12px 0px 0px;
     float: left;
     border-radius: 2px;
 }
