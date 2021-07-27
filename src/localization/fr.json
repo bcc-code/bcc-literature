@@ -31,7 +31,8 @@
         "publications": "Publications",
         "choose-year": "Sélectionner l’année",
         "open-in-safari": "Veuillez utiliser votre navigateur pour télécharger cet ebook",
-        "read-random-chapters": "Lire un chapitre au hasard"
+        "read-random-chapters": "Lire un chapitre au hasard",
+        "open-audiobook": "Åpne lydbok"
     },
     "not-found": {
         "title": "Le livre que vous recherchez n'est pas disponible dans cette langue.",
