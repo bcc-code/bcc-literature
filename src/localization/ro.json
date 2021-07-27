@@ -31,7 +31,8 @@
         "publications": "Publicații",
         "choose-year": "Alege anul",
         "open-in-safari": "Te rugăm folosește browser-ul tău pentru a descărca această carte",
-        "read-random-chapters": "Citește o scrisoare aleatorie"
+        "read-random-chapters": "Citește o scrisoare aleatorie",
+        "open-audiobook": "Åpne lydbok"
     },
     "not-found": {
         "title": "Resursa pe care o căutați nu este disponibilă în această limbă.",
