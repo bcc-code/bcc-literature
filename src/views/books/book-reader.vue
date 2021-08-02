@@ -10,18 +10,20 @@
                         <Title :book="book" :year="year" :month="month" :title="articles[0].title"/>
                     </template>
                     <ArticleScroller v-if="isContentVisible"
-                    :articles="articles"
-                    :loadTopHandler="( isPublication || showingFirstChapter) ? null : loadTop"
-                    :loadBottomHandler="isPublication  ? null : loadBottom"
-                    :getElementName="(article) => getElementName(article)"
-                    :no-lazy-load="isPublication"
-                    @change="(article) => setCurrentChapter(article.chapterId)">
+                        :articles="articles"
+                        :loadTopHandler="( isPublication || showingFirstChapter) ? null : loadTop"
+                        :loadBottomHandler="isPublication  ? null : loadBottom"
+                        :getElementName="(article) => getElementName(article)"
+                        :no-lazy-load="isPublication"
+                        @change="(article) => setCurrentChapter(article.chapterId)"
+                    >
                         <ArticleFull v-for="article in articles"
-                        :key="article.id"
-                        :article="article"
-                        :highlight="wordsToHighlight"
-                        :id="getElementName(article)"
-                        ref="articles"/>
+                            :key="article.id"
+                            :article="article"
+                            :highlight="wordsToHighlight"
+                            :id="getElementName(article)"
+                            @toggleTextToSpeech="toggleTextToSpeech(article)"
+                            ref="articles" />
                     </ArticleScroller>
                     <SubscriptionRequired :book="book" v-else></SubscriptionRequired>
                 </article>
@@ -37,7 +39,6 @@
 <script>
 import AppHeader from 'components/layout/app-header';
 import AppSidebar from 'components/layout/app-sidebar';
-import { EventBus, Events } from '@/utils/eventBus';
 import NotFound from 'components/not-found';
 import BookMixins from '@/mixins/book';
 import { mapActions } from 'vuex';
@@ -48,6 +49,7 @@ import ArticleFull from 'components/reader/article-full';
 import SubscriptionRequired from 'components/reader/subscription-required-info';
 import FontFaceObserver from 'fontfaceobserver';
 import ReaderMixins from '@/mixins/reader';
+import { getLanguageTag } from '@/utils/languageTags';
 
 export default {
     components: {
@@ -66,6 +68,8 @@ export default {
             notFound: false,
             articles: [],
             amountToLoad: 5,
+            utterance: new SpeechSynthesisUtterance(),
+            readingChapterId: null
         }
     },
     created() {
@@ -88,7 +92,7 @@ export default {
         isContentVisible() {
             return this.articles.every((el) => { return el.contentVisible });
         },
-        getBackButtonRoute(){
+        getBackButtonRoute() {
             return this.$route.params.parent ? this.$route.params.parent : { name: 'book-index', params: { bookId: this.$route.params.bookId }};
         }
     },
@@ -139,13 +143,32 @@ export default {
         },
         changeChapter(chapterId) {
             this.showSidebar = false;
-            if (this.scrollToChapter(chapterId) == false){
+            if (this.scrollToChapter(chapterId) == false) {
                 /* Force reload the reader component */
                 this.$store.dispatch('articles/base/reset');
                 this.setCurrentChapter(chapterId);
                 this.$refs.loader.reset();
-            };
+            }
         },
+        toggleTextToSpeech(article) {
+            window.speechSynthesis.cancel();
+
+            this.$refs.articles.forEach(el => {
+                el.speechTextButton = "Read";
+            });
+
+            if (this.readingChapterId === null || article.chapterId != this.readingChapterId) {
+                this.utterance.text = article.content.replaceAll(/<[^>]*>?/gm, ' ');
+                this.utterance.lang = getLanguageTag(article.language);
+
+                window.speechSynthesis.speak(this.utterance);
+                this.readingChapterId = article.chapterId;
+                this.$refs.articles[this.readingChapterId-1].speechTextButton = "Stop";
+            }
+            else {
+                this.readingChapterId = null;
+            }
+        }
     },
     watch: {
         showSidebar: function () {
@@ -156,17 +179,16 @@ export default {
 </script>
 
 <style>
-#print-footer{
+#print-footer {
     display: none;
 }
 
 @media print {
-    @page  
-    { 
+    @page { 
         size: auto;
         margin: 27mm 16mm 27mm 16mm; 
     } 
-    #bcc-widget-topbar, header, footer{
+    #bcc-widget-topbar, header, footer {
         display: none !important;
     }
     #print-footer {

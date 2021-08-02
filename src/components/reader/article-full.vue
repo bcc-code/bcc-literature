@@ -1,7 +1,7 @@
 <template>
     <div>
-        <h5 :id="'chapter-title-'+article.chapterId">{{$t('reader.chapter')}} {{article.chapterId}}</h5>
-        <div v-if="article.content != null" v-html="article.content"/>
+        <h5 :id="'chapter-title-'+article.chapterId">{{$t('reader.chapter')}} {{article.chapterId}} <button @click="toggleTextToSpeech(article)">({{speechTextButton}})</button></h5>
+        <div v-if="article.content != null" v-html="article.content" />
         <DocumentViewer v-else :article="article" />
    </div>
 </template>
@@ -14,10 +14,20 @@ export default {
     components: {
         DocumentViewer
     },
+    data() {
+        return {
+            speechTextButton: "Read"
+        }
+    },
     mounted() {
-        if(this.highlight != null && this.highlight.length > 0){
+        if (this.highlight != null && this.highlight.length > 0) {
             this.article.content = this.article.content.replace(new RegExp("([^a-zA-Z])("+ this.highlight.join('|') +")(?=[^a-zA-Z])", 'gi'), "$1<span>$2</span>");
         }
+    },
+    methods: {
+        toggleTextToSpeech(article) {
+            this.$emit('toggleTextToSpeech', article);
+        },
     }
 }
 </script>
@@ -28,7 +38,7 @@ export default {
 }
 
 .reading-view li {
-    font-family: Merriweather,serif;
+    font-family: Merriweather, serif;
     color: #5a617d;
     font-size: 2.1em;
     line-height: 2em;
