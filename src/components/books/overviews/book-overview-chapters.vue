@@ -22,7 +22,7 @@
                         v-bind:class="[book.ebookOnly ? 'button-main' : 'button-secondary', 'small']">{{$t('book-index.get-ebook')}}</a>
                     <a v-if="!book.ebookOnly" class="button-main small" @click="startReadingFirstChapter">{{$t('book-index.read-now')}}</a>
                     <a v-if="bookId == 39" class="button-main small" @click="startReadingRandomChapter">{{$t('book-index.read-random-chapters')}}</a>
-                    <a v-if="book.audioBookUrl != null" @click="goToAudioBook" class="button-secondary small">{{$t('book-index.open-audiobook')}}</a>
+                    <a v-if="book.audioBookUrl != null && featureFlags.AudioOfArticles" @click="goToAudioBook" class="button-secondary small">{{$t('book-index.open-audiobook')}}</a>
                 </section>
             </section>
         </section>
@@ -46,6 +46,7 @@ import BookChaptersList from 'components/books/book-chapters-list';
 import BookCardCover from 'components/grid/tiles/card-cover';
 import LoadingSpinner from 'components/loading-spinner';
 import BaseApi from 'utils/api/baseApi';
+import FeatureManagerApi from 'utils/api/featureManagerApi';
 import BookMixins from '@/mixins/book';
 import { logCustomEvent } from '@/utils/appInsights';
 
@@ -58,11 +59,15 @@ export default {
     data() {
         return {
             loadingChapters: false,
-            randomChapterId: null
+            randomChapterId: null,
+            featureFlags: {
+                AudioOfArticles: false
+            }
         }
     },
     mixins: [BookMixins],
     created() {
+        this.getFeatureFlags();
         this.setRandomChapterId();
         if (!this.book.ebookOnly) {
             this.loadingChapters = true;
@@ -72,6 +77,14 @@ export default {
         }
     },
     methods: {
+        getFeatureFlags: async function() {
+            await FeatureManagerApi.getAllFeatureFlags()
+                .then((flags) => {
+                    for (const [key, value] of Object.entries(flags.data)) {
+                        this.featureFlags[key] = value;
+                    }
+                })
+        },
         setRandomChapterId() {
             var min = 3, max = 284;
             var randomNum = Math.floor(Math.random() * (max - min) + min);

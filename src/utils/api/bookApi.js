@@ -38,10 +38,6 @@ async function getAllBooks() {
     return books;
 }
 
-/**
- * Get a list of all books
- * @return {Promise}
- */
 async function getChaptersByBookId(id) {
     return await baseApi.sendRequest("get", "books/" + id + "/chapters");
 }
