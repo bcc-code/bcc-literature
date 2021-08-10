@@ -99,8 +99,8 @@ export default {
                                 "data-authentication-location",
                                 "oidc.user:https://login.bcc.no:X0ac7C8sROIhEzRGLJPFpLCZAlKGK4KV.access_token"
                             );
-                            element.setAttribute("data-app-title", "BCC Literature");
-                            element.setAttribute("data-app-url", "https://literature.bcc.no");
+                            // element.setAttribute("data-app-title", "BCC Literature");
+                            // element.setAttribute("data-app-url", "https://literature.bcc.no");
                         }
                     }
                 });
