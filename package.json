@@ -27,7 +27,7 @@
     "oidc-client": "^1.11.5",
     "register-service-worker": "^1.7.2",
     "serve": "^10.1.2",
-    "testcafe": "^1.15.0",
+    "testcafe": "^1.15.1",
     "v-click-outside": "^2.1.5",
     "vue": "^2.6.14",
     "vue-application-insights": "^1.0.7",
@@ -40,7 +40,7 @@
     "vuex": "^3.6.2"
   },
   "devDependencies": {
-    "@bcc-it/css-literature": "^2.4.5",
+    "@bcc-it/css-literature": "^2.4.6",
     "@vue/cli-plugin-babel": "^3.12.1",
     "@vue/cli-plugin-eslint": "^3.12.1",
     "@vue/cli-plugin-pwa": "^3.12.1",
