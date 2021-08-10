@@ -3,6 +3,7 @@ import session from '../store/session.js';
 
 export async function logCustomEvent(customEventName, customEventProperties) {
     customEventProperties.UserId = createAnalyticsId(session.state.userInfo);
+    customEventProperties.Age = calculateUserAge(session.state.userInfo.birthdate);
     Vue.appInsights.trackEvent({
         name: customEventName, 
         properties: customEventProperties
@@ -18,4 +19,21 @@ function createAnalyticsId(userInfo) {
     var hash = md5([...Buffer.from(stringToHash, 'utf-8')]);
 
     return hash.toUpperCase();
+}
+
+function calculateUserAge(birthdate) {
+    try {
+        if (birthdate) {
+            const userBirthdate = Date.parse(birthdate.toString());
+            const difference = Date.now() - userBirthdate;
+            var ageDateTime = new Date(difference);
+    
+            return Math.abs(ageDateTime.getUTCFullYear() - new Date(0).getFullYear());
+        }
+        return 0;
+    }
+    catch (e) {
+        console.log("Birthday date parsing exception: " + e);
+        return 0;
+    }
 }
