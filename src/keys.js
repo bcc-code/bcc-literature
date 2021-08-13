@@ -19,7 +19,7 @@ switch (window.location.hostname) {
         keys.APP_URL = "https://devliterature.bcc.no/";
         break;
     default:
-        keys.API_BASE_PATH = 'http://localhost:58330/api/';
+        keys.API_BASE_PATH = process.env.NODE_ENV == 'production' ? 'https://devliteratureapi.bcc.no/api/': 'http://localhost:58330/api/';
         keys.APP_INSIGHTS = '6856efb0-33a0-40ec-898a-fa1676670481';
         keys.APP_URL = "http://literature.local:21535/";
 }
