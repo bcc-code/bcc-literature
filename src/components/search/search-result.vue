@@ -41,10 +41,10 @@ export default {
             searchId: 'id',
         }),
         highlight() {
-            if (this.result.highlights == null)
+            if (this.result['@search.highlights'] == null)
                 return null;
 
-            var highlight = this.result.highlights.BodyPlain[0];
+            var highlight = this.result['@search.highlights'].BodyPlain[0];
             const maxLength = 400;
 
             if (highlight.length > maxLength) {
