@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import moment from 'moment'
+import moment from 'moment';
 import { BookType } from '@/model/bookType.js';
 export default {
     props: {
