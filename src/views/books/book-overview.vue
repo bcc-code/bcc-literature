@@ -8,7 +8,10 @@
         <section class="center x-small">
             <search-box />
         </section>
-        <song-treasures-notice />
+        <section class="banners center flex">
+            <song-treasures-notice />
+            <user-voice-banner />
+        </section>
     </section>
     <loader>
         <grid :list="publications" :title="$t('subscription.subscriptions')" :layout="GridLayout.TILES" :type="GridType.PUBLICATION"/>
@@ -29,6 +32,7 @@ import { BookType } from '@/model/bookType.js';
 import AppHeader from 'components/layout/app-header';
 import SearchBox from 'components/search/search-box';
 import SongTreasuresNotice from 'components/song-treasures-notice';
+import UserVoiceBanner from 'components/user-voice-banner';
 import Loader from 'components/la-loader';
 
 export default {
@@ -36,13 +40,10 @@ export default {
         Grid,
         SearchBox,
         SongTreasuresNotice,
+        UserVoiceBanner,
         Loader,
         AppHeader,
         SearchableGrids
-    },
-    data: function() {
-        return {
-        };
     },
     mixins: [GridMixin],
     computed: {
@@ -67,3 +68,10 @@ export default {
 };
 </script>
 
+<style scoped>
+@media only screen and (max-width: 1049px) {
+    .banners {
+        flex-direction: column;
+    }
+}   
+</style>

@@ -12,6 +12,7 @@
     margin-top: 20px;
     border: 2px solid #e6e9f2;
     display: flex;
+    margin-right: 11px;
 }
 .song-treasures-logo {
     display: flex;
@@ -24,16 +25,25 @@
     max-width: 100%;
 }
 
-@media only screen and (max-width: 648px) {
+@media only screen and (max-width: 1049px) {
     .song-treasures-notice {
         display: block;
+        margin-right: 0;
+        padding: 0;
     }
     .song-treasures-logo {
         display: block;
-        width: 140px;
+        width: 100%;
         border: none;
         padding: 0;
-        margin: 0 0 15px;
+        background-color: rgba(230, 233, 242, 0.25);
+    }
+    .song-treasures-logo img {
+        max-width: 180px;
+        padding: 15px 20px 10px;
+    }
+    .song-treasures-notice p {
+        padding: 10px 20px 20px;
     }
 }
 </style>
