@@ -3,7 +3,12 @@
     "app": {
         "select-language": "Select language",
         "error": "An error occurred. Please contact it@bcc.no",
-        "song-treasures-notice": "Watch <a href=\"https://christianbookshop.org/pages/music\" target=\"_blank\">this film</a> for information regarding songbooks with notes. Log in at <a href=\"https://songtreasures.org\" target=\"_blank\">songtreasures.org</a> and create an account. Here you can read more about the concept SongTreasures, and subscribe to have access to 5 of SSSF’s songbooks."
+        "song-treasures-notice": "Watch <a href=\"https://christianbookshop.org/pages/music\" target=\"_blank\">this film</a> for information regarding songbooks with notes. Log in at <a href=\"https://songtreasures.org\" target=\"_blank\">songtreasures.org</a> and create an account. Here you can read more about the concept SongTreasures, and subscribe to have access to 5 of SSSF’s songbooks.",
+        "user-voice": {
+            "title": "Hvordan kan vi forbedre dette nettstedet?",
+            "description": "Her kan du stemme for, diskutere og dele ideer om hvordan BCC Litteratur Portalen kan forbedres.",
+            "button": "Gå til User Voice"
+        }
     },
     "articles": {
         "articles-all": "All articles"
