@@ -1,0 +1,837 @@
+//Adaption specific to the context of components
+
+//Main header
+header{
+	display: block;
+	position: fixed;
+
+	width: 100%;
+	height: 48px;
+	background: var(--white);
+	text-align: center;	
+
+	top: 48px; /** top of 48px because of the Topbar widget **/
+	left: 0px;
+
+	z-index: 20;
+	@include floating();
+
+	.header__back-button{
+		display: block;
+		height: 48px;
+		width: 48px;
+		float: left;
+		background: url("../assets/icons/icon_24_arrow-left-blue.svg") center center no-repeat;
+	}
+	h4{
+		line-height: 48px;
+		color: var(--base1);
+		text-align: center;
+		position: absolute;
+		width: 50%;
+		left: 25%;
+		font-weight: 500;
+
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;	
+
+		@media only screen and (max-width: 648px) {
+			width: 80%;
+			left: 10%;
+		}
+
+	}
+	.header__night-mode{
+		display: block;
+		height: 48px;
+		width: 48px;
+		float: right;
+		background: url("../assets/icons/icon_moon.svg") center center no-repeat;
+		transform: rotate(40deg);
+		@include transition(transform, 0.3s);
+		
+		&.dark {
+			background: url("../assets/icons/icon_sun.svg") center center no-repeat;
+			transform: rotate(0deg);
+		}
+	}
+	.dropdown{
+		margin: 8px 16px;
+		float: right;
+	}
+}
+
+iframe{
+	border: none;
+	width: 100%;
+	height: 48px;
+}
+
+//Header in Book View
+.book-header{
+	min-height: 228px;
+
+	background: var(--base5);
+	padding: 48px 16px;
+
+	@media only screen and (max-width: 648px) {
+		padding: 24px 16px;
+	}
+
+	figure{
+		position: relative;
+		width: 108px;
+		height: 148px;
+		margin: 0px 16px 0px 0px;
+		background: var(--gradient);
+		background-size: cover; 
+		padding: 4px;
+
+		float: left;
+
+		border-radius: 4px;
+		@include floating();
+
+		img{
+			width: 100%;
+			height: 100%;
+		}
+
+		@media only screen and (max-width: 648px) {
+			margin: 0px auto 24px auto;
+			float: none;
+		}
+		&:before{
+			display: block;
+			position: absolute;
+			content: "";
+			width: 100%;
+			height: 100%;
+			top: 0px;
+			left: 0px;
+			background: url(../assets/cover-overlay.svg) left top no-repeat;
+			background-size: cover;
+		}
+	}
+	h2{
+		margin-bottom: 4px;
+	}
+	h5{
+		color: var(--base3);
+	}
+	.info{
+		width: calc(100% - 124px);
+		float: right;
+		padding-bottom: 48px;
+
+		@media only screen and (max-width: 648px) {
+			width: calc(100% - 64px);
+			margin: 0px 32px;
+			float: none;
+			text-align: center;
+			padding-bottom: 56px;
+		}
+	}
+	.actions{
+		position: absolute;
+		left: 124px;
+		bottom: 0px;
+		@media only screen and (max-width: 648px) {
+			width: 100%;
+			left: 0px;
+		}
+		.button-secondary, .button-main{
+			margin: 0px 8px 0px 0px;
+			@media only screen and (max-width: 648px) {
+				width: calc(50% - 12px);
+				margin: 8px 8px 0px 0px;
+			}
+		}
+	}
+	&.ebook-only{
+		height: 80vh;
+
+		.center.small{
+			top: 50%;
+			transform: translateY(-50%);
+		}
+		.info{
+			width: calc(100% - 64px);
+			margin: 0px 32px;
+			float: none;
+			text-align: center;
+			padding-bottom: 56px;
+		}
+		figure{
+			margin: 0px auto 24px auto;
+			float: none;
+		}
+		.actions{
+			width: 100%;
+			text-align: center;
+			left: 0px;
+			bottom: auto;
+
+			.button-main{
+				margin: 24px 0px 0px 0px;
+				width: auto;
+			}
+		}
+	}
+}
+
+
+//Header in Author View
+.author-header{
+	min-height: 228px;
+
+	background: var(--base5);
+	padding: 48px 16px;
+	text-align: center;
+
+	@media only screen and (max-width: 648px) {
+		padding: 24px 16px;
+	}
+
+	figure{
+		display: inline-block;
+		position: relative;
+		width: 180px;
+		padding-top: 180px;
+		background: var(--gradient);
+		background-size: cover; 
+		margin: 0px 0px 24px 0px;
+
+		border-radius: 50%;
+		box-shadow: 
+				0px 0px 0px 0px var(--white),
+				0px 0px 0px 0px var(--main);
+
+		@include floating();
+
+		img{
+			width: 100%;
+			height: 100%;
+		}
+
+		@media only screen and (max-width: 648px) {
+			width: 120px;
+			padding-top: 120px;
+		}
+	}
+	h2{
+		margin-bottom: 4px;
+	}
+}
+
+
+//Search header
+.search-header{
+	background: var(--base5);
+	overflow: visible;
+
+	.filter-search{
+		display: inline-block;
+		position: relative;
+		padding: 0px;
+		margin: 16px 0px 40px 0px;
+
+		@media only screen and (max-width: 648px) {
+			display: block;
+			margin: 0px;
+		}
+
+		button.dropdown-button{
+			box-shadow: inset 0px 0px 0px 2px  var(--base5);
+			&:hover{
+				box-shadow: inset 0px 0px 0px 2px  var(--main-10);
+			}
+			&:active{
+				box-shadow: inset 0px 0px 0px 4px  var(--main-20);
+			}
+
+			@media only screen and (max-width: 648px) {
+				padding: 16px 40px 16px 0px;
+				height: 48px;
+				width: 100%;
+				max-width: 100%;
+				text-align: left;
+				line-height: 16px;
+
+				&:after{
+					right: -8px;
+					top: 4px;
+				}
+				&:hover{
+					background: none;
+					box-shadow: none;
+				}
+				&:active{
+					background: none;
+				}
+			}
+		}
+	}
+}
+
+//Intro
+.intro{
+	background: var(--gradient);
+	color: #fff;
+	text-align: center;
+
+	h1{
+		color: #fff;
+		margin-bottom: 8px;
+	}
+	p{
+		color: rgba(255,255,255,.7);
+		margin-bottom: 40px;
+		@media only screen and (max-width: 648px) {
+			margin-bottom: 24px;
+		}
+	}
+	.button-circular.minimize-button{
+		cursor: pointer;
+		position: absolute;
+		top: 16px;
+		right: 16px;
+		background: rgba(255,255,255,.2) url("../assets/icons/icon_24_close-small.svg") center center no-repeat;
+
+		@include transition(all, .2s);
+
+		&:hover{
+			box-shadow: inset 0px 0px 0px 2px rgba(255,255,255,.1);
+		}
+		&:active{
+			box-shadow: inset 0px 0px 0px 4px rgba(255,255,255,.3);
+		}
+	}
+	@media only screen and (max-width: 648px) {
+		padding: 56px 16px 32px 16px;
+	}
+}
+
+//Publication
+.publication-header{
+	text-align: center;
+	background: var(--base5);
+
+	h2{
+		margin-top: 48px;
+	}
+	h5{
+		margin: 8px 0px 80px 0px;
+	}
+}
+.filter-search.publication-year{
+	.dropdown-button{
+		@include interactable();
+	}
+	section.custom-select{
+		@media only screen and (max-width: 648px) {
+			width: 150px;
+		}
+	}
+}
+.section-header.publication{
+	h5{
+		display: inline-block;
+		color: var(--base1);
+		line-height: 32px;
+		margin-right: 8px;
+	}
+}
+article.publication-month{
+	display: inline-block;
+	padding: 0px;
+	width: 100%;
+	border-radius: 8px;
+	margin-bottom: 16px;
+
+	@include interactable();
+
+	a{
+		display: block;
+		padding: 16px 24px 16px 16px;
+		text-decoration: none;
+
+		@include clear();
+
+		figure{
+			display: block;
+			width: 40px;
+			height: 56px;
+			float: left;
+			margin: 0px 16px 0px 0px;
+			background: var(--white);
+			background-size: cover; 
+			border-radius: 2px;
+		}
+		h3{
+			margin: 14px 0px;
+			width: calc(50% - 28px);
+			float: left;
+		}
+		p{
+			text-align: right;
+			margin: 14px 0px;
+			width: calc(50% - 28px);
+			float: left;
+		}
+	}
+}
+//Subscriptions Overview
+.subscription-info{
+	display: inline-block;
+	position: relative;
+	background: var(--base5);
+	border-radius: 8px;
+	padding: 20px;
+	margin: 0px 0px 24px 0px;
+	width: 100%;
+
+	@include transition(all, .2s);
+
+	@media only screen and (max-width: 640px) {
+		text-align: center;
+	}
+
+	h4{
+		display: inline-block;
+		line-height: 32px;
+		padding-left: 32px;
+		background: url('../assets/icons/icon_checkmark_blue.svg') no-repeat 0px 4px;
+
+		@media only screen and (max-width: 640px) {
+			display: block;
+			width: 100%;
+			line-height: 24px;
+
+			padding-left: 0px;
+			padding-top: 32px;
+			background: url('../assets/icons/icon_checkmark_blue.svg') no-repeat center top;
+		}
+	}
+
+	.button-secondary{
+		float: right;
+		margin: 0px;
+
+		@media only screen and (max-width: 640px) {
+			float: none;
+			margin-top: 12px;
+		}
+	}
+}
+.subscription{
+	display: inline-block;
+	position: relative;
+	background: var(--white);
+	border: 1px solid var(--base4);
+	border-radius: 8px;
+	padding: 20px;
+	margin: 0px 12px 24px 12px;
+	width: calc(33.33% - 24px);
+
+	@include transition(all, .2s);
+
+	@media only screen and (max-width: 1100px) {
+		width: calc(50% - 24px);
+	}
+	@media only screen and (max-width: 648px) {
+		width: calc(100% - 24px);
+	}
+
+	h4, h5{
+		margin-right: 148px;
+		line-height: 24px;
+		@media only screen and (max-width: 800px) {
+			margin-right: 80px;
+		}
+	}
+	p{
+		margin: 8px 0px;
+		margin-right: 148px;
+		color: var(--base3);
+		@media only screen and (max-width: 800px) {
+			margin-right: 80px;
+		}
+		@media only screen and (max-width: 648px) {
+			display: none;
+		}
+	}
+
+	div.signup-cta{
+		width: 100%;
+		padding: 8px 0px 0px 0px;
+		height: auto;
+
+		@media only screen and (max-width: 648px) {
+			padding: 16px 0px 0px 0px;
+		}
+
+		.button-main{
+			margin: 0px 12px 0px 0px;
+		}
+		h5{
+			color: #fff;
+			display: inline-block;
+		}
+	}
+
+	figure{
+		display: block;
+		height: 120px;
+		width: 90px;
+		background-size: cover; 
+		border-radius: 2px;
+
+		position: absolute;
+		top: 24px;
+		right: 32px;
+		margin: 0px;
+
+		z-index: 10;
+
+		@include transition(all, .2s);
+
+		@media only screen and (max-width: 800px) {
+			height: 70px;
+			width: 50px;
+			top: 26px;
+			right: 32px;
+		}
+	}
+	&::after{
+		display: block;
+		position: absolute;
+		content: "";
+		height: 120px;
+		width: 90px;
+		background: var(--gradient);
+		border-radius: 2px;
+
+		position: absolute;
+		top: 24px;
+		right: 32px;
+
+		transform: rotate(5deg);
+		transform-origin: bottom right;
+
+		@include transition(all, .2s);
+
+		@media only screen and (max-width: 800px) {
+			height: 70px;
+			width: 50px;
+			top: 26px;
+			right: 32px;
+		}
+	}
+
+
+	//Active subscription
+
+	&.active{
+		background-image: linear-gradient(to left, #343D52 0%, #1E212C 100%);
+		border: none;
+		padding: 20px 20px 107px 20px;
+
+		&::after{
+			display: none;
+		}
+		h5{
+			padding-left: 32px;
+			background: url('../assets/icons/icon_checkmark_blue.svg') no-repeat;
+			margin-right: 0px;
+		}
+		h4{
+			color: #fff;
+			margin-right: 0px;
+		}
+		p{
+			margin-right: 0px;
+		}
+		figure{
+			position: relative;
+			right: auto;
+			top: auto;
+			width: 32px;
+			height: 45px;
+		}
+		.button-secondary{
+			background: rgba(63,106,202,0.10);
+			position: absolute;
+			right: 16px;
+			top: 20px;
+
+			box-shadow: inset 0px 0px 0px 2px rgba(96,130,206,0.0);
+
+			@include transition(all, .2s);
+
+			&:hover{
+				box-shadow: inset 0px 0px 0px 4px rgba(96,130,206,0.10);
+			}
+			&:active{
+				box-shadow: inset 0px 0px 0px 4px rgba(96,130,206,0.20);
+			}
+		}
+
+		.latest{
+			border-top: 1px solid rgba(96,130,206,0.2);
+			padding: 20px;
+			bottom: 0px;
+			position: absolute;
+			bottom: 0px;
+			left: 0px;
+			width: 100%;
+			text-decoration: none;
+
+			background: rgba(96,130,206,0.00) url('../assets/icons/icon_24_chevron.svg') calc(100% - 16px) center no-repeat;
+
+			cursor: pointer;
+			@include transition(all, .2s);
+
+			&:hover{
+				background: rgba(96,130,206,0.05) url('../assets/icons/icon_24_chevron.svg') calc(100% - 16px) center no-repeat;
+			}
+			&:active{
+				background: rgba(96,130,206,0.10) url('../assets/icons/icon_24_chevron.svg') calc(100% - 16px) center no-repeat;
+			}
+			figure{
+				float: left;
+				margin-right: 16px;
+			}
+		}
+	}
+}
+
+//Subscription Sign Up
+h1 + .subscription-signup{
+	margin-top: 4em;
+}
+.subscription-signup{
+	position: relative;
+	background-image: linear-gradient(to left, #343D52 0%, #1E212C 100%);
+	border-radius: 8px;
+	padding: 20px 24px 24px 24px;
+
+	@include transition(all, .2s);
+
+	@media only screen and (max-width: 400px) {
+		padding: 164px 20px 20px 20px;
+	}
+
+	h4{
+		color: #fff;
+		margin-right: 148px;
+		@media only screen and (max-width: 400px) {
+			margin-right: 0px;
+		}
+	}
+	p{
+		margin: 8px 0px;
+		margin-right: 148px;
+		color: var(--base3);
+		@media only screen and (max-width: 400px) {
+			margin-right: 0px;
+		}
+	}
+	div.signup-cta{
+		width: 100%;
+		padding: 8px 0px 0px 0px;
+		height: auto;
+
+		.button-main{
+			margin: 0px 12px 0px 0px;
+			color: #fff;
+		}
+		h5{
+			color: #fff;
+			display: inline-block;
+		}
+	}
+
+	figure{
+		display: block;
+		height: 120px;
+		width: 90px;
+		background-size: cover; 
+		border-radius: 2px;
+
+		position: absolute;
+		top: 24px;
+		right: 32px;
+		margin: 0px;
+
+		z-index: 10;
+
+		@include transition(all, .2s);
+
+		@media only screen and (max-width: 400px) {
+			right: calc(50% - 45px);
+		}
+	}
+	&::after{
+		display: block;
+		position: absolute;
+		content: "";
+		height: 120px;
+		width: 90px;
+		background: var(--gradient);
+		border-radius: 2px;
+
+		position: absolute;
+		top: 24px;
+		right: 32px;
+
+		transform: rotate(5deg);
+		transform-origin: bottom right;
+
+		@include transition(all, .2s);
+
+		@media only screen and (max-width: 400px) {
+			right: calc(50% - 45px);
+		}
+	}
+
+	form{
+		display: block;
+		width: 100%;
+		height: auto;
+		padding: 24px;
+		margin-top: 24px;
+		background: var(--white);
+		border-radius: 4px;
+
+		@media only screen and (max-width: 400px) {
+			padding: 16px;
+		}
+
+		h5{
+			color: var(--base3);
+			margin-bottom: 16px;
+		}
+	}
+	.subscription-confirmation{
+		width: 100%;
+		height: auto;
+		padding: 32px 24px 32px 24px;
+		margin-top: 24px;
+		background: var(--white);
+		border-radius: 4px;
+		text-align: center;
+
+		h4{
+			color: var(--base1);
+		}
+		h4, p{
+			width: 100%;
+		}
+
+		@media only screen and (max-width: 400px) {
+			padding: 16px;
+		}
+	}
+	.button-circular.minimize-button{
+		cursor: pointer;
+		position: absolute;
+		top: 16px;
+		right: 16px;
+		background: rgba(255,255,255,.2) url("../assets/icons/icon_24_close-small.svg") center center no-repeat;
+
+		@include transition(all, .2s);
+
+		&:hover{
+			box-shadow: inset 0px 0px 0px 2px rgba(255,255,255,.1);
+		}
+		&:active{
+			box-shadow: inset 0px 0px 0px 4px rgba(255,255,255,.3);
+		}
+	}
+	&.open{
+		@media only screen and (max-width: 400px) {
+			padding: 20px 20px 20px 20px;
+		}
+
+		h4, p{
+			@media only screen and (max-width: 400px) {
+				margin-right: 32px;
+			}
+		}
+		figure{
+			width:	62px;
+			height: 84px;
+			right: 64px;
+
+			@media only screen and (max-width: 400px) {
+				top: 0px;
+				right: calc(50% - 45px);
+				opacity: 0;
+			}
+		}
+		&::after{
+			width:	62px;
+			height: 84px;
+			right: 64px;
+			transform: rotate(0deg);
+
+			@media only screen and (max-width: 400px) {
+				top: 0px;
+				right: calc(50% - 45px);
+				opacity: 0;
+			}
+		}
+		.circular-button{
+			opacity: 1;
+			display: none;
+		}
+	}
+	&.confirmed{
+		figure{
+			width:	62px;
+			height: 84px;
+			right: 32px;
+		}
+		&::after{
+			width:	62px;
+			height: 84px;
+			right: 32px;
+		}
+	}
+}
+
+//Author Overview
+.popular-authors{
+	h1{
+		margin-bottom: 24px;
+	}
+	.grid{
+		padding-bottom: 0px;
+	}
+}
+
+
+//Footer
+footer{
+	display: block;
+	position: absolute;
+	bottom: 0px;
+	width: 100%;
+	padding: 56px 48px;
+	background: var(--base5);
+	p{
+		float: left;
+		line-height: 32px;
+	}
+
+	&:after{
+		content: "";
+		display: table;
+		clear: both;
+	}
+	@media only screen and (max-width: 648px) {
+		padding: 56px 16px;
+	}
+}

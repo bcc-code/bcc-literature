@@ -1,0 +1,13 @@
+// Books
+section.notice{
+	@include floating();
+	border-radius: 4px;
+	padding: 12px;
+	width: calc(100% - 32px);
+	background-color: var(--white);
+	text-align: center;
+
+	bottom: 16px;
+	position: fixed;
+	z-index: 20;
+}
