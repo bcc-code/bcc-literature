@@ -3,7 +3,7 @@ export default {
     state: {
         userInfo: null,
         appLanguage: localStorage.getItem('appLanguage') || 'no',
-        nightMode: localStorage.getItem('nightMode') || false,
+        nightMode: JSON.parse(localStorage.getItem('nightMode')) || false,
         isAuthenticated: false,
         topbarInitialized: false
     },
