@@ -10,7 +10,7 @@
     padding: 20px;
     border-radius: 8px;
     margin-top: 20px;
-    border: 2px solid #e6e9f2;
+    border: 2px solid var(--base4);
     display: flex;
     margin-right: 11px;
 }
@@ -18,7 +18,7 @@
     display: flex;
     flex: 0 0 160px;
     padding-right: 20px;
-    border-right: 1px solid #e6e9f2;
+    border-right: 1px solid var(--base4);
     margin-right: 20px;
 }
 .song-treasures-logo img {

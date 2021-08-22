@@ -26,7 +26,7 @@ export default {
 .user-voice-banner {
     border-radius: 8px;
     margin-top: 20px;
-    border: 2px solid #e6e9f2;
+    border: 2px solid var(--base4);
     display: flex;
     margin-left: 11px;
     overflow: hidden;

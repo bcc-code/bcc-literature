@@ -164,13 +164,13 @@ section.filter {
     margin: 0px 0px 24px 0px;
     width: 100%;
     border-radius: 8px;
-    -webkit-box-shadow: inset 0px 0px 0px 2px rgb(0 46 148 / 10%);
-    box-shadow: inset 0px 0px 0px 2px rgb(0 46 148 / 10%);
+    -webkit-box-shadow: inset 0px 0px 0px 2px var(--main-10);
+    box-shadow: inset 0px 0px 0px 2px var(--main-10);
     -webkit-transition: all 0.1s;
     transition: all 0.1s;
     -webkit-transition-timing-function: ease-out;
     transition-timing-function: ease-out;
-    background: #fff;
+    background: var(--white);
 }
 
 .filter .header {
@@ -186,8 +186,10 @@ section.filter {
 
 .filter .custom-select,
 .filter .search-selection {
+    font-family: 'Ubuntu', sans-serif;
     font-size: 1.8em;
     line-height: 1.4em;
+    color: var(--base1);
 }
 .filter .custom-select ul,
 .filter .search-selection ul {
@@ -245,11 +247,11 @@ section.filter {
 
 @media screen and (max-width: 768px) {
     body[view="advanced-search"] .content .center aside section.filter div.header {
-        color: #000;
+        color: var(--base1);
     }
     body[view="advanced-search"] .content .center aside section.filter div.header h3 {
         margin-bottom: 0px;
-        color: #000;
+        color: var(--base1);
     }
     body[view="advanced-search"] .content .center aside.temp {
         width: 100%;

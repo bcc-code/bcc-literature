@@ -28,7 +28,7 @@
             </loader>
         </section>
         <a alt="Toggle Sidebar" class="toggle-sidebar button-circular main" @click="showSidebar = !showSidebar"></a>
-        <app-sidebar v-show="showSidebar" @chapterChanged="changeChapter" />
+        <app-sidebar @chapterChanged="changeChapter" />
     </template>
     <div id="print-footer">© Copyright Skjulte Skatters Forlag N-4098 Tananger, Norway.</div>
   </div>
