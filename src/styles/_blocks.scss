@@ -35,18 +35,12 @@ header{
 		white-space: nowrap;
 		overflow: hidden;
 		text-overflow: ellipsis;	
-
-		@media only screen and (max-width: 648px) {
-			width: 80%;
-			left: 10%;
-		}
-
 	}
 	.header__night-mode{
 		display: block;
 		height: 48px;
 		width: 48px;
-		float: right;
+		float: left;
 		background: url("../assets/icons/icon_moon.svg") center center no-repeat;
 		transform: rotate(40deg);
 		@include transition(transform, 0.3s);
