@@ -1,7 +1,7 @@
 <template>
   <div>
     <not-found v-if="notFound" />
-    <template v-show="!notFound">
+    <template v-else>
         <section class="container reading-view">
             <app-header :backButtonRoute="getBackButtonRoute" :pageName="book ? book.title : ''" />
             <loader ref="loader">
@@ -28,7 +28,9 @@
             </loader>
         </section>
         <a alt="Toggle Sidebar" class="toggle-sidebar button-circular main" @click="showSidebar = !showSidebar"></a>
+        <a alt="Share" class="share button-circular secondary" @click="openShareModal"></a>"
         <app-sidebar @chapterChanged="changeChapter" />
+        <ShareLinkModal v-show="showShareModal" :url="shareUrl" :message="shareMessage"></ShareLinkModal>
     </template>
     <div id="print-footer">© Copyright Skjulte Skatters Forlag N-4098 Tananger, Norway.</div>
   </div>
@@ -37,7 +39,7 @@
 <script>
 import AppHeader from 'components/layout/app-header';
 import AppSidebar from 'components/layout/app-sidebar';
-import { EventBus, Events } from '@/utils/eventBus';
+import ShareLinkModal from 'components/reader/share-link-modal';
 import NotFound from 'components/not-found';
 import BookMixins from '@/mixins/book';
 import { mapActions } from 'vuex';
@@ -48,6 +50,7 @@ import ArticleFull from 'components/reader/article-full';
 import SubscriptionRequired from 'components/reader/subscription-required-info';
 import FontFaceObserver from 'fontfaceobserver';
 import ReaderMixins from '@/mixins/reader';
+import BaseApi from '@/utils/api/baseApi.js';
 
 export default {
     components: {
@@ -58,11 +61,13 @@ export default {
         ArticleScroller,
         SubscriptionRequired,
         AppSidebar,
-        NotFound
+        NotFound,
+        ShareLinkModal
     },
     data() {
         return {
             showSidebar: true,
+            showShareModal : false,
             notFound: false,
             articles: [],
             amountToLoad: 5,
@@ -90,6 +95,12 @@ export default {
         },
         getBackButtonRoute(){
             return this.$route.params.parent ? this.$route.params.parent : { name: 'book-index', params: { bookId: this.$route.params.bookId }};
+        },
+        shareUrl(){
+            return BaseApi.addLanguageQuery(window.location.origin + this.$route.fullPath);
+        },
+        shareMessage(){
+            return this.$t('share.message', { chapterName: this.selectedChapterTitle });
         }
     },
     methods: {
@@ -146,6 +157,18 @@ export default {
                 this.$refs.loader.reset();
             };
         },
+        openShareModal(){
+            if (navigator.share) {
+                navigator.share({
+                    title: this.selectedChapterTitle,
+                    text: this.shareMessage,
+                    url: this.shareUrl
+                });
+            }
+            else {
+                this.showShareModal = true;
+            }
+        }
     },
     watch: {
         showSidebar: function () {

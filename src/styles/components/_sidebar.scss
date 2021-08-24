@@ -96,6 +96,27 @@ nav{
     }
 }
 
+.button-circular.secondary.share{
+	right: 62px;
+	top: 108px;
+	position: fixed;
+	z-index: 50;
+	background: url("../assets/icons/icon_24_share_white.svg") center center no-repeat, var(--base3); 
+
+	@include transition(all, .3s);
+	
+	@media only screen and (max-width: 648px) {
+		@include transition(all, .3s);
+		top: calc(100% - 68px);
+	}
+	@media only screen and (device-width : 375px) 
+		and (device-height : 812px) 
+		and (-webkit-device-pixel-ratio : 3) { 
+			@include transition(all, .3s);
+			top: calc(100% - 88px);
+    }
+}
+
 .sidebar-open{
 	.button-circular.main.toggle-sidebar{
 		background: url("../assets/icons/icon_24_chevron-blue.svg") center center no-repeat, var(--white);
@@ -120,6 +141,31 @@ nav{
 			height: 44px;
 			right: 12px;
 			background: url("../assets/icons/icon_24_close.svg") center center no-repeat, var(--gradient);
+		}
+	}
+	.button-circular.secondary.share{
+		background: url("../assets/icons/icon_24_share_blue.svg") center center no-repeat, var(--white);
+		@include interactable(); 
+		right: 50px;
+		top: 116px;
+		height: 24px;
+		width: 24px;
+
+		@media only screen and (max-width: 648px) {
+			top: calc(100% - 68px);
+			width: 44px;
+			height: 44px;
+			right: 62px;
+			background: url("../assets/icons/icon_24_share_white.svg") center center no-repeat, var(--base3);;
+		}
+		@media only screen and (device-width : 375px) 
+		and (device-height : 812px) 
+		and (-webkit-device-pixel-ratio : 3) { 
+			top: calc(100% - 88px);
+			width: 44px;
+			height: 44px;
+			right: 62px;
+			background: url("../assets/icons/icon_24_share_white.svg") center center no-repeat, var(--base3);;
 		}
 	}
 	.sidebar{
