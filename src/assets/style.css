@@ -976,6 +976,70 @@ nav a {
     background: url("../assets/icons/icon_24_share_white.svg") center center no-repeat, var(--base3);
   }
 }
+.sidebar-open .button-circular.white.font-smaller {
+  right: 62px;
+  top: 58px;
+  position: fixed;
+  z-index: 50;
+  background: url("../assets/icons/icon_font_smaller_black.svg") center center/40% no-repeat, var(--white);
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+.sidebar-open .button-circular.white.font-smaller.dark {
+  background: url("../assets/icons/icon_font_smaller_white.svg") center center/40% no-repeat, var(--white);
+}
+@media only screen and (max-width: 648px) {
+  .sidebar-open .button-circular.white.font-smaller {
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+    top: calc(25% - 68px);
+  }
+}
+@media only screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
+  .sidebar-open .button-circular.white.font-smaller {
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+    top: calc(25% - 68px);
+  }
+}
+.sidebar-open .button-circular.white.font-bigger {
+  right: 12px;
+  top: 58px;
+  position: fixed;
+  z-index: 50;
+  background: url("../assets/icons/icon_font_bigger_black.svg") center center no-repeat, var(--white);
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+.sidebar-open .button-circular.white.font-bigger.dark {
+  background: url("../assets/icons/icon_font_bigger_white.svg") center center no-repeat, var(--white);
+}
+@media only screen and (max-width: 648px) {
+  .sidebar-open .button-circular.white.font-bigger {
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+    top: calc(25% - 68px);
+  }
+}
+@media only screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
+  .sidebar-open .button-circular.white.font-bigger {
+    -webkit-transition: all 0.3s;
+    transition: all 0.3s;
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+    top: calc(25% - 68px);
+  }
+}
 .sidebar-open .sidebar {
   right: 16px;
 }

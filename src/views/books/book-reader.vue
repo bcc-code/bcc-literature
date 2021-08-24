@@ -5,7 +5,7 @@
         <section class="container reading-view">
             <app-header :backButtonRoute="getBackButtonRoute" :pageName="book ? book.title : ''" />
             <loader ref="loader">
-                <article class="center small">  
+                <article class="center small" :style="{ zoom: fontSize }">  
                     <template v-if="!articles || (book != null && showingFirstChapter)">
                         <Title :book="book" :year="year" :month="month" :title="articles[0].title"/>
                     </template>
@@ -42,7 +42,7 @@ import AppSidebar from 'components/layout/app-sidebar';
 import ShareLinkModal from 'components/reader/share-link-modal';
 import NotFound from 'components/not-found';
 import BookMixins from '@/mixins/book';
-import { mapActions } from 'vuex';
+import { mapActions, mapState } from 'vuex';
 import Loader from 'components/la-loader';
 import Title from 'components/reader/reader-title.vue';
 import ArticleScroller from 'components/reader/article-scroller';
@@ -78,6 +78,7 @@ export default {
     },
     mixins: [BookMixins, ReaderMixins],
     computed: {
+        ...mapState('session', ['fontSize']),
         allArticles() {
             return this.$store.getters['articles/getAllByBookId'](this.bookId);
         },

@@ -1,5 +1,7 @@
 <template>
     <section>
+        <a alt="Font Smaller" class="font-smaller button-circular white" :class="{ 'dark': nightMode }" @click="changeFontSize(-0.1)"></a>
+        <a alt="Font Bigger" class="font-bigger button-circular white" :class="{ 'dark': nightMode }" @click="changeFontSize(0.1)"></a>
         <section class="sidebar">
             <div class="section-header">
                 <h5>{{$t('book-index.chapters')}} <span>{{chaptersLength}}</span></h5>
@@ -21,10 +23,11 @@
 
 <script>
 import BookMixins from '@/mixins/book'
-
+import { mapMutations, mapState } from 'vuex'
 export default {
     mixins: [BookMixins],
     computed: {
+        ...mapState('session', ['nightMode']),
         chaptersLength(){
             if (this.chapters == null)
                 return 0;
@@ -40,7 +43,7 @@ export default {
         },
     },
     methods: {
-       
+        ...mapMutations('session', ['changeFontSize'])
     },
     watch: {
         showShareModal: function(newValue) {
