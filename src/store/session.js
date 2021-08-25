@@ -1,9 +1,10 @@
+const nightMode = JSON.parse(localStorage.getItem('nightMode'))
 export default {
     namespaced: true,
     state: {
         userInfo: null,
         appLanguage: localStorage.getItem('appLanguage') || 'no',
-        nightMode: JSON.parse(localStorage.getItem('nightMode')) || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) || false,
+        nightMode: nightMode == null ? (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) : nightMode,
         isAuthenticated: false,
         topbarInitialized: false
     },
