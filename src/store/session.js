@@ -22,6 +22,7 @@ export default {
             localStorage.setItem('nightMode', state.nightMode)
         },
         changeFontSize: (state, value) => {
+            if (isNaN(state.fontSize)) state.fontSize = 1
             if (value > 0)
                 state.fontSize = Math.min(2, state.fontSize + value)
             else
