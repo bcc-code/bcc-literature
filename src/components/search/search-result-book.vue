@@ -8,8 +8,7 @@
               </div>
           </router-link>
     </article>  
-  </template>
-
+</template>
 <script>
 import BookCardCover from 'components/grid/tiles/card-cover';
 export default {
@@ -46,7 +45,7 @@ export default {
     transition-timing-function: ease-out;
 }
 
-article.search-result a.result-book-only figure {
+article.search-result .result-book-only figure {
     position: relative;
     display: block;
     width: 75px;
@@ -59,10 +58,10 @@ article.search-result a.result-book-only figure {
     border-radius: 2px;
 }
 
-article.search-result a.result-book-only h4 {
+article.search-result .result-book-only h4 {
     padding-top: 15px;
     position: relative;
     margin: 0px;
-    color: #16171A;
+    color: var(--base1);
 }
 </style>

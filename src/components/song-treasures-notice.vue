@@ -10,30 +10,40 @@
     padding: 20px;
     border-radius: 8px;
     margin-top: 20px;
-    border: 2px solid #e6e9f2;
+    border: 2px solid var(--base4);
     display: flex;
+    margin-right: 11px;
 }
 .song-treasures-logo {
     display: flex;
     flex: 0 0 160px;
     padding-right: 20px;
-    border-right: 1px solid #e6e9f2;
+    border-right: 1px solid var(--base4);
     margin-right: 20px;
 }
 .song-treasures-logo img {
     max-width: 100%;
 }
 
-@media only screen and (max-width: 648px) {
+@media only screen and (max-width: 1049px) {
     .song-treasures-notice {
         display: block;
+        margin-right: 0;
+        padding: 0;
     }
     .song-treasures-logo {
         display: block;
-        width: 140px;
+        width: 100%;
         border: none;
         padding: 0;
-        margin: 0 0 15px;
+        background-color: rgba(230, 233, 242, 0.25);
+    }
+    .song-treasures-logo img {
+        max-width: 180px;
+        padding: 15px 20px 10px;
+    }
+    .song-treasures-notice p {
+        padding: 10px 20px 20px;
     }
 }
 </style>

@@ -23,8 +23,6 @@
 </template>
 
 <script>
-import Vue from 'vue'
-import { BookType } from '@/model/bookType.js'
 import BookMixins from '@/mixins/book'
 import BaseApi from '@/utils/api/baseApi.js';
 import ShareLinkModal from './share-link-modal.vue';

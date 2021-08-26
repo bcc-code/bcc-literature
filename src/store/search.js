@@ -105,8 +105,8 @@ export default {
                     commit("updateAuthorResults", res.data);
                 }).catch(() => commit("updateAuthorResults", []));
             } 
-            await articleApi.search(query, top, skip, authorFullNameFacet, bookNameFacet, years, exactMatch).then((res) => {                 
-                if (res.data.results == null) 
+            await articleApi.search(query, top, skip, authorFullNameFacet, bookNameFacet, years, exactMatch).then((res) => {
+                if (res.data.results == null)
                     return commit("toggleLoader");
 
                 commit("updateSearchResults", res.data || []);
@@ -116,8 +116,8 @@ export default {
 
                 commit("toggleLoader");
             }).catch((err) => {
-                console.log(err)
-                commit("updateSearchResults", { results: { results: [], count: 0}});
+                console.log(err);
+                commit("updateSearchResults", { results: { results: [], count: 0 } });
                 commit("updateFacetsOptions", {
                     "AuthorFullName": [],     
                     "BookName": []              

@@ -5,7 +5,8 @@
             @click="setLanguage"
             :options="dropdownOptions"
             :button-text="currentLanguage"
-            :inner-text="$t('app.select-language')" />	
+            :inner-text="$t('app.select-language')" />
+        <a href="#" alt="Night mode" class="header__night-mode" :class="{ 'dark': nightMode }" @click.prevent="toggleNightMode"></a>
         <h4 v-if="showBackButton">{{pageName}}</h4>
         <nav v-else>
             <router-link v-for="menu in ['books', 'authors']" :key="menu" :to="{ name: menu }" :class="{ 'current' : $t(`${menu}.${menu}`) == pageName }">
@@ -19,6 +20,7 @@
 import { EventBus, Events } from '@/utils/eventBus.js';
 import LaDropdown from '@/components/la-dropdown';
 import loadjs from "loadjs";
+import { mapMutations, mapState } from 'vuex';
 
 export default {
     props: {
@@ -65,6 +67,7 @@ export default {
         }
     },
     methods: {
+        ...mapMutations('session', ['toggleNightMode']),
         setLanguage(lang) {
             this.showLanguageSelection = false;
             this.$store.commit('session/setAppLanguage', lang);
@@ -99,6 +102,8 @@ export default {
                                 "data-authentication-location",
                                 "oidc.user:https://login.bcc.no:X0ac7C8sROIhEzRGLJPFpLCZAlKGK4KV.access_token"
                             );
+                            // element.setAttribute("data-app-title", "BCC Literature");
+                            // element.setAttribute("data-app-url", "https://literature.bcc.no");
                         }
                     }
                 });
@@ -112,6 +117,7 @@ export default {
             this.$store.commit('session/setTopbarInitialized', true);
     },
     computed: {
+        ...mapState('session', ['nightMode']),
         isStandalone() {
             return window.matchMedia('(display-mode: standalone)').matches
         },

@@ -1,0 +1,110 @@
+label, input{
+    display: block;
+}
+label{
+    font-family: $body;
+    font-weight: bold;
+    font-size: 1.75em;
+    line-height: 1.4em;
+    letter-spacing: -0.2px;
+    text-decoration: none;
+    color: var(--base1);
+
+    margin-bottom: 4px;
+
+    &+h5{
+        margin-top: 24px;
+    }
+}
+input[type="text"], select{
+    box-shadow: inset 0px 0px 0px 2px  var(--base4);
+    border: none;
+    border-radius: 4px;
+    height: 40px;
+    width: 100%;
+    padding: 8px 12px;
+    box-sizing: border-box;
+    margin-bottom: 16px;
+
+    font-family: $body;
+    font-weight: regular;
+    font-size: 2em;
+    line-height: 20px;
+    background-color: var(--white);
+    color: var(--base1);
+    letter-spacing: -0.2px;
+
+    @include reset-appearance();
+
+    cursor: pointer;
+
+   @include transition(all, .1s);
+
+    &::placeholder{
+        color: var(--base3);
+    }
+    &:hover{
+        box-shadow: inset 0px 0px 0px 4px  var(--main-10);
+    }
+    &:focus{
+        box-shadow: inset 0px 0px 0px 2px  var(--main);
+        outline: none;
+    }	
+}
+input[type="radio"]{
+    @include reset-appearance();
+    display: block;
+
+    width: 24px;
+    height: 24px;
+    margin: 4px 0px;
+    float: left;
+
+    border-radius: 12px;
+    @include interactable();
+
+    cursor: pointer;
+
+    &:checked{
+        background: var(--gradient);
+        box-shadow: inset 0px 0px 0px 1px rgba(255,255,255,.2);
+
+        &:before{
+            display: block;
+            content: "";
+            position: relative;
+            
+            height: 10px;
+            width: 10px;
+    
+            left: 7px;
+            top: 7px;
+            
+            border-radius: 5px;
+            background: var(--white);
+            @include floating;
+        }
+    }
+
+    &+label{
+        display: inline-block;
+        line-height: 24px;
+        margin: 4px 16px 4px 8px;
+        width: auto;
+    }
+}
+select{
+    background: var(--white) url("../assets/icons/icon_24_chevron-down.svg") calc(100% - 8px) 8px no-repeat;
+}
+button{
+    @include reset-appearance();
+    border: none;
+
+    margin: 8px 0px 0px 0px;
+
+    &:disabled{
+        background: var(--base4);
+        box-shadow: none;
+        cursor: auto;
+    }
+}

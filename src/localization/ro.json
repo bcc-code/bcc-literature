@@ -3,7 +3,12 @@
     "app": {
         "select-language": "Alege limba",
         "error": "A apărut o eroare. Contactează it@bcc.no",
-        "song-treasures-notice": "Vedrørende sangbøker med tilhørende noter, se <a href=\"https://christianbookshop.org/nb/pages/music\" target=\"_blank\">denne filmen</a>. Logg deg inn på <a href=\"https://songtreasures.org\" target=\"_blank\">songtreasures.org</a> og lag en konto. Der kan du lese mer om konseptet SongTreasures, og abonnere på tilgang til 5 av SSSF sine sangbøker."
+        "song-treasures-notice": "Vezi <a href=\"https://christianbookshop.org/nb/pages/music\" target=\"_blank\">acest film</a> care explică unde găsești cărțile de cântări și de note. Intră pe <a href=\"https://songtreasures.org\" target=\"_blank\">songtreasures.org</a> și fă-ți cont. Acolo poți citi mai multe despre conceptul SongTreasures și poți cumpăra acces la 5 dintre cărțile SSSF.",
+        "user-voice": {
+            "title": "Cum putem îmbunătăți acest site?",
+            "description": "Aici poți vota, discuta și trimite idei despre cum poate fi îmbunătățit portalul de literatură BCC.",
+            "button": "Intră pe User Voice"
+        }
     },
     "articles": {
         "articles-all": "Toate articolele"
@@ -32,7 +37,7 @@
         "choose-year": "Alege anul",
         "open-in-safari": "Te rugăm folosește browser-ul tău pentru a descărca această carte",
         "read-random-chapters": "Citește o scrisoare aleatorie",
-        "open-audiobook": "Åpne lydbok"
+        "open-audiobook": "Ascultă audio"
     },
     "not-found": {
         "title": "Resursa pe care o căutați nu este disponibilă în această limbă.",
