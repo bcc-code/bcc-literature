@@ -31,8 +31,8 @@ export default {
     },
     mutations: {
         updateSearchResults: (state, value) => {
-            state.results = state.results.concat(value.results.value);
-            state.noOfResults = value.results['@odata.count'];
+            state.results = state.results.concat(value.results.results);
+            state.noOfResults = value.results.count;
             state.id = value.searchId;
 
             logCustomEvent("Search", {
@@ -106,17 +106,17 @@ export default {
                 }).catch(() => commit("updateAuthorResults", []));
             } 
             await articleApi.search(query, top, skip, authorFullNameFacet, bookNameFacet, years, exactMatch).then((res) => {
-                if (res.data.results == null) 
+                if (res.data.results == null)
                     return commit("toggleLoader");
 
                 commit("updateSearchResults", res.data || []);
 
                 if (newFacets)
-                    commit("updateFacetsOptions", res.data.results['@search.facets']);
+                    commit("updateFacetsOptions", res.data.results.facets);
 
                 commit("toggleLoader");
             }).catch((err) => {
-                console.log(err)
+                console.log(err);
                 commit("updateSearchResults", { results: { results: [], count: 0 } });
                 commit("updateFacetsOptions", {
                     "AuthorFullName": [],     
