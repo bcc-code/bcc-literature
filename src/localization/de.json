@@ -54,7 +54,10 @@
     },
     "reader": {
         "chapter": "Kapitel",
-        "subscription-required": "Du bist nicht für die gewählte Publikation abonniert."
+        "subscription-required": "Du bist nicht für die gewählte Publikation abonniert.",
+        "cant-play-text-to-speech": "Der Titel kann leider in dieser Sprach nicht abgespielt werden.",
+        "play-text-to-speech": "Anhören",
+        "pause-text-to-speech": "Stoppen"
     },
     "subscription": {
         "subscriptions": "Abonnements",

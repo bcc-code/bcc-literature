@@ -21,8 +21,9 @@
                             :key="article.id"
                             :article="article"
                             :highlight="wordsToHighlight"
+                            :bmmAlbumId="bmmAlbumId"
+                            :audioBookUrl="audioBookUrl"
                             :id="getElementName(article)"
-                            @toggleTextToSpeech="toggleTextToSpeech(article)"
                             ref="articles" />
                     </ArticleScroller>
                     <SubscriptionRequired :book="book" v-else></SubscriptionRequired>
@@ -31,6 +32,7 @@
         </section>
         <a alt="Toggle Sidebar" class="toggle-sidebar button-circular main" @click="showSidebar = !showSidebar"></a>
         <app-sidebar v-show="showSidebar" @chapterChanged="changeChapter" />
+        <TextToSpeechPlayer :articles="articles" />
     </template>
     <div id="print-footer">© Copyright Skjulte Skatters Forlag N-4098 Tananger, Norway.</div>
   </div>
@@ -39,6 +41,7 @@
 <script>
 import AppHeader from 'components/layout/app-header';
 import AppSidebar from 'components/layout/app-sidebar';
+import TextToSpeechPlayer from 'components/layout/app-text-to-speech-player';
 import NotFound from 'components/not-found';
 import BookMixins from '@/mixins/book';
 import { mapActions } from 'vuex';
@@ -49,7 +52,6 @@ import ArticleFull from 'components/reader/article-full';
 import SubscriptionRequired from 'components/reader/subscription-required-info';
 import FontFaceObserver from 'fontfaceobserver';
 import ReaderMixins from '@/mixins/reader';
-import { getLanguageTag } from '@/utils/languageTags';
 
 export default {
     components: {
@@ -60,7 +62,8 @@ export default {
         ArticleScroller,
         SubscriptionRequired,
         AppSidebar,
-        NotFound
+        NotFound,
+        TextToSpeechPlayer
     },
     data() {
         return {
@@ -68,7 +71,6 @@ export default {
             notFound: false,
             articles: [],
             amountToLoad: 5,
-            utterance: new SpeechSynthesisUtterance(),
             readingChapterId: null
         }
     },
@@ -94,6 +96,19 @@ export default {
         },
         getBackButtonRoute() {
             return this.$route.params.parent ? this.$route.params.parent : { name: 'book-index', params: { bookId: this.$route.params.bookId }};
+        },
+        audioBookUrl (){
+            return this.book.audioBookUrl;
+        },
+        bmmAlbumId () {
+            if(!this.audioBookUrl) {
+                return null;
+            }
+
+            let searchKey = 'album/',
+                albumIndex = this.audioBookUrl.indexOf(searchKey),
+                albumId = this.audioBookUrl.substr(0, this.audioBookUrl.length - (albumIndex + searchKey.length));
+            return albumId;
         }
     },
     methods: {
@@ -110,6 +125,9 @@ export default {
             this.articles = [];
             this.notFound = false;
             await this.loadBook(this.bookId).then(async (book) => {
+                //this.book = book;
+
+                console.log(this.book);
                 if (book.redirectToCorrectLanguage) {
                     let chapterId = parseInt(this.$route.params.chapterId);
                     this.$router.push({ name: 'read-publication', 
@@ -118,7 +136,7 @@ export default {
                             year: parseInt(this.$route.params.year), 
                             month: parseInt(this.$route.params.month),
                             chapterId: isNaN(chapterId) ? 1 : chapterId,
-                            parent: this.$route.params.parent
+                            parent: this.$route.params.parent,
                         }});
                 }
                 this.isPublication
@@ -148,25 +166,6 @@ export default {
                 this.$store.dispatch('articles/base/reset');
                 this.setCurrentChapter(chapterId);
                 this.$refs.loader.reset();
-            }
-        },
-        toggleTextToSpeech(article) {
-            window.speechSynthesis.cancel();
-
-            this.$refs.articles.forEach(el => {
-                el.speechTextButton = "Read";
-            });
-
-            if (this.readingChapterId === null || article.chapterId != this.readingChapterId) {
-                this.utterance.text = article.content.replaceAll(/<[^>]*>?/gm, ' ');
-                this.utterance.lang = getLanguageTag(article.language);
-
-                window.speechSynthesis.speak(this.utterance);
-                this.readingChapterId = article.chapterId;
-                this.$refs.articles[this.readingChapterId-1].speechTextButton = "Stop";
-            }
-            else {
-                this.readingChapterId = null;
             }
         }
     },

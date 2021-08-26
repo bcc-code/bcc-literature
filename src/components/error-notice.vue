@@ -13,6 +13,7 @@ export default {
     computed: {
         ...mapState('error',{
             message: 'message',
+            displayMessage: 'displayMessage',
             failedRequest: 'failedRequest',
             showNotice: 'showNotice'
         }),
@@ -26,6 +27,9 @@ export default {
             mailBody += `Failed request: ${this.failedRequest} \r\n\r\n`
             mailBody += `Error message: ${this.message.replace(/'/gi, "")}\r\n\r\n`
             mailBody += 'Additional information: '
+            if (this.displayMessage){
+                return this.displayMessage;
+            }
             return this.$t('app.error').replace("it@bcc.no", "<a href='mailto:it@bcc.no?Subject=" + encodeURIComponent(mailSubject) + "&Body=" + encodeURIComponent(mailBody) + "'>it@bcc.no</a>");
         }
     },

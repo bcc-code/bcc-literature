@@ -1,38 +1,33 @@
 <template>
     <div>
-        <h5 :id="'chapter-title-'+article.chapterId">{{$t('reader.chapter')}} {{article.chapterId}} <button @click="toggleTextToSpeech(article)">({{speechTextButton}})</button></h5>
+        <h5 :id="'chapter-title-' + article.chapterId">{{ $t('reader.chapter') }} {{ article.chapterId }}</h5>
+        <TextToSpeechButton :article="article" :bmmAlbumId='bmmAlbumId' :audioBookUrl='audioBookUrl' />
         <div v-if="article.content != null" v-html="article.content" />
         <DocumentViewer v-else :article="article" />
-   </div>
+    </div>
+    
 </template>
 
 <script>
-import DocumentViewer from "./document-viewer"
+import DocumentViewer from './document-viewer';
+import TextToSpeechButton from './article-text-to-speech-btn'
 
 export default {
-    props: ['article', 'highlight'],
+    props: ['article', 'highlight', 'bmmAlbumId', 'audioBookUrl'],
     components: {
-        DocumentViewer
-    },
-    data() {
-        return {
-            speechTextButton: "Read"
-        }
+        DocumentViewer,
+        TextToSpeechButton
     },
     mounted() {
         if (this.highlight != null && this.highlight.length > 0) {
-            this.article.content = this.article.content.replace(new RegExp("([^a-zA-Z])("+ this.highlight.join('|') +")(?=[^a-zA-Z])", 'gi'), "$1<span>$2</span>");
+            this.article.content = this.article.content.replace(new RegExp('([^a-zA-Z])(' + this.highlight.join('|') + ')(?=[^a-zA-Z])', 'gi'), '$1<span>$2</span>');
         }
     },
-    methods: {
-        toggleTextToSpeech(article) {
-            this.$emit('toggleTextToSpeech', article);
-        },
-    }
-}
+};
 </script>
 <style>
-.reading-view ol, .reading-view ul {
+.reading-view ol,
+.reading-view ul {
     list-style: none;
     padding-left: 0;
 }

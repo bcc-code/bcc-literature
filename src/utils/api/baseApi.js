@@ -2,7 +2,8 @@
 import keys from 'keys';
 import store from 'store';
 import authenticator from 'utils/auth';
-const baseUri = keys.API_BASE_PATH;
+const baseUri = keys.API_BASE_PATH,
+    bmmBaseUri = keys.BMM_API_BASE_PATH;
 
 function addLanguageQuery(requestUrl){  
     var langParam = (requestUrl.indexOf('?') > -1 ? "&" : "?") + "lang=" + store.state.session.appLanguage;
@@ -23,6 +24,25 @@ async function sendRequest(requestMethod, requestUrl, bodyData = null, headers =
     });
 }
 
+/**
+ * 
+ * @param {string} requestMethod 
+ * @param {string} customUrl 
+ * @param {*} bodyData 
+ * @param {*} headers 
+ * @returns 
+ */
+async function sendCustomRequest(requestMethod, customUrl, bodyData = null, headers = {}){
+    var accessToken = await authenticator.getAccessToken();
+    headers.Authorization = 'Bearer ' + accessToken;
+    return axios({
+        headers: headers,
+        method: requestMethod,
+        data: bodyData,
+        url: customUrl
+    });
+}
+
 async function getDownloadEbookLink(requestUrl){
     return new Promise((resolve, reject) => {
         authenticator.getIdToken().then(
@@ -40,7 +60,7 @@ async function getDownloadEbookLink(requestUrl){
  */
 axios.interceptors.response.use(
     (response) => {
-        return response
+        return response;
     },
     async (error) => { 
         if (error.response.status === 401) {
@@ -52,7 +72,9 @@ axios.interceptors.response.use(
 
 export default {
     sendRequest,
+    sendCustomRequest,
     baseUri,
+    bmmBaseUri,
     getDownloadEbookLink,
-    addLanguageQuery
+    addLanguageQuery,
 };

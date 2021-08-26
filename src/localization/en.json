@@ -36,7 +36,10 @@
     },
     "not-found": {
         "title": "The resource you are looking for is not available in this language.",
-        "suggestions": "It is available in the following languages:"
+        "suggestions": "It is available in the following languages:",
+        "cant-play-text-to-speech": "This article cannot be played in this language",
+        "play-text-to-speech": "Listen",
+        "pause-text-to-speech": "Stop"
     },
     "search": {
         "search": "Search",

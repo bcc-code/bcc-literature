@@ -54,7 +54,10 @@
     },
     "reader": {
         "chapter": "Kapittel",
-        "subscription-required": "Du abonnerer ikke på den valgte utgivelsen."
+        "subscription-required": "Du abonnerer ikke på den valgte utgivelsen.",
+        "play-text-to-speech": "Spil av",
+        "pause-text-to-speech": "Stop",
+        "cant-play-text-to-speech": "Denne artikelen kan ikke spilles av på dette språk."
     },
     "subscription": {
         "subscriptions": "Abonnementer",
