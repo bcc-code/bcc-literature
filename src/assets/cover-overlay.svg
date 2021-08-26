@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="300px" height="420px" viewBox="0 0 300 420" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
+    <title>cover-overlay</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <radialGradient cx="100%" cy="0%" fx="100%" fy="0%" r="167.708333%" gradientTransform="translate(1.000000,0.000000),scale(1.000000,0.714286),translate(-1.000000,-0.000000)" id="radialGradient-1">
+            <stop stop-color="#FFFFFF" stop-opacity="0.2" offset="0%"></stop>
+            <stop stop-color="#808080" stop-opacity="0" offset="49.7175887%"></stop>
+            <stop stop-color="#000000" stop-opacity="0.1" offset="100%"></stop>
+        </radialGradient>
+    </defs>
+    <g id="cover-overlay" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect id="Rectangle-Copy-2" fill="url(#radialGradient-1)" x="0" y="0" width="300" height="420"></rect>
+        <rect id="Rectangle" fill="#1A488D" opacity="0.100000001" x="3" y="0" width="2" height="420"></rect>
+        <rect id="Rectangle-Copy-4" fill="#FFFFFF" opacity="0.200000003" x="5" y="0" width="2" height="420"></rect>
+    </g>
+</svg>

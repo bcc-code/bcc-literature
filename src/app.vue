@@ -17,7 +17,7 @@ export default {
         ErrorNotice
     }, 
     computed: {
-        ...mapState('session', ['topbarInitialized'])
+        ...mapState('session', ['topbarInitialized', 'nightMode'])
     },
     methods: {
         reset() {
@@ -32,6 +32,21 @@ export default {
     destroyed() {
         EventBus.$off(Events.CONTENT_LANGUAGE_CHANGED, this.reset);
     },  
+    watch: {
+        nightMode: {
+            immediate: true,
+            handler: function (val) {
+                if (val) {
+                    document.body.classList.remove('light')
+                    document.body.classList.add('dark')
+                }
+                else {
+                    document.body.classList.remove('dark')
+                    document.body.classList.add('light')
+                }
+            }
+        }
+    }
 }
 </script>
 <style>

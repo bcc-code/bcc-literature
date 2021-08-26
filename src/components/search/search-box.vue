@@ -40,7 +40,7 @@ export default {
 .clear-search-input {
     width: 24px;
     height: 24px;
-    background-color: #F5F6FA;
+    background-color: var(--base5);
     position: absolute;
     top: 8px;
     right: 8px;
@@ -49,7 +49,7 @@ export default {
     transition: 250ms ease;
 }
 .clear-search-input:hover {
-    background-color: #e6e9f2;
+    background-color: var(--base4);
 }
 .clear-search-input:after {
     content: '';

@@ -8,8 +8,7 @@
               </div>
           </router-link>
     </article>  
-  </template>
-
+</template>
 <script>
 import BookCardCover from 'components/grid/tiles/card-cover';
 export default {
@@ -63,6 +62,6 @@ article.search-result .result-book-only h4 {
     padding-top: 15px;
     position: relative;
     margin: 0px;
-    color: #16171A;
+    color: var(--base1);
 }
 </style>

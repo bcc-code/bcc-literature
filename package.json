@@ -4,13 +4,15 @@
   "private": true,
   "scripts": {
     "serve": "cross-env NODE_ENV=local vue-cli-service serve",
+    "dev": "cross-env NODE_ENV=localdev vue-cli-service serve",
     "builddev": "cross-env NODE_ENV=production vue-cli-service build",
     "build": "cross-env NODE_ENV=production vue-cli-service build",
     "lint": "vue-cli-service lint",
     "crowdin-update": "crowdin-helper up -c src/localization/crowdin-helper.json -b Literature-frontend",
     "crowdin-download": "crowdin-helper down --force -c src/localization/crowdin-helper.json -b Literature-frontend",
     "test": "cross-env NODE_ENV=local ./node_modules/.bin/cucumber-js --require-module esm tests/features",
-    "devTest": "cross-env NODE_ENV=development ./node_modules/.bin/cucumber-js --require-module esm tests/features"
+    "devTest": "cross-env NODE_ENV=development ./node_modules/.bin/cucumber-js --require-module esm tests/features",
+    "scss": "sass src/styles/:src/assets --watch --no-source-map"
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
@@ -51,6 +53,7 @@
     "eslint-config-prettier": "^4.1.0",
     "eslint-plugin-promise": "^4.3.1",
     "eslint-plugin-vue": "^5.0.0",
+    "sass": "^1.38.0",
     "vue-template-compiler": "^2.6.14"
   }
 }

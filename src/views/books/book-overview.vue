@@ -69,6 +69,10 @@ export default {
 </script>
 
 <style scoped>
+.banners {
+    display: flex;
+}
+
 @media only screen and (max-width: 1049px) {
     .banners {
         flex-direction: column;
