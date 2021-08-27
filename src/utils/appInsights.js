@@ -4,6 +4,7 @@ import session from '../store/session.js';
 export async function logCustomEvent(customEventName, customEventProperties) {
     customEventProperties.UserId = createAnalyticsId(session.state.userInfo);
     customEventProperties.Age = calculateUserAge(session.state.userInfo.birthdate);
+    customEventProperties.Country = session.state.userInfo['https://login.bcc.no/claims/CountryIso2Code'];
     Vue.appInsights.trackEvent({
         name: customEventName, 
         properties: customEventProperties
