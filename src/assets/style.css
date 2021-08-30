@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Inknut+Antiqua:700,900");
 @import url("https://fonts.googleapis.com/css?family=Ubuntu:400,500,700");
 @import url("https://fonts.googleapis.com/css?family=Merriweather:400,400i,900,900i&display=swap");
+
 body.light {
   --main: #6291EB;
   --main-5: rgba(0, 46, 148, 0.05);
@@ -41,8 +42,7 @@ body.dark {
   }
 }
 .container .section-header {
-  height: 48px;
-  padding: 0px 0px;
+  padding: 0px;
   border-top: 1px solid var(--white);
 }
 .container .section-header.border {
@@ -136,8 +136,6 @@ body.dark {
 }
 
 .overlay {
-  visibility: hidden;
-  opacity: 0;
   position: fixed;
   top: 0px;
   right: 0px;
@@ -206,7 +204,7 @@ body.dark {
   height: 32px;
   width: auto;
   max-width: 250px;
-  padding: 0px 32px 0px 12px;
+  padding: 0px 28px 0px 12px;
   margin: 0px;
   border-radius: 20px;
   font-family: "Ubuntu", sans-serif;
@@ -245,7 +243,7 @@ body.dark {
   content: "";
   height: 40px;
   width: 40px;
-  right: 0px;
+  right: -4px;
   top: -4px;
   background: url("../assets/icons/icon_24_chevron-down.svg") center center no-repeat;
 }
@@ -927,9 +925,10 @@ nav a {
     padding: 14px 12px 14px 12px;
   }
 }
-.sidebar-open .overlay {
-  visibility: visible !important;
-  opacity: 1 !important;
+@media only screen and (min-width: 648px) {
+  .sidebar-open .overlay {
+    display: none !important;
+  }
 }
 .sidebar-open .reading-view {
   padding-right: 366px;
@@ -1136,6 +1135,12 @@ header h4 {
   overflow: hidden;
   text-overflow: ellipsis;
 }
+@media only screen and (max-width: 648px) {
+  header h4 {
+    width: calc(100% - 140px);
+    left: 48px;
+  }
+}
 header .header__night-mode {
   display: block;
   height: 48px;
@@ -1177,7 +1182,7 @@ iframe {
   position: relative;
   width: 108px;
   height: 148px;
-  margin: 0px 16px 0px 0px;
+  margin: 0px 26px 0px 0px;
   background: var(--gradient);
   background-size: cover;
   padding: 4px;
@@ -1192,7 +1197,9 @@ iframe {
 @media only screen and (max-width: 648px) {
   .book-header figure {
     margin: 0px auto 24px auto;
-    float: none;
+  }
+  .book-header h2 {
+    margin: 0 32px 4px;
   }
 }
 .book-header figure:before {
@@ -1211,40 +1218,29 @@ iframe {
 }
 .book-header h5 {
   color: var(--base3);
-}
-.book-header .info {
-  width: calc(100% - 124px);
-  float: right;
-  padding-bottom: 48px;
+  margin-bottom: 12px;
 }
 @media only screen and (max-width: 648px) {
+  .book-header h5 {
+    margin: 0 32px 12px;
+  }
   .book-header .info {
-    width: calc(100% - 64px);
-    margin: 0px 32px;
-    float: none;
     text-align: center;
-    padding-bottom: 56px;
   }
 }
-.book-header .actions {
-  position: absolute;
-  left: 124px;
-  bottom: 0px;
+.book-header .actions .button-secondary {
+  margin: 4px;
 }
-@media only screen and (max-width: 648px) {
-  .book-header .actions {
-    width: 100%;
-    left: 0px;
-  }
-}
-.book-header .actions .button-secondary, .book-header .actions .button-main {
-  margin: 0px 8px 0px 0px;
+.book-header .actions .button-secondary:first-child {
+  margin-left: 0;
 }
 @media only screen and (max-width: 648px) {
   .book-header .actions .button-secondary, .book-header .actions .button-main {
     width: calc(50% - 12px);
-    margin: 8px 8px 0px 0px;
   }
+}
+.book-header .button-main {
+  margin: 4px;
 }
 .book-header.ebook-only {
   height: 80vh;
@@ -1253,25 +1249,14 @@ iframe {
   top: 50%;
   transform: translateY(-50%);
 }
-.book-header.ebook-only .info {
-  width: calc(100% - 64px);
-  margin: 0px 32px;
-  float: none;
-  text-align: center;
-  padding-bottom: 56px;
-}
 .book-header.ebook-only figure {
   margin: 0px auto 24px auto;
-  float: none;
 }
 .book-header.ebook-only .actions {
-  width: 100%;
   text-align: center;
-  left: 0px;
-  bottom: auto;
 }
 .book-header.ebook-only .actions .button-main {
-  margin: 24px 0px 0px 0px;
+  margin: 24px 4px 0px;
   width: auto;
 }
 
@@ -2105,13 +2090,13 @@ a {
   margin-bottom: 8px;
 }
 .reading-view article.center h5 {
-  margin-top: 48px;
+  margin-top: 32px;
   margin-bottom: 8px;
   position: relative;
 }
 .reading-view article.center h6 {
   color: var(--base3);
-  margin-bottom: 48px;
+  margin-bottom: 32px;
 }
 .reading-view article.center p {
   font-family: "Merriweather", serif;
@@ -2332,6 +2317,9 @@ article.search-result a h4 {
 }
 article.search-result a p {
   margin: 0px 0px 8px 0px;
+}
+article.search-result a.result-author-only h4 {
+  margin-bottom: 0;
 }
 article.search-result a span {
   position: relative;
@@ -2662,4 +2650,28 @@ ol.chapters li a h5 {
   background: var(--gradient);
   border-radius: 4px;
   margin: 0px 0px 80px 0px;
+}
+
+.actions .button-main.small, .actions .button-secondary.small {
+  line-height: normal;
+  padding: 8px 10px;
+  vertical-align: middle;
+}
+
+/* Tailwind CSS */
+
+.flex {
+  display: flex;
+}
+.flex-col {
+  flex-direction: column;
+}
+.justify-center {
+  justify-content: center;
+}
+
+@media only screen and (max-width: 648px) {
+  .sm-flex-col {
+    flex-direction: column;
+  }
 }
