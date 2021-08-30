@@ -136,6 +136,8 @@ body.dark {
 }
 
 .overlay {
+  visibility: hidden;
+  opacity: 0;
   position: fixed;
   top: 0px;
   right: 0px;
@@ -925,10 +927,9 @@ nav a {
     padding: 14px 12px 14px 12px;
   }
 }
-@media only screen and (min-width: 648px) {
-  .sidebar-open .overlay {
-    display: none !important;
-  }
+.sidebar-open .overlay {
+  visibility: visible !important;
+  opacity: 1 !important;
 }
 .sidebar-open .reading-view {
   padding-right: 366px;
@@ -1137,8 +1138,8 @@ header h4 {
 }
 @media only screen and (max-width: 648px) {
   header h4 {
-    width: calc(100% - 140px);
-    left: 48px;
+    width: calc(100% - 185px);
+    left: 85px;
   }
 }
 header .header__night-mode {
@@ -1152,6 +1153,11 @@ header .header__night-mode {
   transition: transform 0.3s;
   -webkit-transition-timing-function: ease-out;
   transition-timing-function: ease-out;
+}
+@media only screen and (max-width: 648px) {
+  header .header__night-mode {
+    width: 24px;
+  }
 }
 header .header__night-mode.dark {
   background: url("../assets/icons/icon_sun.svg") center center no-repeat;
