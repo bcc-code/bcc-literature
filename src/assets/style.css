@@ -256,7 +256,7 @@ body.dark {
   height: auto;
   max-height: 0px;
   padding: 0px;
-  background: var(--base1);
+  background: #16171A;
   opacity: 0;
   visibility: hidden;
   z-index: 10;
@@ -277,7 +277,7 @@ body.dark {
   opacity: 1;
 }
 .dropdown section.custom-select h6, .filter-search section.custom-select h6 {
-  color: var(--base2);
+  color: #5A617D;
   padding: 0px 16px 4px 16px;
 }
 .dropdown section.custom-select ul, .filter-search section.custom-select ul {
@@ -291,7 +291,7 @@ body.dark {
   font-weight: regular;
   font-size: 2em;
   line-height: 1.3em;
-  color: var(--white);
+  color: #fff;
   letter-spacing: -0.2px;
   cursor: pointer;
   opacity: 0;
