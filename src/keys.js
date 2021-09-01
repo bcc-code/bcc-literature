@@ -24,7 +24,7 @@ default:
         keys.API_BASE_PATH = 'https://devliteratureapi.bcc.no/api/';
         break;
     default:
-        keys.API_BASE_PATH = 'http://localhost:58830/api/';
+        keys.API_BASE_PATH = 'http://localhost:58330/api/';
         break;
     }
     keys.APP_INSIGHTS = '6856efb0-33a0-40ec-898a-fa1676670481';
