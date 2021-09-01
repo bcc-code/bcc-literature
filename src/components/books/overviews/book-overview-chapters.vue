@@ -78,7 +78,8 @@ export default {
     },
     methods: {
         getFeatureFlags: async function() {
-            await FeatureManagerApi.getAllFeatureFlags()
+            let email = this.$store.state.session.userInfo.email;
+            await FeatureManagerApi.getAllFeatureFlags(email)
                 .then((flags) => {
                     for (const [key, value] of Object.entries(flags.data)) {
                         this.featureFlags[key] = value;

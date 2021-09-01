@@ -4,6 +4,6 @@ export default {
     getAllFeatureFlags
 };
 
-async function getAllFeatureFlags() {
-    return await baseApi.sendRequest("get", "FeatureFlag/all");
+async function getAllFeatureFlags(email) {
+    return await baseApi.sendRequest("get", "FeatureFlag/all/" + email);
 }
