@@ -1,0 +1,404 @@
+@import url("https://fonts.googleapis.com/css?family=Lato:700,900");
+body.literature-widget {
+  position: relative;
+  min-height: 100vh;
+  margin: 0px;
+  font-size: 8px;
+  line-height: 1.3em;
+}
+body.literature-widget * {
+  text-rendering: optimizeLegibility;
+  -moz-osx-font-smoothing: grayscale;
+  font-smoothing: antialiased;
+  -webkit-font-smoothing: antialiased;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+body.literature-widget h1, body.literature-widget h2, body.literature-widget h3, body.literature-widget h4, body.literature-widget h5, body.literature-widget h6, body.literature-widget p {
+  margin: 0px;
+}
+body.literature-widget h1 {
+  font-family: "Lato", sans-serif;
+  font-weight: bold;
+  font-size: 4em;
+  line-height: 1.4em;
+  color: #16171A;
+  letter-spacing: -1px;
+  text-decoration: none;
+}
+@media only screen and (max-width: 648px) {
+  body.literature-widget h1 {
+    font-size: 2.75em;
+  }
+}
+body.literature-widget h2 {
+  font-family: "Lato", sans-serif;
+  font-weight: bold;
+  font-size: 3.5em;
+  line-height: 1.4em;
+  color: #16171A;
+  letter-spacing: -1px;
+  text-decoration: none;
+}
+@media only screen and (max-width: 648px) {
+  body.literature-widget h2 {
+    font-size: 2.375em;
+  }
+}
+body.literature-widget h3 {
+  font-family: "Lato", sans-serif;
+  font-weight: bold;
+  font-size: 2.5em;
+  line-height: 1.4em;
+  color: #16171A;
+  letter-spacing: -1px;
+  text-decoration: none;
+}
+@media only screen and (max-width: 648px) {
+  body.literature-widget h3 {
+    font-size: 2em;
+  }
+}
+body.literature-widget h4 {
+  font-family: "Lato", sans-serif;
+  font-weight: bold;
+  font-size: 2.125em;
+  line-height: 1.4em;
+  color: #16171A;
+  letter-spacing: -0.2px;
+  text-decoration: none;
+}
+body.literature-widget h5 {
+  font-family: "Lato", sans-serif;
+  font-weight: bold;
+  font-size: 1.75em;
+  line-height: 1.4em;
+  color: #334862;
+  letter-spacing: -0.2px;
+  text-decoration: none;
+}
+body.literature-widget h5 span {
+  font-weight: 400;
+  padding: 0px 0px 0px 8px;
+}
+body.literature-widget h6 {
+  font-family: "Lato", sans-serif;
+  font-weight: bold;
+  font-size: 1.375em;
+  line-height: 1.8em;
+  color: #334862;
+  letter-spacing: -0.2px;
+  text-decoration: none;
+}
+body.literature-widget p {
+  font-family: "Lato", sans-serif;
+  font-weight: regular;
+  font-size: 2em;
+  line-height: 1.8em;
+  color: #838CA8;
+  letter-spacing: -0.2px;
+  text-decoration: none;
+}
+body.literature-widget p.small {
+  font-size: 1.75em;
+}
+body.literature-widget .button-main {
+  display: inline-block;
+  padding: 6px 20px;
+  margin: 8px;
+  background: #334862;
+  box-shadow: inset 0px 0px 0px 1px rgba(19, 40, 54, 0.1);
+  border-radius: 0px;
+  font-family: "Lato", sans-serif;
+  font-weight: bold;
+  font-size: 1.75em;
+  line-height: 2em;
+  color: #fff;
+  letter-spacing: -0.2px;
+  text-decoration: none;
+  cursor: pointer;
+  -webkit-transition: box-shadow 0.1s;
+  transition: box-shadow 0.1s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+body.literature-widget .button-main.small {
+  padding: 2px 12px;
+}
+body.literature-widget .button-main:hover {
+  box-shadow: inset 0px 0px 0px 2px rgba(19, 40, 54, 0.25);
+}
+body.literature-widget .button-main:active {
+  box-shadow: inset 0px 0px 0px 4px rgba(19, 40, 54, 0.25);
+}
+body.literature-widget .button-secondary {
+  display: inline-block;
+  padding: 6px 20px;
+  margin: 8px;
+  background: rgba(0, 46, 148, 0.05);
+  border-radius: 0px;
+  font-family: "Lato", sans-serif;
+  font-weight: bold;
+  font-size: 1.75em;
+  line-height: 2em;
+  color: #334862;
+  letter-spacing: -0.2px;
+  text-decoration: none;
+  box-shadow: inset 0px 0px 0px 1px rgba(19, 40, 54, 0);
+  cursor: pointer;
+  -webkit-transition: all 0.1s;
+  transition: all 0.1s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+body.literature-widget .button-secondary.small {
+  padding: 2px 12px;
+}
+body.literature-widget .button-secondary:hover {
+  box-shadow: inset 0px 0px 0px 2px rgba(0, 46, 148, 0.1);
+}
+body.literature-widget .button-secondary:active {
+  box-shadow: inset 0px 0px 0px 4px rgba(0, 46, 148, 0.1);
+}
+body.literature-widget .container {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0px;
+}
+body.literature-widget .subscriptions-grid {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  flex-flow: center;
+  align-items: stretch;
+}
+body.literature-widget .subscription {
+  display: inline-block;
+  position: relative;
+  background: #fff;
+  border-radius: 0px;
+  padding: 20px 20px 72px 20px;
+  margin: 0px 0px 24px 0px;
+  float: left;
+  width: calc(50% - 12px);
+  box-shadow: 0 1px 3px -2px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+body.literature-widget .subscription:first-child {
+  margin-right: 24px;
+}
+body.literature-widget .subscription h4, body.literature-widget .subscription h5 {
+  margin-right: 148px;
+  line-height: 24px;
+}
+@media only screen and (max-width: 800px) {
+  body.literature-widget .subscription h4, body.literature-widget .subscription h5 {
+    margin-right: 80px;
+  }
+}
+body.literature-widget .subscription p {
+  margin: 8px 0px;
+  margin-right: 148px;
+}
+@media only screen and (max-width: 800px) {
+  body.literature-widget .subscription p {
+    margin-right: 80px;
+  }
+}
+@media only screen and (max-width: 648px) {
+  body.literature-widget .subscription p {
+    display: none;
+  }
+}
+body.literature-widget .subscription div.signup-cta {
+  position: absolute;
+  width: 100%;
+  padding: 8px 0px 0px 0px;
+  height: auto;
+  bottom: 24px;
+}
+@media only screen and (max-width: 648px) {
+  body.literature-widget .subscription div.signup-cta {
+    padding: 16px 0px 0px 0px;
+  }
+}
+body.literature-widget .subscription div.signup-cta .button-main {
+  margin: 0px 12px 0px 0px;
+}
+body.literature-widget .subscription div.signup-cta h5 {
+  color: #fff;
+  display: inline-block;
+}
+body.literature-widget .subscription figure {
+  display: block;
+  height: 90px;
+  width: 65px;
+  background-size: cover;
+  border-radius: 2px;
+  position: absolute;
+  top: 24px;
+  right: 32px;
+  margin: 0px;
+  z-index: 10;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+@media only screen and (max-width: 800px) {
+  body.literature-widget .subscription figure {
+    top: 26px;
+    right: 32px;
+  }
+}
+body.literature-widget .subscription::after {
+  display: block;
+  position: absolute;
+  content: "";
+  height: 90px;
+  width: 65px;
+  background: #334862;
+  border-radius: 2px;
+  position: absolute;
+  top: 24px;
+  right: 32px;
+  transform: rotate(5deg);
+  transform-origin: bottom right;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+@media only screen and (max-width: 800px) {
+  body.literature-widget .subscription::after {
+    top: 26px;
+    right: 32px;
+  }
+}
+body.literature-widget .subscription.active {
+  background: #334862;
+  border: none;
+  padding: 20px 20px 107px 20px;
+}
+body.literature-widget .subscription.active::after {
+  display: none;
+}
+body.literature-widget .subscription.active h5 {
+  padding-left: 32px;
+  background: url("../assets/icons/icon_checkmark_white.svg") no-repeat;
+  margin-right: 0px;
+  color: #fff;
+}
+body.literature-widget .subscription.active h4 {
+  color: #fff;
+  margin-right: 0px;
+}
+body.literature-widget .subscription.active p {
+  margin-right: 0px;
+}
+body.literature-widget .subscription.active figure {
+  position: relative;
+  right: auto;
+  top: auto;
+  width: 32px;
+  height: 45px;
+}
+body.literature-widget .subscription.active .button-secondary {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+  position: absolute;
+  right: 16px;
+  top: 20px;
+  box-shadow: inset 0px 0px 0px 2px rgba(255, 255, 255, 0);
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+body.literature-widget .subscription.active .button-secondary:hover {
+  box-shadow: inset 0px 0px 0px 4px rgba(255, 255, 255, 0.1);
+}
+body.literature-widget .subscription.active .button-secondary:active {
+  box-shadow: inset 0px 0px 0px 4px rgba(255, 255, 255, 0.2);
+}
+body.literature-widget .subscription.active .latest {
+  border-top: 1px solid rgba(96, 130, 206, 0.2);
+  padding: 20px;
+  bottom: 0px;
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  text-decoration: none;
+  background: rgba(96, 130, 206, 0) url("../assets/icons/icon_24_chevron.svg") calc(100% - 16px) center no-repeat;
+  cursor: pointer;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+body.literature-widget .subscription.active .latest:hover {
+  background: rgba(96, 130, 206, 0.05) url("../assets/icons/icon_24_chevron.svg") calc(100% - 16px) center no-repeat;
+}
+body.literature-widget .subscription.active .latest:active {
+  background: rgba(96, 130, 206, 0.1) url("../assets/icons/icon_24_chevron.svg") calc(100% - 16px) center no-repeat;
+}
+body.literature-widget .subscription.active .latest figure {
+  float: left;
+  margin-right: 16px;
+}
+body.literature-widget .subscription.active .latest h6 {
+  color: #838CA8;
+}
+@media only screen and (max-width: 1024px) {
+  body.literature-widget .subscription {
+    width: 100%;
+    margin-right: 0px;
+  }
+  body.literature-widget .subscription:first-child {
+    width: 100%;
+    margin-right: 0px;
+  }
+}
+body.literature-widget .literature-teaser {
+  display: inline-block;
+  position: relative;
+  background: #fff;
+  border-radius: 0px;
+  padding: 20px;
+  margin: 0px 0px 24px 0px;
+  float: left;
+  width: 100%;
+  box-shadow: 0 1px 3px -2px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+body.literature-widget .literature-teaser h4, body.literature-widget .literature-teaser h5 {
+  margin-right: 43%;
+  line-height: 24px;
+}
+body.literature-widget .literature-teaser p {
+  margin: 8px 0px;
+  margin-right: 43%;
+}
+body.literature-widget .literature-teaser figure {
+  display: block;
+  position: absolute;
+  background-size: cover;
+  height: 100%;
+  width: 40%;
+  top: 0px;
+  right: 0px;
+  margin: 0px;
+  border-radius: 0px 8px 8px 0px;
+}
+body.literature-widget .literature-teaser .button-main {
+  margin: 8px 0px 0px 0px;
+}

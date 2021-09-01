@@ -5,7 +5,8 @@
             @click="setLanguage"
             :options="dropdownOptions"
             :button-text="currentLanguage"
-            :inner-text="$t('app.select-language')" />	
+            :inner-text="$t('app.select-language')" />
+        <a href="#" alt="Night mode" class="header__night-mode" :class="{ 'dark': nightMode }" @click.prevent="toggleNightMode"></a>
         <h4 v-if="showBackButton">{{pageName}}</h4>
         <nav v-else>
             <router-link v-for="menu in ['books', 'authors']" :key="menu" :to="{ name: menu }" :class="{ 'current' : $t(`${menu}.${menu}`) == pageName }">
@@ -19,6 +20,8 @@
 import { EventBus, Events } from '@/utils/eventBus.js';
 import LaDropdown from '@/components/la-dropdown';
 import loadjs from "loadjs";
+import { mapState } from 'vuex';
+import { logCustomEvent } from '@/utils/appInsights';
 
 export default {
     props: {
@@ -78,6 +81,12 @@ export default {
             }
             this.$router.push(this.backButtonRoute)  
         },
+        toggleNightMode() {
+            this.$store.commit('session/toggleNightMode');
+            logCustomEvent("ToggleNightMode", {
+                NightMode: this.nightMode
+            });
+        },
         initTopbar() {
             var scriptId = "script-bcc-topbar";
             var self = this;
@@ -99,8 +108,8 @@ export default {
                                 "data-authentication-location",
                                 "oidc.user:https://login.bcc.no:X0ac7C8sROIhEzRGLJPFpLCZAlKGK4KV.access_token"
                             );
-                            element.setAttribute("data-app-title", "BCC Literature");
-                            element.setAttribute("data-app-url", "https://literature.bcc.no");
+                            // element.setAttribute("data-app-title", "BCC Literature");
+                            // element.setAttribute("data-app-url", "https://literature.bcc.no");
                         }
                     }
                 });
@@ -114,6 +123,7 @@ export default {
             this.$store.commit('session/setTopbarInitialized', true);
     },
     computed: {
+        ...mapState('session', ['nightMode']),
         isStandalone() {
             return window.matchMedia('(display-mode: standalone)').matches
         },

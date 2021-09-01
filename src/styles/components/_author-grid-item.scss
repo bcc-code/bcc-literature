@@ -1,0 +1,126 @@
+// Popular authors
+article.popular-author{
+	display: inline-block;
+	padding: 0px 12px 32px 12px;
+
+	width: 16.66%;
+
+	a{
+		text-decoration: none;
+
+		figure{
+			position: relative;
+			width: 90%;
+			padding-top: 90%;
+			margin: 0% 5% 0% 5%;
+			background: var(--gradient);
+			background-size: cover; 
+
+			border-radius: 50%;
+			box-shadow: 
+					0px 0px 0px 0px var(--white),
+					0px 0px 0px 0px var(--main);
+
+			@include transition(all, .1s);
+		}
+		h4{
+			color: var(--base1);
+			margin: 20px 0px 0px 0px;
+			font-size: 1.9em;
+			text-align: center;
+		}
+		h6{
+			margin: 0px;
+			text-align: center;
+		}
+
+		&:hover{
+			@media only screen and (min-width: 648px) {
+				figure{
+					box-shadow: 
+						0px 0px 0px 2px var(--white),
+						0px 0px 0px 4px var(--main);
+				}
+			}
+		}
+		&:active{
+			figure{
+				box-shadow: 
+					0px 0px 0px 0px var(--white),
+					0px 0px 0px 4px var(--main);
+			}
+		}
+	}
+
+	@media only screen and (max-width: 1080px) {
+		width: 33.3%;
+	}
+
+	@media only screen and (max-width: 648px) {
+		width: 100%;
+		padding: 0px 8px 0px 8px;
+
+		a{
+			figure{
+				width: 56px;
+				height: 56px;
+				padding-top: 56px;
+				margin: 8px 12px 8px 0px;
+
+				float: left;
+			}
+
+			h4, h6{
+				display: block;
+				width: calc(100% - 68px);
+				float: left;
+				text-align: left;
+			}
+		}
+	}
+}
+
+// Letter section
+article.letter{
+	display: inline-block;
+	padding: 0px 12px 32px 12px;
+
+	width: 100%;
+	column-count: 4;
+
+	@media only screen and (max-width: 1080px) {
+		column-count: 3;
+	}
+
+	@media only screen and (max-width: 768px) {
+		column-count: 2;
+	}
+
+	@media only screen and (max-width: 648px) {
+		width: 100%;
+		column-count: 1;
+		padding: 0px 8px 32px 8px;
+	}
+
+	h1{
+		margin-bottom: 0px;
+		column-span: all;
+		padding-bottom: 16px;
+		border-bottom: solid 2px var(--base4);
+	}
+	p{
+		line-height: 24px;
+		padding: 8px 0px;
+		border-bottom: solid 1px var(--base4);
+		break-inside: avoid-column;
+
+		a{
+			color: var(--base2);
+			text-decoration: none;
+
+			&:hover{
+				color: var(--main);
+			}
+		}
+	}
+}

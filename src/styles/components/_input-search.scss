@@ -1,0 +1,113 @@
+//Search field
+
+form.search-form{
+	position: relative;
+
+	.main-search{
+		display: inline-block;
+		background: var(--white) url("../assets/icons/icon_search_blue.svg") 8px 8px no-repeat;
+		box-shadow: inset 0px 0px 0px 2px  var(--base4);
+		border: none;
+		border-radius: 20px;
+		height: 40px;
+		width: 100%;
+		padding: 8px 8px 8px 38px;
+		box-sizing: border-box;
+
+		font-family: $body;
+		font-weight: regular;
+		font-size: 2em;
+		line-height: 28px;
+		color: var(--base1);
+		letter-spacing: -0.2px;
+
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		appearance: none;
+		outline: none;
+
+		cursor: pointer;
+
+	   @include transition(all, .1s);
+
+		&::placeholder{
+			color: var(--base3);
+		}
+		&:hover{
+			box-shadow: inset 0px 0px 0px 4px  var(--main-10);
+		}
+		&:focus{
+			box-shadow: inset 0px 0px 0px 2px  var(--main);
+			outline: none;
+			background: var(--white) url("../assets/icons/icon_search_blue.svg") 8px 8px no-repeat;
+		}	
+		@media only screen and (max-width: 648px) {
+			margin: 0px;
+		}
+	}
+	button[type=reset].button-reset{
+		display: block;
+		height: 40px;
+		width: 40px;
+		position: absolute;
+		right: 0px;
+		top: 0px;
+		margin: 0px;
+
+		border: none;
+		background: url("../assets/icons/icon_24_clear-search.svg") center center no-repeat;
+
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		appearance: none;
+		outline: none;
+
+		cursor: pointer;
+	}
+}
+
+
+//Search in Section Header
+
+.section-header{
+	form{
+		display: block;
+		position: absolute;
+		width: 100%;
+		max-width: 300px;
+		right: 0px;
+		top: 8px;
+
+		@include transition(all, .5s);
+
+		@media only screen and (max-width: 648px) {
+			max-width: 100%;
+		}
+
+		.search{
+			width: 32px;
+			height: 32px;
+			border-radius: 16px;
+			float: right;
+			padding: 8px 0px 8px 32px;
+			box-shadow: none;
+			line-height: 16px;
+
+			background: var(--white) url("../assets/icons/icon_search_blue.svg") 4px 4px no-repeat;
+
+			&:hover{
+				box-shadow: inset 0px 0px 0px 2px  var(--main-10);
+			}
+			&:focus, &:valid{
+				box-shadow: inset 0px 0px 0px 2px  var(--main);
+				width: 100%;
+				outline: none;
+			}	
+
+			&+button.button-reset{
+				width: 32px;
+				height: 32px;
+			}
+		}
+	}
+}

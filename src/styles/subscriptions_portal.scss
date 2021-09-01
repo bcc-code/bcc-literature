@@ -1,0 +1,479 @@
+// CSS for subscriptions widget
+// Colors
+$main: #334862;
+$main-5: rgba(0,46,148,0.05);
+$main-10: rgba(0,46,148,0.10);
+$main-20: rgba(0,46,148,0.20);
+
+$gradient: #334862;
+
+$base1: #16171A;
+$base2: #989DAA;
+$base3: #838CA8;
+$base4: #E6E9F2;
+$base5: #F5F6FA;
+$white: #fff;
+
+// Typography
+@import url('https://fonts.googleapis.com/css?family=Lato:700,900');
+
+$heading: 'Lato', sans-serif;
+$body: 'Lato', sans-serif;
+
+// Transition
+@mixin transition($property, $duration) {
+  -webkit-transition: $property $duration;
+  transition: $property $duration;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+
+//Styles
+@mixin floating(){
+	box-shadow: 0 1px 0 0 rgba(0,35,140,0.06), 0 1px 4px 0 rgba(0,6,26,0.10);
+}
+@mixin hovering(){
+	box-shadow: 0 1px 2px 0 rgba(0,35,140,0.1), 0 2px 4px 0 rgba(0,35,140,0.07), 0 8px 12px 0 rgba(0,6,26,0.10);
+}
+@mixin flying(){
+	box-shadow: 0 1px 2px 0 rgba(0,35,140,0.07), 0 28px 12px -16px rgba(0,35,140,0.05), 0 12px 20px 0 rgba(0,6,26,0.15);
+}
+@mixin interactable(){
+	box-shadow: inset 0px 0px 0px 2px  $main-10;
+
+	@include transition(all, .2s);
+
+	&:hover{
+		box-shadow: inset 0px 0px 0px 4px  $main-10;
+	}
+	&:active{
+		box-shadow: inset 0px 0px 0px 4px  $main-20;
+	}
+}
+
+//Utilities
+@mixin clear(){
+	&:after{
+		content: "";
+		display: table;
+		clear: both;
+	}
+}
+
+body.literature-widget{
+	position: relative;
+	min-height: 100vh;
+	margin: 0px;
+	font-size: 8px;
+	line-height: 1.3em;
+
+	
+	*{
+	  text-rendering: optimizeLegibility;
+	  -moz-osx-font-smoothing: grayscale;
+	  font-smoothing: antialiased;
+	  -webkit-font-smoothing: antialiased;
+
+	  box-sizing: border-box;
+
+	  -webkit-tap-highlight-color: rgba(0,0,0,0);
+	}
+
+	// Typography
+
+	h1, h2, h3, h4, h5, h6, p{
+		margin: 0px;
+	}
+
+	h1{
+		font-family: $heading;
+		font-weight: bold;
+		font-size: 4em;
+		line-height: 1.4em;
+		color: $base1;
+		letter-spacing: -1px;
+		text-decoration: none;
+
+		@media only screen and (max-width: 648px) {
+			font-size: 2.75em;
+		}
+	}
+	h2{
+		font-family: $heading;
+		font-weight: bold;
+		font-size: 3.5em;
+		line-height: 1.4em;
+		color: $base1;
+		letter-spacing: -1px;
+		text-decoration: none;
+
+		@media only screen and (max-width: 648px) {
+			font-size: 2.375em;
+		}
+	}
+	h3{
+		font-family: $heading;
+		font-weight: bold;
+		font-size: 2.5em;
+		line-height: 1.4em;
+		color: $base1;
+		letter-spacing: -1px;
+		text-decoration: none;
+
+		@media only screen and (max-width: 648px) {
+			font-size: 2em;
+		}
+	}
+	h4{
+		font-family: $body;
+		font-weight: bold;
+		font-size: 2.125em;
+		line-height: 1.4em;
+		color: $base1;
+		letter-spacing: -0.2px;
+		text-decoration: none;
+	}
+	h5{
+		font-family: $body;
+		font-weight: bold;
+		font-size: 1.75em;
+		line-height: 1.4em;
+		color: $main;
+		letter-spacing: -0.2px;
+		text-decoration: none;
+
+		span{
+			font-weight: 400;
+			padding: 0px 0px 0px 8px;
+		}
+	}
+	h6{
+		font-family: $body;
+		font-weight: bold;
+		font-size: 1.375em;
+		line-height: 1.8em;
+		color: $main;
+		letter-spacing: -0.2px;
+		text-decoration: none;
+	}
+	p{
+		font-family: $body;
+		font-weight: regular;
+		font-size: 2em;
+		line-height: 1.8em;
+		color: $base3;
+		letter-spacing: -0.2px;
+		text-decoration: none;
+
+		&.small{
+			font-size: 1.75em;
+		}
+	}
+
+
+	// Button
+	.button-main{
+		display: inline-block;
+		padding: 6px 20px;
+		margin: 8px;
+		background: $gradient;
+		box-shadow: inset 0px 0px 0px 1px rgba(19,40,54,0.10);
+		border-radius: 0px;
+
+		font-family: $body;
+		font-weight: bold;
+		font-size: 1.75em;
+		line-height: 2em;
+		color: $white;
+		letter-spacing: -0.2px;
+		text-decoration: none;
+		cursor: pointer;
+
+		@include transition(box-shadow, .1s);
+		
+		&.small{
+			padding: 2px 12px;
+		}
+
+		&:hover{
+			box-shadow: 
+				inset 0px 0px 0px 2px  rgba(19,40,54,0.25);
+		}
+		&:active{
+			box-shadow: 
+				inset 0px 0px 0px 4px  rgba(19,40,54,0.25);
+		}
+	}
+	.button-secondary{
+		display: inline-block;
+		padding: 6px 20px;
+		margin: 8px;
+		background: $main-5;
+		border-radius: 0px;
+
+		font-family: $body;
+		font-weight: bold;
+		font-size: 1.75em;
+		line-height: 2em;
+		color: $main;
+		letter-spacing: -0.2px;
+		text-decoration: none;
+		box-shadow: inset 0px 0px 0px 1px  rgba(19,40,54,0);
+		cursor: pointer;
+
+		@include transition(all, .1s);
+
+		&.small{
+			padding: 2px 12px;
+		}
+		&:hover{
+			box-shadow: inset 0px 0px 0px 2px  $main-10;
+		}
+		&:active{
+			box-shadow: inset 0px 0px 0px 4px  $main-10;
+		}
+	}
+
+	//Subscriptions Overview
+	.container{
+		position: relative;
+		display: block;
+		width: 100%;
+		padding: 0px;
+	}
+	.subscriptions-grid{
+		width: 100%;
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		flex-flow: center;
+		align-items: stretch;
+	}
+	.subscription{
+		display: inline-block;
+		position: relative;
+		background: $white;
+		border-radius: 0px;
+		padding: 20px 20px 72px 20px;
+		margin: 0px 0px 24px 0px;
+		float: left;
+		width: calc(50% - 12px);
+		box-shadow: 0 1px 3px -2px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.24);
+
+		@include transition(all, .2s);
+
+		&:first-child{
+			margin-right: 24px;
+		}
+
+		h4, h5{
+			margin-right: 148px;
+			line-height: 24px;
+			@media only screen and (max-width: 800px) {
+				margin-right: 80px;
+			}
+		}
+		p{
+			margin: 8px 0px;
+			margin-right: 148px;
+			@media only screen and (max-width: 800px) {
+				margin-right: 80px;
+			}
+			@media only screen and (max-width: 648px) {
+				display: none;
+			}
+		}
+
+		div.signup-cta{
+			position: absolute;
+			width: 100%;
+			padding: 8px 0px 0px 0px;
+			height: auto;
+			bottom: 24px;
+
+			@media only screen and (max-width: 648px) {
+				padding: 16px 0px 0px 0px;
+			}
+
+			.button-main{
+				margin: 0px 12px 0px 0px;
+			}
+			h5{
+				color: $white;
+				display: inline-block;
+			}
+		}
+
+		figure{
+			display: block;
+			height: 90px;
+			width: 65px;
+			background-size: cover; 
+			border-radius: 2px;
+
+			position: absolute;
+			top: 24px;
+			right: 32px;
+			margin: 0px;
+
+			z-index: 10;
+
+			@include transition(all, .2s);
+
+			@media only screen and (max-width: 800px) {
+				top: 26px;
+				right: 32px;
+			}
+		}
+		&::after{
+			display: block;
+			position: absolute;
+			content: "";
+			height: 90px;
+			width: 65px;
+			background: $gradient;
+			border-radius: 2px;
+
+			position: absolute;
+			top: 24px;
+			right: 32px;
+
+			transform: rotate(5deg);
+			transform-origin: bottom right;
+
+			@include transition(all, .2s);
+
+			@media only screen and (max-width: 800px) {
+				top: 26px;
+				right: 32px;
+			}
+		}
+
+
+		//Active subscription
+
+		&.active{
+			background: $gradient;
+			border: none;
+			padding: 20px 20px 107px 20px;
+
+			&::after{
+				display: none;
+			}
+			h5{
+				padding-left: 32px;
+				background: url('../assets/icons/icon_checkmark_white.svg') no-repeat;
+				margin-right: 0px;
+				color: $white;
+			}
+			h4{
+				color: $white;
+				margin-right: 0px;
+			}
+			p{
+				margin-right: 0px;
+			}
+			figure{
+				position: relative;
+				right: auto;
+				top: auto;
+				width: 32px;
+				height: 45px;
+			}
+			.button-secondary{
+				background: rgba(255,255,255,0.20);
+				color: $white;
+				position: absolute;
+				right: 16px;
+				top: 20px;
+
+				box-shadow: inset 0px 0px 0px 2px rgba(255,255,255,0.0);
+
+				@include transition(all, .2s);
+
+				&:hover{
+					box-shadow: inset 0px 0px 0px 4px rgba(255,255,255,0.10);
+				}
+				&:active{
+					box-shadow: inset 0px 0px 0px 4px rgba(255,255,255,0.20);
+				}
+			}
+
+			.latest{
+				border-top: 1px solid rgba(96,130,206,0.2);
+				padding: 20px;
+				bottom: 0px;
+				position: absolute;
+				bottom: 0px;
+				left: 0px;
+				width: 100%;
+				text-decoration: none;
+
+				background: rgba(96,130,206,0.00) url('../assets/icons/icon_24_chevron.svg') calc(100% - 16px) center no-repeat;
+
+				cursor: pointer;
+				@include transition(all, .2s);
+
+				&:hover{
+					background: rgba(96,130,206,0.05) url('../assets/icons/icon_24_chevron.svg') calc(100% - 16px) center no-repeat;
+				}
+				&:active{
+					background: rgba(96,130,206,0.10) url('../assets/icons/icon_24_chevron.svg') calc(100% - 16px) center no-repeat;
+				}
+				figure{
+					float: left;
+					margin-right: 16px;
+				}
+				h6{
+					color: $base3;
+				}
+			}
+		}
+		@media only screen and (max-width: 1024px) {
+			width: 100%;
+			margin-right: 0px;
+
+			&:first-child{
+				width: 100%;
+				margin-right: 0px;
+			}
+		}
+	}
+
+	.literature-teaser{
+		display: inline-block;
+		position: relative;
+		background: $white;
+		border-radius: 0px;
+		padding: 20px;
+		margin: 0px 0px 24px 0px;
+		float: left;
+		width: 100%;
+		box-shadow: 0 1px 3px -2px rgba(0,0,0,.12),0 1px 2px rgba(0,0,0,.24);
+
+		@include transition(all, .2s);
+
+		h4, h5{
+			margin-right: 43%;
+			line-height: 24px;
+		}
+		p{
+			margin: 8px 0px;
+			margin-right: 43%;
+		}
+		figure{
+			display: block;
+			position: absolute;
+			background-size: cover;
+			height: 100%;
+			width: 40%;
+			top: 0px;
+			right: 0px;
+			margin: 0px;
+			border-radius: 0px 8px 8px 0px;
+		}
+		.button-main{
+			margin: 8px 0px 0px 0px;
+		}
+	}
+}

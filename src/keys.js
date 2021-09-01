@@ -8,20 +8,28 @@ keys.SUBSCRIPTION_FORM_URLS = {
 };
 
 switch (window.location.hostname) {
-    case 'literature.bcc.no':
-        keys.API_BASE_PATH = 'https://literatureapi.bcc.no/api/';
-        keys.APP_INSIGHTS = '14dc7370-d646-4de8-ae9b-71b8519fc3e3';
-        keys.APP_URL = "https://literature.bcc.no/";
-        break;
-    case 'devliterature.bcc.no':
+case 'literature.bcc.no':
+    keys.API_BASE_PATH = 'https://literatureapi.bcc.no/api/';
+    keys.APP_INSIGHTS = '14dc7370-d646-4de8-ae9b-71b8519fc3e3';
+    keys.APP_URL = "https://literature.bcc.no/";
+    break;
+case 'devliterature.bcc.no':
+    keys.API_BASE_PATH = 'https://devliteratureapi.bcc.no/api/';
+    keys.APP_INSIGHTS = '6856efb0-33a0-40ec-898a-fa1676670481';
+    keys.APP_URL = "https://devliterature.bcc.no/";
+    break;
+default:
+    switch (process.env.NODE_ENV) {
+    case 'localdev':
         keys.API_BASE_PATH = 'https://devliteratureapi.bcc.no/api/';
-        keys.APP_INSIGHTS = '6856efb0-33a0-40ec-898a-fa1676670481';
-        keys.APP_URL = "https://devliterature.bcc.no/";
         break;
     default:
-        keys.API_BASE_PATH = 'http://localhost:58330/api/';
-        keys.APP_INSIGHTS = '6856efb0-33a0-40ec-898a-fa1676670481';
-        keys.APP_URL = "http://literature.local:21535/";
+        keys.API_BASE_PATH = 'http://localhost:58830/api/';
+        break;
+    }
+    keys.APP_INSIGHTS = '6856efb0-33a0-40ec-898a-fa1676670481';
+    keys.APP_URL = "http://literature.local:21535/";
+    break;
 }
 
 export default keys;
