@@ -18,8 +18,8 @@ export default {
             state.appLanguage = value;
         },
         toggleNightMode: (state) => {
-            state.nightMode = !state.nightMode
-            localStorage.setItem('nightMode', state.nightMode)
+            state.nightMode = !state.nightMode;
+            localStorage.setItem('nightMode', state.nightMode);
         },
         setTopbarInitialized: (state, value) => {
             state.topbarInitialized = value;
