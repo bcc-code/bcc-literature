@@ -62,7 +62,10 @@
     },
     "reader": {
         "chapter": "Chapter",
-        "subscription-required": "You are not subscribed to the selected publication."
+        "subscription-required": "You are not subscribed to the selected publication.",
+        "play-text-to-speech": "Listen",
+        "pause-text-to-speech": "Pause",
+        "cant-play-text-to-speech": "This article cannot be listened in the selected language."
     },
     "subscription": {
         "subscriptions": "Subscriptions",

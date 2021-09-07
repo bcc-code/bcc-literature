@@ -1,0 +1,98 @@
+$player-width: 648px;
+
+.text-to-speech-player-wrapper {
+    width: $player-width;
+    background-color: var(--white);
+    border: 1px solid var(--base1);
+    border-bottom: 0;
+    border-radius: 10px 10px 0 0;
+
+    position: fixed;
+    left: calc(50% - (#{$player-width} / 2));
+    bottom: 0;
+
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    .progress-bar {
+        height: 3px;
+        width: calc(100% - 11px);
+        background-color: var(--white);
+
+        position: absolute;
+        top: 0;
+        left: 5px;
+        z-index: 0;
+
+        .progress-bar-progress {
+            height: 3px;
+            background: var(--gradient);
+        }
+    }
+
+    .play-pause-button {
+        background-color: white !important;
+        max-width: 44px;
+        max-height: 44px;
+        box-shadow: var(--box-shadow);
+
+        flex: 1;
+        align-self: flex-end;
+
+        &.play-icon {
+            background: url(/img/icon_24_play_filled.svg) 60% 50% no-repeat;
+        }
+
+        &.pause-icon {
+            background: url(/img/icon_24_pause_filled.svg) 52.5% 60% no-repeat;
+        }
+    }
+
+    .player-info {
+        padding-left: 20px;
+
+        display: flex;
+        flex: 2;
+        flex-direction: row;
+        align-self: center;
+        align-items: baseline;
+
+        .chapter-id {
+            color: var(--main);
+        }
+
+        & h3 {
+            flex: 8;
+        }
+        & h4 {
+            flex: 1;
+        }
+    }
+}
+
+@media only screen and (max-width: 648px) {
+    .text-to-speech-player-wrapper {
+        width: 100%;
+        left: unset;
+        padding-bottom: 7px;
+        border-radius: 0;
+        border: none;
+        border-top: 1px solid gray;
+
+        .progress-bar {
+            width: 100%;
+            border-radius: 0;
+            left: unset;
+        }
+        .player-info {
+            & h3 {
+                flex: 5 !important;
+            }
+        }
+
+        .play-pause-button {
+            margin-right: 75px !important;
+        }
+    }
+}

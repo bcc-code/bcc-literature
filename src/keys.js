@@ -20,7 +20,6 @@ case 'devliterature.bcc.no':
     keys.APP_URL = 'https://devliterature.bcc.no/';
     break;
 default:
-    console.log(process.env);
     keys.API_BASE_PATH = process.env.VUE_APP_API_ENV == 'dev' ? 'https://devliteratureapi.bcc.no/api/' : 'http://localhost:58330/api/';
     keys.APP_INSIGHTS = '6856efb0-33a0-40ec-898a-fa1676670481';
     keys.APP_URL = 'http://literature.local:21535/';

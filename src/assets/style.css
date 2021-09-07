@@ -2,30 +2,32 @@
 @import url("https://fonts.googleapis.com/css?family=Ubuntu:400,500,700");
 @import url("https://fonts.googleapis.com/css?family=Merriweather:400,400i,900,900i&display=swap");
 body.light {
-  --main: #6291EB;
+  --main: #6291eb;
   --main-5: rgba(0, 46, 148, 0.05);
   --main-10: rgba(0, 46, 148, 0.1);
   --main-20: rgba(0, 46, 148, 0.2);
-  --gradient: linear-gradient(to right, #666CF6 0%, #5EAFE2 100%);
-  --base1: #16171A;
-  --base2: #5A617D;
-  --base3: #838CA8;
-  --base4: #E6E9F2;
-  --base5: #F5F6FA;
+  --gradient: linear-gradient(to right, #666cf6 0%, #5eafe2 100%);
+  --box-shadow: 0px 1px 0px rgba(0, 35, 140, 0.06), 0px 1px 4px rgba(0, 7, 26, 0.2);
+  --base1: #16171a;
+  --base2: #5a617d;
+  --base3: #838ca8;
+  --base4: #e6e9f2;
+  --base5: #f5f6fa;
   --white: #fff;
 }
 
 body.dark {
-  --main: #6291EB;
+  --main: #6291eb;
   --main-5: rgba(140, 177, 255, 0.05);
   --main-10: rgba(140, 177, 255, 0.1);
   --main-20: rgba(140, 177, 255, 0.2);
-  --gradient: linear-gradient(to right, #666CF6 0%, #5EAFE2 100%);
-  --base1: #F5F6FA;
-  --base2: #E6E9F2;
-  --base3: #838CA8;
+  --gradient: linear-gradient(to right, #666cf6 0%, #5eafe2 100%);
+  --box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6),1px 1px 4px rgba(255, 255, 255, 0.5);
+  --base1: #f5f6fa;
+  --base2: #e6e9f2;
+  --base3: #838ca8;
   --base4: #656872;
-  --base5: #16171A;
+  --base5: #16171a;
   --white: #1d1e22;
 }
 
@@ -1102,6 +1104,111 @@ nav a:hover {
 }
 nav a.current {
   border-bottom: solid 2px var(--main);
+}
+
+.text-to-speech-player-wrapper {
+  width: 648px;
+  background-color: var(--white);
+  border: 1px solid var(--base1);
+  border-bottom: 0;
+  border-radius: 10px 10px 0 0;
+  position: fixed;
+  left: calc(50% - (648px / 2));
+  bottom: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.text-to-speech-player-wrapper .progress-bar {
+  height: 3px;
+  width: calc(100% - 11px);
+  background-color: var(--white);
+  position: absolute;
+  top: 0;
+  left: 5px;
+  z-index: 0;
+}
+.text-to-speech-player-wrapper .progress-bar .progress-bar-progress {
+  height: 3px;
+  background: var(--gradient);
+}
+.text-to-speech-player-wrapper .play-pause-button {
+  background-color: white !important;
+  max-width: 44px;
+  max-height: 44px;
+  box-shadow: var(--box-shadow);
+  flex: 1;
+  align-self: flex-end;
+}
+.text-to-speech-player-wrapper .play-pause-button.play-icon {
+  background: url(/img/icon_24_play_filled.svg) 60% 50% no-repeat;
+}
+.text-to-speech-player-wrapper .play-pause-button.pause-icon {
+  background: url(/img/icon_24_pause_filled.svg) 52.5% 60% no-repeat;
+}
+.text-to-speech-player-wrapper .player-info {
+  padding-left: 20px;
+  display: flex;
+  flex: 2;
+  flex-direction: row;
+  align-self: center;
+  align-items: baseline;
+}
+.text-to-speech-player-wrapper .player-info .chapter-id {
+  color: var(--main);
+}
+.text-to-speech-player-wrapper .player-info h3 {
+  flex: 8;
+}
+.text-to-speech-player-wrapper .player-info h4 {
+  flex: 1;
+}
+
+@media only screen and (max-width: 648px) {
+  .text-to-speech-player-wrapper {
+    width: 100%;
+    left: unset;
+    padding-bottom: 7px;
+    border-radius: 0;
+    border: none;
+    border-top: 1px solid gray;
+  }
+  .text-to-speech-player-wrapper .progress-bar {
+    width: 100%;
+    border-radius: 0;
+    left: unset;
+  }
+  .text-to-speech-player-wrapper .player-info h3 {
+    flex: 5 !important;
+  }
+  .text-to-speech-player-wrapper .play-pause-button {
+    margin-right: 75px !important;
+  }
+}
+.article-tts-btn.play-pause-icon {
+  cursor: pointer;
+  padding-right: 50px !important;
+  z-index: 50;
+  float: right;
+  margin-top: 0;
+  margin-left: 0;
+  background: url(/img/icon_24_audio.svg) 80% 50% no-repeat, linear-gradient(to right, #666cf6 0%, #5eafe2 100%);
+}
+.article-tts-btn .play-icon {
+  background: url(/img/icon_24_audio.svg) 80% 50% no-repeat, linear-gradient(to right, #666cf6 0%, #5eafe2 100%);
+}
+.article-tts-btn.pause-icon {
+  background: url(/img/icon_24_audio_animated.svg) 80% 50% no-repeat, linear-gradient(to right, #666cf6 0%, #5eafe2 100%);
+}
+.article-tts-btn.bmm-icon {
+  background: url(/img/icon_32_bmm_logo.png) 80% 50% no-repeat, linear-gradient(to right, #0ab66f 0%, #089b5e 100%) !important;
+  background-size: 22px 22px, auto !important;
+}
+@media only screen and (max-width: 648px) {
+  .article-tts-btn.play-pause-icon {
+    float: inherit;
+    margin-top: 0;
+  }
 }
 
 header {
