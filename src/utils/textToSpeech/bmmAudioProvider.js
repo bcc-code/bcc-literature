@@ -1,28 +1,19 @@
-import bmmApi from "../api/bmmApi";
-export default { speak, stop, isPlaying, getAudioBook };
+const isExternal = true;
 
-let hasBeenRedirected = false;
-async function getAudioBook(id) {
-    return await bmmApi.getAudioBookTracks(id);
-}
+export default { speak, stop, isPlaying, isExternal};
 
-async function speak(article) {
-    // let tracks = await getAudioBook(article.bmmAlbumId),
-    //     track = tracks.find(e => e.chapterId == article.chapterId);
-
-    // if(!track){
-    //     return;
-    // }
-
-    hasBeenRedirected = true;
-    debugger;
+function speak(article) {
     window.open(article.audioBookUrl, 'blank');
 }
 
 function stop() {
-    hasBeenRedirected = false;
+    
+}
+
+function pause(){
+    
 }
 
 function isPlaying() {
-    return hasBeenRedirected;
+    return false;
 }
