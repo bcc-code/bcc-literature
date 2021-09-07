@@ -125,9 +125,6 @@ export default {
             this.articles = [];
             this.notFound = false;
             await this.loadBook(this.bookId).then(async (book) => {
-                //this.book = book;
-
-                console.log(this.book);
                 if (book.redirectToCorrectLanguage) {
                     let chapterId = parseInt(this.$route.params.chapterId);
                     this.$router.push({ name: 'read-publication', 
