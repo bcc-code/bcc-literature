@@ -2,21 +2,21 @@
     <section>
         <div>
             <form>
-                <input type="text" autocomplete="off" name="Search" class="search-filter" v-model="searchQuery" :placeholder="facetPlaceholder">
+                <input type="text" autocomplete="off" name="Search" class="search-filter" v-model="searchQuery" :placeholder="facetPlaceholder" @click="toggleOptions()">
             </form>
             <section class="search-selection">
                 <ul>
-                    <li v-for="selection in selections" :key="selection" @click="toggleSelection(selection)">
+                    <li v-for="selection in selections" @click="toggleSelection(selection)">
                         <input type="checkbox" :name="selection" checked="checked">
                         <span>{{selection}}</span>
                     </li>
                 </ul>
             </section>
-            <section class="custom-select" :class="options.length > 0 ? 'show' : 'hide'">
+            <section class="custom-select" :class="{hide: hideOptions}">
                 <ul>
-                    <li v-for="option in options" :key="`author-${option.id}`" @click="toggleSelection(option[facetKey])">
-                        <input type="checkbox" :name="option.id">
-                        <span>{{option[facetKey]}}</span>
+                    <li v-for="facet in availableFacets" @click="toggleSelection(facet.value)">
+                        <input type="checkbox" :name="facet.value">
+                        <span>{{facet.value}}</span>
                     </li>
                 </ul>
             </section>
@@ -25,19 +25,25 @@
 </template>
 
 <script>
-import { mapState, mapActions } from 'vuex';
+import { mapActions } from 'vuex';
 import BookApi from '@/utils/api/bookApi';
 import AuthorApi from '@/utils/api/authorApi'
 export default {
-    props:['facetName', 'facetTitle', 'facetPlaceholder', 'facetKey'],
-    data:function () {
-        return{
+    props: ['facetName', 'facetTitle', 'facetPlaceholder'],
+    data: function() {
+        return {
             searchQuery: null,
-            options: []
+            options: [],
+            hideOptions: true
         }
     },
     computed: {
-        selections(){
+        availableFacets() {
+            return this.options.length ? this.options : this.$store.state.search.facetsOptions[this.facetName].filter(
+                (f) => !this.selections.includes(f.value)
+            );
+        },
+        selections() {
             return this.$store.state.search.searchParams.facets[this.facetName];
         },
         api() {
@@ -46,17 +52,20 @@ export default {
     },
     methods:{
         ...mapActions('search', {
-            newFilterSelection:'newFilterSelection',            
+            newFilterSelection: 'newFilterSelection',            
         }),
         toggleSelection: function(value) {
             this.newFilterSelection({facetName: this.facetName, value: value});
-            this.searchQuery = "";
             this.options = [];
+            this.searchQuery = "";
+        },
+        toggleOptions: function() {
+            this.hideOptions = !this.hideOptions;
         }
     },
     watch: {
         async searchQuery(val) {
-            this.options = (val.length > 2) ? (await this.api.search(val)).data.filter((o) => !this.selections.includes(o[this.facetKey])) : [];
+            this.options = this.availableFacets.filter((o) => o.value.toLowerCase().includes(val.toLowerCase()));
         }
     }
 }
