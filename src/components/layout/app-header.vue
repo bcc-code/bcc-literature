@@ -146,7 +146,10 @@ export default {
 <style scoped>
 @media screen and (max-width: 768px) {
     header .dropdown, header .filter-search {
-        margin: 8px 5px;
+        margin: 0;
+        height: 48px;
+        display: flex;
+        align-items: center;
     }
 }
 </style>
