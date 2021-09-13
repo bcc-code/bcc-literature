@@ -6,7 +6,7 @@
             </form>
             <section class="search-selection">
                 <ul>
-                    <li v-for="selection in selections" @click="toggleSelection(selection)">
+                    <li v-for="selection in selections" v-bind:key="selection" @click="toggleSelection(selection)">
                         <input type="checkbox" :name="selection" checked="checked">
                         <span>{{selection}}</span>
                     </li>
@@ -14,7 +14,7 @@
             </section>
             <section class="custom-select" :class="{hide: hideOptions}">
                 <ul>
-                    <li v-for="facet in availableFacets" @click="toggleSelection(facet.value)">
+                    <li v-for="facet in availableFacets" v-bind:key="facet" @click="toggleSelection(facet.value)">
                         <input type="checkbox" :name="facet.value">
                         <span>{{facet.value}}</span>
                     </li>
