@@ -1116,11 +1116,12 @@ header {
   left: 0px;
   z-index: 20;
   box-shadow: 0 1px 0 0 rgba(0, 35, 140, 0.06), 0 1px 4px 0 rgba(0, 6, 26, 0.1);
+  padding: 0 10px;
 }
 header .header__back-button {
   display: block;
   height: 48px;
-  width: 48px;
+  width: 24px;
   float: left;
   background: url("../assets/icons/icon_24_arrow-left-blue.svg") center center no-repeat;
 }
@@ -1156,7 +1157,7 @@ header .header__night-mode {
 }
 @media only screen and (max-width: 648px) {
   header .header__night-mode {
-    width: 24px;
+    width: 38px;
   }
 }
 header .header__night-mode.dark {
@@ -1921,27 +1922,19 @@ footer {
   position: absolute;
   bottom: 0px;
   width: 100%;
-  padding: 56px 48px;
+  padding: 16px;
   background: var(--base5);
-}
-footer p {
-  float: left;
-  line-height: 32px;
+  text-align: center;
 }
 footer:after {
   content: "";
   display: table;
   clear: both;
 }
-@media only screen and (max-width: 648px) {
-  footer {
-    padding: 56px 16px;
-  }
-}
 
 body {
   position: relative;
-  padding: 0px 0px 144px 0px;
+  padding: 0px 0px 57px 0px;
   margin: 0px;
   font-size: 8px;
   line-height: 1.3em;
