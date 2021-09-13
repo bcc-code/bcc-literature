@@ -1,8 +1,9 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import {routes} from './routes';
+import { routes } from './routes';
 import scrollBehavior from './scrollBehavior';
 import authenticator from 'utils/auth';
+import { logPageView } from '@/utils/appInsights';
 
 Vue.use(VueRouter);
 
@@ -24,6 +25,10 @@ router.beforeEach(async (to, from, next) => {
         });
     }
     next();
+});
+
+router.afterEach(route => {
+    logPageView(route.name, {});
 });
 
 export default router;
