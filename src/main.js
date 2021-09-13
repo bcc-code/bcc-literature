@@ -1,7 +1,6 @@
 import Vue from 'vue';
 import App from './app.vue';
 import router from './router/index';
-import keys from 'keys';
 import store from './store/index';
 import './registerServiceWorker';
 import vClickOutside from 'v-click-outside';
@@ -17,7 +16,6 @@ import '@babel/polyfill';
 import '@/assets/style.css';
 import VueModal from 'vue-js-modal';
 import VueClipboard from 'vue-clipboard2';
-import VueAppInsights from 'vue-application-insights';
 
 Vue.config.productionTip = false;
 Vue.use(vClickOutside)
@@ -27,11 +25,6 @@ Vue.use(VueI18n)
 Vue.use(VueModal);
 Vue.use(VueClipboard);
 VueClipboard.config.autoSetContainer = true;
-
-Vue.use(VueAppInsights, {
-    id: keys.APP_INSIGHTS,
-    router
-});
 
 Vue.config.errorHandler = (err) => {
     console.log(err);
