@@ -26,7 +26,6 @@ function speak(article) {
     utterance.voice = getLanguageVoice(article.language);
     utterance.onerror = onError;
     utterance.onend = () => {
-        console.log('eend');
         store.commit("textToSpeech/updatePlayingState", { root: true });
     };
 

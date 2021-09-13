@@ -162,6 +162,7 @@ export default {
                 /* Force reload the reader component */
                 this.$store.dispatch('articles/base/reset');
                 this.setCurrentChapter(chapterId);
+                debugger;
                 this.$refs.loader.reset();
             }
         }
