@@ -14,7 +14,7 @@
                 <section class="filter" :class="showFilters ? 'open' : 'closed'" v-click-outside="() => showFilters = false">
                     <div class="header" @click="showFilters = !showFilters">
                         <h3 v-if="isMobile">{{$t('search.filter')}}</h3>
-                        <a v-if="showFilters" class="minimize-button" @click="() => showFilters = false"></a>
+                        <a v-if="showFilters" class="minimize-button" @click="removeAllFilters()"></a>
                     </div>
                     <form v-if="!isMobile || showFilters">
                         <search-facet facetName="BookName"
@@ -42,7 +42,7 @@
                     <search-result v-for="(result, index) in results" :key="result.articleId" :result="result" :rank="index+1" />        
                     <a v-if="noOfResults > results.length && !showSpinner" v-on:click="loadMore" class="pagination-button"><h5>{{$t('search.load-more')}}</h5></a>
                 </template>
-            </section>              
+            </section>
         </section>
     </section>    
   </div>
@@ -103,6 +103,13 @@ export default {
                     filterElement.classList.remove("pinned"); 
                 }
             }
+        },
+        removeAllFilters() {
+            this.$store.state.search.searchParams.facets['AuthorFullName'] = [];
+            this.$store.state.search.searchParams.facets['BookName'] = [];
+            this.$store.state.search.searchParams.facets['Years'] = [];
+
+            this.newSearch({ query: this.computedQuery, newFacets: false });
         }
     },
     created: function() {     

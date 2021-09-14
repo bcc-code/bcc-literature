@@ -24,10 +24,14 @@ export default {
         bookResults: [],
         authorResults: [],
         facetsOptions: {
-            "AuthorFullName": [],     
-            "BookName": []              
-        },                 
-        showSpinner: false
+            "AuthorFullName": [],
+            "BookName": []
+        },
+        showSpinner: false,
+        hideOptions: {
+            "AuthorFullName": true,
+            "BookName": true
+        }
     },
     mutations: {
         updateSearchResults: (state, value) => {
@@ -69,6 +73,8 @@ export default {
         resetFacets: (state) => {
             state.searchParams.facets.AuthorFullName = [];
             state.searchParams.facets.BookName = [];
+            state.hideOptions.AuthorFullName = true;
+            state.hideOptions.BookName = true;
         },
         updateLoadMore: (state) => {            
             state.searchParams.skip += state.BATCHSIZE;                              

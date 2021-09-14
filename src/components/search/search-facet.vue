@@ -8,15 +8,15 @@
                 <ul>
                     <li v-for="selection in selections" v-bind:key="selection" @click="toggleSelection(selection)">
                         <input type="checkbox" :name="selection" checked="checked">
-                        <span>{{selection}}</span>
+                        <span>{{ selection }}</span>
                     </li>
                 </ul>
             </section>
             <section class="custom-select" :class="{hide: hideOptions}">
                 <ul>
-                    <li v-for="facet in availableFacets" v-bind:key="facet" @click="toggleSelection(facet.value)">
-                        <input type="checkbox" :name="facet.value">
-                        <span>{{facet.value}}</span>
+                    <li v-for="option in options" v-bind:key="option.value" @click="toggleSelection(option.value)">
+                        <input type="checkbox" :name="option.value">
+                        <span>{{ option.value }}</span>
                     </li>
                 </ul>
             </section>
@@ -33,39 +33,43 @@ export default {
     data: function() {
         return {
             searchQuery: null,
-            options: [],
-            hideOptions: true
+            options: []
         }
     },
     computed: {
-        availableFacets() {
-            return this.options.length ? this.options : this.$store.state.search.facetsOptions[this.facetName].filter(
-                (f) => !this.selections.includes(f.value)
-            );
-        },
         selections() {
             return this.$store.state.search.searchParams.facets[this.facetName];
         },
         api() {
             return this.facetName.includes("Book") ? BookApi : AuthorApi
+        },
+        hideOptions() {
+            return this.$store.state.search.hideOptions[this.facetName];
         }
     },
-    methods:{
+    methods: {
         ...mapActions('search', {
             newFilterSelection: 'newFilterSelection',            
         }),
         toggleSelection: function(value) {
-            this.newFilterSelection({facetName: this.facetName, value: value});
-            this.options = [];
+            this.newFilterSelection({ facetName: this.facetName, value: value });
+            this.setAvailableFacets();
             this.searchQuery = "";
         },
         toggleOptions: function() {
-            this.hideOptions = !this.hideOptions;
+            this.setAvailableFacets();
+            this.$store.state.search.hideOptions[this.facetName] = !this.$store.state.search.hideOptions[this.facetName];
+        },
+        setAvailableFacets: function() {
+            this.options = this.$store.state.search.facetsOptions[this.facetName].filter(o => !this.selections.includes(o.value));
         }
     },
     watch: {
-        async searchQuery(val) {
-            this.options = this.availableFacets.filter((o) => o.value.toLowerCase().includes(val.toLowerCase()));
+        searchQuery(val) {
+            this.options = this.$store.state.search.facetsOptions[this.facetName].filter(
+                (o) => o.value.toLowerCase().includes(val.toLowerCase())
+                       && !this.selections.includes(o.value)
+            );
         }
     }
 }
