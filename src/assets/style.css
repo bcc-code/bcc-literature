@@ -1204,13 +1204,15 @@ nav a.current {
     margin-right: 75px;
   }
 }
+.chapter-header {
+  display: flex;
+}
 .article-tts-btn.play-pause-icon {
+  position: relative;
+  top: -4px;
+  margin: auto 0 0 auto;
   cursor: pointer;
   padding-right: 50px !important;
-  z-index: 50;
-  float: right;
-  margin-top: 0;
-  margin-left: 0;
   background: url(/img/icon_24_audio.svg) 80% 50% no-repeat, linear-gradient(to right, #666cf6 0%, #5eafe2 100%);
 }
 .article-tts-btn .play-icon {
@@ -1222,12 +1224,6 @@ nav a.current {
 .article-tts-btn.bmm-icon {
   background: url(/img/icon_32_bmm_logo.png) 80% 50% no-repeat, linear-gradient(to right, #0ab66f 0%, #089b5e 100%) !important;
   background-size: 22px 22px, auto !important;
-}
-@media only screen and (max-width: 648px) {
-  .article-tts-btn.play-pause-icon {
-    float: right;
-    margin-top: -11px;
-  }
 }
 
 header {
@@ -2222,7 +2218,7 @@ a {
   margin-bottom: 8px;
 }
 .reading-view article.center h2 {
-  margin-bottom: 8px;
+  margin: 8px 0;
 }
 .reading-view article.center h3 {
   margin-bottom: 8px;

@@ -1,7 +1,9 @@
 <template>
     <div>
-        <h5 :id="'chapter-title-' + article.chapterId">{{ $t('reader.chapter') }} {{ article.chapterId }}</h5>
-        <TextToSpeechButton :article="article" :bmmAlbumId='bmmAlbumId' :audioBookUrl='audioBookUrl' />
+        <div class="chapter-header">
+            <h5 :id="'chapter-title-' + article.chapterId">{{ $t('reader.chapter') }} {{ article.chapterId }}</h5>
+            <TextToSpeechButton :article="article" :bmmAlbumId='bmmAlbumId' :audioBookUrl='audioBookUrl' />
+        </div>
         <div v-if="article.content != null" v-html="article.content" />
         <DocumentViewer v-else :article="article" />
     </div>
