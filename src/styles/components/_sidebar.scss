@@ -86,13 +86,13 @@ nav {
 
     @media only screen and (max-width: 648px) {
         @include transition(all, 0.3s);
-        top: calc(100% - 60px);
-        right: 23px;
+        top: calc(100% - 59px);
+        right: 16px;
         margin: 0;
     }
     @media only screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
         @include transition(all, 0.3s);
-        top: calc(100% - 88px);
+        top: calc(100% - 59px);
         margin: 0;
     }
 }
