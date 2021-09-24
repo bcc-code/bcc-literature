@@ -1,5 +1,5 @@
 {
-    "language": "Norwegian",
+    "language": "Norsk",
     "app": {
         "select-language": "Velg språk",
         "error": "En feil oppstod. Ta kontakt med it@bcc.no",
@@ -48,15 +48,17 @@
         "search-results": "Resultater",
         "search-box": "Søk i BCC litteratur",
         "year-filter": "År",
-        "exact-match": "Exact match",
-        "authors-filter": "Filtrerer forfattere",
-        "authors-filter-default": "Alle forfattere",
-        "books-filter": "Filtrerer bøker",
-        "books-filter-default": "Alle bøker",
-        "filter": "Filtre",
+        "exact-match": "Eksakt tekst",
+        "filters": {
+            "title": "Filtre",
+            "search-for-book": "Søk etter bok",
+            "search-for-author": "Søk etter forfatter",
+            "authors-title": "Forfattere",
+            "books-title": "Bøker",
+            "no-match": "Ingen treff"
+        },
         "load-more": "Last inn mer",
-        "no-results": "Ingen resultater",
-        "no-match": "Ingen treff"
+        "no-results": "Ingen resultater"
     },
     "reader": {
         "chapter": "Kapittel",

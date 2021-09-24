@@ -10,20 +10,20 @@
     <section class="container content">  
         <section class="center medium">
             <aside class="temp" id="filters" :style="{ top: isMobile ? isStandalone  ? '48px': '95px' : 'unset' }">
-                <h3 v-if="!isMobile">{{$t('search.filter')}}</h3>
+                <h3 v-if="!isMobile">{{$t('search.filters.title')}}</h3>
                 <section class="filter" :class="showFilters ? 'open' : 'closed'" v-click-outside="() => showFilters = false">
                     <div v-if="isMobile" class="header" @click="showFilters = !showFilters">
-                        <h3>{{$t('search.filter')}}</h3>
+                        <h3>{{$t('search.filters.title')}}</h3>
                         <a v-if="showFilters" class="minimize-button" @click="removeAllFilters()"></a>
                     </div>
                     <div class="filters-wrapper" v-if="!isMobile || showFilters">
                         <search-facet facetName="BookName"
-                            :facetTitle="$t('search.books-filter')"
-                            :facetPlaceholder="$t('search.books-filter-default')"
+                            :facetTitle="$t('search.filters.books-title')"
+                            :facetPlaceholder="$t('search.filters.search-for-book')"
                         />
                         <search-facet facetName="AuthorFullName"
-                            :facetTitle="$t('search.authors-filter')"
-                            :facetPlaceholder="$t('search.authors-filter-default')"
+                            :facetTitle="$t('search.filters.authors-title')"
+                            :facetPlaceholder="$t('search.filters.search-for-author')"
                         />
                         <year-filter />
                         <section class="exact-match">
