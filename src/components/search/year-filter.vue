@@ -1,14 +1,17 @@
 <template>
-    <section class="range-slider">
-        <div class="range-wrap" :style="`--a: ${value1}; --b: ${value2}; --min: ${minYear}; --max: ${maxYear}`">
-            <input v-model="value1" :min="minYear" :max="maxYear" step="1" type="range">
-            <input v-model="value2" :min="minYear" :max="maxYear" step="1" type="range">
+    <section>
+        <h4>{{ $t('search.year-filter') }}</h4>
+        <div class="range-slider">
+            <div class="range-wrap" :style="`--a: ${value1}; --b: ${value2}; --min: ${minYear}; --max: ${maxYear}`">
+                <input v-model="value1" :min="minYear" :max="maxYear" step="1" type="range">
+                <input v-model="value2" :min="minYear" :max="maxYear" step="1" type="range">
+            </div>
+            <p class="range-values">
+                <span>{{minYearValue || '-' }}</span>
+                <span v-if="minYearValue != minYear || maxYearValue != maxYear" @click="clear" class="range-clear">Clear</span>
+                <span>{{maxYearValue || '-' }}</span>
+            </p>
         </div>
-        <p class="range-values">
-            <span>{{minYearValue || '-' }}</span>
-            <span v-if="minYearValue != minYear || maxYearValue != maxYear" @click="clear" class="range-clear">Clear</span>
-            <span>{{maxYearValue || '-' }}</span>
-        </p>
     </section>
 </template>
 
@@ -102,7 +105,7 @@ input[type=range]::-moz-range-thumb {
 }
 .range-slider {
     position: relative;
-    height: 55px;
+    height: 41px;
 }
 .range-slider:after {
     background-color: #F5F5F5;

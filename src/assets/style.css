@@ -973,10 +973,10 @@ label + h5 {
 input[type=text], select {
   box-shadow: inset 0px 0px 0px 2px var(--base4);
   border: none;
-  border-radius: 4px;
+  border-radius: 20px;
   height: 40px;
   width: 100%;
-  padding: 8px 12px;
+  padding: 8px 15px;
   box-sizing: border-box;
   margin-bottom: 16px;
   font-family: "Ubuntu", sans-serif;
@@ -999,10 +999,10 @@ input[type=text], select {
 input[type=text]::placeholder, select::placeholder {
   color: var(--base3);
 }
-input[type=text]:hover, select:hover {
+input[type=text]:not(.search-filter):hover, select:hover {
   box-shadow: inset 0px 0px 0px 4px var(--main-10);
 }
-input[type=text]:focus, select:focus {
+input[type=text]:not(.search-filter):focus, select:focus {
   box-shadow: inset 0px 0px 0px 2px var(--main);
   outline: none;
 }

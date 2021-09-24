@@ -12,25 +12,25 @@
             <aside class="temp" id="filters" :style="{ top: isMobile ? isStandalone  ? '48px': '95px' : 'unset' }">
                 <h3 v-if="!isMobile">{{$t('search.filter')}}</h3>
                 <section class="filter" :class="showFilters ? 'open' : 'closed'" v-click-outside="() => showFilters = false">
-                    <div class="header" @click="showFilters = !showFilters">
-                        <h3 v-if="isMobile">{{$t('search.filter')}}</h3>
+                    <div v-if="isMobile" class="header" @click="showFilters = !showFilters">
+                        <h3>{{$t('search.filter')}}</h3>
                         <a v-if="showFilters" class="minimize-button" @click="removeAllFilters()"></a>
                     </div>
-                    <form v-if="!isMobile || showFilters">
+                    <div class="filters-wrapper" v-if="!isMobile || showFilters">
                         <search-facet facetName="BookName"
                             :facetTitle="$t('search.books-filter')"
-                            :facetPlaceholder="$t('search.books-filter-default')" />
+                            :facetPlaceholder="$t('search.books-filter-default')"
+                        />
                         <search-facet facetName="AuthorFullName"
                             :facetTitle="$t('search.authors-filter')"
-                            :facetPlaceholder="$t('search.authors-filter-default')" />
-                        <section>
-                            <year-filter />
-                        </section>
+                            :facetPlaceholder="$t('search.authors-filter-default')"
+                        />
+                        <year-filter />
                         <section class="exact-match">
+                            <p>{{$t('search.exact-match')}}</p>
                             <input v-model="exactMatch" type="checkbox" name="search-exact-text">
-                            <h5 @click="exactMatch = !exactMatch">{{$t('search.exact-match')}}</h5>
                         </section>
-                    </form>
+                    </div>
                 </section>
             </aside>
             <section class="list">
@@ -165,7 +165,6 @@ export default {
 <style>
 section.filter {
     display: inline-block;
-    padding: 12px;
     margin: 0px 0px 24px 0px;
     width: 100%;
     border-radius: 8px;
@@ -178,15 +177,46 @@ section.filter {
     background: var(--white);
 }
 
-.filter .header {
-    padding: 0px 4px;
+section.filter .filters-wrapper > section {
+    padding: 15px;
+    position: relative;
 }
+section.filter .filters-wrapper > section:not(:last-child):after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    left: 0;
+    bottom: 0;
+    background-color: var(--base4);
+}
+section.filter .filters-wrapper > section h4 {
+    margin-bottom: 10px;
+}
+section.filter .filters-wrapper > section form {
+    position: relative;
+}
+
+.filter .header {
+    padding: 16px;
+    position: relative;
+}
+.filter.open .header:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    left: 0;
+    bottom: 0;
+    background-color: var(--base4);
+}
+
 .filter.open .header {
     padding-bottom: 12px;
 }
 
 .filter input[type="text"] {
-    margin-bottom: 10px;
+    margin: 0;
 }
 
 .filter .custom-select,
@@ -195,18 +225,56 @@ section.filter {
     font-size: 1.8em;
     line-height: 1.4em;
     color: var(--base1);
+    margin-top: 15px;
+}
+.filter .custom-select {
+    width: 100%;
+    position: absolute;
+    background-color: #fff;
+    border: 2px solid var(--base4);
+    z-index: 10;
+    left: 0;
+    margin: 0;
+    padding: 0 5px;
+    top: 38px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+.filter .custom-select ul {
+    position: relative;
+    max-height: 320px;
+    overflow: auto;
+    padding: 8px 0;
+}
+.filter .custom-select:before,
+.filter .custom-select:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 15px;
+    z-index: 11;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+.filter .custom-select:before {
+    top: 0;
+    background: linear-gradient(0deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
+}
+.filter .custom-select:after {
+    bottom: 0;
+    background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
 }
 .filter .custom-select ul,
 .filter .search-selection ul {
     padding-left: 0;
-    margin-top: 0;
+    margin: 0;
 }
 .filter .custom-select li,
 .filter .search-selection li {
     padding-left: 5px;
 }
-.filter .custom-select li:hover,
-.filter .search-selection li:hover {
+.filter .custom-select li:hover {
     color: #6291EB;
     cursor: pointer;
 }
@@ -224,15 +292,31 @@ section.filter {
     display: none;
 }
 
+.filter .search-selection li {
+    flex-direction: row-reverse;
+}
+.filter .search-selection li img {
+    margin-left: auto;
+    filter: invert(57%) sepia(17%) saturate(462%) hue-rotate(188deg) brightness(94%) contrast(90%);
+    cursor: pointer;
+}
+.filter .search-selection li img:hover + span {
+    text-decoration: line-through;
+}
+
 .exact-match {
     display: flex;
 }
-.exact-match input[type='checkbox'] {
-    margin-right: 5px;
-    cursor: pointer;
+.exact-match p {
+    line-height: normal;
+    color: var(--base1);
+    align-self: center;
 }
-.exact-match h5 {
+.exact-match input[type='checkbox'] {
     cursor: pointer;
+    margin-left: auto;
+    width: 18px;
+    height: 18px;
 }
 
 @media screen and (min-width: 768px) {

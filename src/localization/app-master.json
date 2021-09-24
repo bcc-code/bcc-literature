@@ -55,7 +55,8 @@
         "books-filter-default": "Alle bøker",
         "filter": "Filtre",
         "load-more": "Last inn mer",
-        "no-results": "Ingen resultater"
+        "no-results": "Ingen resultater",
+        "no-match": "Ingen treff"
     },
     "reader": {
         "chapter": "Kapittel",
