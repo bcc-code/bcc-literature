@@ -1,17 +1,17 @@
 <template>
     <section>
         <h4>{{ facetTitle }}</h4>
-        <form>
+        <form v-click-outside="() => disableOptions()">
             <input type="text" autocomplete="off" name="Search" class="search-filter" :class="{'open': !hideOptions}" v-model="searchQuery" :placeholder="facetPlaceholder"
-                @click="toggleOptions()" v-click-outside="() => disableOptions()">
-            <div class="custom-select" :class="{ 'hide': hideOptions }">
+                @click="toggleOptions()">
+            <div class="custom-select" :class="{ 'hide': hideOptions, 'no-result': options.length === 0 }">
                 <ul>
                     <li v-for="option in options" v-bind:key="option.value" @click="toggleSelection(option.value)">
                         <input type="checkbox" :name="option.value">
                         <span>{{ option.value }}</span>
                     </li>
                 </ul>
-                <div class="no-match" v-if="options.length === 0">{{ $t('search.no-match') }} ...</div>
+                <div class="no-match" v-if="options.length === 0">{{ $t('search.filters.no-match') }} ...</div>
             </div>
         </form>
         <div class="search-selection" v-if="selections.length">
@@ -48,6 +48,11 @@ export default {
             return this.$store.state.search.hideOptions[this.facetName];
         }
     },
+    mounted() {
+        for (const key of Object.keys(this.$store.state.search.hideOptions)) {
+            this.$store.state.search.hideOptions[key] = true;
+        }
+    },
     methods: {
         ...mapActions('search', {
             newFilterSelection: 'newFilterSelection',            
@@ -56,6 +61,7 @@ export default {
             this.newFilterSelection({ facetName: this.facetName, value: value });
             this.setAvailableFacets();
             this.searchQuery = "";
+            this.disableOptions();
         },
         toggleOptions: function() {
             this.setAvailableFacets();
@@ -108,7 +114,7 @@ export default {
 }
 .no-match {
     width: 100%;
-    padding: 5px 15px;
+    padding: 10px;
     font-style: italic;
 }
 

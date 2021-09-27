@@ -230,7 +230,7 @@ section.filter .filters-wrapper > section form {
 .filter .custom-select {
     width: 100%;
     position: absolute;
-    background-color: #fff;
+    background-color: var(--white);
     border: 2px solid var(--base4);
     z-index: 10;
     left: 0;
@@ -246,24 +246,27 @@ section.filter .filters-wrapper > section form {
     overflow: auto;
     padding: 8px 0;
 }
-.filter .custom-select:before,
-.filter .custom-select:after {
+.filter .custom-select.no-result ul {
+    display: none;
+}
+.filter .custom-select:not(.no-result):before,
+.filter .custom-select:not(.no-result):after {
     content: "";
     position: absolute;
     left: 0;
     width: calc(100% - 15px);
     height: 15px;
     z-index: 11;
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
 }
 .filter .custom-select:before {
     top: 0;
-    background: linear-gradient(0deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
+    background: var(--white-to-transparent);
 }
 .filter .custom-select:after {
     bottom: 0;
-    background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 100%);
+    background: var(--white-to-transparent);
+    transform: rotate(180deg);
+    border-top-right-radius: 15px;
 }
 .filter .custom-select ul,
 .filter .search-selection ul {
@@ -391,11 +394,14 @@ section.filter .filters-wrapper > section form {
         padding: 0;
         margin: 8px;
         border-radius: 3em;
-        background: hsla(0,0%,100%,.2) url(/img/icon_24_close-black.svg) 50% no-repeat;
+        background: url(/img/icon_24_close-black.svg) 50% no-repeat;
         -webkit-transition: all .2s;
         transition: all .2s;
         -webkit-transition-timing-function: ease-out;
         transition-timing-function: ease-out;
+    }
+    .dark .minimize-button {
+        filter: invert(100%);
     }
 }
 </style>
