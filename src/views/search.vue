@@ -251,7 +251,7 @@ section.filter .filters-wrapper > section form {
     content: "";
     position: absolute;
     left: 0;
-    width: 100%;
+    width: calc(100% - 15px);
     height: 15px;
     z-index: 11;
     border-bottom-left-radius: 15px;
@@ -317,6 +317,18 @@ section.filter .filters-wrapper > section form {
     margin-left: auto;
     width: 18px;
     height: 18px;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    -o-appearance: none;
+    border: 2px solid #E6E9F2;
+    border-radius: 4px;
+}
+.exact-match input[type='checkbox']:checked {
+    background: url(../assets/icons/icon_checkmark_blue.svg);
+    background-repeat: no-repeat;
+    background-size: 18px;
+    background-position: center;
+    border-color: #6291EB;
 }
 
 @media screen and (min-width: 768px) {

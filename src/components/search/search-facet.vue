@@ -2,7 +2,8 @@
     <section>
         <h4>{{ facetTitle }}</h4>
         <form>
-            <input type="text" autocomplete="off" name="Search" class="search-filter" :class="{'open': !hideOptions}" v-model="searchQuery" :placeholder="facetPlaceholder" @click="toggleOptions()" v-click-outside="() => disableOptions()">
+            <input type="text" autocomplete="off" name="Search" class="search-filter" :class="{'open': !hideOptions}" v-model="searchQuery" :placeholder="facetPlaceholder"
+                @click="toggleOptions()" v-click-outside="() => disableOptions()">
             <div class="custom-select" :class="{ 'hide': hideOptions }">
                 <ul>
                     <li v-for="option in options" v-bind:key="option.value" @click="toggleSelection(option.value)">
@@ -78,6 +79,14 @@ export default {
 }
 </script>
 <style>
+.filter input[type="text"]::-webkit-input-placeholder {
+    background: url("../../assets/icons/icon_12_union.svg");
+    background-repeat: no-repeat;
+    background-size: 12px;
+    background-position: left;
+    padding-left: 20px;
+}
+
 .filter input[type=text].open {
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
@@ -101,5 +110,9 @@ export default {
     width: 100%;
     padding: 5px 15px;
     font-style: italic;
+}
+
+.filter li input[type="checkbox"] {
+    margin-right: 5px;
 }
 </style>
