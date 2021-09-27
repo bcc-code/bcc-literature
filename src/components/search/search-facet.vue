@@ -120,5 +120,6 @@ export default {
 
 .filter li input[type="checkbox"] {
     margin-right: 5px;
+    min-width: 16px; /* Fix for iOS */
 }
 </style>

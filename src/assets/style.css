@@ -1270,7 +1270,6 @@ iframe {
 }
 
 .author-header {
-  min-height: 228px;
   background: var(--base5);
   padding: 48px 16px;
   text-align: center;
@@ -2314,9 +2313,6 @@ article.search-result a {
   transition-timing-function: ease-out;
 }
 article.search-result a h4 {
-  margin: 0px 0px 8px 0px;
-}
-article.search-result a p {
   margin: 0px 0px 8px 0px;
 }
 article.search-result a.result-author-only h4 {
