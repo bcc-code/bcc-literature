@@ -48,12 +48,15 @@
         "search-results": "Tulokset",
         "search-box": "Etsi BCC:n kirjallisuutta",
         "year-filter": "Year",
-        "exact-match": "Exact match",
-        "authors-filter": "Kirjailijahaku",
-        "authors-filter-default": "Kaikki kirjailijat",
-        "books-filter": "Kirjahaku",
-        "books-filter-default": "Kaikki kirjat",
-        "filter": "Filtre",
+        "exact-match": "Eksakt tekst",
+        "filters": {
+            "title": "Filtre",
+            "search-for-book": "Søk etter bok",
+            "search-for-author": "Søk etter forfatter",
+            "authors-title": "Forfattere",
+            "books-title": "Kirjat",
+            "no-match": "Ingen treff"
+        },
         "load-more": "Lataa lisää",
         "no-results": "Ingen resultater"
     },
