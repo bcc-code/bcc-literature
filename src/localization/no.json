@@ -49,11 +49,14 @@
         "search-box": "Søk i BCC litteratur",
         "year-filter": "År",
         "exact-match": "Eksakt tekst",
-        "authors-filter": "Forfattere",
-        "authors-filter-default": "Alle forfattere",
-        "books-filter": "Bøker",
-        "books-filter-default": "Alle bøker",
-        "filter": "Filtre",
+        "filters": {
+            "title": "Filtre",
+            "search-for-book": "Søk etter bok",
+            "search-for-author": "Søk etter forfatter",
+            "authors-title": "Forfattere",
+            "books-title": "Bøker",
+            "no-match": "Ingen treff"
+        },
         "load-more": "Last inn mer",
         "no-results": "Ingen resultater"
     },
