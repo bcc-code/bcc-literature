@@ -49,11 +49,14 @@
         "search-box": "Search in BCC Literature",
         "year-filter": "Year",
         "exact-match": "Exact match",
-        "authors-filter": "Filter by authors",
-        "authors-filter-default": "All authors",
-        "books-filter": "Filter by book",
-        "books-filter-default": "All books",
-        "filter": "Filter",
+        "filters": {
+            "title": "Filters",
+            "search-for-book": "Search for book",
+            "search-for-author": "Search for author",
+            "authors-title": "Authors",
+            "books-title": "Books",
+            "no-match": "No match"
+        },
         "load-more": "Load more",
         "no-results": "No results"
     },
