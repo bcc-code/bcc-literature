@@ -48,8 +48,14 @@ export default {
     cursor: pointer;
     transition: 250ms ease;
 }
+.dark .clear-search-input {
+    background-color: var(--base1);
+}
 .clear-search-input:hover {
     background-color: var(--base4);
+}
+.dark .clear-search-input:hover {
+    background-color: var(--base2);
 }
 .clear-search-input:after {
     content: '';

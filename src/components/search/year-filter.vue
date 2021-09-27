@@ -1,14 +1,17 @@
 <template>
-    <section class="range-slider">
-        <div class="range-wrap" :style="`--a: ${value1}; --b: ${value2}; --min: ${minYear}; --max: ${maxYear}`">
-            <input v-model="value1" :min="minYear" :max="maxYear" step="1" type="range">
-            <input v-model="value2" :min="minYear" :max="maxYear" step="1" type="range">
+    <section>
+        <h4>{{ $t('search.year-filter') }}</h4>
+        <div class="range-slider">
+            <div class="range-wrap" :style="`--a: ${value1}; --b: ${value2}; --min: ${minYear}; --max: ${maxYear}`">
+                <input v-model="value1" :min="minYear" :max="maxYear" step="1" type="range">
+                <input v-model="value2" :min="minYear" :max="maxYear" step="1" type="range">
+            </div>
+            <p class="range-values">
+                <span>{{minYearValue || '-' }}</span>
+                <span v-if="minYearValue != minYear || maxYearValue != maxYear" @click="clear" class="range-clear">Clear</span>
+                <span>{{maxYearValue || '-' }}</span>
+            </p>
         </div>
-        <p class="range-values">
-            <span>{{minYearValue || '-' }}</span>
-            <span v-if="minYearValue != minYear || maxYearValue != maxYear" @click="clear" class="range-clear">Clear</span>
-            <span>{{maxYearValue || '-' }}</span>
-        </p>
     </section>
 </template>
 
@@ -20,27 +23,28 @@
     grid-template: repeat(2, max-content) 4em/1fr 1fr;
     overflow: hidden;
     position: relative;
-    height: 16px;
+    height: 20px;
+    background-color: var(--base5);
+    border-radius: 17px;
+    padding: 2px;
 }
 .range-wrap::before, .range-wrap::after {
     grid-column: 1/span 2;
     grid-row: 3;
     background: #6291eb;
     content: "";
+    height: 4px;
+    top: 6px;
+    position: relative;
+    z-index: 1;
 }
 .range-wrap::before {
     margin-left: calc(1em + (var(--a) - var(--min))/var(--dif) * calc(100% - 14px));
     width: calc((var(--b) - var(--a))/var(--dif) * calc(100% - 14px));
-    height: 10px;
-    margin-top: 3px;
-    z-index: 1;
 }
 .range-wrap::after {
     margin-left: calc(1em + (var(--b) - var(--min))/var(--dif) * calc(100% - 14px));
     width: calc((var(--a) - var(--b))/var(--dif) * calc(100% - 14px));
-    height: 10px;
-    margin-top: 3px;
-    z-index: 1;
 }
 
 input[type=range] {
@@ -68,7 +72,7 @@ input[type=range]::-moz-range-track {
     background: none;
 }
 input[type=range]::-webkit-slider-thumb {
-    border: none; /* get rid of Firefox thumb border */
+    border: 4px solid #fff;
     width: 16px;
     height: 16px;
     border-radius: 0; /* get rid of Firefox corner rounding */
@@ -76,9 +80,10 @@ input[type=range]::-webkit-slider-thumb {
     pointer-events: auto;
     border-radius: 50%;
     cursor: pointer;
+    box-shadow: 0px 2px 2px rgba(0, 35, 140, 0.06), 0px 4px 8px rgba(0, 7, 26, 0.06);
 }
 input[type=range]::-moz-range-thumb {
-    border: none; /* get rid of Firefox thumb border */
+    border: 4px solid #fff;
     width: 16px;
     height: 16px;
     border-radius: 0; /* get rid of Firefox corner rounding */
@@ -86,6 +91,7 @@ input[type=range]::-moz-range-thumb {
     pointer-events: auto;
     border-radius: 50%;
     cursor: pointer;
+    box-shadow: 0px 2px 2px rgba(0, 35, 140, 0.06), 0px 4px 8px rgba(0, 7, 26, 0.06);
 }
 
 .range-clear {
@@ -94,25 +100,27 @@ input[type=range]::-moz-range-thumb {
 }
 .range-values {
     font-size: 14px;
+    font-weight: 400;
+    color: var(--base3);
     width: 100%;
     display: flex;
     justify-content: space-between;
     position: relative;
-    margin-left: 3px;
+    padding: 0 6px;
 }
 .range-slider {
     position: relative;
-    height: 55px;
+    height: 41px;
 }
 .range-slider:after {
-    background-color: #F5F5F5;
+    background-color: #C1C7DA;
     content: "";
-    height: 10px;
+    height: 4px;
     position: absolute;
-    top: 3px;
-    border-radius: 8px;
-    left: 2px;
-    right: 2px;
+    top: 8px;
+    border-radius: 16px;
+    left: 8px;
+    right: 8px;
     pointer-events: none;
 }
 </style>
