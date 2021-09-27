@@ -14,7 +14,7 @@
                 <section class="filter" :class="showFilters ? 'open' : 'closed'" v-click-outside="() => showFilters = false">
                     <div v-if="isMobile" class="header" @click="showFilters = !showFilters">
                         <h3>{{$t('search.filters.title')}}</h3>
-                        <a v-if="showFilters" class="minimize-button" @click="removeAllFilters()"></a>
+                        <p class="remove-filters" v-if="showFilters" @click="removeAllFilters()"><a href="#">{{ $t('search.filters.clear') }}</a></p>
                     </div>
                     <div class="filters-wrapper" v-if="!isMobile || showFilters">
                         <search-facet facetName="BookName"
@@ -200,6 +200,7 @@ section.filter .filters-wrapper > section form {
 .filter .header {
     padding: 16px;
     position: relative;
+    display: flex;
 }
 .filter.open .header:after {
     content: "";
@@ -207,7 +208,7 @@ section.filter .filters-wrapper > section form {
     width: 100%;
     height: 2px;
     left: 0;
-    bottom: 0;
+    bottom: -2px;
     background-color: var(--base4);
 }
 
@@ -402,6 +403,16 @@ section.filter .filters-wrapper > section form {
     }
     .dark .minimize-button {
         filter: invert(100%);
+    }
+
+    .remove-filters {
+        align-self: center;
+        margin-left: auto;
+        font-size: 12px;
+        font-style: italic;
+    }
+    .remove-filters a {
+        text-decoration: none;
     }
 }
 </style>

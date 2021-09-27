@@ -8,7 +8,7 @@
             </div>
             <p class="range-values">
                 <span>{{minYearValue || '-' }}</span>
-                <span v-if="minYearValue != minYear || maxYearValue != maxYear" @click="clear" class="range-clear">Clear</span>
+                <span v-if="minYearValue != minYear || maxYearValue != maxYear" @click="clear" class="range-clear">{{ $t('search.filters.clear') }}</span>
                 <span>{{maxYearValue || '-' }}</span>
             </p>
         </div>
@@ -96,7 +96,9 @@ input[type=range]::-moz-range-thumb {
 
 .range-clear {
     cursor: pointer;
-    color: #b7bac3;
+    color: var(--main);
+    font-size: 12px;
+    font-style: italic;
 }
 .range-values {
     font-size: 14px;
