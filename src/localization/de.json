@@ -55,7 +55,8 @@
             "search-for-author": "Søk etter forfatter",
             "authors-title": "Autoren",
             "books-title": "Bücher",
-            "no-match": "Ingen treff"
+            "no-match": "Ingen treff",
+            "clear": "tøm"
         },
         "load-more": "Mehr laden",
         "no-results": "Keine Resultate"
