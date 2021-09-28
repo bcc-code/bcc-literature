@@ -55,7 +55,8 @@
             "search-for-author": "Søk etter forfatter",
             "authors-title": "Forfattere",
             "books-title": "Kirjat",
-            "no-match": "Ingen treff"
+            "no-match": "Ingen treff",
+            "clear": "tøm"
         },
         "load-more": "Lataa lisää",
         "no-results": "Ingen resultater"
