@@ -55,7 +55,8 @@
             "search-for-author": "Search for author",
             "authors-title": "Authors",
             "books-title": "Books",
-            "no-match": "No match"
+            "no-match": "No match",
+            "clear": "clear"
         },
         "load-more": "Load more",
         "no-results": "No results"
