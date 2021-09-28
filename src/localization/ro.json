@@ -51,11 +51,12 @@
         "exact-match": "Potrivire exactă",
         "filters": {
             "title": "Filtre",
-            "search-for-book": "Søk etter bok",
-            "search-for-author": "Søk etter forfatter",
+            "search-for-book": "Caută o carte",
+            "search-for-author": "Caută un autor",
             "authors-title": "Autori",
             "books-title": "Cărți",
-            "no-match": "Ingen treff"
+            "no-match": "Nici un rezultat",
+            "clear": "resetează"
         },
         "load-more": "Încarcă mai mult",
         "no-results": "Fără rezultate"
