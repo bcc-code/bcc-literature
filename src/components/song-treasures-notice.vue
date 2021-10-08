@@ -23,6 +23,8 @@
     background: rgba(230, 233, 242, 0.25) url(/img/songbooks.png) no-repeat;
     background-position: left 50% bottom -40px;
     background-size: 96px;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
 }
 .song-treasures-logo img {
     max-width: 100%;
@@ -41,9 +43,14 @@
         display: block;
         width: 100%;
         border: none;
-        border-bottom: 1px solid var(--base4);
+        border-bottom: 2px solid var(--base4);
         padding: 0;
         background-position: right 20px bottom -40px;
+        border-bottom-left-radius: 0px;
+        border-top-right-radius: 8px;
+    }
+    body.dark .song-treasures-logo {
+        background-color: #1c1c1c;
     }
     .song-treasures-logo img {
         max-width: 180px;
