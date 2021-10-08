@@ -26,6 +26,9 @@
     border-top-left-radius: 8px;
     border-bottom-left-radius: 8px;
 }
+body.dark .song-treasures-logo {
+    background-color: #1c1c1c;
+}
 .song-treasures-logo img {
     max-width: 100%;
 }
@@ -48,9 +51,6 @@
         background-position: right 20px bottom -40px;
         border-bottom-left-radius: 0px;
         border-top-right-radius: 8px;
-    }
-    body.dark .song-treasures-logo {
-        background-color: #1c1c1c;
     }
     .song-treasures-logo img {
         max-width: 180px;
