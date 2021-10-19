@@ -10,7 +10,7 @@ const Authenticator = new Oidc.UserManager({
     redirect_uri: window.location.origin + '/callback',
     silent_redirect_uri: window.location.origin + '/silent-renew',
     response_type: 'id_token token',
-    scope: 'openid profile email church',
+    scope: 'openid profile email church country',
     post_logout_redirect_uri: window.location.origin,
     extraQueryParams: {'audience': keys.API_AUDIENCE},
     metadata: {

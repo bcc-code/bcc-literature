@@ -1,9 +1,10 @@
+const nightMode = JSON.parse(localStorage.getItem('nightMode'))
 export default {
     namespaced: true,
     state: {
         userInfo: null,
         appLanguage: localStorage.getItem('appLanguage') || 'no',
-        nightMode: JSON.parse(localStorage.getItem('nightMode')) || (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) || false,
+        nightMode: nightMode == null ? (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) : nightMode,
         fontSize: localStorage.getItem('fontSize') || 1,
         isAuthenticated: false,
         topbarInitialized: false, 
@@ -18,8 +19,8 @@ export default {
             state.appLanguage = value;
         },
         toggleNightMode: (state) => {
-            state.nightMode = !state.nightMode
-            localStorage.setItem('nightMode', state.nightMode)
+            state.nightMode = !state.nightMode;
+            localStorage.setItem('nightMode', state.nightMode);
         },
         changeFontSize: (state, value) => {
             if (isNaN(state.fontSize)) state.fontSize = 1

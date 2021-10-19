@@ -10,29 +10,27 @@
     <section class="container content">  
         <section class="center medium">
             <aside class="temp" id="filters" :style="{ top: isMobile ? isStandalone  ? '48px': '95px' : 'unset' }">
-                <h3 v-if="!isMobile">{{$t('search.filter')}}</h3>
+                <h3 v-if="!isMobile">{{$t('search.filters.title')}}</h3>
                 <section class="filter" :class="showFilters ? 'open' : 'closed'" v-click-outside="() => showFilters = false">
-                    <div class="header" @click="showFilters = !showFilters">
-                        <h3 v-if="isMobile">{{$t('search.filter')}}</h3>
-                        <a v-if="showFilters" class="minimize-button" @click="() => showFilters = false"></a>
+                    <div v-if="isMobile" class="header" @click="showFilters = !showFilters">
+                        <h3>{{$t('search.filters.title')}}</h3>
+                        <p class="remove-filters" v-if="showFilters" @click="removeAllFilters()"><a href="#">{{ $t('search.filters.clear') }}</a></p>
                     </div>
-                    <form v-if="!isMobile || showFilters">
+                    <div class="filters-wrapper" v-if="!isMobile || showFilters">
                         <search-facet facetName="BookName"
-                            :facetTitle="$t('search.books-filter')"
-                            :facetPlaceholder="$t('search.books-filter-default')"
-                            facetKey="title"/>
+                            :facetTitle="$t('search.filters.books-title')"
+                            :facetPlaceholder="$t('search.filters.search-for-book')"
+                        />
                         <search-facet facetName="AuthorFullName"
-                            :facetTitle="$t('search.authors-filter')"
-                            :facetPlaceholder="$t('search.authors-filter-default')"
-                            facetKey="fullName"/>
-                        <section>
-                            <year-filter />
-                        </section>
+                            :facetTitle="$t('search.filters.authors-title')"
+                            :facetPlaceholder="$t('search.filters.search-for-author')"
+                        />
+                        <year-filter />
                         <section class="exact-match">
+                            <p>{{$t('search.exact-match')}}</p>
                             <input v-model="exactMatch" type="checkbox" name="search-exact-text">
-                            <h5 @click="exactMatch = !exactMatch">{{$t('search.exact-match')}}</h5>
                         </section>
-                    </form>
+                    </div>
                 </section>
             </aside>
             <section class="list">
@@ -44,7 +42,7 @@
                     <search-result v-for="(result, index) in results" :key="result.articleId" :result="result" :rank="index+1" />        
                     <a v-if="noOfResults > results.length && !showSpinner" v-on:click="loadMore" class="pagination-button"><h5>{{$t('search.load-more')}}</h5></a>
                 </template>
-            </section>              
+            </section>
         </section>
     </section>    
   </div>
@@ -105,6 +103,13 @@ export default {
                     filterElement.classList.remove("pinned"); 
                 }
             }
+        },
+        removeAllFilters() {
+            this.$store.state.search.searchParams.facets['AuthorFullName'] = [];
+            this.$store.state.search.searchParams.facets['BookName'] = [];
+            this.$store.state.search.searchParams.facets['Years'] = [];
+
+            this.newSearch({ query: this.computedQuery, newFacets: false });
         }
     },
     created: function() {     
@@ -160,7 +165,6 @@ export default {
 <style>
 section.filter {
     display: inline-block;
-    padding: 12px;
     margin: 0px 0px 24px 0px;
     width: 100%;
     border-radius: 8px;
@@ -173,15 +177,47 @@ section.filter {
     background: var(--white);
 }
 
-.filter .header {
-    padding: 0px 4px;
+section.filter .filters-wrapper > section {
+    padding: 15px;
+    position: relative;
 }
+section.filter .filters-wrapper > section:not(:last-child):after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    left: 0;
+    bottom: 0;
+    background-color: var(--base4);
+}
+section.filter .filters-wrapper > section h4 {
+    margin-bottom: 10px;
+}
+section.filter .filters-wrapper > section form {
+    position: relative;
+}
+
+.filter .header {
+    padding: 16px;
+    position: relative;
+    display: flex;
+}
+.filter.open .header:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    left: 0;
+    bottom: -2px;
+    background-color: var(--base4);
+}
+
 .filter.open .header {
     padding-bottom: 12px;
 }
 
 .filter input[type="text"] {
-    margin-bottom: 10px;
+    margin: 0;
 }
 
 .filter .custom-select,
@@ -190,18 +226,59 @@ section.filter {
     font-size: 1.8em;
     line-height: 1.4em;
     color: var(--base1);
+    margin-top: 15px;
+}
+.filter .custom-select {
+    width: 100%;
+    position: absolute;
+    background-color: var(--white);
+    border: 2px solid var(--base4);
+    z-index: 10;
+    left: 0;
+    margin: 0;
+    padding: 0 5px;
+    top: 38px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+.filter .custom-select ul {
+    position: relative;
+    max-height: 320px;
+    overflow: auto;
+    padding: 8px 0;
+}
+.filter .custom-select.no-result ul {
+    display: none;
+}
+.filter .custom-select:not(.no-result):before,
+.filter .custom-select:not(.no-result):after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: calc(100% - 15px);
+    height: 15px;
+    z-index: 11;
+}
+.filter .custom-select:before {
+    top: 0;
+    background: var(--white-to-transparent);
+}
+.filter .custom-select:after {
+    bottom: 0;
+    background: var(--white-to-transparent);
+    transform: rotate(180deg);
+    border-top-right-radius: 15px;
 }
 .filter .custom-select ul,
 .filter .search-selection ul {
     padding-left: 0;
-    margin-top: 0;
+    margin: 0;
 }
 .filter .custom-select li,
 .filter .search-selection li {
     padding-left: 5px;
 }
-.filter .custom-select li:hover,
-.filter .search-selection li:hover {
+.filter .custom-select li:hover {
     color: #6291EB;
     cursor: pointer;
 }
@@ -219,15 +296,43 @@ section.filter {
     display: none;
 }
 
+.filter .search-selection li {
+    flex-direction: row-reverse;
+}
+.filter .search-selection li img {
+    margin-left: auto;
+    filter: invert(57%) sepia(17%) saturate(462%) hue-rotate(188deg) brightness(94%) contrast(90%);
+    cursor: pointer;
+}
+.filter .search-selection li img:hover + span {
+    text-decoration: line-through;
+}
+
 .exact-match {
     display: flex;
 }
-.exact-match input[type='checkbox'] {
-    margin-right: 5px;
-    cursor: pointer;
+.exact-match p {
+    line-height: normal;
+    color: var(--base1);
+    align-self: center;
 }
-.exact-match h5 {
+.exact-match input[type='checkbox'] {
     cursor: pointer;
+    margin-left: auto;
+    width: 18px;
+    height: 18px;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    -o-appearance: none;
+    border: 2px solid #E6E9F2;
+    border-radius: 4px;
+}
+.exact-match input[type='checkbox']:checked {
+    background: url(../assets/icons/icon_checkmark_blue.svg);
+    background-repeat: no-repeat;
+    background-size: 18px;
+    background-position: center;
+    border-color: #6291EB;
 }
 
 @media screen and (min-width: 768px) {
@@ -290,11 +395,24 @@ section.filter {
         padding: 0;
         margin: 8px;
         border-radius: 3em;
-        background: hsla(0,0%,100%,.2) url(/img/icon_24_close-black.svg) 50% no-repeat;
+        background: url(/img/icon_24_close-black.svg) 50% no-repeat;
         -webkit-transition: all .2s;
         transition: all .2s;
         -webkit-transition-timing-function: ease-out;
         transition-timing-function: ease-out;
+    }
+    .dark .minimize-button {
+        filter: invert(100%);
+    }
+
+    .remove-filters {
+        align-self: center;
+        margin-left: auto;
+        font-size: 12px;
+        font-style: italic;
+    }
+    .remove-filters a {
+        text-decoration: none;
     }
 }
 </style>

@@ -49,11 +49,15 @@
         "search-box": "Caută în literatura BCC",
         "year-filter": "An",
         "exact-match": "Potrivire exactă",
-        "authors-filter": "Filtrează după autori",
-        "authors-filter-default": "Toți autorii",
-        "books-filter": "Filtrează cărțile",
-        "books-filter-default": "Toate cărțile",
-        "filter": "Filtre",
+        "filters": {
+            "title": "Filtre",
+            "search-for-book": "Caută o carte",
+            "search-for-author": "Caută un autor",
+            "authors-title": "Autori",
+            "books-title": "Cărți",
+            "no-match": "Nici un rezultat",
+            "clear": "resetează"
+        },
         "load-more": "Încarcă mai mult",
         "no-results": "Fără rezultate"
     },
