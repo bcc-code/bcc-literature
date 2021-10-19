@@ -20,7 +20,8 @@
 import { EventBus, Events } from '@/utils/eventBus.js';
 import LaDropdown from '@/components/la-dropdown';
 import loadjs from "loadjs";
-import { mapMutations, mapState } from 'vuex';
+import { mapState } from 'vuex';
+import { logCustomEvent } from '@/utils/appInsights';
 
 export default {
     props: {
@@ -67,7 +68,6 @@ export default {
         }
     },
     methods: {
-        ...mapMutations('session', ['toggleNightMode']),
         setLanguage(lang) {
             this.showLanguageSelection = false;
             this.$store.commit('session/setAppLanguage', lang);
@@ -80,6 +80,12 @@ export default {
                 return; 
             }
             this.$router.push(this.backButtonRoute)  
+        },
+        toggleNightMode() {
+            this.$store.commit('session/toggleNightMode');
+            logCustomEvent("ToggleNightMode", {
+                NightMode: this.nightMode
+            });
         },
         initTopbar() {
             var scriptId = "script-bcc-topbar";
@@ -140,7 +146,10 @@ export default {
 <style scoped>
 @media screen and (max-width: 768px) {
     header .dropdown, header .filter-search {
-        margin: 8px 5px;
+        margin: 0;
+        height: 48px;
+        display: flex;
+        align-items: center;
     }
 }
 </style>

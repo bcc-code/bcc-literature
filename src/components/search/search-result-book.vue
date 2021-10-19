@@ -2,7 +2,7 @@
     <article class="search-result">   
           <router-link class="result-book-only" :to="{ name: 'book-index', params: { bookId: result.id, parent: $route }}">          
               <book-card-cover :cover-id="result.coverId"></book-card-cover>
-              <div>
+              <div class="book-details">
                 <h4>{{ result.title }}</h4>
                 <p>{{ authorFullName }}  ·  {{result.year}}</p>
               </div>
@@ -48,6 +48,7 @@ export default {
 article.search-result .result-book-only figure {
     position: relative;
     display: block;
+    min-width: 75px;
     width: 75px;
     height: 106px;
     padding: 0px;
@@ -63,5 +64,14 @@ article.search-result .result-book-only h4 {
     position: relative;
     margin: 0px;
     color: var(--base1);
+}
+
+@media only screen and (max-width: 648px) {
+    article.search-result .result-book-only .book-details {
+        align-self: center;
+    }
+    article.search-result .result-book-only h4 {
+        padding-top: 0;
+    }
 }
 </style>

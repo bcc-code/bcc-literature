@@ -16,7 +16,7 @@ export default {
             },
             exactMatch: false,
             skip: 0,
-            top: 10
+            size: 10
         },
         id: '',
         noOfResults: 0,         
@@ -24,20 +24,22 @@ export default {
         bookResults: [],
         authorResults: [],
         facetsOptions: {
-            "AuthorFullName": [],     
-            "BookName": []              
-        },                 
-        showSpinner: false
+            "AuthorFullName": [],
+            "BookName": []
+        },
+        showSpinner: false,
+        hideOptions: {
+            "AuthorFullName": true,
+            "BookName": true
+        }
     },
     mutations: {
         updateSearchResults: (state, value) => {
-            state.results = state.results.concat(value.results.value);
-            state.noOfResults = value.results['@odata.count'];
-            state.id = value.searchId;
+            state.results = state.results.concat(value.results);
+            state.noOfResults = value.totalCount;
 
             logCustomEvent("Search", {
                 SearchServiceName: "searchopenportal",
-                SearchId: state.id,
                 IndexName: "ssf-content-index",
                 QueryTerms: state.searchParams.query,
                 ResultCount: state.noOfResults,
@@ -71,6 +73,8 @@ export default {
         resetFacets: (state) => {
             state.searchParams.facets.AuthorFullName = [];
             state.searchParams.facets.BookName = [];
+            state.hideOptions.AuthorFullName = true;
+            state.hideOptions.BookName = true;
         },
         updateLoadMore: (state) => {            
             state.searchParams.skip += state.BATCHSIZE;                              
@@ -87,14 +91,15 @@ export default {
             if (query.newFacets) commit('resetFacets');
             dispatch("search", query.newFacets)            
         },
-        search: async function({commit, state, getters}, newFacets = true) {           
+        search: async function({ commit, state, getters }, newFacets = true) {           
             var query = state.searchParams.query;
             var authorFullNameFacet = state.searchParams.facets.AuthorFullName;
             var bookNameFacet = state.searchParams.facets.BookName;
-            var top = state.searchParams.top;
+            var size = state.searchParams.size;
             var skip = state.searchParams.skip;
             var years = state.searchParams.facets.Years;
             var exactMatch = state.searchParams.exactMatch;
+
             commit("toggleLoader");
 
             if (getters.getSelectedFacetsLength == 0) {
@@ -105,19 +110,19 @@ export default {
                     commit("updateAuthorResults", res.data);
                 }).catch(() => commit("updateAuthorResults", []));
             } 
-            await articleApi.search(query, top, skip, authorFullNameFacet, bookNameFacet, years, exactMatch).then((res) => {
-                if (res.data.results == null) 
+            await articleApi.search(query, size, skip, authorFullNameFacet, bookNameFacet, years, exactMatch).then((res) => {
+                if (res.data.results == null)
                     return commit("toggleLoader");
 
                 commit("updateSearchResults", res.data || []);
 
                 if (newFacets)
-                    commit("updateFacetsOptions", res.data.results['@search.facets']);
+                    commit("updateFacetsOptions", res.data.facets);
 
                 commit("toggleLoader");
             }).catch((err) => {
-                console.log(err)
-                commit("updateSearchResults", { results: { results: [], count: 0 } });
+                console.log(err);
+                commit("updateSearchResults", { results: [], totalCount: 0 });
                 commit("updateFacetsOptions", {
                     "AuthorFullName": [],     
                     "BookName": []              
@@ -127,24 +132,26 @@ export default {
         },
         newFilterSelection: function({dispatch, state}, newElement){
             var selections = state.searchParams.facets[newElement.facetName];
-            var indexInSelections = selections.indexOf(newElement.value)
-            if ( indexInSelections > -1)
-                selections.splice(indexInSelections,1);
+            var indexInSelections = selections.indexOf(newElement.value);
+
+            if (indexInSelections > -1)
+                selections.splice(indexInSelections, 1);
             else
                 selections.push(newElement.value);       
-            dispatch('newSearch', { query: state.searchParams.query, newFacets: false })            
+            
+            dispatch('newSearch', { query: state.searchParams.query, newFacets: false });
         },
-        newYearsFilter: function({dispatch, state}, newYears){
+        newYearsFilter: function({ dispatch, state }, newYears) {
             state.searchParams.facets.Years = newYears;   
-            dispatch('newSearch', { query: state.searchParams.query, newFacets: false })            
+            dispatch('newSearch', { query: state.searchParams.query, newFacets: false });
         },
-        newExactMatch: function({dispatch, state}, exactMatch){
+        newExactMatch: function({ dispatch, state }, exactMatch) {
             state.searchParams.exactMatch = exactMatch;   
-            dispatch('newSearch', { query: state.searchParams.query, newFacets: false })            
+            dispatch('newSearch', { query: state.searchParams.query, newFacets: false });
         },
-        loadMore: function({commit, dispatch}){     
-            commit("updateLoadMore")         
-            dispatch('search', false)                            
+        loadMore: function({ commit, dispatch }) {
+            commit("updateLoadMore");
+            dispatch('search', false);
         }
     },
     getters: {
