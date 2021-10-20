@@ -5,7 +5,7 @@
 
 body {
 	position: relative;
-	padding: 0px 0px 144px 0px;
+	padding: 0px 0px 57px 0px;
 	margin: 0px;
 	font-size: 8px;
 	line-height: 1.3em;
@@ -149,13 +149,13 @@ a{
 			margin-bottom: 8px;
 		}
 		h5{
-			margin-top: 48px;
+			margin-top: 32px;
 			margin-bottom: 8px;
 			position: relative;
 		}
 		h6{
 			color: var(--base3);
-			margin-bottom: 48px;
+			margin-bottom: 32px;
 		}
 		p{	
 			font-family: $body-reading;
@@ -372,9 +372,6 @@ article.search-result{
 		h4{
 			margin: 0px 0px 8px 0px;
 		}
-		p{
-			margin: 0px 0px 8px 0px;
-		}
 		span{
 			position: relative;
 			display: inline-block;
@@ -400,6 +397,10 @@ article.search-result{
 				}
 
 			}
+		}
+
+		&.result-author-only h4 {
+			margin-bottom: 0;
 		}
 
 		&:hover{

@@ -12,7 +12,9 @@ $themes: (
     base3: #838CA8,
     base4: #E6E9F2,
     base5: #F5F6FA,
-    white: #fff
+
+    white: #fff,
+    white-to-transparent: linear-gradient(0deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%)
   ),
   dark: (
     main: #6291EB,
@@ -25,17 +27,18 @@ $themes: (
     base1: #F5F6FA,
     base2: #E6E9F2,
     base3: #838CA8,
-    base4: #656872,
+    base4: #222224,
     base5: #16171A,
 
-    white: #1d1e22
+    white: #1d1e22,
+    white-to-transparent: linear-gradient(0deg, rgba(29,30,34,0) 0%, rgba(29,30,34,1) 100%)
   )
 );
 
 @each $theme-name, $theme-vars in $themes {
   body.#{$theme-name} {
     @each $name, $color in $theme-vars {
-      --#{$name}: #{$color};
+      --#{"" + $name}: #{$color};
     }
   }
 }

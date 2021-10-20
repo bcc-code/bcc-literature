@@ -12,6 +12,7 @@ header{
 
 	top: 48px; /** top of 48px because of the Topbar widget **/
 	left: 0px;
+	padding: 0 10px;
 
 	z-index: 20;
 	@include floating();
@@ -19,7 +20,7 @@ header{
 	.header__back-button{
 		display: block;
 		height: 48px;
-		width: 48px;
+		width: 24px;
 		float: left;
 		background: url("../assets/icons/icon_24_arrow-left-blue.svg") center center no-repeat;
 	}
@@ -34,7 +35,12 @@ header{
 
 		white-space: nowrap;
 		overflow: hidden;
-		text-overflow: ellipsis;	
+		text-overflow: ellipsis;
+
+		@media only screen and (max-width: 648px) {
+			width: calc(100% - 185px);
+			left: 85px;
+		}
 	}
 	.header__night-mode{
 		display: block;
@@ -48,6 +54,10 @@ header{
 		&.dark {
 			background: url("../assets/icons/icon_sun.svg") center center no-repeat;
 			transform: rotate(0deg);
+		}
+
+		@media only screen and (max-width: 648px) {
+			width: 38px;
 		}
 	}
 	.dropdown{
@@ -77,7 +87,7 @@ iframe{
 		position: relative;
 		width: 108px;
 		height: 148px;
-		margin: 0px 16px 0px 0px;
+		margin: 0px 26px 0px 0px;
 		background: var(--gradient);
 		background-size: cover; 
 		padding: 4px;
@@ -110,38 +120,41 @@ iframe{
 	}
 	h2{
 		margin-bottom: 4px;
+
+		@media only screen and (max-width: 648px) {
+			margin: 0 32px 4px;
+		}
 	}
 	h5{
 		color: var(--base3);
-	}
-	.info{
-		width: calc(100% - 124px);
-		float: right;
-		padding-bottom: 48px;
+		margin-bottom: 12px;
 
 		@media only screen and (max-width: 648px) {
-			width: calc(100% - 64px);
-			margin: 0px 32px;
-			float: none;
+			margin: 0 32px 12px;
+		}
+	}
+	.info{
+		@media only screen and (max-width: 648px) {
 			text-align: center;
-			padding-bottom: 56px;
 		}
 	}
 	.actions{
-		position: absolute;
-		left: 124px;
-		bottom: 0px;
-		@media only screen and (max-width: 648px) {
-			width: 100%;
-			left: 0px;
-		}
-		.button-secondary, .button-main{
-			margin: 0px 8px 0px 0px;
+		.button-secondary{
+			:first-child {
+				margin-left: 0;
+			}
 			@media only screen and (max-width: 648px) {
 				width: calc(50% - 12px);
-				margin: 8px 8px 0px 0px;
 			}
 		}
+		.button-main{
+			@media only screen and (max-width: 648px) {
+				width: calc(50% - 12px);
+			}
+		}
+	}
+	.button-main{
+		margin: 4px;
 	}
 	&.ebook-only{
 		height: 80vh;
@@ -150,25 +163,14 @@ iframe{
 			top: 50%;
 			transform: translateY(-50%);
 		}
-		.info{
-			width: calc(100% - 64px);
-			margin: 0px 32px;
-			float: none;
-			text-align: center;
-			padding-bottom: 56px;
-		}
 		figure{
 			margin: 0px auto 24px auto;
-			float: none;
 		}
 		.actions{
-			width: 100%;
 			text-align: center;
-			left: 0px;
-			bottom: auto;
 
 			.button-main{
-				margin: 24px 0px 0px 0px;
+				margin: 24px 4px 0px;
 				width: auto;
 			}
 		}
@@ -178,8 +180,6 @@ iframe{
 
 //Header in Author View
 .author-header{
-	min-height: 228px;
-
 	background: var(--base5);
 	padding: 48px 16px;
 	text-align: center;
@@ -806,6 +806,14 @@ h1 + .subscription-signup{
 	}
 }
 
+.actions {
+	.button-main.small, .button-secondary.small {
+		line-height: normal;
+		padding: 8px 10px;
+		vertical-align: middle;
+	}
+}
+
 
 //Footer
 footer{
@@ -813,19 +821,31 @@ footer{
 	position: absolute;
 	bottom: 0px;
 	width: 100%;
-	padding: 56px 48px;
+	padding: 16px;
 	background: var(--base5);
-	p{
-		float: left;
-		line-height: 32px;
-	}
+	text-align: center;
 
 	&:after{
 		content: "";
 		display: table;
 		clear: both;
 	}
+}
+
+
+/* Tailwind CSS */
+
+.flex {
+	display: flex;
+}
+.flex-col {
+	flex-direction: column;
+}
+.justify-center {
+	justify-content: center;
+}
+.sm-flex-col {
 	@media only screen and (max-width: 648px) {
-		padding: 56px 16px;
+		flex-direction: column;
 	}
 }
