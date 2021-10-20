@@ -13,7 +13,7 @@ import french from './localization/fr.json';
 import finnish from './localization/fi.json';
 import romanian from './localization/ro.json';
 import '@babel/polyfill';
-import '@/assets/style.css';
+import '@/styles/style.scss';
 import VueModal from 'vue-js-modal';
 import VueClipboard from 'vue-clipboard2';
 
