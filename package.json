@@ -5,7 +5,7 @@
   "scripts": {
     "serve": "cross-env NODE_ENV=local vue-cli-service serve",
     "dev": "cross-env NODE_ENV=localdev vue-cli-service serve",
-    "builddev": "cross-env NODE_ENV=production vue-cli-service build",
+    "builddev": "cross-env NODE_ENV=development vue-cli-service build",
     "build": "cross-env NODE_ENV=production vue-cli-service build",
     "lint": "vue-cli-service lint",
     "crowdin-update": "crowdin-helper up -c src/localization/crowdin-helper.json -b Literature-frontend",
