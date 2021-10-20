@@ -687,3 +687,28 @@ ol.chapters{
 	border-radius: 4px;
 	margin: 0px 0px 80px 0px;
 }
+
+.dark {
+	//Temporary styles for the BCC topbar
+	.portal-top-bar {
+		background: var(--white);
+		color: #fff;
+		border-color: var(--base5);
+
+		a.portal-button {
+			filter: grayscale(100%) invert(100%);
+		}
+
+		.search input.search-field {
+			filter: grayscale(100%) invert(100%);
+
+			::placeholder {
+				color: var(--base6);
+			}
+		}
+
+		.profile a.profile-button {
+			filter: grayscale(100%) invert(100%);
+		}
+	}
+}
