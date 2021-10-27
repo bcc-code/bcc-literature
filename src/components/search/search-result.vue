@@ -7,8 +7,10 @@
             </div>
             <div class="result-book">
                 <book-card-cover :cover-id="result.document.bookCoverImageId"></book-card-cover>
-                <h5>{{ result.document.bookName }}</h5>
-                <p class="small">{{ result.document.authorFullName }}  ·  {{format(result.document.publishingDate)}}</p>
+                <div class="book-details">
+                    <h5>{{ result.document.bookName }}</h5>
+                    <p class="small">{{ result.document.authorFullName }}  ·  {{format(result.document.publishingDate)}}</p>
+                </div>
             </div>
         </router-link>
     </article>  
