@@ -83,9 +83,15 @@ export default {
         },
         toggleNightMode() {
             this.$store.commit('session/toggleNightMode');
+            this.setBrowserBarColor();
+
             logCustomEvent("ToggleNightMode", {
                 NightMode: this.nightMode
             });
+        },
+        setBrowserBarColor() {
+            document.querySelector('meta[name="theme-color"]')
+                .setAttribute('content', this.nightMode ? "#1d1e22" : "#6291eb");
         },
         initTopbar() {
             var scriptId = "script-bcc-topbar";
@@ -121,6 +127,8 @@ export default {
             this.initTopbar()
         else
             this.$store.commit('session/setTopbarInitialized', true);
+
+        this.setBrowserBarColor();
     },
     computed: {
         ...mapState('session', ['nightMode']),
