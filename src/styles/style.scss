@@ -674,6 +674,7 @@ ol.chapters{
 
 		.search input.search-field {
 			filter: grayscale(100%) invert(100%);
+			box-shadow: none;
 
 			::placeholder {
 				color: var(--base6);
