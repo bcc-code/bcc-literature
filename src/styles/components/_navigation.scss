@@ -7,6 +7,10 @@ nav{
 	left: 50%;
 	transform: translateX(-50%);
 
+	@media only screen and (max-width: 480px) {
+		left: 43%;
+	}
+
 	a{
 		display: inline-block;
 		padding: 12px 0px 10px 0px;
@@ -30,6 +34,10 @@ nav{
 
 		&.current{
 			border-bottom: solid 2px var(--main);
+		}
+
+		@media only screen and (max-width: 480px) {
+			margin: 0px 8px;
 		}
 	}
 }
