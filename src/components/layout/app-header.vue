@@ -124,17 +124,21 @@ export default {
         hideHeaderOnScroll() {
             const header = document.querySelector("header");
             let lastScrollY = window.scrollY;
+            let changedOn = window.scrollY;
 
             window.addEventListener("scroll", () => {
-                if (Math.abs(lastScrollY - window.scrollY) >= 24) {
-                    if (lastScrollY < window.scrollY) {
+                if (lastScrollY < window.scrollY) {
+                    // Hide header only after scrolled down a bit
+                    if (Math.abs(changedOn - window.scrollY) >= 48) {
                         header.classList.add("header--hidden");
-                    } else {
-                        header.classList.remove("header--hidden");
+                        changedOn = window.scrollY;
                     }
-
-                    lastScrollY = window.scrollY;
+                } else {
+                    header.classList.remove("header--hidden");
+                    changedOn = window.scrollY;
                 }
+
+                lastScrollY = window.scrollY;
             });
         }
     },
