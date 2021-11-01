@@ -1,6 +1,6 @@
 <template>
 	<header :style="[ isStandalone ? { 'top' : '0 !important' } : '']">
-		<a href="#" alt="Back Button" v-if="showBackButton" v-bind:class="'header__back-button'" @click.prevent="goBack"></a>
+        <a href="#" alt="Back Button" v-if="showBackButton" v-bind:class="'header__back-button'" @click.prevent="goBack"></a>
         <la-dropdown
             @click="setLanguage"
             :options="dropdownOptions"
@@ -121,6 +121,22 @@ export default {
                 });
             }
         },
+        hideHeaderOnScroll() {
+            const header = document.querySelector("header");
+            let lastScrollY = window.scrollY;
+
+            window.addEventListener("scroll", () => {
+                if (Math.abs(lastScrollY - window.scrollY) >= 24) {
+                    if (lastScrollY < window.scrollY) {
+                        header.classList.add("header--hidden");
+                    } else {
+                        header.classList.remove("header--hidden");
+                    }
+
+                    lastScrollY = window.scrollY;
+                }
+            });
+        }
     },
     mounted: function() {
         if (!this.isStandalone)
@@ -129,6 +145,7 @@ export default {
             this.$store.commit('session/setTopbarInitialized', true);
 
         this.setBrowserBarColor();
+        this.hideHeaderOnScroll();
     },
     computed: {
         ...mapState('session', ['nightMode']),
@@ -151,13 +168,3 @@ export default {
     }
 }
 </script>
-<style scoped>
-@media screen and (max-width: 768px) {
-    header .dropdown, header .filter-search {
-        margin: 0;
-        height: 48px;
-        display: flex;
-        align-items: center;
-    }
-}
-</style>

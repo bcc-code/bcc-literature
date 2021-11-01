@@ -9,7 +9,6 @@ body {
 	margin: 0px;
 	font-size: 8px;
 	line-height: 1.3em;
-	padding-top: 48px;
 	background: var(--white);
 	min-height: 100vh;
 	@include transition(color, .3s);
@@ -120,17 +119,17 @@ p{
 a{
 	color: var(--main);
 }
+
 //Reading view
 .reading-view{
 	background-color: var(--base5);
-	padding-top: 80px;
+	padding-top: 88px;
 	padding-bottom: 80px;
+	min-height: calc(100vh - 192px);
+	
 	@include transition(all, .3s);
 
-	min-height: calc(100vh - 192px);
-
 	@media only screen and (max-width: 648px) {
-		padding-top: 40px;
 		padding-bottom: 40px;
 	}
 
