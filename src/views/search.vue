@@ -414,5 +414,12 @@ section.filter .filters-wrapper > section form {
     .remove-filters a {
         text-decoration: none;
     }
+
+    header ~ .container #filters.pinned {
+	    transition: transform 0.2s;
+    }
+    header.header--hidden ~ .container #filters.pinned {
+        transform: translateY(-48px);
+    }
 }
 </style>
