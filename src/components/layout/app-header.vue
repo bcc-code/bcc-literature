@@ -127,18 +127,20 @@ export default {
             let changedOn = window.scrollY;
 
             window.addEventListener("scroll", () => {
-                if (lastScrollY < window.scrollY) {
-                    // Hide header only after scrolled down a bit
-                    if (Math.abs(changedOn - window.scrollY) >= 48) {
-                        header.classList.add("header--hidden");
+                if (window.scrollY >= 0) {
+                    if (lastScrollY < window.scrollY) {
+                        // Hide header only after scrolled down a bit
+                        if (Math.abs(changedOn - window.scrollY) >= 48) {
+                            header.classList.add("header--hidden");
+                            changedOn = window.scrollY;
+                        }
+                    } else {
+                        header.classList.remove("header--hidden");
                         changedOn = window.scrollY;
                     }
-                } else {
-                    header.classList.remove("header--hidden");
-                    changedOn = window.scrollY;
-                }
 
-                lastScrollY = window.scrollY;
+                    lastScrollY = window.scrollY;
+                }
             });
         }
     },
