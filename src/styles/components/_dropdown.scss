@@ -58,6 +58,12 @@
 		padding: 0px;
 		background: #16171A;
 
+		border-radius: 12px;
+		top: 48px;
+		bottom: auto;
+		right: 0px;
+		left: auto;
+
 		opacity: 0;
 		visibility: hidden;
 		z-index: 10;
@@ -67,10 +73,11 @@
 
 		&.show{
 			visibility: visible;
-			padding: 12px 0px 12px 0px;
+			padding: 12px 0px;
 			opacity: 1;
 			overflow-y: scroll;
 			-webkit-overflow-scrolling: touch;
+			max-height: 410px;
 
 			li{
 				opacity: 1;
@@ -107,84 +114,7 @@
 			}	
 		}
 	}
-
-	//Dropdown placement
-	section.custom-select{
-		border-radius: 4px 12px 12px 12px;
-		top: 0px;
-		bottom: auto;
-		right: auto;
-		left: 0px;
-
-		&.show{
-			top: 0px;
-			max-height: 410px;
-		}
-	}
-	&.right-down{
-		section.custom-select{
-			border-radius: 4px 12px 12px 12px;
-			top: 0px;
-			bottom: auto;
-			right: auto;
-			left: 0px;
-
-			&.show{
-				top: 0px;
-				max-height: 410px;
-			}
-		}
-	}
-	&.left-down{
-		section.custom-select{
-			border-radius: 12px 4px 12px 12px;
-			top: 0px;
-			bottom: auto;
-			right: 0px;
-			left: auto;
-
-			&.show{
-				top: 0px;
-				max-height: 410px;
-			}
-		}
-	}
-	&.right-up{
-		section.custom-select{
-			border-radius: 12px 12px 12px 4px;
-			bottom: 0px;
-			right: auto;
-			left: 0px;
-			top: auto;
-
-			&.show{
-				bottom: 0px;
-				max-height: 410px;
-			}
-		}
-		button.dropdown-button:after{
-			transform: rotate(180deg);
-		}
-	}
-	&.left-up{
-		section.custom-select{
-			border-radius: 12px 12px 4px 12px;
-			bottom: 0px;
-			right: 0px;
-			left: auto;
-			top: auto;
-
-			&.show{
-				bottom: 0px;
-				max-height: 410px;
-			}
-		}
-		button.dropdown-button:after{
-			transform: rotate(180deg);
-		}
-	}
 }
-
 
 //Filter
 .filter-search{
@@ -220,84 +150,6 @@
 			}
 			&:active{
 				background: none;
-			}
-		}
-
-		//Dropdown list
-		section.custom-select{
-			width: 100%;
-
-			border-radius: 4px 12px 12px 12px;
-			top: 0px;
-			bottom: auto;
-			right: auto;
-			left: 0px;
-
-			&.show{
-				top: 0px;
-				max-height: 600px;
-			}
-		}
-
-		//Dropdown placement
-		&.right-down{
-			section.custom-select{
-				border-radius: 4px 12px 12px 12px;
-				top: 0px;
-				bottom: auto;
-				right: auto;
-				left: 0px;
-				width: 100%;
-
-				&.show{
-					top: 0px;
-					max-height: 600px;
-				}
-			}
-		}
-		&.left-down{
-			section.custom-select{
-				border-radius: 4px 12px 12px 12px;
-				top: 0px;
-				bottom: auto;
-				right: auto;
-				left: 0px;
-				width: 100%;
-
-				&.show{
-					top: 0px;
-					max-height: 600px;
-				}
-			}
-		}
-		&.right-up{
-			section.custom-select{
-				border-radius: 4px 12px 12px 12px;
-				top: 0px;
-				bottom: auto !important;
-				right: auto;
-				left: 0px;
-				width: 100%;
-
-				&.show{
-					top: 0px;
-					max-height: 600px;
-				}
-			}
-		}
-		&.left-up{
-			section.custom-select{
-				border-radius: 4px 12px 12px 12px;
-				top: 0px;
-				bottom: auto !important;
-				right: auto;
-				left: 0px;
-				width: 100%;
-
-				&.show{
-					top: 0px;
-					max-height: 600px;
-				}
 			}
 		}
 	}
