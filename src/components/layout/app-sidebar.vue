@@ -33,22 +33,6 @@ export default {
         selectedChapter(){
             return this.$route.params.chapterId
         },
-        selectedChapterTitle(){
-            if (this.chapters.some(el => el.id == this.selectedChapter))
-                return this.chapters.find(el => el.id == this.selectedChapter).title
-            return ''
-        },
-    },
-    methods: {
-       
-    },
-    watch: {
-        showShareModal: function(newValue) {
-            if (newValue) 
-                this.$modal.show('shareUrlModal');
-            else
-                this.$modal.hide('shareUrlModal');
-        }
     }
 }
 </script>

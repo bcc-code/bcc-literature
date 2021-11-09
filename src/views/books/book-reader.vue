@@ -99,6 +99,14 @@ export default {
         shareUrl(){
             return BaseApi.addLanguageQuery(window.location.origin + this.$route.fullPath);
         },
+        selectedChapter(){
+            return this.$route.params.chapterId
+        },
+        selectedChapterTitle(){
+            if (this.chapters.some(el => el.id == this.selectedChapter))
+                return this.chapters.find(el => el.id == this.selectedChapter).title
+            return ''
+        },
         shareMessage(){
             return this.$t('share.message', { chapterName: this.selectedChapterTitle });
         }
@@ -173,6 +181,12 @@ export default {
     watch: {
         showSidebar: function () {
             this.showSidebar ? document.body.classList.add("sidebar-open") : document.body.classList.remove("sidebar-open");
+        },
+        showShareModal: function(newValue) {
+            if (newValue) 
+                this.$modal.show('shareUrlModal');
+            else
+                this.$modal.hide('shareUrlModal');
         }
     }
 };
