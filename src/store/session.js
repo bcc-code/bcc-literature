@@ -7,7 +7,7 @@ export default {
         userInfo: null,
         appLanguage: localStorage.getItem('appLanguage') || 'no',
         nightMode: nightMode == null ? (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) : nightMode,
-        fontSize: +parseFloat(localStorage.getItem('fontSize')).toFixed(2) || 1,
+        fontSize: +parseFloat(localStorage.getItem('fontSize')).toFixed(1) || 1,
         isAuthenticated: false,
         topbarInitialized: false, 
     },
@@ -30,7 +30,7 @@ export default {
                 state.fontSize = Math.min(MAX_FONT_SIZE, state.fontSize + value)
             else
                 state.fontSize = Math.max(MIN_FONT_SIZE, state.fontSize + value)
-            localStorage.setItem('fontSize', +state.fontSize.toFixed(2))
+            localStorage.setItem('fontSize', +state.fontSize.toFixed(1))
         },
         setTopbarInitialized: (state, value) => {
             state.topbarInitialized = value;
