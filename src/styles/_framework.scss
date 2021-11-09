@@ -10,8 +10,7 @@
 	}
 
 	.section-header{
-		height: 48px;
-		padding: 0px 0px;
+		padding: 0px;
 		border-top: 1px solid var(--white);
 		
 		&.border{
@@ -20,7 +19,7 @@
 
 		h5{
 			color: var(--base3);
-			margin: 14px 0px;
+			margin: 15px 0px 20px;
 		}
 		h3{
 			color: var(--base1);
@@ -114,7 +113,7 @@
 	right: 0px;
 	bottom: 0px;
 	left: 0px;
-	z-index: 30;
+	z-index: 10000;
 
 	background: rgba(22,23,26,0.80);
 
@@ -164,4 +163,8 @@
 			opacity: 0;
 		}
 	}
+}
+
+div[data-modal="shareUrlModal"].v--modal-overlay {
+	z-index: 10002;
 }
