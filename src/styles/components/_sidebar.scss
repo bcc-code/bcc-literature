@@ -99,7 +99,7 @@ nav{
 	right: 62px;
 	top: 108px;
 	position: fixed;
-	z-index: 50;
+	z-index: 10002;
 	background: url("../assets/icons/icon_24_share_white.svg") center center no-repeat, var(--base3); 
 
 	@include transition(all, .3s);
