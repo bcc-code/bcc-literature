@@ -1,6 +1,6 @@
 <template>
 	<header :style="[ isStandalone ? { 'top' : '0 !important' } : '']">
-		<a href="#" alt="Back Button" v-if="showBackButton" v-bind:class="'header__back-button'" @click.prevent="goBack"></a>
+        <a href="#" alt="Back Button" v-if="showBackButton" v-bind:class="'header__back-button'" @click.prevent="goBack"></a>
         <la-dropdown
             @click="setLanguage"
             :options="dropdownOptions"
@@ -83,9 +83,15 @@ export default {
         },
         toggleNightMode() {
             this.$store.commit('session/toggleNightMode');
+            this.setBrowserBarColor();
+
             logCustomEvent("ToggleNightMode", {
                 NightMode: this.nightMode
             });
+        },
+        setBrowserBarColor() {
+            document.querySelector('meta[name="theme-color"]')
+                .setAttribute('content', this.nightMode ? "#1d1e22" : "#6291eb");
         },
         initTopbar() {
             var scriptId = "script-bcc-topbar";
@@ -115,12 +121,37 @@ export default {
                 });
             }
         },
+        hideHeaderOnScroll() {
+            const header = document.querySelector("header");
+            let lastScrollY = window.scrollY;
+            let changedOn = window.scrollY;
+
+            window.addEventListener("scroll", () => {
+                if (window.scrollY >= 0) {
+                    if (lastScrollY < window.scrollY) {
+                        // Hide header only after scrolled down a bit
+                        if (Math.abs(changedOn - window.scrollY) >= 48) {
+                            header.classList.add("header--hidden");
+                            changedOn = window.scrollY;
+                        }
+                    } else {
+                        header.classList.remove("header--hidden");
+                        changedOn = window.scrollY;
+                    }
+
+                    lastScrollY = window.scrollY;
+                }
+            });
+        }
     },
     mounted: function() {
         if (!this.isStandalone)
             this.initTopbar()
         else
             this.$store.commit('session/setTopbarInitialized', true);
+
+        this.setBrowserBarColor();
+        this.hideHeaderOnScroll();
     },
     computed: {
         ...mapState('session', ['nightMode']),
@@ -143,13 +174,3 @@ export default {
     }
 }
 </script>
-<style scoped>
-@media screen and (max-width: 768px) {
-    header .dropdown, header .filter-search {
-        margin: 0;
-        height: 48px;
-        display: flex;
-        align-items: center;
-    }
-}
-</style>

@@ -32,7 +32,7 @@ nav{
 	bottom: 16px;
 	top: 116px;
 	position: fixed;
-	z-index: 40;
+	z-index: 10001;
 
 	overflow-y: scroll;
 
@@ -46,7 +46,6 @@ nav{
 		height: 75%;
 		left: 0px;
 		top: 100%;
-		z-index: 40;
 		background-color: var(--base5);
 		padding: 12px 12px 64px 12px;
 	}
@@ -79,7 +78,7 @@ nav{
 	right: 12px;
 	top: 108px;
 	position: fixed;
-	z-index: 50;
+	z-index: 10002;
 	background: url("../assets/icons/icon_24_chapters.svg") center center no-repeat, var(--gradient); 
 
 	@include transition(all, .3s);
@@ -100,7 +99,7 @@ nav{
 	right: 62px;
 	top: 108px;
 	position: fixed;
-	z-index: 50;
+	z-index: 10002;
 	background: url("../assets/icons/icon_24_share_white.svg") center center no-repeat, var(--base3); 
 
 	@include transition(all, .3s);
@@ -118,6 +117,11 @@ nav{
 }
 
 .sidebar-open{
+	@media only screen and (max-width: 648px) {
+		height: 100%;
+		overflow: hidden;
+		position: absolute;
+	}
 	.button-circular.main.toggle-sidebar{
 		background: url("../assets/icons/icon_24_chevron-blue.svg") center center no-repeat, var(--white);
 		@include interactable(); 
@@ -229,6 +233,10 @@ nav{
 	.overlay{
 		visibility: visible!important;
 		opacity: 1!important;
+
+		@media only screen and (max-width: 648px) {
+			top: 0 !important;
+		}
 	}
 	.reading-view{
 		padding-right: 366px;
