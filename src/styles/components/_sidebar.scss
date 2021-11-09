@@ -176,10 +176,13 @@ nav{
 		right: 62px;
 		top: 58px;
 		position: fixed;
-		z-index: 50;
+		z-index: 100003;
 		background: url("../assets/icons/icon_font_smaller_black.svg") center center/40% no-repeat, var(--white); 
 		&.dark {
 			background: url("../assets/icons/icon_font_smaller_white.svg") center center/40% no-repeat, var(--white); 
+		}
+		&.disabled {
+			opacity: 0.2;
 		}
 		@include transition(all, .3s);
 		
@@ -198,10 +201,13 @@ nav{
 		right: 12px;
 		top: 58px;
 		position: fixed;
-		z-index: 50;
+		z-index: 100003;
 		background: url("../assets/icons/icon_font_bigger_black.svg") center center no-repeat, var(--white); 
 		&.dark {
 			background: url("../assets/icons/icon_font_bigger_white.svg") center center no-repeat, var(--white); 
+		}
+		&.disabled {
+			opacity: 0.2;
 		}
 		@include transition(all, .3s);
 		
