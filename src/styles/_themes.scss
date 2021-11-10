@@ -36,9 +36,10 @@ $themes: (
 );
 
 @each $theme-name, $theme-vars in $themes {
-  body.#{$theme-name} {
-    @each $name, $color in $theme-vars {
-      --#{"" + $name}: #{$color};
+    body.#{$theme-name} {
+        @each $name, $color in $theme-vars {
+            --#{"" + $name}: #{$color};
+        }
     }
 }
 
