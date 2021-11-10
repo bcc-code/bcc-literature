@@ -12,11 +12,11 @@ export default {
  * Search on articles
  * @param {string} query
  */
-async function search(query, top, skip, authorFullNameFacet, bookNameFacet, years, exactMatch) {   
-    var authorFullNameRequest = authorFullNameFacet.map( el => `&AuthorFullName=${el}`).join('');
-    var bookNameRequest = bookNameFacet.map( el => `&BookName=${el}`).join('');
+async function search(query, size, skip, authorFullNameFacet, bookNameFacet, years, exactMatch) {   
+    var authorFullNameRequest = authorFullNameFacet.map(el => `&AuthorFullName=${el}`).join('');
+    var bookNameRequest = bookNameFacet.map(el => `&BookName=${el}`).join('');
     var yearsRequest = years.map(el => `&Years=${el}`).join('');
-    return await baseApi.sendRequest("get", `article/search/${query}/?Top=${top}&Skip=${skip}&ExactMatch=${exactMatch}${authorFullNameRequest}${bookNameRequest}${yearsRequest}`);
+    return await baseApi.sendRequest("get", `article/search/${query}/?Size=${size}&Skip=${skip}&ExactMatch=${exactMatch}${authorFullNameRequest}${bookNameRequest}${yearsRequest}`);
 }
 
 /**

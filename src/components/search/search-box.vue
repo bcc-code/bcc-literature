@@ -38,18 +38,24 @@ export default {
     position: absolute;
 }
 .clear-search-input {
-    width: 24px;
-    height: 24px;
-    background-color: #F5F6FA;
+    width: 20px;
+    height: 20px;
+    background-color: var(--base5);
     position: absolute;
-    top: 8px;
-    right: 8px;
+    top: 10px;
+    right: 10px;
     border-radius: 50%;
     cursor: pointer;
     transition: 250ms ease;
 }
+.dark .clear-search-input {
+    background-color: var(--base1);
+}
 .clear-search-input:hover {
-    background-color: #e6e9f2;
+    background-color: var(--base4);
+}
+.dark .clear-search-input:hover {
+    background-color: var(--base2);
 }
 .clear-search-input:after {
     content: '';

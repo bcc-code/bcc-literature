@@ -1,12 +1,32 @@
-import Vue from 'vue';
+import keys from 'keys';
 import session from '../store/session.js';
+import { ApplicationInsights } from '@microsoft/applicationinsights-web'
+
+const appInsights = new ApplicationInsights({ config: {
+    instrumentationKey: keys.APP_INSIGHTS
+}});
+appInsights.loadAppInsights();
 
 export async function logCustomEvent(customEventName, customEventProperties) {
-    customEventProperties.UserId = createAnalyticsId(session.state.userInfo);
-    Vue.appInsights.trackEvent({
+    appInsights.trackEvent({
         name: customEventName, 
-        properties: customEventProperties
+        properties: addUserDataProperties(customEventProperties)
     });
+}
+
+export async function logPageView(pageName, pageViewProperties) {
+    appInsights.trackPageView({
+        name: pageName,
+        properties: addUserDataProperties(pageViewProperties)
+    });
+}
+
+function addUserDataProperties(properties) {
+    properties.UserId = createAnalyticsId(session.state.userInfo);
+    properties.Age = calculateUserAge(session.state.userInfo.birthdate);
+    properties.Country = session.state.userInfo['https://login.bcc.no/claims/CountryIso2Code'];
+    
+    return properties;
 }
 
 function createAnalyticsId(userInfo) {
@@ -18,4 +38,21 @@ function createAnalyticsId(userInfo) {
     var hash = md5([...Buffer.from(stringToHash, 'utf-8')]);
 
     return hash.toUpperCase();
+}
+
+function calculateUserAge(birthdate) {
+    try {
+        if (birthdate) {
+            const userBirthdate = Date.parse(birthdate.toString());
+            const difference = Date.now() - userBirthdate;
+            var ageDateTime = new Date(difference);
+    
+            return Math.abs(ageDateTime.getUTCFullYear() - new Date(0).getFullYear());
+        }
+        return 0;
+    }
+    catch (e) {
+        console.log("Birthday date parsing exception: " + e);
+        return 0;
+    }
 }

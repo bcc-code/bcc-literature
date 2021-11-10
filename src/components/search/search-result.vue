@@ -1,15 +1,18 @@
 <template>
     <article class="search-result" v-on:click="logClickToAI">
-        <router-link
-        :to="getReaderRoute(result.document)">
-            <h4>{{result.document.chapter}}</h4>        
-            <p class="small" v-html="highlight"></p>        
-        </router-link>         
-          <router-link class="result-book" :to="{ name: 'book-index', params: { bookId: result.document.bookId, parent: $route }}">          
-              <book-card-cover :cover-id="result.document.bookCoverImageId"></book-card-cover>
-              <h5> {{ result.document.bookName }}</h5>
-              <p class="small"> {{ result.document.authorFullName }}  ·  {{format(result.document.publishingDate)}}</p>
-          </router-link>
+        <router-link :to="getReaderRoute(result.document)">
+            <div class="result-article">
+                <h4>{{result.document.chapter}}</h4>        
+                <p class="small" v-html="highlight"></p>
+            </div>
+            <div class="result-book">
+                <book-card-cover :cover-id="result.document.bookCoverImageId"></book-card-cover>
+                <div class="book-details">
+                    <h5>{{ result.document.bookName }}</h5>
+                    <p class="small">{{ result.document.authorFullName }}  ·  {{format(result.document.publishingDate)}}</p>
+                </div>
+            </div>
+        </router-link>
     </article>  
 </template>
 <script>

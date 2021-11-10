@@ -5,8 +5,7 @@
               <h4> {{ result.fullName }}</h4>
           </router-link>
     </article>  
-  </template>
-
+</template>
 <script>
 import CardCover from 'components/grid/tiles/card-cover';
 export default {
@@ -53,6 +52,6 @@ article.search-result a.result-author-only figure + h4 {
     padding-top: 15px;
     position: relative;
     margin: 0px;
-    color: #16171A;
+    color: var(--base1);
 }
 </style>

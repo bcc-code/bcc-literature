@@ -1,9 +1,14 @@
 {
-    "language": "Norwegian",
+    "language": "Norsk",
     "app": {
         "select-language": "Velg språk",
         "error": "En feil oppstod. Ta kontakt med it@bcc.no",
-        "song-treasures-notice": "Vedrørende sangbøker med tilhørende noter, se <a href=\"https://christianbookshop.org/nb/pages/music\" target=\"_blank\">denne filmen</a>. Logg deg inn på <a href=\"https://songtreasures.org\" target=\"_blank\">songtreasures.org</a> og lag en konto. Der kan du lese mer om konseptet SongTreasures, og abonnere på tilgang til 5 av SSSF sine sangbøker."
+        "song-treasures-notice": "Vedrørende sangbøker med tilhørende noter, se <a href=\"https://christianbookshop.org/nb/pages/music\" target=\"_blank\">denne filmen</a>. Logg deg inn på <a href=\"https://songtreasures.org\" target=\"_blank\">songtreasures.org</a> og lag en konto. Der kan du lese mer om konseptet SongTreasures, og abonnere på tilgang til 5 av SSSF sine sangbøker.",
+        "user-voice": {
+            "title": "Hvordan kan vi forbedre dette nettstedet?",
+            "description": "Her kan du stemme for, diskutere og dele ideer om hvordan BCC Litteratur Portalen kan forbedres.",
+            "button": "Gå til User Voice"
+        }
     },
     "articles": {
         "articles-all": "Alle artikler"
@@ -43,12 +48,16 @@
         "search-results": "Resultater",
         "search-box": "Søk i BCC litteratur",
         "year-filter": "År",
-        "exact-match": "Exact match",
-        "authors-filter": "Filtrerer forfattere",
-        "authors-filter-default": "Alle forfattere",
-        "books-filter": "Filtrerer bøker",
-        "books-filter-default": "Alle bøker",
-        "filter": "Filtre",
+        "exact-match": "Eksakt tekst",
+        "filters": {
+            "title": "Filtre",
+            "search-for-book": "Søk etter bok",
+            "search-for-author": "Søk etter forfatter",
+            "authors-title": "Forfattere",
+            "books-title": "Bøker",
+            "no-match": "Ingen treff",
+            "clear": "tøm"
+        },
         "load-more": "Last inn mer",
         "no-results": "Ingen resultater"
     },

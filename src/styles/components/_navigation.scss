@@ -1,0 +1,43 @@
+// Navigation
+nav{
+	position: absolute;
+	display: inline-block;
+	width: auto;
+	height: 48px;
+	left: 50%;
+	transform: translateX(-50%);
+
+	@media only screen and (max-width: 480px) {
+		left: 43%;
+	}
+
+	a{
+		display: inline-block;
+		padding: 12px 0px 10px 0px;
+		margin: 0px 16px; 
+
+		font-family: $body;
+		font-weight: bold;
+		font-size: 1.75em;
+		line-height: 24px;
+		color: var(--base1);
+		letter-spacing: -0.2px;
+		text-decoration: none;
+
+		box-sizing: border-box;
+
+		@include transition(all, .1s);
+
+		&:hover{
+			color: var(--main);
+		}
+
+		&.current{
+			border-bottom: solid 2px var(--main);
+		}
+
+		@media only screen and (max-width: 480px) {
+			margin: 0px 8px;
+		}
+	}
+}

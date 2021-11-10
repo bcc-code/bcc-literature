@@ -1,0 +1,100 @@
+$themes: (
+  light: (
+    main: #6291EB,
+    main-5: rgba(0,46,148,0.05),
+    main-10: rgba(0,46,148,0.10),
+    main-20: rgba(0,46,148,0.20),
+
+    gradient: linear-gradient(to right, #666CF6 0%, #5EAFE2 100%),
+
+    base1: #16171A,
+    base2: #5A617D,
+    base3: #838CA8,
+    base4: #E6E9F2,
+    base5: #F5F6FA,
+
+    white: #fff,
+    white-to-transparent: linear-gradient(0deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%)
+  ),
+  dark: (
+    main: #6291EB,
+    main-5: rgba(140, 177, 255, 0.05),
+    main-10: rgba(140, 177, 255, 0.1),
+    main-20: rgba(140, 177, 255, 0.2),
+
+    gradient: linear-gradient(to right, #666CF6 0%, #5EAFE2 100%),
+
+    base1: #F5F6FA,
+    base2: #E6E9F2,
+    base3: #838CA8,
+    base4: #222224,
+    base5: #16171A,
+
+    white: #1d1e22,
+    white-to-transparent: linear-gradient(0deg, rgba(29,30,34,0) 0%, rgba(29,30,34,1) 100%)
+  )
+);
+
+@each $theme-name, $theme-vars in $themes {
+  body.#{$theme-name} {
+    @each $name, $color in $theme-vars {
+      --#{"" + $name}: #{$color};
+    }
+  }
+}
+
+// Typography
+@import url('https://fonts.googleapis.com/css?family=Inknut+Antiqua:700,900');
+@import url('https://fonts.googleapis.com/css?family=Ubuntu:400,500,700');
+@import url('https://fonts.googleapis.com/css?family=Merriweather:400,400i,900,900i&display=swap');
+
+$heading: 'Inknut Antiqua', serif;
+$body: 'Ubuntu', sans-serif;
+$body-reading: 'Merriweather', serif;
+
+// Transition
+@mixin transition($property, $duration) {
+  -webkit-transition: $property $duration;
+  transition: $property $duration;
+  -webkit-transition-timing-function: ease-out;
+  transition-timing-function: ease-out;
+}
+
+//Styles
+@mixin floating(){
+	box-shadow: 0 1px 0 0 rgba(0,35,140,0.06), 0 1px 4px 0 rgba(0,6,26,0.10);
+}
+@mixin hovering(){
+	box-shadow: 0 1px 2px 0 rgba(0,35,140,0.1), 0 2px 4px 0 rgba(0,35,140,0.07), 0 8px 12px 0 rgba(0,6,26,0.10);
+}
+@mixin flying(){
+	box-shadow: 0 1px 2px 0 rgba(0,35,140,0.07), 0 28px 12px -16px rgba(0,35,140,0.05), 0 12px 20px 0 rgba(0,6,26,0.15);
+}
+@mixin interactable(){
+	box-shadow: inset 0px 0px 0px 2px  var(--main-10);
+
+	@include transition(all, .2s);
+
+	&:hover{
+		box-shadow: inset 0px 0px 0px 4px  var(--main-10);
+	}
+	&:active{
+		box-shadow: inset 0px 0px 0px 4px  var(--main-20);
+	}
+}
+
+//Utilities
+@mixin clear(){
+	&:after{
+		content: "";
+		display: table;
+		clear: both;
+	}
+}
+
+@mixin reset-appearance(){
+	-webkit-appearance: none;
+    -moz-appearance: none;
+	appearance: none;
+	outline: none;
+}

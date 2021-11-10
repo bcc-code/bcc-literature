@@ -1,11 +1,12 @@
 <template>
 	<header :style="[ isStandalone ? { 'top' : '0 !important' } : '']">
-		<a href="#" alt="Back Button" v-if="showBackButton" v-bind:class="'header__back-button'" @click.prevent="goBack"></a>
+        <a href="#" alt="Back Button" v-if="showBackButton" v-bind:class="'header__back-button'" @click.prevent="goBack"></a>
         <la-dropdown
             @click="setLanguage"
             :options="dropdownOptions"
             :button-text="currentLanguage"
-            :inner-text="$t('app.select-language')" />	
+            :inner-text="$t('app.select-language')" />
+        <a href="#" alt="Night mode" class="header__night-mode" :class="{ 'dark': nightMode }" @click.prevent="toggleNightMode"></a>
         <h4 v-if="showBackButton">{{pageName}}</h4>
         <nav v-else>
             <router-link v-for="menu in ['books', 'authors']" :key="menu" :to="{ name: menu }" :class="{ 'current' : $t(`${menu}.${menu}`) == pageName }">
@@ -19,6 +20,8 @@
 import { EventBus, Events } from '@/utils/eventBus.js';
 import LaDropdown from '@/components/la-dropdown';
 import loadjs from "loadjs";
+import { mapState } from 'vuex';
+import { logCustomEvent } from '@/utils/appInsights';
 
 export default {
     props: {
@@ -78,6 +81,18 @@ export default {
             }
             this.$router.push(this.backButtonRoute)  
         },
+        toggleNightMode() {
+            this.$store.commit('session/toggleNightMode');
+            this.setBrowserBarColor();
+
+            logCustomEvent("ToggleNightMode", {
+                NightMode: this.nightMode
+            });
+        },
+        setBrowserBarColor() {
+            document.querySelector('meta[name="theme-color"]')
+                .setAttribute('content', this.nightMode ? "#1d1e22" : "#6291eb");
+        },
         initTopbar() {
             var scriptId = "script-bcc-topbar";
             var self = this;
@@ -99,19 +114,47 @@ export default {
                                 "data-authentication-location",
                                 "oidc.user:https://login.bcc.no:X0ac7C8sROIhEzRGLJPFpLCZAlKGK4KV.access_token"
                             );
+                            // element.setAttribute("data-app-title", "BCC Literature");
+                            // element.setAttribute("data-app-url", "https://literature.bcc.no");
                         }
                     }
                 });
             }
         },
+        hideHeaderOnScroll() {
+            const header = document.querySelector("header");
+            let lastScrollY = window.scrollY;
+            let changedOn = window.scrollY;
+
+            window.addEventListener("scroll", () => {
+                if (window.scrollY >= 0) {
+                    if (lastScrollY < window.scrollY) {
+                        // Hide header only after scrolled down a bit
+                        if (Math.abs(changedOn - window.scrollY) >= 48) {
+                            header.classList.add("header--hidden");
+                            changedOn = window.scrollY;
+                        }
+                    } else {
+                        header.classList.remove("header--hidden");
+                        changedOn = window.scrollY;
+                    }
+
+                    lastScrollY = window.scrollY;
+                }
+            });
+        }
     },
     mounted: function() {
         if (!this.isStandalone)
             this.initTopbar()
         else
             this.$store.commit('session/setTopbarInitialized', true);
+
+        this.setBrowserBarColor();
+        this.hideHeaderOnScroll();
     },
     computed: {
+        ...mapState('session', ['nightMode']),
         isStandalone() {
             return window.matchMedia('(display-mode: standalone)').matches
         },
@@ -131,10 +174,3 @@ export default {
     }
 }
 </script>
-<style scoped>
-@media screen and (max-width: 768px) {
-    header .dropdown, header .filter-search {
-        margin: 8px 5px;
-    }
-}
-</style>

@@ -10,7 +10,6 @@
 </template>
 
 <script>
-import keys from 'keys'
 import CardCover from './card-cover'
 import GridElementMixin from '@/mixins/grid-element.js'
 import { GridType } from '@/model/gridType.js'

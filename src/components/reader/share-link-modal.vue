@@ -65,7 +65,7 @@ input.share-link {
     display: inline;
 }
 button.copy {
-    border-radius: 0.5em;
+    border-radius: 2em;
     right: 25px;
     position: absolute;
     margin: 4px;
