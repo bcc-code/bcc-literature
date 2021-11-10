@@ -166,5 +166,11 @@
 }
 
 div[data-modal="shareUrlModal"].v--modal-overlay {
+	background: rgba(0, 0, 0, 0.5);
 	z-index: 10002;
+}
+
+#main .v--modal {
+	background-color: var(--white);
+	color: var(--base1);
 }
