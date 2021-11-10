@@ -63,7 +63,7 @@ module.exports = {
                 },
                 {
                     urlPattern: new RegExp('^(https|http)://(((dev)?literatureapi\.bcc\.no)|(localhost:58330))/api/blobs/image'),
-                    handler: 'cacheFirst',
+                    handler: 'staleWhileRevalidate',
                     options: {
                         cacheName: "api-images",
                         cacheableResponse: {

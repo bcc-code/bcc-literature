@@ -1,6 +1,8 @@
 node_modules/
 dist/
 
+src/assets/style.css
+
 # Test reports
 tests/e2e/videos/
 tests/e2e/screenshots/

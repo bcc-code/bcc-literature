@@ -1,39 +1,44 @@
 $themes: (
-    light: (
-        main: #6291eb,
-        main-5: rgba(0, 46, 148, 0.05),
-        main-10: rgba(0, 46, 148, 0.1),
-        main-20: rgba(0, 46, 148, 0.2),
-        gradient: linear-gradient(to right, #666cf6 0%, #5eafe2 100%),
-        box-shadow: '0px 1px 0px rgba(0, 35, 140, 0.06), 0px 1px 4px rgba(0, 7, 26, 0.2)',
-        base1: #16171a,
-        base2: #5a617d,
-        base3: #838ca8,
-        base4: #e6e9f2,
-        base5: #f5f6fa,
-        white: #fff,
-    ),
-    dark: (
-        main: #6291eb,
-        main-5: rgba(140, 177, 255, 0.05),
-        main-10: rgba(140, 177, 255, 0.1),
-        main-20: rgba(140, 177, 255, 0.2),
-        gradient: linear-gradient(to right, #666cf6 0%, #5eafe2 100%),
-        box-shadow: '0px 1px 0px rgba(255, 255, 255, 0.6),1px 1px 4px rgba(255, 255, 255, 0.5)',
-        base1: #f5f6fa,
-        base2: #e6e9f2,
-        base3: #838ca8,
-        base4: #656872,
-        base5: #16171a,
-        white: #1d1e22,
-    ),
+  light: (
+    main: #6291EB,
+    main-5: rgba(0,46,148,0.05),
+    main-10: rgba(0,46,148,0.10),
+    main-20: rgba(0,46,148,0.20),
+
+    gradient: linear-gradient(to right, #666CF6 0%, #5EAFE2 100%),
+
+    base1: #16171A,
+    base2: #5A617D,
+    base3: #838CA8,
+    base4: #E6E9F2,
+    base5: #F5F6FA,
+
+    white: #fff,
+    white-to-transparent: linear-gradient(0deg, rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%)
+  ),
+  dark: (
+    main: #6291EB,
+    main-5: rgba(140, 177, 255, 0.05),
+    main-10: rgba(140, 177, 255, 0.1),
+    main-20: rgba(140, 177, 255, 0.2),
+
+    gradient: linear-gradient(to right, #666CF6 0%, #5EAFE2 100%),
+
+    base1: #F5F6FA,
+    base2: #E6E9F2,
+    base3: #838CA8,
+    base4: #222224,
+    base5: #16171A,
+
+    white: #1d1e22,
+    white-to-transparent: linear-gradient(0deg, rgba(29,30,34,0) 0%, rgba(29,30,34,1) 100%)
+  )
 );
 
 @each $theme-name, $theme-vars in $themes {
-    body.#{$theme-name} {
-        @each $name, $color in $theme-vars {
-            --#{$name}: #{$color};
-        }
+  body.#{$theme-name} {
+    @each $name, $color in $theme-vars {
+      --#{"" + $name}: #{$color};
     }
 }
 

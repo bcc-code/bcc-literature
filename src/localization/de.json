@@ -48,12 +48,16 @@
         "search-results": "Ergebnisse",
         "search-box": "In BCC Literatur suchen",
         "year-filter": "Jahr",
-        "exact-match": "Exact match",
-        "authors-filter": "Nach Verfasser filtern",
-        "authors-filter-default": "Alle Verfasser",
-        "books-filter": "Nach Buch filtern",
-        "books-filter-default": "Alle Bücher",
-        "filter": "Filtre",
+        "exact-match": "Eksakt tekst",
+        "filters": {
+            "title": "Filtre",
+            "search-for-book": "Søk etter bok",
+            "search-for-author": "Søk etter forfatter",
+            "authors-title": "Autoren",
+            "books-title": "Bücher",
+            "no-match": "Ingen treff",
+            "clear": "tøm"
+        },
         "load-more": "Mehr laden",
         "no-results": "Keine Resultate"
     },

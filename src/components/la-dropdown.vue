@@ -1,5 +1,5 @@
 <template>
-      <section v-click-outside="() => show = false" class="dropdown left-down">
+      <section v-click-outside="() => show = false" class="dropdown">
 			<button @click='show = !show' class="dropdown-button">
                 {{buttonText}}
             </button>
