@@ -1,11 +1,10 @@
-﻿const keys = {};
+﻿﻿const keys = {};
 
 keys.AUTH0_DOMAIN = 'https://login.bcc.no';
 keys.AUTH0_CLIENT_ID = 'X0ac7C8sROIhEzRGLJPFpLCZAlKGK4KV';
 keys.API_AUDIENCE = 'https://literatureapi.bcc.no';
-keys.BMM_API_BASE_PATH = 'https://bmm-api.brunstad.org/';
-keys.SUBSCRIPTION_FORM_URLS = {
-    312: 'https://band.dcg-deutschland.de/',
+keys.SUBSCRIPTION_FORM_URLS = { 
+    312: 'https://band.dcg-deutschland.de/'
 };
 
 switch (window.location.hostname) {
@@ -20,9 +19,17 @@ case 'devliterature.bcc.no':
     keys.APP_URL = 'https://devliterature.bcc.no/';
     break;
 default:
-    keys.API_BASE_PATH = process.env.VUE_APP_API_ENV == 'dev' ? 'https://devliteratureapi.bcc.no/api/' : 'http://localhost:58330/api/';
+    switch (process.env.NODE_ENV) {
+    case 'localdev':
+        keys.API_BASE_PATH = 'https://devliteratureapi.bcc.no/api/';
+        break;
+    default:
+        keys.API_BASE_PATH = 'http://localhost:58330/api/';
+        break;
+    }
     keys.APP_INSIGHTS = '6856efb0-33a0-40ec-898a-fa1676670481';
     keys.APP_URL = 'http://literature.local:21535/';
+    break;
 }
 
 export default keys;

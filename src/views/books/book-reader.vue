@@ -21,7 +21,6 @@
                             :key="article.id"
                             :article="article"
                             :highlight="wordsToHighlight"
-                            :bmmAlbumId="bmmAlbumId"
                             :audioBookUrl="audioBookUrl"
                             :id="getElementName(article)"
                             ref="articles" />
@@ -103,31 +102,21 @@ export default {
         getBackButtonRoute() {
             return this.$route.params.parent ? this.$route.params.parent : { name: 'book-index', params: { bookId: this.$route.params.bookId }};
         },
-        audioBookUrl (){
+        audioBookUrl() {
             return this.book.audioBookUrl;
         },
-        bmmAlbumId () {
-            if(!this.audioBookUrl) {
-                return null;
-            }
-
-            let searchKey = 'album/',
-                albumIndex = this.audioBookUrl.indexOf(searchKey),
-                albumId = this.audioBookUrl.substr(0, this.audioBookUrl.length - (albumIndex + searchKey.length));
-            return albumId;
-        },
-        shareUrl(){
+        shareUrl() {
             return BaseApi.addLanguageQuery(window.location.origin + this.$route.fullPath);
         },
-        selectedChapter(){
+        selectedChapter() {
             return this.$route.params.chapterId
         },
-        selectedChapterTitle(){
+        selectedChapterTitle() {
             if (this.chapters.some(el => el.id == this.selectedChapter))
                 return this.chapters.find(el => el.id == this.selectedChapter).title
             return ''
         },
-        shareMessage(){
+        shareMessage() {
             return this.$t('share.message', { chapterName: this.selectedChapterTitle });
         }
     },
@@ -182,9 +171,17 @@ export default {
                 /* Force reload the reader component */
                 this.$store.dispatch('articles/base/reset');
                 this.setCurrentChapter(chapterId);
-                debugger;
                 this.$refs.loader.reset();
             };
+            this.playArticle(chapterId);
+        },
+        playArticle(chapterId) {
+            if (document.body.classList.contains('player-on')) {
+                let chapterEl = document.getElementById('chapter-element-' + chapterId);
+                if (chapterEl) {
+                    chapterEl.getElementsByClassName('play-pause-icon')[0].click();
+                }
+            }
         },
         openShareModal(){
             if (navigator.share) {

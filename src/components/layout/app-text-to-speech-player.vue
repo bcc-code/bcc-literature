@@ -8,8 +8,8 @@
                 <h4 class="chapter-id">#{{article.chapterId}}</h4>
                 <h3 class="article-title">{{article.title}}</h3>
                 <h4 class="article-clock">{{articleClock.time}}</h4>
+                <a v-bind:class="[isPlaying ? 'pause-icon' : 'play-icon']" class="button-main play-pause-button button-circular" v-on:click="toggleSpeak(article)"> </a>
             </div>      
-            <a  v-bind:class="[isPlaying ? 'pause-icon' : 'play-icon']" class="button-main play-pause-button button-circular" v-on:click="toggleSpeak(article)"> </a>
         </div>
     </div>    
 </template>
@@ -38,7 +38,6 @@ export default {
             toggleSpeak: 'toggleSpeak',
             stop: 'stop',
         }),
-
     },
     deactivated() {
         this.stop();

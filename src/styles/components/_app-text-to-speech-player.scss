@@ -1,5 +1,5 @@
 $player-width: 648px;
-$progress-bar-height: 3px;
+$progress-bar-height: 2px;
 
 .text-to-speech-player-outer {
     position: fixed;
@@ -9,7 +9,6 @@ $progress-bar-height: 3px;
     @include floating();
 
     .text-to-speech-player-inner {
-        width: $player-width;
         background-color: var(--white);
         border-top: $progress-bar-height solid rgba(217, 226, 231, 0.6);
         margin: 0 auto;
@@ -20,7 +19,6 @@ $progress-bar-height: 3px;
 
         .progress-bar {
             height: $progress-bar-height;
-            max-width: $player-width;
             width: 100%;
             background-color: unset;
 
@@ -35,57 +33,61 @@ $progress-bar-height: 3px;
         }
 
         .play-pause-button {
-            background-color: white !important;
-            width: 44px;
-            height: 44px;
-            box-shadow: var(--box-shadow);
-
-            &:hover {
-                box-shadow: var(--box-shadow);
-            }
+            width: 36px;
+            height: 36px;
+            box-shadow: 0px 1px 0px rgba(0, 35, 140, 0.06), 0px 1px 4px rgba(0, 7, 26, 0.1);
+            margin-top: 4px;
+            margin-bottom: 4px;
 
             &.play-icon {
                 background: url(/img/icon_24_play_filled.svg) 60% 50% no-repeat;
+                background-size: 60%;
             }
 
             &.pause-icon {
                 background: url(/img/icon_24_pause_filled.svg) 52.5% 60% no-repeat;
+                background-size: 55%;
             }
         }
 
         .player-info {
-            padding-left: 16px;
-
+            max-width: $player-width;
+            margin: 0 auto;
+            padding-bottom: 4px;
             display: flex;
             flex: 2;
             flex-direction: row;
             align-self: center;
-            align-items: baseline;
+            align-items: center;
 
             .article-title {
                 display: -webkit-box;
                 -webkit-line-clamp: 2;
                 -webkit-box-orient: vertical;
                 overflow: hidden;
+                margin-top: 1px;
+                font-size: 2.2em;
+                padding: 0 5px;
+                line-height: 1.25em;
             }
 
-            .article-title,
             .article-clock {
-                font-size: 2.2em;
+                color: var(--main);
             }
 
             .chapter-id {
                 color: var(--main);
-                font-weight: 700;
-                font-size: 1.9em;
+                font-weight: bold;
             }
 
             & h3 {
+                font-family: "Ubuntu", sans-serif;
                 flex: 8;
+                font-weight: normal;
             }
             & h4 {
+                font-family: "Ubuntu", sans-serif;
                 flex: 1;
-                font-weight: 300;
             }
         }
     }
@@ -96,21 +98,23 @@ $progress-bar-height: 3px;
         .text-to-speech-player-inner {
             width: 100%;
             padding-bottom: 7px;
-            border-top: 1px solid rgba(217, 226, 231, 0.6);
 
             .player-info {
-                align-items: center;
+                padding: 3px 0 1px 15px;
+                margin-right: 50px;
+
                 & h3 {
                     flex: 5;
                 }
+                .chapter-id,
                 .article-title,
                 .article-clock {
-                    font-size: 2.1em;
+                    font-size: 2em;
                 }
-            }
 
-            .play-pause-button {
-                margin-right: 68px;
+                .article-title {
+                    margin-top: 0;
+                }
             }
         }
     }

@@ -2,7 +2,7 @@
     <div>
         <div class="chapter-header">
             <h5 :id="'chapter-title-' + article.chapterId">{{ $t('reader.chapter') }} {{ article.chapterId }}</h5>
-            <TextToSpeechButton :article="article" :bmmAlbumId='bmmAlbumId' :audioBookUrl='audioBookUrl' />
+            <TextToSpeechButton :article="article" :audioBookUrl='audioBookUrl' />
         </div>
         <div v-if="article.content != null" v-html="article.content" />
         <DocumentViewer v-else :article="article" />
@@ -15,7 +15,7 @@ import DocumentViewer from './document-viewer';
 import TextToSpeechButton from './article-text-to-speech-btn'
 
 export default {
-    props: ['article', 'highlight', 'bmmAlbumId', 'audioBookUrl'],
+    props: ['article', 'highlight', 'audioBookUrl'],
     components: {
         DocumentViewer,
         TextToSpeechButton

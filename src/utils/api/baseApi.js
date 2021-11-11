@@ -2,8 +2,7 @@
 import keys from 'keys';
 import store from 'store';
 import authenticator from 'utils/auth';
-const baseUri = keys.API_BASE_PATH,
-    bmmBaseUri = keys.BMM_API_BASE_PATH;
+const baseUri = keys.API_BASE_PATH;
 
 function addLanguageQuery(requestUrl){  
     var langParam = (requestUrl.indexOf('?') > -1 ? "&" : "?") + "lang=" + store.state.session.appLanguage;
@@ -74,7 +73,6 @@ export default {
     sendRequest,
     sendCustomRequest,
     baseUri,
-    bmmBaseUri,
     getDownloadEbookLink,
     addLanguageQuery,
 };

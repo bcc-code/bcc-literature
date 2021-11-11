@@ -21,7 +21,6 @@ export default {
             pauseDuration: 0,
             articleId: -1
         }
-        
     },
     mutations: {
         setProvider: (state, article) => {
@@ -30,7 +29,7 @@ export default {
                 provider = synthesisProvider;
             }
             
-            if (article.bmmAlbumId) {
+            if (article.audioBookUrl) {
                 provider = bmmProvider;
             }
 
@@ -101,8 +100,8 @@ export default {
                 state.currentProvider.speak(article);
                 logTextToSpeech(article);
                 clockInterval = !state.currentProvider.isExternal ? setInterval(() => commit('updateClock'), 500) : null;
-                
-            } catch (ex) {
+            } 
+            catch (ex) {
                 dispatch('stop');
                 commit('error/setDisplayMessage', "Error: Cannot play current article.", { root: true });
                 commit('error/showError', true, { root: true });
@@ -111,6 +110,10 @@ export default {
 
             commit('setCurrentArticleId', article.id);
             commit('updatePlayingState');
+
+            if (!state.currentProvider.isExternal) {
+                document.body.classList.add('player-on');
+            }
         },
         reset: ({dispatch}) => {
             dispatch('stop');

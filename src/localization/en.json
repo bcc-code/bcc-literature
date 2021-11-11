@@ -36,15 +36,11 @@
         "publications": "Publications",
         "choose-year": "Choose year",
         "open-in-safari": "Please use your browser to download this e-book",
-        "read-random-chapters": "Read a random chapter",
-        "open-audiobook": "Listen to audiobook"
+        "read-random-chapters": "Read a random chapter"
     },
     "not-found": {
         "title": "The resource you are looking for is not available in this language.",
-        "suggestions": "It is available in the following languages:",
-        "cant-play-text-to-speech": "This article cannot be played in this language",
-        "play-text-to-speech": "Listen",
-        "pause-text-to-speech": "Stop"
+        "suggestions": "It is available in the following languages:"
     },
     "search": {
         "search": "Search",
@@ -66,10 +62,7 @@
     },
     "reader": {
         "chapter": "Chapter",
-        "subscription-required": "You are not subscribed to the selected publication.",
-        "play-text-to-speech": "Listen",
-        "pause-text-to-speech": "Pause",
-        "cant-play-text-to-speech": "This article cannot be listened in the selected language."
+        "subscription-required": "You are not subscribed to the selected publication."
     },
     "subscription": {
         "subscriptions": "Subscriptions",
@@ -121,5 +114,12 @@
         "copy-button": "Copy",
         "copy-success": "Copied",
         "message": "Read \"{chapterName}\" on BCC Literature:"
+    },
+    "audiobooks": {
+        "listen-on-bmm": "Listen on BMM",
+        "play-audiobook": "Play audiobook",
+        "play-text-to-speech": "Play",
+        "pause-text-to-speech": "Stop",
+        "cant-play-text-to-speech": "This article cannot be played in this language."
     }
 }
