@@ -10,18 +10,20 @@
                         <Title :book="book" :year="year" :month="month" :title="articles[0].title"/>
                     </template>
                     <ArticleScroller v-if="isContentVisible"
-                    :articles="articles"
-                    :loadTopHandler="( isPublication || showingFirstChapter) ? null : loadTop"
-                    :loadBottomHandler="isPublication  ? null : loadBottom"
-                    :getElementName="(article) => getElementName(article)"
-                    :no-lazy-load="isPublication"
-                    @change="(article) => setCurrentChapter(article.chapterId)">
+                        :articles="articles"
+                        :loadTopHandler="( isPublication || showingFirstChapter) ? null : loadTop"
+                        :loadBottomHandler="isPublication  ? null : loadBottom"
+                        :getElementName="(article) => getElementName(article)"
+                        :no-lazy-load="isPublication"
+                        @change="(article) => setCurrentChapter(article.chapterId)"
+                    >
                         <ArticleFull v-for="article in articles"
-                        :key="article.id"
-                        :article="article"
-                        :highlight="wordsToHighlight"
-                        :id="getElementName(article)"
-                        ref="articles"/>
+                            :key="article.id"
+                            :article="article"
+                            :highlight="wordsToHighlight"
+                            :audioBookUrl="audioBookUrl"
+                            :id="getElementName(article)"
+                            ref="articles" />
                     </ArticleScroller>
                     <SubscriptionRequired :book="book" v-else></SubscriptionRequired>
                 </article>
@@ -31,6 +33,7 @@
         <a alt="Share" class="share button-circular secondary" @click="openShareModal"></a>"
         <app-sidebar @chapterChanged="changeChapter" />
         <ShareLinkModal v-show="showShareModal" :url="shareUrl" :message="shareMessage"></ShareLinkModal>
+        <TextToSpeechPlayer :articles="articles" />
     </template>
     <div id="print-footer">© Copyright Skjulte Skatters Forlag N-4098 Tananger, Norway.</div>
   </div>
@@ -39,6 +42,7 @@
 <script>
 import AppHeader from 'components/layout/app-header';
 import AppSidebar from 'components/layout/app-sidebar';
+import TextToSpeechPlayer from 'components/layout/app-text-to-speech-player';
 import ShareLinkModal from 'components/reader/share-link-modal';
 import NotFound from 'components/not-found';
 import BookMixins from '@/mixins/book';
@@ -62,6 +66,7 @@ export default {
         SubscriptionRequired,
         AppSidebar,
         NotFound,
+        TextToSpeechPlayer,
         ShareLinkModal
     },
     data() {
@@ -71,6 +76,7 @@ export default {
             notFound: false,
             articles: [],
             amountToLoad: 5,
+            readingChapterId: null
         }
     },
     created() {
@@ -93,21 +99,24 @@ export default {
         isContentVisible() {
             return this.articles.every((el) => { return el.contentVisible });
         },
-        getBackButtonRoute(){
+        getBackButtonRoute() {
             return this.$route.params.parent ? this.$route.params.parent : { name: 'book-index', params: { bookId: this.$route.params.bookId }};
         },
-        shareUrl(){
+        audioBookUrl() {
+            return this.book.audioBookUrl;
+        },
+        shareUrl() {
             return BaseApi.addLanguageQuery(window.location.origin + this.$route.fullPath);
         },
-        selectedChapter(){
+        selectedChapter() {
             return this.$route.params.chapterId
         },
-        selectedChapterTitle(){
+        selectedChapterTitle() {
             if (this.chapters.some(el => el.id == this.selectedChapter))
                 return this.chapters.find(el => el.id == this.selectedChapter).title
             return ''
         },
-        shareMessage(){
+        shareMessage() {
             return this.$t('share.message', { chapterName: this.selectedChapterTitle });
         }
     },
@@ -133,7 +142,7 @@ export default {
                             year: parseInt(this.$route.params.year), 
                             month: parseInt(this.$route.params.month),
                             chapterId: isNaN(chapterId) ? 1 : chapterId,
-                            parent: this.$route.params.parent
+                            parent: this.$route.params.parent,
                         }});
                 }
                 this.isPublication
@@ -158,12 +167,21 @@ export default {
         },
         changeChapter(chapterId) {
             this.showSidebar = false;
-            if (this.scrollToChapter(chapterId) == false){
+            if (this.scrollToChapter(chapterId) == false) {
                 /* Force reload the reader component */
                 this.$store.dispatch('articles/base/reset');
                 this.setCurrentChapter(chapterId);
                 this.$refs.loader.reset();
             };
+            this.playArticle(chapterId);
+        },
+        playArticle(chapterId) {
+            if (document.body.classList.contains('player-on')) {
+                let chapterEl = document.getElementById('chapter-element-' + chapterId);
+                if (chapterEl) {
+                    chapterEl.getElementsByClassName('play-pause-icon')[0].click();
+                }
+            }
         },
         openShareModal(){
             if (navigator.share) {
@@ -193,17 +211,16 @@ export default {
 </script>
 
 <style>
-#print-footer{
+#print-footer {
     display: none;
 }
 
 @media print {
-    @page  
-    { 
+    @page { 
         size: auto;
         margin: 27mm 16mm 27mm 16mm; 
     } 
-    #bcc-widget-topbar, header, footer{
+    #bcc-widget-topbar, header, footer {
         display: none !important;
     }
     #print-footer {

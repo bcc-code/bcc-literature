@@ -1,23 +1,23 @@
 // Navigation
-nav{
-	display: block;
-	width: auto;
-	height: 48px;
+nav {
+    display: block;
+    width: auto;
+    height: 48px;
 
-	a{
-		display: inline-block;
+    a {
+        display: inline-block;
 
-		line-height: 24px;
-		padding: 12px; 
+        line-height: 24px;
+        padding: 12px;
 
-		font-family: $body;
-		font-weight: bold;
-		font-size: 1.75em;
-		line-height: 1.4em;
-		color: var(--main);
-		letter-spacing: -0.2px;
-		text-decoration: none;
-	}
+        font-family: $body;
+        font-weight: bold;
+        font-size: 1.75em;
+        line-height: 1.4em;
+        color: var(--main);
+        letter-spacing: -0.2px;
+        text-decoration: none;
+    }
 }
 
 // Books
@@ -75,7 +75,7 @@ nav{
 	}
 }
 .button-circular.main.toggle-sidebar{
-	right: 12px;
+	right: 7px;
 	top: 108px;
 	position: fixed;
 	z-index: 10002;
@@ -85,14 +85,14 @@ nav{
 
 	@media only screen and (max-width: 648px) {
 		@include transition(all, .3s);
-		top: calc(100% - 68px);
+		top: calc(100% - 66px);
 	}
-	@media only screen and (device-width : 375px) 
-		and (device-height : 812px) 
-		and (-webkit-device-pixel-ratio : 3) { 
-			@include transition(all, .3s);
-			top: calc(100% - 88px);
-    }
+}
+
+.player-on .button-circular.main.toggle-sidebar{
+	@media only screen and (max-width: 648px) {
+		top: calc(100% - 56px);
+	}
 }
 
 .button-circular.secondary.share{
@@ -100,20 +100,16 @@ nav{
 	top: 108px;
 	position: fixed;
 	z-index: 10002;
-	background: url("../assets/icons/icon_24_share_white.svg") center center no-repeat, var(--base3); 
+	background: url("../assets/icons/icon_24_share_white.svg") 45% center no-repeat, var(--base3); 
 
 	@include transition(all, .3s);
 	
 	@media only screen and (max-width: 648px) {
+		right: 7px;
+
 		@include transition(all, .3s);
-		top: calc(100% - 68px);
+		top: calc(100% - 109px);
 	}
-	@media only screen and (device-width : 375px) 
-		and (device-height : 812px) 
-		and (-webkit-device-pixel-ratio : 3) { 
-			@include transition(all, .3s);
-			top: calc(100% - 88px);
-    }
 }
 
 .sidebar-open{
@@ -131,24 +127,15 @@ nav{
 		width: 24px;
 
 		@media only screen and (max-width: 648px) {
-			top: calc(100% - 68px);
-			width: 44px;
-			height: 44px;
-			right: 12px;
-			background: url("../assets/icons/icon_24_close.svg") center center no-repeat, var(--gradient);
-		}
-		@media only screen and (device-width : 375px) 
-		and (device-height : 812px) 
-		and (-webkit-device-pixel-ratio : 3) { 
-			top: calc(100% - 88px);
-			width: 44px;
-			height: 44px;
-			right: 12px;
+			top: calc(100% - 66px);
+			width: 38px;
+			height: 38px;
+			right: 7px;
 			background: url("../assets/icons/icon_24_close.svg") center center no-repeat, var(--gradient);
 		}
 	}
 	.button-circular.secondary.share{
-		background: url("../assets/icons/icon_24_share_blue.svg") center center no-repeat, var(--white);
+		background: url("../assets/icons/icon_24_share_blue.svg") 45% center no-repeat, var(--white);
 		@include interactable(); 
 		right: 50px;
 		top: 116px;
@@ -156,20 +143,11 @@ nav{
 		width: 24px;
 
 		@media only screen and (max-width: 648px) {
-			top: calc(100% - 68px);
-			width: 44px;
-			height: 44px;
-			right: 62px;
-			background: url("../assets/icons/icon_24_share_white.svg") center center no-repeat, var(--base3);;
-		}
-		@media only screen and (device-width : 375px) 
-		and (device-height : 812px) 
-		and (-webkit-device-pixel-ratio : 3) { 
-			top: calc(100% - 88px);
-			width: 44px;
-			height: 44px;
-			right: 62px;
-			background: url("../assets/icons/icon_24_share_white.svg") center center no-repeat, var(--base3);;
+			top: calc(100% - 109px);
+			width: 38px;
+			height: 38px;
+			right: 7px;
+			background: url("../assets/icons/icon_24_share_white.svg") 45% center no-repeat, var(--base3);;
 		}
 	}
 	.sidebar{

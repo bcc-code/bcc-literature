@@ -1,0 +1,39 @@
+.article-tts-btn {
+    &.play-pause-icon {
+        padding: 2px 45px 2px 12px !important;
+        cursor: pointer;
+        z-index: 50;
+        float: right;
+        margin-top: 0;
+        background: url(/img/icon_24_audio.svg) 85% 50% no-repeat, linear-gradient(to right, #666cf6 0%, #5eafe2 100%);
+    }
+    .play-icon {
+        background: url(/img/icon_24_audio.svg) 80% 50% no-repeat, linear-gradient(to right, #666cf6 0%, #5eafe2 100%);
+    }
+
+    &.pause-icon {
+        background: url(/img/icon_24_audio_animated.svg) 80% 50% no-repeat, linear-gradient(to right, #666cf6 0%, #5eafe2 100%);
+    }
+
+    &.bmm-icon {
+        padding-right: 40px !important;
+        background: url(/img/icon_32_bmm_logo.png) 91% 50% no-repeat;
+        background-size: 22px 22px, auto !important;
+        border: 1px solid #0ab66f;
+        color: var(--base2);
+
+        &:hover {
+            box-shadow: inset 0px 0px 0px 2px rgb(10 182 111 / 25%);
+        }
+        &:active {
+            box-shadow: inset 0px 0px 0px 4px rgb(10 182 111 / 25%);
+        }
+    }
+
+    @media only screen and (max-width: 648px) {
+        &.play-pause-icon {
+            float: right;
+            margin-top: -11px;
+        }
+    }
+}

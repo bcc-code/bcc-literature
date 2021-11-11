@@ -3,12 +3,19 @@ export default {
     state: {
         message: "",
         failedRequest: "",
-        showNotice: false
+        showNotice: false,
+        displayMessage: null
     },
     mutations: {
-        showError: (state, value) => { state.showNotice = value },
+        showError: (state, value) => {
+            state.showNotice = value;
+            if(!value) {
+                state.displayMessage = null;
+            }
+        },
         setMessage: (state, value) => { state.message = value },
-        setFailedRequest: (state, value) => {state.failedRequest = value }
+        setFailedRequest: (state, value) => {state.failedRequest = value },
+        setDisplayMessage: (state, value) => {state.displayMessage = value },
     },
     actions: {
         setError: ({commit}, error) => {

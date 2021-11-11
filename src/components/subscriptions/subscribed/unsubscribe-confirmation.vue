@@ -44,7 +44,7 @@ export default {
         close(){
             this.$emit('close');
         },
-        async unsubscribe(){
+        async unsubscribe() {
             var userInformation = { name: this.userInfo.name, email: this.userInfo.email };
             await SubscriptionApi.unsubscribeTo(this.bookId, userInformation).then((result) => {
                 if (!result.data)

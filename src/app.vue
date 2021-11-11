@@ -24,7 +24,11 @@ export default {
             this.$store.dispatch('articles/base/reset');
             this.$store.dispatch('books/base/reset');
             this.$store.dispatch('authors/base/reset');
+            this.$store.dispatch('textToSpeech/reset');
         }
+    },
+    created() {
+        this.$store.dispatch('textToSpeech/reset');
     },
     mounted() {
         EventBus.$on(Events.CONTENT_LANGUAGE_CHANGED, this.reset);

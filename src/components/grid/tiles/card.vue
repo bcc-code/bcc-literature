@@ -50,7 +50,7 @@ export default {
                 ? 'book'
                 : 'author'
         },
-        articleClass(){
+        articleClass() {
             return (this.element.type == GridType.BOOK)
                 ? 'book'
                 : 'popular-author'

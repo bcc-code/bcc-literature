@@ -230,7 +230,7 @@ a{
 	@include transition(box-shadow, .1s);
 	
 	&.small{
-		padding: 2px 12px;
+		padding: 2px 10px;
 	}
 
 	&:hover{
@@ -262,7 +262,7 @@ a{
 	@include transition(all, .1s);
 
 	&.small{
-		padding: 2px 12px;
+		padding: 2px 10px;
 	}
 	&:hover{
 		box-shadow: inset 0px 0px 0px 2px  var(--main-10);
@@ -279,6 +279,11 @@ a{
 	margin: 8px;
 	border-radius: 3em;
 	cursor: pointer;
+
+	@media only screen and (max-width: 648px) {
+		height: 38px;
+		width: 38px;
+	}
 
 	&.main{
 		background: var(--gradient);

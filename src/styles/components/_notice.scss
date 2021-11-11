@@ -1,5 +1,5 @@
 // Books
-section.notice{
+section.notice {
 	@include floating();
 	border-radius: 4px;
 	padding: 12px;
@@ -9,5 +9,5 @@ section.notice{
 
 	bottom: 16px;
 	position: fixed;
-	z-index: 20;
+	z-index: 10005;
 }
