@@ -36,8 +36,7 @@
         "publications": "Ausgaben",
         "choose-year": "Jahr wählen",
         "open-in-safari": "Bitte benutze deinen Browser, um dieses E-Book zu downloaden",
-        "read-random-chapters": "Lies zufällige kapitel",
-        "open-audiobook": "Åpne lydbok"
+        "read-random-chapters": "Lies zufällige kapitel"
     },
     "not-found": {
         "title": "Die gesuchte ressource ist in dieser sprache nicht verfügbar.",
@@ -115,5 +114,12 @@
         "copy-button": "Kopieren",
         "copy-success": "Kopiert",
         "message": "\"{chapterName}\" auf BCC Literatur lesen:"
+    },
+    "audiobooks": {
+        "listen-on-bmm": "Hør på BMM",
+        "play-audiobook": "Spill av lydbok",
+        "play-text-to-speech": "Spill av",
+        "pause-text-to-speech": "Stop",
+        "cant-play-text-to-speech": "Denne artikelen kan ikke spilles av på dette språk."
     }
 }
