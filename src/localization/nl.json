@@ -36,8 +36,7 @@
         "publications": "Publicaties",
         "choose-year": "Kies jaargang",
         "open-in-safari": "Gebruik uw browser om dit ebook te downloaden",
-        "read-random-chapters": "Een willekeurig hoofdstuk lezen",
-        "open-audiobook": "Åpne lydbok"
+        "read-random-chapters": "Een willekeurig hoofdstuk lezen"
     },
     "not-found": {
         "title": "De gezochte bron is niet beschikbaar in deze taal.",
@@ -115,5 +114,12 @@
         "copy-button": "Kopiëren",
         "copy-success": "Gekopieerd",
         "message": "Lees \"{chapterName}\" op BCC Literatuur:"
+    },
+    "audiobooks": {
+        "listen-on-bmm": "Hør på BMM",
+        "play-audiobook": "Spill av lydbok",
+        "play-text-to-speech": "Spill av",
+        "pause-text-to-speech": "Stop",
+        "cant-play-text-to-speech": "Denne artikelen kan ikke spilles av på dette språk."
     }
 }
