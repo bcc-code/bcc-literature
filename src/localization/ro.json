@@ -116,10 +116,10 @@
         "message": "Citește „{chapterName}” din literatura BCC:"
     },
     "audiobooks": {
-        "listen-on-bmm": "Hør på BMM",
-        "play-audiobook": "Spill av lydbok",
-        "play-text-to-speech": "Spill av",
-        "pause-text-to-speech": "Stop",
+        "listen-on-bmm": "Ascultă pe BMM",
+        "play-audiobook": "Pornește audio",
+        "play-text-to-speech": "Redare",
+        "pause-text-to-speech": "Oprire",
         "cant-play-text-to-speech": "Denne artikelen kan ikke spilles av på dette språk."
     }
 }
