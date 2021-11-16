@@ -50,9 +50,9 @@ export default {
             if(!article) return null;
             return `chapter-element-${article.chapterId}`;
         },
-        scrollToChapter (chapterId, offset = -100) {
+        scrollToChapter(chapterId, offset = -100) {
             let article = this.articles.find((a) => a.chapterId === chapterId);
-            if(!article) return false;
+            if (!article) return false;
             var self = this;
             window.scrollTo(0,0);
             if (chapterId >= 2) {

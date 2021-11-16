@@ -42,6 +42,7 @@ export default {
     }
     .notice.error h5 {
         color: #a51919;
+        padding-right: 10px;
     }
     .notice .close {
         position: absolute;
@@ -49,6 +50,9 @@ export default {
         right: 0;
         opacity: .3;
         cursor: pointer;
+        background: var(--white);
+        color: var(--base1);
+        padding-right: 10px;
     }
     .notice .close span {
         font-size: 25px;

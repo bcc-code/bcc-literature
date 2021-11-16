@@ -1,10 +1,11 @@
 import { getLanguageTag } from '../languageTags';
 import store from '../../store/index';
+import { logCustomEvent } from 'utils/appInsights';
 
 const isExternal = false;
 const speech = window.speechSynthesis;
 
-export default { speak, stop, isPlaying, pause, isExternal };
+export default { speak, stop, pause, isPlaying, isExternal };
 
 /**
  * Force loading of synthesis langs
@@ -40,6 +41,8 @@ function speak(article) {
     speech.articleId = article.id;
     speech.speak(utterance);
     speech.isPaused = false;
+
+    logTextToSpeech(article);
 }
 
 function stop() {
@@ -76,9 +79,19 @@ function getLanguageVoice(id) {
     voice = voiceLocal ? voiceLocal : voices.find(e => e.lang.toLowerCase() == langTag.toLowerCase());
     
     //workaround => nb-No is not found try da-DK
-    if ( !voice && id === langNo ) {
-        voice = voices.find(e => e.lang.toLowerCase() == getLanguageTag(langDk).toLowerCase());
-    }
+    // if ( !voice && id === langNo ) {
+    //     voice = voices.find(e => e.lang.toLowerCase() == getLanguageTag(langDk).toLowerCase());
+    // }
 
     return voice;
+}
+
+async function logTextToSpeech(article) {
+    logCustomEvent("PlayTTS", {
+        BookId: article.bookId,
+        Language: article.language,
+        BookTitle: article.title,
+        ChapterId: article.chapterId,
+        StartedFromBookOverview: article.startedFromBookOverview || false
+    });
 }
