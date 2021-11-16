@@ -1,10 +1,10 @@
 .article-tts-btn {
     &.play-pause-icon {
         padding: 2px 45px 2px 12px !important;
+        margin: 0px 0px 8px 12px;
         cursor: pointer;
         z-index: 50;
         float: right;
-        margin-top: 0;
         background: url(/img/icon_24_audio.svg) 85% 50% no-repeat, linear-gradient(to right, #666cf6 0%, #5eafe2 100%);
     }
     .play-icon {

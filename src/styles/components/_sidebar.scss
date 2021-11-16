@@ -84,14 +84,25 @@ nav {
 	@include transition(all, .3s);
 
 	@media only screen and (max-width: 648px) {
-		@include transition(all, .3s);
 		top: calc(100% - 66px);
+	}
+
+	@media only screen and (device-width : 375px) 
+		and (device-height : 812px) 
+		and (-webkit-device-pixel-ratio : 3) { 
+			top: calc(100% - 81px);
 	}
 }
 
 .player-on .button-circular.main.toggle-sidebar{
 	@media only screen and (max-width: 648px) {
 		top: calc(100% - 56px);
+	}
+	
+	@media only screen and (device-width : 375px) 
+		and (device-height : 812px) 
+		and (-webkit-device-pixel-ratio : 3) { 
+			top: calc(100% - 74px);
 	}
 }
 
@@ -106,9 +117,13 @@ nav {
 	
 	@media only screen and (max-width: 648px) {
 		right: 7px;
-
-		@include transition(all, .3s);
 		top: calc(100% - 109px);
+	}
+
+	@media only screen and (device-width : 375px) 
+		and (device-height : 812px) 
+		and (-webkit-device-pixel-ratio : 3) { 
+			top: calc(100% - 124px);
 	}
 }
 
@@ -127,9 +142,9 @@ nav {
 		width: 24px;
 
 		@media only screen and (max-width: 648px) {
-			top: calc(100% - 66px);
-			width: 38px;
-			height: 38px;
+			top: calc(100% - 74px);
+			width: 40px;
+			height: 40px;
 			right: 7px;
 			background: url("../assets/icons/icon_24_close.svg") center center no-repeat, var(--gradient);
 		}
@@ -144,8 +159,8 @@ nav {
 
 		@media only screen and (max-width: 648px) {
 			top: calc(100% - 109px);
-			width: 38px;
-			height: 38px;
+			width: 40px;
+			height: 40px;
 			right: 7px;
 			background: url("../assets/icons/icon_24_share_white.svg") 45% center no-repeat, var(--base3);;
 		}

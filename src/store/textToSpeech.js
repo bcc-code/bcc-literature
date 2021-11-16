@@ -1,10 +1,7 @@
 import bmmProvider from 'utils/textToSpeech/bmmAudioProvider';
 import synthesisProvider from 'utils/textToSpeech/speechSynthesisProvider';
-import { logCustomEvent } from 'utils/appInsights';
 
-const TTS_EVENT_NAME = 'TTS_reading_started',
-    allProviders = [bmmProvider, synthesisProvider];
-
+const allProviders = [bmmProvider, synthesisProvider];
 let clockInterval = null;
 
 export default {
@@ -50,12 +47,12 @@ export default {
             }
             state.isPlaying = !!state.currentProvider && state.currentProvider.isPlaying();
         },
-        setPlayingPercentage: function(state, value){
+        setPlayingPercentage: function(state, value) {
             if (value > 100) value = 100;
             state.playingPercentage = value;
         },
-        initClock: function(state, articleId){
-            if (state.articleClock.articleId == articleId && state.articleClock.pauseTime !== null){
+        initClock: function(state, articleId) {
+            if (state.articleClock.articleId == articleId && state.articleClock.pauseTime !== null) {
                 state.articleClock.pauseDuration += (new Date() - state.articleClock.pauseTime);
             } else {
                 state.articleClock.startTime = new Date();
@@ -79,7 +76,7 @@ export default {
         toggleSpeak: ({ dispatch, state }, article) => {
             dispatch(isArticlePlaying(state, article) ? 'pause' : 'speak', article);
         },
-        isArticlePlaying: ({state}, article) => {
+        isArticlePlaying: ({ state }, article) => {
             return isArticlePlaying(state, article);
         },
         stop: ({ commit }) => {
@@ -87,7 +84,7 @@ export default {
             commit('setCurrentArticleId', -1);
             commit('updatePlayingState');
         },
-        pause: ({commit}) =>{
+        pause: ({ commit }) =>{
             pauseAllProviders();
             clearInterval(clockInterval);
             commit('pauseClock');
@@ -98,12 +95,11 @@ export default {
             try {
                 commit('initClock', article.id);
                 state.currentProvider.speak(article);
-                logTextToSpeech(article);
                 clockInterval = !state.currentProvider.isExternal ? setInterval(() => commit('updateClock'), 500) : null;
             } 
             catch (ex) {
                 dispatch('stop');
-                commit('error/setDisplayMessage', "Error: Cannot play current article.", { root: true });
+                commit('error/setDisplayMessage', this.$t('audiobooks.cant-play-text-to-speech'), { root: true });
                 commit('error/showError', true, { root: true });
                 console.error("ERROR", ex);
             }
@@ -112,7 +108,7 @@ export default {
             commit('updatePlayingState');
 
             if (!state.currentProvider.isExternal) {
-                document.body.classList.add('player-on');
+                document.getElementById('content').classList.add('player-on');
             }
         },
         reset: ({dispatch}) => {
@@ -121,13 +117,9 @@ export default {
     },
 };
 
-async function logTextToSpeech(article) {
-    await logCustomEvent(TTS_EVENT_NAME, article);
-}
-
 function stopAllProviders() {
     for (const provider of allProviders) {
-        if(typeof(provider.stop) === 'function'){
+        if (typeof(provider.stop) === 'function') {
             provider.stop();
         }
     }

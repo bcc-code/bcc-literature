@@ -22,6 +22,7 @@
                             :article="article"
                             :highlight="wordsToHighlight"
                             :audioBookUrl="audioBookUrl"
+                            :bookTitle="bookTitle"
                             :id="getElementName(article)"
                             ref="articles" />
                     </ArticleScroller>
@@ -30,7 +31,7 @@
             </loader>
         </section>
         <a alt="Toggle Sidebar" class="toggle-sidebar button-circular main" @click="showSidebar = !showSidebar"></a>
-        <a alt="Share" class="share button-circular secondary" @click="openShareModal"></a>"
+        <a alt="Share" class="share button-circular secondary" @click="openShareModal"></a>
         <app-sidebar @chapterChanged="changeChapter" />
         <ShareLinkModal v-show="showShareModal" :url="shareUrl" :message="shareMessage"></ShareLinkModal>
         <TextToSpeechPlayer :articles="articles" />
@@ -46,7 +47,6 @@ import TextToSpeechPlayer from 'components/layout/app-text-to-speech-player';
 import ShareLinkModal from 'components/reader/share-link-modal';
 import NotFound from 'components/not-found';
 import BookMixins from '@/mixins/book';
-import { mapActions } from 'vuex';
 import Loader from 'components/la-loader';
 import Title from 'components/reader/reader-title.vue';
 import ArticleScroller from 'components/reader/article-scroller';
@@ -55,6 +55,7 @@ import SubscriptionRequired from 'components/reader/subscription-required-info';
 import FontFaceObserver from 'fontfaceobserver';
 import ReaderMixins from '@/mixins/reader';
 import BaseApi from '@/utils/api/baseApi.js';
+import { mapActions, mapState } from 'vuex';
 
 export default {
     components: {
@@ -82,8 +83,18 @@ export default {
     created() {
         this.showSidebar = false;
     },
+    mounted() {
+        // Set class name if the player is open
+        if (this.currentArticleId != -1) {
+            document.getElementById('content').classList.add('player-on');
+        }
+    },
     mixins: [BookMixins, ReaderMixins],
     computed: {
+        ...mapState('textToSpeech',{
+            currentArticleId: 'currentArticleId',
+            isPlaying: 'isPlaying',
+        }), 
         allArticles() {
             return this.$store.getters['articles/getAllByBookId'](this.bookId);
         },
@@ -104,6 +115,9 @@ export default {
         },
         audioBookUrl() {
             return this.book.audioBookUrl;
+        },
+        bookTitle() {
+            return this.book.title;
         },
         shareUrl() {
             return BaseApi.addLanguageQuery(window.location.origin + this.$route.fullPath);
@@ -130,9 +144,13 @@ export default {
             ensureSurroundingChapters: 'ensureSurroundingChapters',
             loadArticlesByMonth: 'loadArticlesByMonth'
         }),
+        ...mapActions('textToSpeech', {
+            toggleSpeak: 'toggleSpeak',
+        }),
         async initialize() {
             this.articles = [];
             this.notFound = false;
+
             await this.loadBook(this.bookId).then(async (book) => {
                 if (book.redirectToCorrectLanguage) {
                     let chapterId = parseInt(this.$route.params.chapterId);
@@ -164,6 +182,12 @@ export default {
         },
         afterInitialize() {
             this.scrollToChapter(this.chapterId);
+
+            // Play the audiobook or Listen on BMM
+            if (this.$route.hash == '#play' ||
+                this.$route.hash == '#bmm') {
+                this.playArticle(this.$route.params.chapterId, true);
+            }
         },
         changeChapter(chapterId) {
             this.showSidebar = false;
@@ -173,17 +197,21 @@ export default {
                 this.setCurrentChapter(chapterId);
                 this.$refs.loader.reset();
             };
-            this.playArticle(chapterId);
-        },
-        playArticle(chapterId) {
-            if (document.body.classList.contains('player-on')) {
-                let chapterEl = document.getElementById('chapter-element-' + chapterId);
-                if (chapterEl) {
-                    chapterEl.getElementsByClassName('play-pause-icon')[0].click();
-                }
+
+            // Play the new chapter only if the player is open and the current book is not on BMM
+            if (this.currentArticleId != -1 && !this.audioBookUrl) {
+                this.playArticle(chapterId);
             }
         },
-        openShareModal(){
+        playArticle(chapterId, startedFromBookOverview) {
+            let audioBookUrl = this.audioBookUrl;
+            let bookTitle = this.bookTitle;
+
+            this.toggleSpeak(
+                {...this.allArticles.find(el => el.chapterId == chapterId), audioBookUrl, bookTitle, startedFromBookOverview}
+            );
+        },
+        openShareModal() {
             if (navigator.share) {
                 navigator.share({
                     title: this.selectedChapterTitle,

@@ -19,7 +19,7 @@ import { mapActions, mapState } from 'vuex';
 export default {
     props: ["articles"],
     computed: { 
-        ...mapState('textToSpeech',{
+        ...mapState('textToSpeech', {
             speechArticleId: 'currentArticleId',
             isPlaying: 'isPlaying',
             playingPercentage: 'playingPercentage',
@@ -40,6 +40,9 @@ export default {
         }),
     },
     deactivated() {
+        this.stop();
+    },
+    destroyed() {
         this.stop();
     }
 };

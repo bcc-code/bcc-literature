@@ -25,12 +25,12 @@ import BookMixins from '@/mixins/book'
 export default {
     mixins: [BookMixins],
     computed: {
-        chaptersLength(){
+        chaptersLength() {
             if (this.chapters == null)
                 return 0;
             return this.chapters.length;
         },
-        selectedChapter(){
+        selectedChapter() {
             return this.$route.params.chapterId
         },
     }
