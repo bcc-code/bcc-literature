@@ -834,23 +834,15 @@ h1 + .subscription-signup{
 	}
 }
 
-$bottom-nodge-height: 34;
-
 //Footer
 footer{
 	display: block;
 	position: absolute;
 	bottom: 0px;
 	width: 100%;
-	padding: 16px;
 	background: var(--base5);
 	text-align: center;
-
-	@media only screen and (device-width : 375px) 
-		and (device-height : 812px) 
-		and (-webkit-device-pixel-ratio : 3) { 
-			padding-bottom: calc(16 + $bottom-nodge-height) * 1px;
-	}
+	padding-bottom: calc(env(safe-area-inset-bottom, 16px));
 
 	&:after{
 		content: "";

@@ -6,10 +6,8 @@ nav {
 
     a {
         display: inline-block;
-
         line-height: 24px;
         padding: 12px;
-
         font-family: $body;
         font-weight: bold;
         font-size: 1.75em;
@@ -23,6 +21,7 @@ nav {
 // Books
 .sidebar{
 	@include floating();
+	
 	border-radius: 12px;
 	padding: 12px 12px 4px 12px;
 	width: 350px;
@@ -33,9 +32,7 @@ nav {
 	top: 116px;
 	position: fixed;
 	z-index: 10001;
-
 	overflow-y: scroll;
-
 	-webkit-overflow-scrolling: touch;
 
 	@include transition(all, .3s);
@@ -90,13 +87,7 @@ nav {
 
 .player-on .button-circular.main.toggle-sidebar {
 	@media only screen and (max-width: 648px) {
-		top: calc(100% - 58px) !important;
-	}
-	
-	@media only screen and (device-width : 375px) 
-		and (device-height : 812px) 
-		and (-webkit-device-pixel-ratio : 3) { 
-			top: calc(100% - 92px) !important;
+		top: calc(100% - 58px - env(safe-area-inset-bottom)) !important;
 	}
 }
 
