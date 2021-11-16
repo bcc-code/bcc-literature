@@ -118,8 +118,8 @@
     "audiobooks": {
         "listen-on-bmm": "Hør på BMM",
         "play-audiobook": "Spill av lydbok",
-        "play-text-to-speech": "Spill av",
-        "pause-text-to-speech": "Stop",
+        "play-text-to-speech": "Anhören",
+        "pause-text-to-speech": "Stoppen",
         "cant-play-text-to-speech": "Denne artikelen kan ikke spilles av på dette språk."
     }
 }
