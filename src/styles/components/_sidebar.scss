@@ -84,25 +84,19 @@ nav {
 	@include transition(all, .3s);
 
 	@media only screen and (max-width: 648px) {
-		top: calc(100% - 66px);
-	}
-
-	@media only screen and (device-width : 375px) 
-		and (device-height : 812px) 
-		and (-webkit-device-pixel-ratio : 3) { 
-			top: calc(100% - 81px);
+		top: calc(100% - 81px);
 	}
 }
 
-.player-on .button-circular.main.toggle-sidebar{
+.player-on .button-circular.main.toggle-sidebar {
 	@media only screen and (max-width: 648px) {
-		top: calc(100% - 56px);
+		top: calc(100% - 58px) !important;
 	}
 	
 	@media only screen and (device-width : 375px) 
 		and (device-height : 812px) 
 		and (-webkit-device-pixel-ratio : 3) { 
-			top: calc(100% - 74px);
+			top: calc(100% - 92px) !important;
 	}
 }
 
@@ -114,16 +108,13 @@ nav {
 	background: url("../assets/icons/icon_24_share_white.svg") 45% center no-repeat, var(--base3); 
 
 	@include transition(all, .3s);
-	
-	@media only screen and (max-width: 648px) {
-		right: 7px;
-		top: calc(100% - 109px);
-	}
 
-	@media only screen and (device-width : 375px) 
-		and (device-height : 812px) 
-		and (-webkit-device-pixel-ratio : 3) { 
-			top: calc(100% - 124px);
+	@media only screen and (max-width: 648px) {
+		top: 25%;
+		right: 7px;
+		height: 31px !important;
+		width: 31px !important;
+		display: none;
 	}
 }
 
@@ -142,7 +133,7 @@ nav {
 		width: 24px;
 
 		@media only screen and (max-width: 648px) {
-			top: calc(100% - 74px);
+			top: calc(100% - 81px);
 			width: 40px;
 			height: 40px;
 			right: 7px;
@@ -152,17 +143,15 @@ nav {
 	.button-circular.secondary.share{
 		background: url("../assets/icons/icon_24_share_blue.svg") 45% center no-repeat, var(--white);
 		@include interactable(); 
-		right: 50px;
-		top: 116px;
 		height: 24px;
 		width: 24px;
+		right: 50px;
+		top: 116px;
 
 		@media only screen and (max-width: 648px) {
-			top: calc(100% - 109px);
-			width: 40px;
-			height: 40px;
+			top: 25%;
 			right: 7px;
-			background: url("../assets/icons/icon_24_share_white.svg") 45% center no-repeat, var(--base3);;
+			display: block;
 		}
 	}
 	.sidebar{

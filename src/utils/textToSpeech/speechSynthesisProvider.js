@@ -72,16 +72,16 @@ function getLanguageVoice(id) {
     
     let voice, voiceLocal = voices.find(e => e.lang.toLowerCase() == langTag.toLowerCase() && e.localService);
     if ( !voiceLocal && id === langEn ) {
-        //prefer local service => Chrome has problems with long texts and non local services.
-        voiceLocal =  voices.find(e => e.lang.toLowerCase() == langTagEnGb.toLowerCase() && e.localService);
+        // Prefer local service => Chrome has problems with long texts and non local services.
+        voiceLocal = voices.find(e => e.lang.toLowerCase() == langTagEnGb.toLowerCase() && e.localService);
     }
 
     voice = voiceLocal ? voiceLocal : voices.find(e => e.lang.toLowerCase() == langTag.toLowerCase());
     
-    //workaround => nb-No is not found try da-DK
-    // if ( !voice && id === langNo ) {
-    //     voice = voices.find(e => e.lang.toLowerCase() == getLanguageTag(langDk).toLowerCase());
-    // }
+    // Workaround => nb-No is not found try da-DK
+    if ( !voice && id === langNo ) {
+        voice = voices.find(e => e.lang.toLowerCase() == getLanguageTag(langDk).toLowerCase());
+    }
 
     return voice;
 }
