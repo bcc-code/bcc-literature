@@ -116,9 +116,9 @@
         "message": "Read \"{chapterName}\" on BCC Literature:"
     },
     "audiobooks": {
-        "listen-on-bmm": "Hør på BMM",
-        "play-audiobook": "Spill av lydbok",
-        "play-text-to-speech": "Spill av",
+        "listen-on-bmm": "Listen on BMM",
+        "play-audiobook": "Play audiobook",
+        "play-text-to-speech": "Play",
         "pause-text-to-speech": "Stop",
         "cant-play-text-to-speech": "Denne artikelen kan ikke spilles av på dette språk."
     }
