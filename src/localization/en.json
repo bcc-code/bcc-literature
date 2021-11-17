@@ -119,7 +119,7 @@
         "listen-on-bmm": "Listen on BMM",
         "play-audiobook": "Play audiobook",
         "play-text-to-speech": "Play",
-        "pause-text-to-speech": "Stop",
-        "cant-play-text-to-speech": "Denne artikelen kan ikke spilles av på dette språk."
+        "pause-text-to-speech": "Stopp",
+        "cant-play-text-to-speech": "Denne artikkel kan ikke spilles av på dette språk."
     }
 }
