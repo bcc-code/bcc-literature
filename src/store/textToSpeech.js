@@ -63,12 +63,12 @@ export default {
 
             state.articleClock.articleId = articleId;
         }, 
-        updateClock: function(state){
+        updateClock: function(state) {
             if(!state.isPlaying) return;
             let delta = new Date(new Date() - state.articleClock.startTime - state.articleClock.pauseDuration);
             state.articleClock.time = `${zeroPrefix(delta.getUTCMinutes())}:${zeroPrefix(delta.getUTCSeconds())}`;
         },
-        pauseClock: function(state){
+        pauseClock: function(state) {
             state.articleClock.pauseTime = new Date();
         }
     },
@@ -84,7 +84,7 @@ export default {
             commit('setCurrentArticleId', -1);
             commit('updatePlayingState');
         },
-        pause: ({ commit }) =>{
+        pause: ({ commit }) => {
             pauseAllProviders();
             clearInterval(clockInterval);
             commit('pauseClock');
@@ -99,7 +99,7 @@ export default {
             } 
             catch (ex) {
                 dispatch('stop');
-                commit('error/setDisplayMessage', this.$t('audiobooks.cant-play-text-to-speech'), { root: true });
+                commit('error/setDisplayMessage', $t('audiobooks.cant-play-text-to-speech'), { root: true });
                 commit('error/showError', true, { root: true });
                 console.error("ERROR", ex);
             }
@@ -127,7 +127,7 @@ function stopAllProviders() {
 
 function pauseAllProviders() {
     for (const provider of allProviders) {
-        if(typeof(provider.pause) === 'function'){
+        if(typeof(provider.pause) === 'function') {
             provider.pause();
         }
     }
@@ -138,7 +138,7 @@ function isArticlePlaying(state, article) {
 }
 
 function zeroPrefix(num) {
-    if(num.toString().length <= 1){
+    if (num.toString().length <= 1) {
         return `0${num}`;
     }
     return num;

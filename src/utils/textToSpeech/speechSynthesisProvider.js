@@ -30,7 +30,7 @@ function speak(article) {
         store.commit("textToSpeech/updatePlayingState", { root: true });
     };
 
-    utterance.onboundary = function(event){
+    utterance.onboundary = function(event) {
         const textLength = event.currentTarget.text.length,
             currentPos = event.charIndex + event.charLength,
             currentPosPercentage = currentPos / textLength * 100;
@@ -78,9 +78,9 @@ function getLanguageVoice(id) {
 
     voice = voiceLocal ? voiceLocal : voices.find(e => e.lang.toLowerCase() == langTag.toLowerCase());
     
-    // Workaround => nb-No is not found try da-DK
+    // Workaround: if 'nb-No' is not found, try 'no-NO'
     if ( !voice && id === langNo ) {
-        voice = voices.find(e => e.lang.toLowerCase() == getLanguageTag(langDk).toLowerCase());
+        voice = voices.find(e => e.lang.toLowerCase() == 'no-no');
     }
 
     return voice;
