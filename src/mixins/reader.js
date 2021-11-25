@@ -14,7 +14,7 @@ export default {
         },
         async loadBottom() {
             let bottomId = this.articles[this.articles.length-1].chapterId;
-            if(this.isLastChapter(bottomId)){
+            if (this.isLastChapter(bottomId)) {
                 return;
             }
             const articlesToGet = new Array();

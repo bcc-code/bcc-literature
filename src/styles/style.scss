@@ -470,11 +470,6 @@ article.search-result{
 	cursor: pointer;
 
 	@include interactable();
-
-	#loader{
-		height: 32px;
-		margin: 0 auto 0 auto;
-	}
 }
 
 //List of chapters
@@ -645,6 +640,12 @@ ol.chapters{
 .reading-view{
 	#loader{
 		margin: 30vh auto 50vh auto;
+	}
+}
+.search-results {
+	#loader{
+		height: 32px;
+		margin: 0 auto 0 auto;
 	}
 }
 //Empty states
