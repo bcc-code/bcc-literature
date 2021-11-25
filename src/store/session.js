@@ -6,7 +6,10 @@ export default {
         appLanguage: localStorage.getItem('appLanguage') || 'no',
         nightMode: nightMode == null ? (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) : nightMode,
         isAuthenticated: false,
-        topbarInitialized: false
+        topbarInitialized: false,
+        featureFlags: {
+            AudioOfArticles: false
+        }
     },
     mutations: {
         setUserInfo: (state, value) => state.userInfo = value,

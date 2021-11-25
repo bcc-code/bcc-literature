@@ -2,7 +2,7 @@
     <div>
         <div class="chapter-header">
             <h5 :id="'chapter-title-' + article.chapterId">{{ $t('reader.chapter') }} {{ article.chapterId }}</h5>
-            <TextToSpeechButton :article="article" :audioBookUrl='audioBookUrl' :bookTitle='bookTitle' />
+            <TextToSpeechButton v-if="featureFlags().AudioOfArticles" :article="article" :audioBookUrl='audioBookUrl' :bookTitle='bookTitle' />
         </div>
         <div v-if="article.content != null" v-html="article.content" />
         <DocumentViewer v-else :article="article" />
@@ -11,6 +11,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import DocumentViewer from './document-viewer';
 import TextToSpeechButton from './article-text-to-speech-btn'
 
@@ -25,6 +26,11 @@ export default {
             this.article.content = this.article.content.replace(new RegExp('([^a-zA-Z])(' + this.highlight.join('|') + ')(?=[^a-zA-Z])', 'gi'), '$1<span>$2</span>');
         }
     },
+    methods: {
+        ...mapState('session', {
+            featureFlags: 'featureFlags'
+        })
+    }
 };
 </script>
 <style>

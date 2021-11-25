@@ -842,7 +842,7 @@ footer{
 	width: 100%;
 	background: var(--base5);
 	text-align: center;
-	padding-bottom: calc(env(safe-area-inset-bottom, 16px));
+	padding: 16px 0 calc(env(safe-area-inset-bottom) + 16px);
 
 	&:after{
 		content: "";
