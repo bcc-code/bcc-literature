@@ -9,8 +9,6 @@
 
 <script>
 import Vue from 'vue';
-import { mapGetters, mapActions } from 'vuex';
-import { EventBus, Events } from '@/utils/eventBus';
 import LoadingSpinner from 'components/loading-spinner';
 
 export default {
@@ -59,7 +57,7 @@ export default {
             let hitTop = scrollTop == 0;
             this.lastScrollTop = scrollTop;
             
-            for(let i = 0; i < this.articles.length; i++) {
+            for (let i = 0; i < this.articles.length; i++) {
                 let article = this.articles[i];
                 let element = document.querySelector('#'+this.getElementName(article));
                 let elementRect = element.getBoundingClientRect();
@@ -70,7 +68,7 @@ export default {
                 }
             }
             
-            if(!this.noLazyLoad) {
+            if (!this.noLazyLoad) {
                 if (hitTop && this.loadTopHandler != null) {
                     this.loadingTop = true;
                     this.loadTopHandler().then(() => {
@@ -93,7 +91,7 @@ export default {
 };
 </script>
 <style>
-#scrollerTop #loader{
+#scrollerTop #loader {
     margin: 0 auto;
 }
 </style>

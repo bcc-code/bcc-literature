@@ -14,7 +14,7 @@ export default {
         },
         async loadBottom() {
             let bottomId = this.articles[this.articles.length-1].chapterId;
-            if(this.isLastChapter(bottomId)){
+            if (this.isLastChapter(bottomId)) {
                 return;
             }
             const articlesToGet = new Array();
@@ -50,9 +50,9 @@ export default {
             if(!article) return null;
             return `chapter-element-${article.chapterId}`;
         },
-        scrollToChapter (chapterId, offset = -100) {
+        scrollToChapter(chapterId, offset = -100) {
             let article = this.articles.find((a) => a.chapterId === chapterId);
-            if(!article) return false;
+            if (!article) return false;
             var self = this;
             window.scrollTo(0,0);
             if (chapterId >= 2) {

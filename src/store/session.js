@@ -9,7 +9,10 @@ export default {
         nightMode: nightMode == null ? (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) : nightMode,
         fontSize: +parseFloat(localStorage.getItem('fontSize')).toFixed(1) || 1,
         isAuthenticated: false,
-        topbarInitialized: false, 
+        topbarInitialized: false,
+        featureFlags: {
+            AudioOfArticles: false
+        }
     },
     mutations: {
         setUserInfo: (state, value) => state.userInfo = value,

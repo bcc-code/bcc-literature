@@ -6,7 +6,7 @@ import { logCustomEvent } from 'utils/appInsights';
 export default {
     namespaced: true,
     state: {
-        BATCHSIZE: 10,
+        BATCHSIZE: 50,
         searchParams: {
             query: '',
             facets: {
@@ -16,7 +16,7 @@ export default {
             },
             exactMatch: false,
             skip: 0,
-            size: 10
+            size: 50
         },
         id: '',
         noOfResults: 0,         

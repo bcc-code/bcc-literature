@@ -22,7 +22,8 @@
                         v-bind:class="[book.ebookOnly ? 'button-main' : 'button-secondary', 'small']">{{$t('book-index.get-ebook')}}</a>
                     <a v-if="!book.ebookOnly" class="button-main small" @click="startReadingFirstChapter">{{$t('book-index.read-now')}}</a>
                     <a v-if="bookId == 39" class="button-main small" @click="startReadingRandomChapter">{{$t('book-index.read-random-chapters')}}</a>
-                    <a v-if="book.audioBookUrl != null" @click="goToAudioBook" class="button-secondary small">{{$t('book-index.open-audiobook')}}</a>
+                    <a v-if="book.audioBookUrl != null" v-on:click="goToAudioBook" class="button-secondary small article-tts-btn bmm-icon">{{$t('audiobooks.listen-on-bmm')}}</a>
+                    <a v-if="book.audioBookUrl == null && featureFlags().AudioOfArticles" @click="playFromFirstChapter" class="button-secondary small">{{$t('audiobooks.play-audiobook')}}</a>
                 </section>
             </section>
         </section>
@@ -41,7 +42,7 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapActions, mapState } from 'vuex';
 import BookChaptersList from 'components/books/book-chapters-list';
 import BookCardCover from 'components/grid/tiles/card-cover';
 import LoadingSpinner from 'components/loading-spinner';
@@ -72,6 +73,12 @@ export default {
         }
     },
     methods: {
+        ...mapActions('books', {
+            loadChapters: 'loadChapters'
+        }),
+        ...mapState('session', {
+            featureFlags: 'featureFlags'
+        }),
         setRandomChapterId() {
             var min = 3, max = 284;
             var randomNum = Math.floor(Math.random() * (max - min) + min);
@@ -112,16 +119,19 @@ export default {
             });
         },
         goToAudioBook: function() {
-            logCustomEvent("OpenAudioBook", {
-                BookId: this.book.id,
-                Language: this.book.language,
-                BookTitle: this.book.title
+            this.$router.push({
+                name: 'read',
+                params: { chapterId: 1 },
+                hash: '#bmm'
             });
-            window.open(this.book.audioBookUrl, '_blank');
         },
-        ...mapActions('books', {
-            loadChapters: 'loadChapters'
-        }),
+        playFromFirstChapter: function() {
+            this.$router.push({
+                name: 'read',
+                params: { chapterId: 1 },
+                hash: '#play'
+            });
+        }
     }
 };
 </script>

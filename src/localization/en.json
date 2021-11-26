@@ -36,8 +36,7 @@
         "publications": "Publications",
         "choose-year": "Choose year",
         "open-in-safari": "Please use your browser to download this e-book",
-        "read-random-chapters": "Read a random chapter",
-        "open-audiobook": "Listen to audiobook"
+        "read-random-chapters": "Read a random chapter"
     },
     "not-found": {
         "title": "The resource you are looking for is not available in this language.",
@@ -115,5 +114,12 @@
         "copy-button": "Copy",
         "copy-success": "Copied",
         "message": "Read \"{chapterName}\" on BCC Literature:"
+    },
+    "audiobooks": {
+        "listen-on-bmm": "Listen on BMM",
+        "play-audiobook": "Play audiobook",
+        "play-text-to-speech": "Play",
+        "pause-text-to-speech": "Stop",
+        "cant-play-text-to-speech": "This article cannot be played in this language."
     }
 }

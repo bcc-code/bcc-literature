@@ -34,7 +34,7 @@ export default {
                 return 0;
             return this.chapters.length;
         },
-        selectedChapter(){
+        selectedChapter() {
             return this.$route.params.chapterId
         }
     },

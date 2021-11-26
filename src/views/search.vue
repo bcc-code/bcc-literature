@@ -33,15 +33,12 @@
                     </div>
                 </section>
             </aside>
-            <section class="list">
-                <loading-spinner v-if="showSpinner"/>
-                <template v-else>
-                    <h3>{{noOfResults == 0 ? $t('search.no-results') : noOfResults + " " + $t('search.search-results')}}</h3>
-                    <search-result-author v-for="result in authorResults" :key="result.Id" :result="result" />
-                    <search-result-book v-for="result in bookResults" :key="result.Id" :result="result" />
-                    <search-result v-for="(result, index) in results" :key="result.articleId" :result="result" :rank="index+1" />        
-                    <a v-if="noOfResults > results.length && !showSpinner" v-on:click="loadMore" class="pagination-button"><h5>{{$t('search.load-more')}}</h5></a>
-                </template>
+            <section class="search-results list">
+                <h3 v-if="!showSpinner">{{this.noOfResults == 0 ? $t('search.no-results') : this.noOfResults + " " + $t('search.search-results')}}</h3>
+                <search-result-author v-for="result in authorResults" :key="result.Id" :result="result" />
+                <search-result-book v-for="result in bookResults" :key="result.Id" :result="result" />
+                <search-result v-for="(result, index) in results" :key="result.articleId" :result="result" :rank="index+1" />        
+                <loading-spinner v-if="showSpinner" />
             </section>
         </section>
     </section>    
@@ -102,6 +99,20 @@ export default {
                 } else {
                     filterElement.classList.remove("pinned"); 
                 }
+            }
+
+            this.loadMoreSearchResults();
+        },
+        loadMoreSearchResults() {
+            const {
+                scrollTop,
+                scrollHeight,
+                clientHeight
+            } = document.documentElement;
+            
+            if (scrollTop >= scrollHeight - clientHeight &&
+                this.noOfResults > this.results.length && !this.showSpinner) {
+                this.loadMore();
             }
         },
         removeAllFilters() {

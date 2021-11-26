@@ -166,7 +166,7 @@ export default {
         dropdownOptions() {
             return this.availableLanguages.map((l) => {
                 return { value: l.code, title: l.name }
-            })
+            });
         }
     },
     components: {

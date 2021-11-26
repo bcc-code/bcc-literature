@@ -834,16 +834,15 @@ h1 + .subscription-signup{
 	}
 }
 
-
 //Footer
 footer{
 	display: block;
 	position: absolute;
 	bottom: 0px;
 	width: 100%;
-	padding: 16px;
 	background: var(--base5);
 	text-align: center;
+	padding: 16px 0 calc(env(safe-area-inset-bottom) + 16px);
 
 	&:after{
 		content: "";

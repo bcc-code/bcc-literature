@@ -36,8 +36,7 @@
         "publications": "Utgivelser",
         "choose-year": "Velg år",
         "open-in-safari": "Vennligst bruk nettleseren din for å laste ned denne eBok",
-        "read-random-chapters": "Les tilfeldig brev",
-        "open-audiobook": "Åpne lydbok"
+        "read-random-chapters": "Les tilfeldig brev"
     },
     "not-found": {
         "title": "Ressursen du leter etter finnes ikke på dette språket.",
@@ -115,5 +114,12 @@
         "copy-button": "Kopiere",
         "copy-success": "Kopiert",
         "message": "Les \"{chapterName}\" på BCC Litteratur:"
+    },
+    "audiobooks": {
+        "listen-on-bmm": "Hør på BMM",
+        "play-audiobook": "Spill av lydbok",
+        "play-text-to-speech": "Spill av",
+        "pause-text-to-speech": "Stop",
+        "cant-play-text-to-speech": "Denne artikelen kan ikke spilles av på dette språk."
     }
 }
