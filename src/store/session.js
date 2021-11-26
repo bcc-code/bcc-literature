@@ -1,6 +1,6 @@
 const nightMode = JSON.parse(localStorage.getItem('nightMode'))
 const MIN_FONT_SIZE = 0.7;
-const MAX_FONT_SIZE = 2;
+const MAX_FONT_SIZE = 1.9;
 export default {
     namespaced: true,
     state: {
