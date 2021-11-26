@@ -34,7 +34,7 @@
                 </section>
             </aside>
             <section class="search-results list">
-                <h3>{{this.noOfResults == 0 ? $t('search.no-results') : this.noOfResults + " " + $t('search.search-results')}}</h3>
+                <h3 v-if="!showSpinner">{{this.noOfResults == 0 ? $t('search.no-results') : this.noOfResults + " " + $t('search.search-results')}}</h3>
                 <search-result-author v-for="result in authorResults" :key="result.Id" :result="result" />
                 <search-result-book v-for="result in bookResults" :key="result.Id" :result="result" />
                 <search-result v-for="(result, index) in results" :key="result.articleId" :result="result" :rank="index+1" />        
