@@ -5,7 +5,7 @@
         <section class="container reading-view">
             <app-header :backButtonRoute="getBackButtonRoute" :pageName="book ? book.title : ''" />
             <loader ref="loader">
-                <article class="center small">  
+                <article class="center small" :style="{ zoom: fontSize }">  
                     <template v-if="!articles || (book != null && showingFirstChapter)">
                         <Title :book="book" :year="year" :month="month" :title="articles[0].title"/>
                     </template>
@@ -91,6 +91,7 @@ export default {
     },
     mixins: [BookMixins, ReaderMixins],
     computed: {
+        ...mapState('session', ['fontSize']),
         ...mapState('textToSpeech',{
             currentArticleId: 'currentArticleId',
             isPlaying: 'isPlaying',

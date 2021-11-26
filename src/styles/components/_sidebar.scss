@@ -145,6 +145,56 @@ nav {
 			display: block;
 		}
 	}
+	.button-circular.white.font-smaller{
+		right: 62px;
+		top: 58px;
+		position: fixed;
+		z-index: 100003;
+		background: url("../assets/icons/icon_font_smaller_black.svg") center center/40% no-repeat, var(--white); 
+		&.dark {
+			background: url("../assets/icons/icon_font_smaller_white.svg") center center/40% no-repeat, var(--white); 
+		}
+		&.disabled {
+			opacity: 0.2;
+		}
+		@include transition(all, .3s);
+		
+		@media only screen and (max-width: 648px) {
+			@include transition(all, .3s);
+			top: calc(25% - 68px);
+		}
+		@media only screen and (device-width : 375px) 
+			and (device-height : 812px) 
+			and (-webkit-device-pixel-ratio : 3) { 
+				@include transition(all, .3s);
+				top: calc(25% - 68px);
+		}
+	}
+	.button-circular.white.font-bigger{
+		right: 12px;
+		top: 58px;
+		position: fixed;
+		z-index: 100003;
+		background: url("../assets/icons/icon_font_bigger_black.svg") center center no-repeat, var(--white); 
+		&.dark {
+			background: url("../assets/icons/icon_font_bigger_white.svg") center center no-repeat, var(--white); 
+		}
+		&.disabled {
+			opacity: 0.2;
+		}
+		@include transition(all, .3s);
+		
+		@media only screen and (max-width: 648px) {
+			@include transition(all, .3s);
+			top: calc(25% - 68px);
+		}
+		@media only screen and (device-width : 375px) 
+			and (device-height : 812px) 
+			and (-webkit-device-pixel-ratio : 3) { 
+				@include transition(all, .3s);
+				top: calc(25% - 68px);
+		}
+	}
 	.sidebar{
 		right: 16px;
 

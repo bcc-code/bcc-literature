@@ -10,7 +10,9 @@ body {
 	font-size: 8px;
 	line-height: 1.3em;
 	background: var(--white);
+	width: 100%;
 	min-height: 100vh;
+	overflow-x: hidden;
 	@include transition(color, .3s);
 	@include transition(background-color, .3s);
 }
