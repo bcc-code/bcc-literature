@@ -20,6 +20,7 @@ import Grid from 'components/grid/grid';
 import GridMixins from '@/mixins/grid.js';
 import AppHeader from 'components/layout/app-header';
 import Loader from 'components/la-loader';
+import AuthorMetaHeaderMixins from "@/mixins/author-meta-header";
 
 export default {
     components: {
@@ -28,7 +29,7 @@ export default {
         AppHeader,
         Loader
     },
-    mixins: [GridMixins],
+    mixins: [GridMixins, AuthorMetaHeaderMixins],
     computed: {
         ...mapState("authors", {
             authorsAll: state => state.base.all,

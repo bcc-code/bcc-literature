@@ -34,6 +34,7 @@ import SearchBox from 'components/search/search-box';
 import SongTreasuresNotice from 'components/song-treasures-notice';
 import UserVoiceBanner from 'components/user-voice-banner';
 import Loader from 'components/la-loader';
+import BookMetaHeaderMixins from "@/mixins/book-meta-header";
 
 export default {
     components: {
@@ -45,7 +46,7 @@ export default {
         AppHeader,
         SearchableGrids
     },
-    mixins: [GridMixin],
+    mixins: [GridMixin, BookMetaHeaderMixins],
     computed: {
         ...mapState('books', {
             all: state => state.base.all,

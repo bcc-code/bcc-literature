@@ -6,6 +6,7 @@
 import store from 'store';
 import authenticator from 'utils/auth';
 import loadjs from "loadjs";
+import DefaultMetaHeaderMixins from "@/mixins/default-meta-header";
 
 export default {
     async created() {
@@ -21,5 +22,6 @@ export default {
             },
         });
     },
+    mixins: [DefaultMetaHeaderMixins],
 };
 </script>

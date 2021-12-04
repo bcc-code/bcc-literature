@@ -7,6 +7,7 @@ import store from 'store';
 import Oidc from 'oidc-client';
 import LoadingSpinner from 'components/loading-spinner';
 import loadjs from "loadjs";
+import DefaultMetaHeaderMixins from "@/mixins/default-meta-header";
 
 export default {
     components: {
@@ -61,5 +62,6 @@ export default {
             self.$router.push({ name: 'Unauthorized' });
         });
     },
+    mixins: [DefaultMetaHeaderMixins],
 }
 </script>

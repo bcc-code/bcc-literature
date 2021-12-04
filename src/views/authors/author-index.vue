@@ -27,6 +27,7 @@ import SearchableGrids from 'components/grid/searchable-grids';
 import CardCover from 'components/grid/tiles/card-cover';
 import Grid from 'components/grid/grid';
 import GridMixins from '@/mixins/grid.js';
+import AuthorMetaHeaderMixins from '@/mixins/author-meta-header';
 import AppHeader from "components/layout/app-header";
 import Loader from "components/la-loader";
 
@@ -38,7 +39,7 @@ export default {
         AppHeader,
         Loader
     },
-    mixins: [GridMixins],
+    mixins: [GridMixins, AuthorMetaHeaderMixins],
     methods: {
         ...mapActions('authors', {
             loadAuthor: 'load'

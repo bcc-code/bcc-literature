@@ -56,6 +56,7 @@ import SearchFacet from 'components/search/search-facet'
 import YearFilter from 'components/search/year-filter'
 import { mapActions, mapState, mapGetters } from 'vuex';
 import { EventBus, Events } from '@/utils/eventBus';
+import DefaultMetaHeaderMixins from "@/mixins/default-meta-header";
 
 export default {    
     components: {
@@ -149,6 +150,7 @@ export default {
                 this.newExactMatch(val)
         }
     },
+    mixins: [DefaultMetaHeaderMixins],
     computed: {
         isMobile() {
             return this.width <= 768;

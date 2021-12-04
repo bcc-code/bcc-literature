@@ -56,6 +56,7 @@ import FontFaceObserver from 'fontfaceobserver';
 import ReaderMixins from '@/mixins/reader';
 import BaseApi from '@/utils/api/baseApi.js';
 import { mapActions, mapState } from 'vuex';
+import BookMetaHeaderMixins from "@/mixins/book-meta-header";
 
 export default {
     components: {
@@ -89,7 +90,7 @@ export default {
             document.getElementById('content').classList.add('player-on');
         }
     },
-    mixins: [BookMixins, ReaderMixins],
+    mixins: [BookMixins, ReaderMixins, BookMetaHeaderMixins],
     computed: {
         ...mapState('session', ['fontSize']),
         ...mapState('textToSpeech',{
