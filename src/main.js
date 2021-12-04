@@ -16,10 +16,14 @@ import '@babel/polyfill';
 import '@/styles/style.scss';
 import VueModal from 'vue-js-modal';
 import VueClipboard from 'vue-clipboard2';
+import VueMeta from "vue-meta";
 
 Vue.config.productionTip = false;
-Vue.use(vClickOutside)
-Vue.use(VueI18n)
+Vue.use(vClickOutside);
+Vue.use(VueI18n);
+Vue.use(VueMeta, {
+    refreshOnceOnNavigation: true
+});
 
 //Added to create a share modal
 Vue.use(VueModal);
