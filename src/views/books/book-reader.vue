@@ -32,9 +32,8 @@
         </section>
         <a alt="Toggle Sidebar" class="toggle-sidebar button-circular main" @click="showSidebar = !showSidebar"></a>
         <a alt="Share" class="share button-circular secondary" @click="openShareModal"></a>
-        <app-sidebar @chapterChanged="changeChapter" />
-        <ShareLinkModal v-show="showShareModal" :url="shareUrl" :message="shareMessage"></ShareLinkModal>
         <app-sidebar @chapterChanged="changeChapter" @close="showSidebar = false"/>
+        <ShareLinkModal :url="shareUrl" :message="shareMessage"></ShareLinkModal>
         <TextToSpeechPlayer :articles="articles" />
     </template>
     <div id="print-footer">© Copyright Skjulte Skatters Forlag N-4098 Tananger, Norway.</div>
@@ -74,7 +73,6 @@ export default {
     data() {
         return {
             showSidebar: true,
-            showShareModal : false,
             notFound: false,
             articles: [],
             amountToLoad: 5,
@@ -222,19 +220,13 @@ export default {
                 });
             }
             else {
-                this.showShareModal = true;
+                this.$modal.show('shareUrlModal');
             }
         }
     },
     watch: {
         showSidebar: function () {
             this.showSidebar ? document.body.classList.add("sidebar-open") : document.body.classList.remove("sidebar-open");
-        },
-        showShareModal: function(newValue) {
-            if (newValue) 
-                this.$modal.show('shareUrlModal');
-            else
-                this.$modal.hide('shareUrlModal');
         }
     }
 };

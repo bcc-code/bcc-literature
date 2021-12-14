@@ -1,6 +1,6 @@
 <template>
     <section>
-        <modal name="shareUrlModal" :clickToClose="false" :maxWidth="768" :maxHeight="200" adaptive>
+        <modal name="shareUrlModal" :maxWidth="768" :maxHeight="200" adaptive>
             <div style="padding: 25px;">
                 <h4>{{$t('share.share-link')}}</h4>
                 <span class="close-times" @click="close">&times;</span>
@@ -49,7 +49,7 @@ export default {
     },
     methods: {
         close(){
-            this.$parent.showShareModal = false;
+            this.$modal.hide('shareUrlModal');
             this.copyText = this.$t('share.copy-button');
             this.copyClass = '';
         },
