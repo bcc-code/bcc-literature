@@ -34,6 +34,7 @@
         <a alt="Share" class="share button-circular secondary" @click="openShareModal"></a>
         <app-sidebar @chapterChanged="changeChapter" />
         <ShareLinkModal v-show="showShareModal" :url="shareUrl" :message="shareMessage"></ShareLinkModal>
+        <app-sidebar @chapterChanged="changeChapter" @close="showSidebar = false"/>
         <TextToSpeechPlayer :articles="articles" />
     </template>
     <div id="print-footer">© Copyright Skjulte Skatters Forlag N-4098 Tananger, Norway.</div>
