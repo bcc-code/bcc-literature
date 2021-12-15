@@ -140,8 +140,9 @@ export default {
         }
     },
     created() {
-        this.initialized = false
-        let years = this.$store.state.search.searchParams.facets.Years
+        this.initialized = false;
+        let years = this.$store.state.search.searchParams.facets.Years;
+
         if (years.length > 0) {
             this.value1 = years[0];
             this.value2 = years[1];
@@ -150,6 +151,7 @@ export default {
             this.value1 = this.minYear;
             this.value2 = this.maxYear;
         }
+
         setTimeout(() => this.initialized = true, 200);
     },
     computed: {

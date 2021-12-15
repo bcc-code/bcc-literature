@@ -40,7 +40,7 @@ export default {
 
             logCustomEvent("Search", {
                 SearchServiceName: "searchopenportal",
-                IndexName: "ssf-content-index",
+                IndexName: "sssf-content-index",
                 QueryTerms: state.searchParams.query,
                 ResultCount: state.noOfResults,
                 ScoringProfile: "DefaultProfile"
@@ -56,8 +56,12 @@ export default {
             state.facetsOptions.AuthorFullName = value.AuthorFullName;
             state.facetsOptions.BookName = value.BookName;
         },
-        updateSearchQuery: (state, value) => {
-            state.searchParams.query = value;
+        updateSearchFields: (state, fields) => {
+            state.searchParams.query = fields.query;
+            state.searchParams.facets.AuthorFullName = fields.filters.facets.AuthorFullName;
+            state.searchParams.facets.BookName = fields.filters.facets.BookName;
+            state.searchParams.facets.Years = fields.filters.facets.Years;
+            state.searchParams.exactMatch = fields.filters.exactMatch;
         },
         toggleLoader: (state) => {
             state.showSpinner = !state.showSpinner;
@@ -70,11 +74,17 @@ export default {
             state.results = [];
             state.noOfResults = 0;      
         },
-        resetFacets: (state) => {
-            state.searchParams.facets.AuthorFullName = [];
-            state.searchParams.facets.BookName = [];
-            state.hideOptions.AuthorFullName = true;
-            state.hideOptions.BookName = true;
+        resetFacets: (state, facetName) => {
+            if (facetName) {
+                state.searchParams.facets[facetName] = [];
+                state.hideOptions[facetName] = true;
+            }
+            else {
+                state.searchParams.facets.AuthorFullName = [];
+                state.searchParams.facets.BookName = [];
+                state.hideOptions.AuthorFullName = true;
+                state.hideOptions.BookName = true;
+            }
         },
         updateLoadMore: (state) => {            
             state.searchParams.skip += state.BATCHSIZE;                              
@@ -84,23 +94,17 @@ export default {
         addSearchResults: ({commit}, query) => {
             commit('addSearchResults', query);
         },
-        newSearch: async function({commit, dispatch}, query) {
-            commit('updateSearchQuery', query.query);
+        newSearch: async function({commit, dispatch}, search) {
+            if (search.fields) commit('updateSearchFields', search.fields);
             commit('resetPaging');
             commit('resetResults');
-            if (query.newFacets) commit('resetFacets');
-            dispatch("search", query.newFacets)            
+            if (search.newFacets) commit('resetFacets', search.facetName);
+            dispatch("search", search.newFacets)            
         },
-        search: async function({ commit, state, getters }, newFacets = true) {           
-            var query = state.searchParams.query;
-            var authorFullNameFacet = state.searchParams.facets.AuthorFullName;
-            var bookNameFacet = state.searchParams.facets.BookName;
-            var size = state.searchParams.size;
-            var skip = state.searchParams.skip;
-            var years = state.searchParams.facets.Years;
-            var exactMatch = state.searchParams.exactMatch;
-
+        search: async function({ commit, state, getters }, newFacets = true) {
             commit("toggleLoader");
+
+            var query = state.searchParams.query;
 
             if (getters.getSelectedFacetsLength == 0) {
                 await bookApi.search(query).then((res)=>{
@@ -110,6 +114,14 @@ export default {
                     commit("updateAuthorResults", res.data);
                 }).catch(() => commit("updateAuthorResults", []));
             } 
+
+            var authorFullNameFacet = state.searchParams.facets.AuthorFullName;
+            var bookNameFacet = state.searchParams.facets.BookName;
+            var size = state.searchParams.size;
+            var skip = state.searchParams.skip;
+            var years = state.searchParams.facets.Years;
+            var exactMatch = state.searchParams.exactMatch;
+
             await articleApi.search(query, size, skip, authorFullNameFacet, bookNameFacet, years, exactMatch).then((res) => {
                 if (res.data.results == null)
                     return commit("toggleLoader");
@@ -138,16 +150,19 @@ export default {
                 selections.splice(indexInSelections, 1);
             else
                 selections.push(newElement.value);       
-            
-            dispatch('newSearch', { query: state.searchParams.query, newFacets: false });
+
+            updateUrl(newElement.facetName, encodeURI(selections.join(',')));
+            dispatch('newSearch', { newFacets: !selections.length, facetName: newElement.facetName });
         },
         newYearsFilter: function({ dispatch, state }, newYears) {
-            state.searchParams.facets.Years = newYears;   
-            dispatch('newSearch', { query: state.searchParams.query, newFacets: false });
+            state.searchParams.facets.Years = newYears;
+            updateUrl("years", encodeURI(newYears.join('-')));
+            dispatch('newSearch', { newFacets: false });
         },
         newExactMatch: function({ dispatch, state }, exactMatch) {
-            state.searchParams.exactMatch = exactMatch;   
-            dispatch('newSearch', { query: state.searchParams.query, newFacets: false });
+            state.searchParams.exactMatch = exactMatch;
+            updateUrl("exactMatch", exactMatch);
+            dispatch('newSearch', { newFacets: false });
         },
         loadMore: function({ commit, dispatch }) {
             commit("updateLoadMore");
@@ -159,7 +174,35 @@ export default {
             return state.bookResults.length + state.authorResults.length + state.noOfResults;
         },
         getSelectedFacetsLength: (state) => {
-            return state.searchParams.facets["BookName"].length + state.searchParams.facets["AuthorFullName"].length;
+            return state.searchParams.facets.BookName.length + state.searchParams.facets.AuthorFullName.length;
         }
     }
+}
+
+function updateUrl(key, value) {
+    var queryParams = new URLSearchParams(window.location.search);
+    value = removeDefaultsFromUrl(key, value.toString());
+    
+    if (value)
+        queryParams.set(camelize(key), value);
+    else
+        queryParams.delete(camelize(key));
+
+    history.pushState(null, null, "?"+queryParams.toString());
+}
+
+function camelize(str) {
+    return str.replace(/(?:^\w|[A-Z]|\b\w)/g, function(word, index) {
+      return index === 0 ? word.toLowerCase() : word.toUpperCase();
+    }).replace(/\s+/g, '');
+}
+
+function removeDefaultsFromUrl(key, value) {
+    if (key == 'exactMatch')
+        value = value.replace('false', '');
+
+    if (key == 'years')
+        value = value.replace('1900-' + new Date().getFullYear(), '');
+
+    return value;
 }
