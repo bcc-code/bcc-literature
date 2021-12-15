@@ -19,10 +19,10 @@ export default {
         }
     },
     methods: {
-        search: function() {        
+        search: function() {
             if (this.searchQuery == null || this.searchQuery == '')
                 this.$router.push('/search/q=');    
-            else this.$router.push({ name: 'search', path: '/search', params: { query: this.searchQuery || '' } })         
+            else this.$router.push({ name: 'search', path: '/search', params: { query: this.searchQuery || '' } });
         },
         clearInput: function() {
             this.searchQuery = '';

@@ -60,7 +60,7 @@ export default {
         },
         // Gets all the words found by Azure to highlight them in the reader
         wordsToHighlight() {
-            var words = this.$parent.computedQuery.split(' ').filter((w) => w.length > 0);
+            var words = this.$parent.computedQueryFields.query.split(' ').filter((w) => w.length > 0);
             // Adding potential new words highlighted by azure with fuzzy search
             if (this.highlight != null) {
                 this.highlight.match(new RegExp("<span>[^<]*</span>", 'gi')).forEach((word) => {

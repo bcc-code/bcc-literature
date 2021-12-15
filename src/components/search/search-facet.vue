@@ -52,6 +52,10 @@ export default {
         for (const key of Object.keys(this.$store.state.search.hideOptions)) {
             this.$store.state.search.hideOptions[key] = true;
         }
+
+        var query = this.$route.query;
+        if (camelize(this.facetName) in query)
+            this.$store.state.search.searchParams.facets[this.facetName] = decodeURI(query[camelize(this.facetName)]).split(',');
     },
     methods: {
         ...mapActions('search', {
@@ -82,6 +86,12 @@ export default {
             );
         }
     }
+}
+
+function camelize(str) {
+    return str.replace(/(?:^\w|[A-Z]|\b\w)/g, function(word, index) {
+      return index === 0 ? word.toLowerCase() : word.toUpperCase();
+    }).replace(/\s+/g, '');
 }
 </script>
 <style>
