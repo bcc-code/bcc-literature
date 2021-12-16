@@ -17,7 +17,7 @@
                 </ol>
             </section>
         </section>
-        <section class="overlay" />
+        <section class="overlay" @click="$emit('close')" />
     </section>
 </template>
 
