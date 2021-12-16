@@ -123,7 +123,7 @@ export default {
             this.$store.state.search.searchParams.facets.BookName = [];
             this.$store.state.search.searchParams.facets.Years = [];
 
-            this.newSearch({ fields: { query: this.$route.params.query, filters: { facets: {} } }, newFacets: true });
+            this.newSearch({ fields: { query: this.$route.params.query, filters: { facets: { Years: [] } } }, newFacets: true });
             history.pushState(null, null, '?');
         }
     },
