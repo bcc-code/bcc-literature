@@ -181,7 +181,24 @@ export default {
             });
         },
         afterInitialize() {
-            this.scrollToChapter(this.chapterId);
+            let currentBookData = window.localStorage.getItem("book_"+this.bookId+"_scroll_progress").split(" "),
+                relativeScroll = currentBookData? parseFloat(currentBookData[1]) : false;
+            if(currentBookData){
+                this.changeChapter(parseInt(currentBookData[0],10));
+                window.scrollTo(window.scrollX,window.scrollY + relativeScroll);
+            }
+            
+            let preventExhaustionTimeout;
+            function saveProgress(){
+                if(preventExhaustionTimeout) clearTimeout(preventExhaustionTimeout);
+                preventExhaustionTimeout = setTimeout(()=>{
+                    let chapterHeaders = [...document.querySelectorAll(".chapter-header")],
+                        currentChapter = chapterHeaders.filter(x=>x.innerText.split(" ")[1]===""+this.chapterId)[0],
+                        relativeScroll = window.scrollY - currentChapter.offsetTop;
+                    window.localStorage.setItem("book_"+this.bookId+"_scroll_progress",this.chapterId+" "+relativeScroll);
+                },200);
+            }
+            window.addEventListener("scroll",saveProgress);
 
             // Play the audiobook or Listen on BMM
             if (this.$route.hash == '#play' ||
