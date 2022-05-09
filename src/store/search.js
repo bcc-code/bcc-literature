@@ -136,8 +136,8 @@ export default {
                 console.log(err);
                 commit("updateSearchResults", { results: [], totalCount: 0 });
                 commit("updateFacetsOptions", {
-                    "AuthorFullName": [],     
-                    "BookName": []              
+                    "AuthorFullName": [],
+                    "BookName": []
                 });
                 commit("toggleLoader");
             });   

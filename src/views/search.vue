@@ -31,7 +31,7 @@
                         <year-filter />
                         <section class="exact-match">
                             <p>{{$t('search.exact-match')}}</p>
-                            <input v-model="exactMatch" type="checkbox" name="search-exact-text">
+                            <input v-model="exactMatch" @click="updateExactMatch" type="checkbox" name="search-exact-text">
                         </section>
                     </div>
                 </section>
@@ -74,7 +74,6 @@ export default {
     data: function() {
         return {
             exactMatch: false,
-            initialized: false,
             width: null,
             showFilters: false
         }
@@ -86,7 +85,11 @@ export default {
             newExactMatch: 'newExactMatch'
         }),
         newSearchWithQuery() {
+            this.exactMatch = this.computedQueryFields.filters.exactMatch;
             this.newSearch({ fields: this.computedQueryFields, newFacets: true });
+        },
+        updateExactMatch() {
+            this.newExactMatch(!this.exactMatch);
         },
         handleResize() {
             this.width = window.innerWidth;
@@ -127,14 +130,11 @@ export default {
             history.pushState(null, null, '?');
         }
     },
-    created: function() {     
-        this.initialized = false;
+    created: function() {
         window.addEventListener('resize', this.handleResize);
         window.addEventListener('scroll', this.handleScroll);
         this.handleResize();
         this.exactMatch = this.computedQueryFields.filters.exactMatch;
-
-        setTimeout(() => this.initialized = true, 200);
 
         if (this.computedQueryFields.query != this.searchParams.query)
             this.newSearchWithQuery();
@@ -147,11 +147,7 @@ export default {
     },
     watch: {
         computedQueryFields: function() {
-            this.newSearchWithQuery();                   
-        },
-        exactMatch: function(val) {
-            if (this.initialized)
-                this.newExactMatch(val)
+            this.newSearchWithQuery();
         }
     },
     computed: {
@@ -174,19 +170,21 @@ export default {
             return window.matchMedia('(display-mode: standalone)').matches
         },
         computedQueryFields: function() {
-            var years = this.$route.query.years;
+            var query = this.$route.params.query;
             var bookName = this.$route.query.bookName;
             var authorFullName = this.$route.query.authorFullName;
+            var years = this.$route.query.years;
+            var exactMatch = Boolean(this.$route.query.exactMatch);
 
             return { 
-                query: this.$route.params.query, 
+                query: query,
                 filters: {
                     facets: {
                         BookName: bookName ? decodeURI(bookName).split(',') : [],
                         AuthorFullName: authorFullName ? decodeURI(authorFullName).split(',') : [],
                         Years: years ? years.split('-') : [],
                     },
-                    exactMatch: Boolean(this.$route.query.exactMatch)
+                    exactMatch: exactMatch
                 }
             };
         },         
