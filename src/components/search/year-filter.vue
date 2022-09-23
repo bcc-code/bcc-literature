@@ -8,7 +8,6 @@
             </div>
             <p class="range-values">
                 <span>{{minYearValue || '-' }}</span>
-                <span v-if="minYearValue != minYear || maxYearValue != maxYear" @click="clear" class="range-clear">{{ $t('search.filters.clear') }}</span>
                 <span>{{maxYearValue || '-' }}</span>
             </p>
         </div>
