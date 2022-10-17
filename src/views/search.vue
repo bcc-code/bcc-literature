@@ -17,7 +17,7 @@
                 <section class="filter" :class="showFilters ? 'open' : 'closed'" v-click-outside="() => showFilters = false">
                     <div v-if="isMobile" class="header" @click="showFilters = !showFilters">
                         <h3>{{$t('search.filters.title')}}</h3>
-                        <p class="remove-filters" v-if="showFilters" @click.prevent="removeAllFilters()"><a href="#">{{ $t('search.filters.clear') }}</a></p>
+                        <p class="remove-filters" v-if="anyActiveFilter" @click.prevent="removeAllFilters()"><a href="#">{{ $t('search.filters.clear') }}</a></p>
                     </div>
                     <div class="filters-wrapper" v-if="!isMobile || showFilters">
                         <search-facet facetName="BookName"
@@ -28,7 +28,7 @@
                             :facetTitle="$t('search.filters.authors-title')"
                             :facetPlaceholder="$t('search.filters.search-for-author')"
                         />
-                        <year-filter />
+                        <year-filter ref="yearFilter"/>
                         <section class="exact-match">
                             <p>{{$t('search.exact-match')}}</p>
                             <input v-model="exactMatch" @click="updateExactMatch" type="checkbox" name="search-exact-text">
@@ -125,6 +125,7 @@ export default {
             this.$store.state.search.searchParams.facets.AuthorFullName = [];
             this.$store.state.search.searchParams.facets.BookName = [];
             this.$store.state.search.searchParams.facets.Years = [];
+            this.$refs.yearFilter.clear();
 
             this.newSearch({ fields: { query: this.$route.params.query, filters: { facets: { Years: [] } } }, newFacets: true });
             history.pushState(null, null, '?');
@@ -161,8 +162,7 @@ export default {
                 ? ( years[0] == 1900 && years[1] == new Date().getFullYear() )
                 : true;
 
-            return searchParams.exactMatch != false
-                || !!searchParams.facets.BookName.length
+            return !!searchParams.facets.BookName.length
                 || !!searchParams.facets.AuthorFullName.length
                 || !defaultYears;
         },
