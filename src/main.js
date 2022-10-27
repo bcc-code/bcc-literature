@@ -43,9 +43,10 @@ const messages = {
 }
 
 const i18n = new VueI18n({
-    locale: 'en', 
+    locale: 'en',
     fallbackLocale: 'en',
-    messages, 
+    messages,
+    silentTranslationWarn: true
 });
   
 Vue.filter('capitalize', function (value) {
