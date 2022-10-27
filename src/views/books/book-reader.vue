@@ -47,6 +47,7 @@ import TextToSpeechPlayer from 'components/layout/app-text-to-speech-player';
 import ShareLinkModal from 'components/reader/share-link-modal';
 import NotFound from 'components/not-found';
 import BookMixins from '@/mixins/book';
+import { EventBus, Events } from "@/utils/eventBus";
 import Loader from 'components/la-loader';
 import Title from 'components/reader/reader-title.vue';
 import ArticleScroller from 'components/reader/article-scroller';
@@ -87,7 +88,12 @@ export default {
         if (this.currentArticleId != -1) {
             document.getElementById('content').classList.add('player-on');
         }
+
+        EventBus.$on(Events.CONTENT_LANGUAGE_CHANGED, this.reset);
     },
+    destroyed() {
+        EventBus.$off(Events.CONTENT_LANGUAGE_CHANGED, this.reset);
+    }, 
     mixins: [BookMixins, ReaderMixins],
     computed: {
         ...mapState('session', ['fontSize']),
@@ -222,6 +228,9 @@ export default {
             else {
                 this.$modal.show('shareUrlModal');
             }
+        },
+        reset() {
+            this.notFound = false
         }
     },
     watch: {
