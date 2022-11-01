@@ -169,9 +169,12 @@ export default {
                             parent: this.$route.params.parent,
                         }});
                 }
+
                 this.isPublication
                     ? await this.loadArticlesByMonth({ bookId: this.bookId, month: this.month, year: this.year }).then((articles) => {
-                        this.articles = articles;
+                        articles.length > 0
+                            ? this.articles = articles
+                            : this.notFound = true
                     })
                     : await this.loadChapters(this.bookId).then(async () => {
                         await this.ensureSurroundingChapters({ bookId: this.bookId, chapterId: this.chapterId, count: this.amountToLoad }).then(() => {

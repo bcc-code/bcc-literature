@@ -28,12 +28,23 @@ export default {
                 })
             return book;
         },
-        loadTranslations: async ({}, id) => {
+        loadTranslationsForBook: async ({}, id) => {
             let translations = null;
             await BookApi.getBookTranslations(id)
                 .then((result) => {
                     if(result.data.length <= 0){
                         throw new Error('Book does not have any translation.');
+                    }
+                    translations = result.data;
+                })
+            return translations;
+        },
+        loadTranslationsForPublication: async ({}, { year, month, chapterId }) => {
+            let translations = null;
+            await BookApi.getPublicationTranslations(year, month, chapterId)
+                .then((result) => {
+                    if(result.data.length <= 0){
+                        throw new Error('Publication does not have any translation.');
                     }
                     translations = result.data;
                 })

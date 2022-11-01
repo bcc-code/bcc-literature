@@ -3,6 +3,7 @@
 export default {
     getBook,
     getBookTranslations,
+    getPublicationTranslations,
     getAllBooks,
     getChaptersByBookId,
     getMonthlyPublicationsForYear,
@@ -54,8 +55,12 @@ async function getMonthlyPublicationsForYear(publicationId, year) {
     return await baseApi.sendRequest("get", "books/publication/" + publicationId + "/" + year)
 }
 
+async function getPublicationTranslations(year, month, chapterId) {
+    return await baseApi.sendRequest("get", "books/publication/" + year + "/" + month + "/" + chapterId + "/translations")
+}
+
 async function getPublicationInformation(id) {
-    return await baseApi.sendRequest("get", "books/" + id +"/price");
+    return await baseApi.sendRequest("get", "books/" + id + "/price");
 }
 
 async function search(query) {

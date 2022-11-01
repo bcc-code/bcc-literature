@@ -42,12 +42,20 @@ export default {
     },
     methods: {
         async initialize() {
-            await this.loadTranslationsForBook(this.$route.params.bookId).then((result) => {
-                this.translations = result;
-            })
+            if (this.$parent.isPublication) {
+                await this.loadTranslationsForPublication({ year: this.$route.params.year, month: this.$route.params.month, chapterId: this.$route.params.chapterId }).then((result) => {
+                    this.translations = result;
+                })
+            }
+            else {
+                await this.loadTranslationsForBook(this.$route.params.bookId).then((result) => {
+                    this.translations = result;
+                })
+            }
         },
         ...mapActions('books', {
-            loadTranslationsForBook: 'loadTranslations'
+            loadTranslationsForBook: 'loadTranslationsForBook',
+            loadTranslationsForPublication: 'loadTranslationsForPublication'
         }),
         changeBookLanguage(lang) {
             this.$store.commit('session/setAppLanguage', lang);
