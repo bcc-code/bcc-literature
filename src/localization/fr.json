@@ -62,11 +62,11 @@
     },
     "reader": {
         "chapter": "Chapitre",
-        "subscription-required": "Vous n'êtes pas abonné à l'ouvrage sélectionné."
+        "subscription-required": "Vous n'êtes pas abonné à la publication sélectionnée."
     },
     "subscription": {
         "subscriptions": "Abonnements",
-        "your-subscriptions": "Abonné",
+        "your-subscriptions": "Ton abonnement",
         "latest-issue": "Dernière édition",
         "see-all": "Voir tout",
         "learn-more": "En savoir plus",
