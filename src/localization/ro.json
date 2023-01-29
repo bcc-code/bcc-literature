@@ -119,7 +119,7 @@
         "listen-on-bmm": "Ascultă pe BMM",
         "play-audiobook": "Pornește audio",
         "play-text-to-speech": "Redare",
-        "pause-text-to-speech": "Stopp",
-        "cant-play-text-to-speech": "Denne artikkel kan ikke spilles av på dette språk."
+        "pause-text-to-speech": "Stop",
+        "cant-play-text-to-speech": "Acest articol nu poate fi redat în această limbă."
     }
 }
