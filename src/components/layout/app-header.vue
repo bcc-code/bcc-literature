@@ -61,8 +61,11 @@ export default {
                 { code: 'pt', name: 'Português' },
                 { code: 'ro', name: 'Română' },
                 { code: 'ru', name: 'Russian' },
+		{ code: 'sr', name: 'Srbsko' },
+		{ code: 'sl', name: 'Slovenski' },
                 { code: 'fi', name: 'Suomi' },
                 { code: 'tr', name: 'Türkçe' },
+		
             ],
             appLanguages: ['no', 'en', 'de', 'fr', 'nl', 'fi']
         }
