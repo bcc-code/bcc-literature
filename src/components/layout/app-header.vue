@@ -53,6 +53,7 @@ export default {
                 { code: 'es', name: 'Español' },
                 { code: 'en', name: 'English' },
                 { code: 'fr', name: 'Français' },
+		{ code: 'hr', name: 'Hvratski' },
                 { code: 'it', name: 'Italiano' },
                 { code: 'hu', name: 'Magyar' },
                 { code: 'nl', name: 'Nederlands' },
