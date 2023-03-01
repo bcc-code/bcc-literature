@@ -550,7 +550,7 @@ ol.chapters{
 		}
 
 		&:before{
-			content: counter(li);
+			content: attr(chapter);
 			display: inline-block;
 			position: absolute;
 
