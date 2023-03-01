@@ -1,4 +1,3 @@
-import Vue from 'vue';
 export default {
     methods: {
         async loadTop() {
@@ -50,18 +49,25 @@ export default {
             if(!article) return null;
             return `chapter-element-${article.chapterId}`;
         },
-        scrollToChapter(chapterId, offset = -100) {
+        scrollToChapter(chapterId, offset = -70) {
             let article = this.articles.find((a) => a.chapterId === chapterId);
             if (!article) return false;
             var self = this;
-            window.scrollTo(0,0);
-            if (chapterId >= 2) {
-                Vue.nextTick()
-                    .then(() => {
-                        let chapterElementRect = document.querySelector('#'+self.getElementName(article)).getBoundingClientRect();
-                        window.scrollTo(0, chapterElementRect.top + offset);
-                    });
+            const fireCallbackOnTopHit = function() {
+                if (window.scrollY == 0)  {
+                    window.removeEventListener('scroll', fireCallbackOnTopHit)
+                    if (chapterId >= 2) {
+                        self.$nextTick()
+                            .then(() => {
+                                let chapterElementRect = document.querySelector('#'+self.getElementName(article)).getBoundingClientRect();
+                                window.scrollTo(0, chapterElementRect.top + offset);
+                            });
+                    }
+                }
             }
+            window.addEventListener('scroll', fireCallbackOnTopHit)
+            fireCallbackOnTopHit()
+            window.scrollTo(0,0);
         },
         setCurrentChapter(chapterId) {
             if (this.isPublication)
