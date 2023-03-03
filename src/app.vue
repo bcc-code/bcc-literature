@@ -10,14 +10,15 @@
 import { EventBus, Events } from "@/utils/eventBus";
 import AppFooter from 'components/layout/app-footer.vue';
 import ErrorNotice from 'components/error-notice.vue';
-import { mapState } from 'vuex';
+import { mapGetters, mapState } from 'vuex';
 export default {
     components: {
         AppFooter,
         ErrorNotice
     }, 
     computed: {
-        ...mapState('session', ['topbarInitialized', 'nightMode'])
+        ...mapState('session', ['topbarInitialized', 'nightMode']),
+        ...mapGetters('session', ['isStandalone'])
     },
     methods: {
         reset() {
@@ -29,6 +30,8 @@ export default {
     },
     created() {
         this.$store.dispatch('textToSpeech/reset');
+        var resumeAt = localStorage.getItem('literature-resume-at')
+        if (this.isStandalone && resumeAt) this.$router.replace(resumeAt)
     },
     mounted() {
         EventBus.$on(Events.CONTENT_LANGUAGE_CHANGED, this.reset);
@@ -37,6 +40,11 @@ export default {
         EventBus.$off(Events.CONTENT_LANGUAGE_CHANGED, this.reset);
     },  
     watch: {
+        '$route.path': {
+            handler: function (val) {
+                localStorage.setItem('literature-resume-at', val)
+            }
+        },
         nightMode: {
             immediate: true,
             handler: function (val) {
