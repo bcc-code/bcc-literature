@@ -20,7 +20,7 @@
 import { EventBus, Events } from '@/utils/eventBus.js';
 import LaDropdown from '@/components/la-dropdown';
 import loadjs from "loadjs";
-import { mapState } from 'vuex';
+import { mapState, mapGetters } from 'vuex';
 import { logCustomEvent } from '@/utils/appInsights';
 
 export default {
@@ -53,7 +53,7 @@ export default {
                 { code: 'es', name: 'Español' },
                 { code: 'en', name: 'English' },
                 { code: 'fr', name: 'Français' },
-		{ code: 'hr', name: 'Hvratski' },
+		        { code: 'hr', name: 'Hvratski' },
                 { code: 'it', name: 'Italiano' },
                 { code: 'hu', name: 'Magyar' },
                 { code: 'nl', name: 'Nederlands' },
@@ -62,8 +62,8 @@ export default {
                 { code: 'pt', name: 'Português' },
                 { code: 'ro', name: 'Română' },
                 { code: 'ru', name: 'Russian' },
-		{ code: 'sr', name: 'Srbsko' },
-		{ code: 'sl', name: 'Slovenski' },
+                { code: 'sr', name: 'Srbsko' },
+                { code: 'sl', name: 'Slovenski' },
                 { code: 'fi', name: 'Suomi' },
                 { code: 'tr', name: 'Türkçe' },
 		
@@ -159,9 +159,7 @@ export default {
     },
     computed: {
         ...mapState('session', ['nightMode']),
-        isStandalone() {
-            return window.matchMedia('(display-mode: standalone)').matches
-        },
+        ...mapGetters('session', ['isStandalone']),
         currentLanguage() {
             const code = this.$store.state.session.appLanguage;
             const lang = this.availableLanguages.find((l) => l.code === code);
