@@ -1,4 +1,4 @@
-﻿﻿const keys = {};
+﻿const keys = {};
 
 keys.AUTH0_DOMAIN = 'https://login.bcc.no';
 keys.AUTH0_CLIENT_ID = 'X0ac7C8sROIhEzRGLJPFpLCZAlKGK4KV';
