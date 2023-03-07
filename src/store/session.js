@@ -46,6 +46,7 @@ export default {
     },
     getters: {
         isMinFontSize: (state) => state.fontSize <= MIN_FONT_SIZE,
-        isMaxFontSize: (state) => state.fontSize >= MAX_FONT_SIZE
+        isMaxFontSize: (state) => state.fontSize >= MAX_FONT_SIZE,
+        isStandalone: () => window.matchMedia('(display-mode: standalone)').matches
     }
 }

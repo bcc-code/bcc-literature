@@ -152,6 +152,7 @@ export default {
         }
     },
     computed: {
+        ...mapGetters('session', ['isStandalone']),
         isMobile() {
             return this.width <= 768;
         },
@@ -165,9 +166,6 @@ export default {
             return !!searchParams.facets.BookName.length
                 || !!searchParams.facets.AuthorFullName.length
                 || !defaultYears;
-        },
-        isStandalone() {
-            return window.matchMedia('(display-mode: standalone)').matches
         },
         computedQueryFields: function() {
             var query = this.$route.params.query;
