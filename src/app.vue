@@ -30,8 +30,8 @@ export default {
     },
     created() {
         this.$store.dispatch('textToSpeech/reset');
-        var resumeAt = localStorage.getItem('literature-resume-at')
-        if (this.isStandalone && resumeAt) this.$router.replace(resumeAt)
+        // var resumeAt = localStorage.getItem('literature-resume-at')
+        // if (this.isStandalone && resumeAt) this.$router.replace(resumeAt)
     },
     mounted() {
         EventBus.$on(Events.CONTENT_LANGUAGE_CHANGED, this.reset);
