@@ -49,7 +49,7 @@ module.exports = {
                     }
                 },
                 {
-                    urlPattern: new RegExp('^(https|http)://(((dev)?literatureapi\.bcc\.no)|(localhost:58330))/api/(books|Article|article|authors)'),
+                    urlPattern: new RegExp('^(https|http)://(((dev)?literatureapi\\.bcc\\.no)|(localhost:58330))/api/(books|Article|article|authors)'),
                     handler: 'networkFirst',
                     options: {
                         cacheName: "api-calls",
@@ -62,7 +62,7 @@ module.exports = {
                     }
                 },
                 {
-                    urlPattern: new RegExp('^(https|http)://(((dev)?literatureapi\.bcc\.no)|(localhost:58330))/api/blobs/image'),
+                    urlPattern: new RegExp('^(https|http)://(((dev)?literatureapi\\.bcc\\.no)|(localhost:58330))/api/blobs/image'),
                     handler: 'staleWhileRevalidate',
                     options: {
                         cacheName: "api-images",
