@@ -8,7 +8,6 @@
 </template>
 
 <script>
-import Vue from 'vue';
 import LoadingSpinner from 'components/loading-spinner';
 
 export default {
@@ -39,7 +38,7 @@ export default {
     },
     methods: {
         addScrollHandler() {
-            Vue.nextTick(() => {
+            this.$nextTick(() => {
                 window.addEventListener('scroll', this.scrollHandler);
             });
         },
