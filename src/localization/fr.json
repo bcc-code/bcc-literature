@@ -3,11 +3,11 @@
     "app": {
         "select-language": "Choisir la langue",
         "error": "Une erreur s'est produite. Veuillez contacter it@bcc.no",
-        "song-treasures-notice": "Vedrørende sangbøker med tilhørende noter, se <a href=\"https://christianbookshop.org/nb/pages/music\" target=\"_blank\">denne filmen</a>. Logg deg inn på <a href=\"https://songtreasures.org\" target=\"_blank\">songtreasures.org</a> og lag en konto. Der kan du lese mer om konseptet SongTreasures, og abonnere på tilgang til 5 av SSSF sine sangbøker.",
+        "song-treasures-notice": "Pour les recueils de chansons accompagnés de partitions, voir <a href=\"https://christianbookshop.org/nb/pages/music\" target=\"_blank\">cette vidéo</a>. Connectez-vous à <a href=\"https://songtreasures.org\" target=\"_blank\">songtreasures.org</a> et créez un compte. Là, vous pouvez en savoir plus sur le concept SongTreasures et vous abonner pour accéder à 5 des recueils de chansons de SSSF.",
         "user-voice": {
-            "title": "Hvordan kan vi forbedre dette nettstedet?",
-            "description": "Her kan du stemme for, diskutere og dele ideer om hvordan BCC Litteratur Portalen kan forbedres.",
-            "button": "Gå til User Voice"
+            "title": "Comment pouvons-nous améliorer ce site ?",
+            "description": "Vous pouvez voter, discuter et partager des idées sur la façon dont le portail de BCC littérature peut être amélioré.",
+            "button": "Aller à User Voice"
         }
     },
     "articles": {
@@ -46,16 +46,16 @@
         "search": "Rechercher",
         "search-results": "Résultats",
         "search-box": "Rechercher dans la littérature de BCC",
-        "year-filter": "Year",
-        "exact-match": "Eksakt tekst",
+        "year-filter": "Années",
+        "exact-match": "Concordance",
         "filters": {
             "title": "Filtre",
-            "search-for-book": "Søk etter bok",
-            "search-for-author": "Søk etter forfatter",
+            "search-for-book": "Chercher un livre",
+            "search-for-author": "Chercher un auteur",
             "authors-title": "Auteurs",
             "books-title": "Livres",
-            "no-match": "Ingen treff",
-            "clear": "tøm"
+            "no-match": "Aucune concodance",
+            "clear": "Effacer"
         },
         "load-more": "Charger plus",
         "no-results": "Aucun résultat"
@@ -116,10 +116,10 @@
         "message": "Lire \"{chapterName}\" sur BCC Littérature :"
     },
     "audiobooks": {
-        "listen-on-bmm": "Hør på BMM",
-        "play-audiobook": "Spill av lydbok",
-        "play-text-to-speech": "Spill av",
+        "listen-on-bmm": "Écouter sur BMM",
+        "play-audiobook": "Lire le livre audio",
+        "play-text-to-speech": "Jouer",
         "pause-text-to-speech": "Stop",
-        "cant-play-text-to-speech": "Denne artikelen kan ikke spilles av på dette språk."
+        "cant-play-text-to-speech": "Cet article ne peut pas être lu en audio."
     }
 }
