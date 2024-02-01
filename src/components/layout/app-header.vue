@@ -52,6 +52,7 @@ export default {
                 { code: 'dk', name: 'Dansk' },
                 { code: 'es', name: 'Español' },
                 { code: 'en', name: 'English' },
+                { code: 'et', name: 'Eesti keel' },
                 { code: 'fr', name: 'Français' },
 		        { code: 'hr', name: 'Hvratski' },
                 { code: 'it', name: 'Italiano' },
