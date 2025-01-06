@@ -1,12 +1,12 @@
 <template>
     <section v-bind:class="['subscription-signup', {'open': showForm}, {'confirmed': showConfirmation}]">
         <h4>{{$t("subscription.subscribe-to")}} {{book.title}}</h4>
-        <p class="small">{{$t("subscription.subtitle", {publicationName: book.title})}}</p>
+        <p class="small">{{book.title}} vil bli gjort tilgjengelig gratis om ikke så lenge. Nærmere informasjon kommer snart.</p>
         <BookCover :cover-id="book.coverId"></BookCover>
         <a v-if="showForm" class="button-circular minimize-button small" v-on:click="showForm = false"></a>
         <SubscriptionForm v-if="showForm" :formData="subscriptionInfo" @subscribe="subscribe"/>
         <Confirmation v-if="showConfirmation" :success="success"/>
-        <div class="signup-cta" v-if="!showForm && !showConfirmation">
+        <div class="signup-cta" v-if="!showForm && !showConfirmation" v-show="false">
             <a class="button-main small" v-on:click="showFormOrGoToPublication">{{$t('subscription.subscribe-button')}}</a>
         </div>
     </section>

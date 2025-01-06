@@ -42,7 +42,7 @@ export default {
         subscriptionMessage(){
             return this.isSubscribed 
                 ? `${this.$t('subscription.subscribed')}  ${this.element.title}`
-                : this.$t('subscription.subtitle', {publicationName : this.element.title});
+                : `${this.element.title} vil bli gjort tilgjengelig gratis om ikke så lenge. Nærmere informasjon kommer snart.`;
         },
         coverImage(){
             return `url(${this.element.coverImageUrl})`;
