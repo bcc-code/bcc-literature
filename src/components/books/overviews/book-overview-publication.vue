@@ -7,8 +7,6 @@
                     <h5>{{$t('book-index.since')}} {{book.year}}</h5>
             </section>
         </section>
-        <!-- Subscription -->
-        <Subscription :book="book" />
         <!-- Publication issues -->
         <section class="container">
             <section class="center small">

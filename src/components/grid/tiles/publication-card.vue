@@ -1,17 +1,11 @@
 <template>
-    <section class="subscription" :class="{active : isSubscribed}">
-        <article v-if="isSubscribed">  
+    <section class="subscription active">
+        <article>  
             <router-link :to="trimHostname(element.lastPublicationUrl)" class="latest">
                 <figure v-bind:style="{ 'background-image': coverImage}"></figure>
                 <h6>{{$t('subscription.latest-issue')}}</h6>
                 <h4>{{element.lastPublicationTitle}}</h4>
             </router-link>
-        </article>
-        <article v-else>  
-            <figure v-bind:style="{ 'background-image': coverImage}"></figure>
-            <div class="signup-cta">
-                <router-link :to="trimHostname(element.publicationUrl)" class="button-main small">{{$t('subscription.learn-more')}}</router-link>
-            </div>
         </article>
     </section>
 </template>
