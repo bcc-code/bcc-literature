@@ -1,10 +1,6 @@
 <template>
     <section class="subscription" :class="{active : isSubscribed}">
-        <h5>{{cardHeader}}</h5>
-        <h4>{{element.title}}</h4>
-        <p class="small">{{subscriptionMessage}}</p>
         <article v-if="isSubscribed">  
-            <router-link :to="trimHostname(element.publicationUrl)" class="button-secondary small">{{$t('subscription.see-all')}}</router-link>
             <router-link :to="trimHostname(element.lastPublicationUrl)" class="latest">
                 <figure v-bind:style="{ 'background-image': coverImage}"></figure>
                 <h6>{{$t('subscription.latest-issue')}}</h6>

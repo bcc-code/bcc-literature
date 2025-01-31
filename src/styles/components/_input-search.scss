@@ -28,7 +28,9 @@ form.search-form{
 
 		cursor: pointer;
 
-	   @include transition(all, .1s);
+		margin-bottom: 0;
+
+	   	@include transition(all, .1s);
 
 		&::placeholder{
 			color: var(--base3);
