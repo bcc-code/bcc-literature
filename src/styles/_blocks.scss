@@ -851,13 +851,13 @@ footer{
 }
 
 .container-ssf {
-	background: url("../assets/SSF_portal_banner_phone.png") no-repeat 1050px center / auto 80%, url("../assets/SSF_portal_banner_bg.jpg") repeat left top / contain;
+	background: url("../assets/SSF_portal_banner_phone.png") no-repeat 1100px center / auto 70%, url("../assets/SSF_portal_banner_bg.jpg") repeat left top / contain;
 	margin-bottom: 2rem;
 	padding-bottom: 25px;
 	isolation: isolate;
 
 	.light & {
-		background: url("../assets/SSF_portal_banner_phone.png") no-repeat 1050px center / auto 80%;
+		background: url("../assets/SSF_portal_banner_phone.png") no-repeat 1100px center / auto 70%;
 	}
 
 	.dark &::after {
