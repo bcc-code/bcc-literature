@@ -3,7 +3,8 @@ import session from '../store/session.js';
 import { ApplicationInsights } from '@microsoft/applicationinsights-web'
 
 const appInsights = new ApplicationInsights({ config: {
-    instrumentationKey: keys.APP_INSIGHTS
+    instrumentationKey: keys.APP_INSIGHTS,
+    autoTrackPageVisitTime: true
 }});
 appInsights.loadAppInsights();
 

@@ -4,7 +4,7 @@ keys.AUTH0_DOMAIN = 'https://login.bcc.no';
 keys.AUTH0_CLIENT_ID = 'X0ac7C8sROIhEzRGLJPFpLCZAlKGK4KV';
 keys.API_AUDIENCE = 'https://literatureapi.bcc.no';
 keys.SUBSCRIPTION_FORM_URLS = { 
-    312: 'https://band.dcg-deutschland.de/'
+    312: 'https://band.dcg-deutschland.de/neues-abo/'
 };
 
 switch (window.location.hostname) {

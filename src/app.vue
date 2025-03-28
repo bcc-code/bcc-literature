@@ -1,5 +1,5 @@
 <template>
-  <div id="main" :style="{marginTop: topbarInitialized ? '0' : '48px' }">
+  <div id="main">
     <router-view id="content" class="main-content" />
     <error-notice></error-notice>
     <app-footer/>
@@ -17,7 +17,7 @@ export default {
         ErrorNotice
     }, 
     computed: {
-        ...mapState('session', ['topbarInitialized', 'nightMode']),
+        ...mapState('session', ['nightMode']),
         ...mapGetters('session', ['isStandalone'])
     },
     methods: {
@@ -30,8 +30,8 @@ export default {
     },
     created() {
         this.$store.dispatch('textToSpeech/reset');
-        var resumeAt = localStorage.getItem('literature-resume-at')
-        if (this.isStandalone && resumeAt) this.$router.replace(resumeAt)
+        // var resumeAt = localStorage.getItem('literature-resume-at')
+        // if (this.isStandalone && resumeAt) this.$router.replace(resumeAt)
     },
     mounted() {
         EventBus.$on(Events.CONTENT_LANGUAGE_CHANGED, this.reset);

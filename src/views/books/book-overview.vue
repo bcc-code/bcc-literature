@@ -1,18 +1,22 @@
 <template>
     <section>
     <app-header :showBackButton="false" :pageName="$t('books.books')" />
-    <section id="literature-intro" class="container intro">
-        <section class="center x-small" v-html="$t('books.welcome-message')"></section>
+    <section class="container container-ssf">
+        <section class="center">
+            <div class="readable-container">
+                <h3>Tilgang til Skjulte Skatter og litteratur</h3>
+                <p>Vi har gleden av å informere om at Skjulte Skatters Forlag nå har lansert første utgave av vår nye litteraturportal, der bladet Skjulte Skatter, sangboken Herrens Veier, ulike Bibeloversettelser og mye av forlagets egen litteratur er tilgjengelig i digitalt format. Digitale utgaver av Skjulte Skatter fra og med januar 2025 er tilgjengelig både som tekst i selve litteraturportalen og som nedlastbare PDF-filer.</p>
+                <p>Forlaget vil de neste månedene videreutvikle litteraturportalen med funksjonalitet og verktøy som gjør det enklere å finne fram i, og tilegne seg innholdet, herunder muligheten til å synkronisere notater på tvers av enheter, vise to tekster på skjermen samtidig, dele innhold og samhandle med andre brukere. I tillegg vil vi etter hvert integrere AI-verktøy for søk og oppsummering av innhold.</p>
+                <p>For å få tilgang til litteraturportalen må du først registrere en ny bruker via <a href="https://app.hiddentreasures.org/bcc" target="_blank">denne linken</a>. Dette gjelder også selv om du er eksisterende abonnent. Etter registrering vil du motta en bekreftelse på epost der du blir bedt om å verifisere din epostadresse. Straks du har gjort dette vil du bli sendt til litteraturportalen, der du får opp en melding med mulighet til å linke din konto hos oss mot din BCC-konto.</p>
+                <p>Har du spørsmål eller trenger hjelp med å få tilgang kan du henvende deg på epost til <a href="mailto:ticket@hiddentreasures.org">ticket@hiddentreasures.org</a>.</p>
+                <p>Hjertelig hilsen,<br />
+                Redaksjonen</p>
+            </div>
+        </section>
     </section>
-    <section class="container">
-        <section class="center x-small">
+    <section class="center x-small">
             <search-box />
         </section>
-        <section class="banners center flex">
-            <song-treasures-notice />
-            <user-voice-banner />
-        </section>
-    </section>
     <loader>
         <grid :list="publications" :title="$t('subscription.subscriptions')" :layout="GridLayout.TILES" :type="GridType.PUBLICATION"/>
         <SearchableGrids>

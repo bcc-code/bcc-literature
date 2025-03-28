@@ -3,7 +3,7 @@
     "app": {
         "select-language": "Velg språk",
         "error": "En feil oppstod. Ta kontakt med it@bcc.no",
-        "song-treasures-notice": "Vedrørende sangbøker med tilhørende noter, se <a href=\"https://christianbookshop.org/nb/pages/music\" target=\"_blank\">denne filmen</a>. Logg deg inn på <a href=\"https://songtreasures.org\" target=\"_blank\">songtreasures.org</a> og lag en konto. Der kan du lese mer om konseptet SongTreasures, og abonnere på tilgang til 5 av SSSF sine sangbøker.",
+        "song-treasures-notice": "Vedrørende sangbøker med tilhørende noter, se <a href=\"https://christianbookshop.org/nb/pages/music\" target=\"_blank\">denne filmen</a>. Logg deg inn på <a href=\"https://songtreasures.org\" target=\"_blank\">songtreasures.org</a> og lag en konto. Der kan du lese mer om konseptet SongTreasures og få tilgang til SSSF sine sangbøker.",
         "user-voice": {
             "title": "Hvordan kan vi forbedre dette nettstedet?",
             "description": "Her kan du stemme for, diskutere og dele ideer om hvordan BCC Litteratur Portalen kan forbedres.",
@@ -45,7 +45,7 @@
     "search": {
         "search": "Søk",
         "search-results": "Resultater",
-        "search-box": "Søk i BCC litteratur",
+        "search-box": "Søk i litteratur",
         "year-filter": "År",
         "exact-match": "Eksakt tekst",
         "filters": {

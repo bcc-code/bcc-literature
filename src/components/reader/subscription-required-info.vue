@@ -3,7 +3,6 @@
         <div class="container">
             <h3>{{$t('reader.subscription-required')}}</h3>
         </div>
-        <Subscription :book="book"/> 
     </section>
 </template>
 
