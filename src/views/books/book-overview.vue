@@ -46,7 +46,7 @@
             </div>
         </section>
     </section>
-    <section class="center x-small" v-if="continueOnPortal">
+    <section class="center x-small !mt-8" v-if="continueOnPortal">
         <search-box />
     </section>
     <loader v-if="continueOnPortal">
@@ -121,6 +121,10 @@ export default {
 .underline {
     border-bottom: 2px solid #64707580;
     padding-bottom: 2px;
+}
+
+.\!mt-8 {
+    margin-top: 2rem !important;
 }
 
 @media only screen and (max-width: 1049px) {
