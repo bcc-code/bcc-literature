@@ -10,6 +10,7 @@
                 <ol class="chapters">
                     <li v-for="chapter in chapters.sort((a, b) => parseInt(a.id) - parseInt(b.id))" 
                         :key="chapter.id"
+                        :chapter="chapter.id"
                         :class="['chapter', { 'current-chapter': chapter.id == selectedChapter }]" 
                         @click="$emit('chapterChanged', chapter.id)">
                         <a v-bind:alt="chapter.title"><h5>{{chapter.title}}</h5></a>

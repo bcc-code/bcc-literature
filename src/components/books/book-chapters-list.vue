@@ -1,7 +1,7 @@
 <template>
     <section class="list">
         <ol class="chapters">
-            <li v-for="(chapter, index) in chapters" :key="index">
+            <li v-for="(chapter, index) in chapters" :key="index" :chapter="chapter.id">
                 <router-link 
                 :to="`${chapter.id}`"
                 append

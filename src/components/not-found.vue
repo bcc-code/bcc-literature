@@ -9,7 +9,7 @@
                 <section class="list">
                     <h4>{{$t('not-found.suggestions')}}</h4>
                     <ol class="chapters">
-                        <li v-for="(translation, index) in translations" :key="index">
+                        <li v-for="(translation, index) in translations" :key="index" :chapter="index+1">
                             <a @click="changeBookLanguage(translation.language)">
                                 <h5>
                                     <img class="flag" width="16" height="16" 

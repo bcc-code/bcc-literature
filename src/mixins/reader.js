@@ -1,4 +1,3 @@
-import Vue from 'vue';
 export default {
     methods: {
         async loadTop() {
@@ -50,18 +49,33 @@ export default {
             if(!article) return null;
             return `chapter-element-${article.chapterId}`;
         },
-        scrollToChapter(chapterId, offset = -100) {
+        scrollToChapter(chapterId, offset = -105) {
             let article = this.articles.find((a) => a.chapterId === chapterId);
             if (!article) return false;
             var self = this;
-            window.scrollTo(0,0);
-            if (chapterId >= 2) {
-                Vue.nextTick()
-                    .then(() => {
-                        let chapterElementRect = document.querySelector('#'+self.getElementName(article)).getBoundingClientRect();
-                        window.scrollTo(0, chapterElementRect.top + offset);
-                    });
+            var targetY = null;
+            const fireCallbackOnTargetHit = function(event) {
+                // When we reach the top of the document, we can scroll to the chapter
+                if (window.scrollY == 0)  {
+                    if (chapterId >= 2) {
+                        self.$nextTick()
+                            .then(() => {
+                                let chapterElementRect = document.querySelector('#'+self.getElementName(article)).getBoundingClientRect();
+                                targetY = Math.round(chapterElementRect.top)
+                                window.scrollTo(0, targetY);
+                            });
+                    }
+                }
+                // When we have reached the target chapter, we can remove the callback and scroll by an offset to account for the header
+                else if (window.scrollY == targetY) {
+                    window.removeEventListener('scroll', fireCallbackOnTargetHit)
+                    window.scrollBy(0, offset)
+                }
             }
+            window.addEventListener('scroll', fireCallbackOnTargetHit)
+            window.scrollTo(0,0);
+            // We fire the callback manually to ensure we catch it even if the user is already at the top of the page
+            fireCallbackOnTargetHit()
         },
         setCurrentChapter(chapterId) {
             if (this.isPublication)
